@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState, useRef } from 'react';
 import { Layout, Typography, Divider, Row, Affix, Card, Avatar } from 'antd';
-import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
+import { Link, withRouter, RouteComponentProps, BrowserRouter as Router } from 'react-router-dom';
 import Slider from 'react-slick';
 import AboutPage from '../../../pages/about';
 import BlogPage from '../../../pages/blog';
@@ -308,13 +308,11 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
                   transition: 'opacity 0.3s ease 0s'
                 }}
               >
-                <Link to={'/about'}>
-                  <a onClick={e => e.preventDefault()}>
-                    <LinkText theme={stateTheme}>
-                      <GradientFont isCurrent={currentPageIdx === 0}>About</GradientFont>
-                    </LinkText>
-                  </a>
-                </Link>
+                <a onClick={e => history.push('/about')}>
+                  <LinkText theme={stateTheme}>
+                    <GradientFont isCurrent={currentPageIdx === 0}>About</GradientFont>
+                  </LinkText>
+                </a>
               </Typography.Paragraph>
             </div>
             <div onClick={e => history.push('/portfolio')}>
@@ -330,13 +328,11 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
                   transition: 'opacity 0.3s ease 0s'
                 }}
               >
-                <Link to={'/portfolio'}>
-                  <a onClick={e => e.preventDefault()}>
-                    <LinkText theme={stateTheme}>
-                      <GradientFont isCurrent={currentPageIdx === 1}>Portfolio</GradientFont>
-                    </LinkText>
-                  </a>
-                </Link>
+                <a onClick={e => history.push('/portfolio')}>
+                  <LinkText theme={stateTheme}>
+                    <GradientFont isCurrent={currentPageIdx === 1}>Portfolio</GradientFont>
+                  </LinkText>
+                </a>
               </Typography.Paragraph>
             </div>
 
@@ -353,13 +349,11 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
                   transition: 'opacity 0.3s ease 0s'
                 }}
               >
-                <Link to={'/resume'}>
-                  <a onClick={e => e.preventDefault()}>
-                    <LinkText theme={stateTheme}>
-                      <GradientFont isCurrent={currentPageIdx === 2}>Resume</GradientFont>
-                    </LinkText>
-                  </a>
-                </Link>
+                <a onClick={e => history.push('/resume')}>
+                  <LinkText theme={stateTheme}>
+                    <GradientFont isCurrent={currentPageIdx === 2}>Resume</GradientFont>
+                  </LinkText>
+                </a>
               </Typography.Paragraph>
             </div>
             <div onClick={e => history.push('/contact')}>
@@ -375,13 +369,11 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
                   transition: 'opacity 0.3s ease 0s'
                 }}
               >
-                <Link to={'/contact'}>
-                  <a onClick={e => e.preventDefault()}>
-                    <LinkText theme={stateTheme}>
-                      <GradientFont isCurrent={currentPageIdx === 3}>Contact</GradientFont>
-                    </LinkText>
-                  </a>
-                </Link>
+                <a onClick={e => history.push('/contact')}>
+                  <LinkText theme={stateTheme}>
+                    <GradientFont isCurrent={currentPageIdx === 3}>Contact</GradientFont>
+                  </LinkText>
+                </a>
               </Typography.Paragraph>
             </div>
 
@@ -398,40 +390,40 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
                   transition: 'opacity 0.3s ease 0s'
                 }}
               >
-                <Link to={'/blog'}>
-                  <a onClick={e => e.preventDefault()}>
-                    <LinkText theme={stateTheme}>
-                      <GradientFont isCurrent={currentPageIdx === 4}>Blog</GradientFont>
-                    </LinkText>
-                  </a>
-                </Link>
+                <a onClick={e => history.push('/blog')}>
+                  <LinkText theme={stateTheme}>
+                    <GradientFont isCurrent={currentPageIdx === 4}>Blog</GradientFont>
+                  </LinkText>
+                </a>
               </Typography.Paragraph>
             </div>
           </Slider>
         </Layout.Header>
       </Card>
-      <div>
+      {/* <div>
         <Divider style={{ margin: '4px 0px' }} />
         <Layout.Content style={{ width: '95%', margin: '0 auto' }}>
           <Slider {...sliderContentSettings} ref={slideContentRef}>
-            <ContentArea current={currentPageIdx === 0}>
-              <AboutPage theme={stateTheme} />
-            </ContentArea>
-            <ContentArea current={currentPageIdx === 1}>
-              <PortfolioPage />
-            </ContentArea>
-            <ContentArea current={currentPageIdx === 2}>
-              <HistoryPage />
-            </ContentArea>
-            <ContentArea current={currentPageIdx === 3}>
-              <ContactPage />
-            </ContentArea>
-            <ContentArea current={currentPageIdx === 4}>
-              <BlogPage />
-            </ContentArea>
+            <Router>
+              <ContentArea current={currentPageIdx === 0}>
+                <AboutPage theme={stateTheme} />
+              </ContentArea>
+              <ContentArea current={currentPageIdx === 1}>
+                <PortfolioPage />
+              </ContentArea>
+              <ContentArea current={currentPageIdx === 2}>
+                <HistoryPage />
+              </ContentArea>
+              <ContentArea current={currentPageIdx === 3}>
+                <ContactPage />
+              </ContentArea>
+              <ContentArea current={currentPageIdx === 4}>
+                <BlogPage />
+              </ContentArea>
+            </Router>
           </Slider>
         </Layout.Content>
-      </div>
+      </div> */}
     </>
   );
 };

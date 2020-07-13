@@ -1,6 +1,8 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react';
 
 import { ContentfulService } from '../core/contentful';
+import { BlogPost } from '../interfaces/post';
+
 // import { useRouter } from 'next/router';
 // import { BlogPost } from '../../interfaces/post';
 import Card from '../components/Card/card.component';
@@ -9,18 +11,19 @@ import { Row, Col, List, Pagination, Divider, Card as CardView, Skeleton } from 
 // import { BookOutlined } from '@ant-design/icons';
 import useWindowSize from '../hooks/useWindow';
 // type Props = {};
-// interface PostPageProps {
-//   entries: BlogPost[];
-//   tags: { id: string; name: string }[];
-//   url: any;
-//   total: number;
-//   skip: number;
-//   limit: number;
-//   page?: number;
-//   totalCount: number;
-// }
+interface PostPageProps {
+  entries: BlogPost[];
+  tags: { id: string; name: string }[];
+  url: any;
+  total: number;
+  skip: number;
+  limit: number;
+  page?: number;
+  totalCount: number;
+}
 //const Post: NextPage<PostPageProps, any> = (props: PostPageProps) => {
 //console.log('props : ', props);
+
 const Post: FunctionComponent<any> = () => {
   // const router = useRouter();
   const windowSize = useWindowSize();
@@ -83,13 +86,13 @@ const Post: FunctionComponent<any> = () => {
       responsivePageSize
     });
 
-    const { entries, total, skip, limit } = await contentfulService.getBlogPostEntries({
+    const result: any = await contentfulService.getBlogPostEntries({
       tag: selectTag ? selectTag.toString() : '',
       skip: (selectPage - 1) * responsivePageSize,
       limit: responsivePageSize
     });
 
-    setContent({ page, tags, entries, total, skip, limit });
+    setContent(result);
     setLoading(false);
   };
 

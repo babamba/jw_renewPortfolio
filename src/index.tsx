@@ -6,6 +6,8 @@ import { Provider } from 'mobx-react';
 import { HelmetProvider } from 'react-helmet-async';
 import RootStore from './store/index';
 import { BrowserRouter } from 'react-router-dom';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const rootStore = new RootStore(); // *** 루트 스토어 생성
 
@@ -18,15 +20,15 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <HelmetProvider>
-        <Provider {...rootStore}>
-          <App />
-        </Provider>
-      </HelmetProvider>
-    </BrowserRouter>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <BrowserRouter>
+    <HelmetProvider>
+      <Provider {...rootStore}>
+        <App />
+      </Provider>
+    </HelmetProvider>
+  </BrowserRouter>,
+  // </React.StrictMode>
   document.getElementById('root')
 );
 

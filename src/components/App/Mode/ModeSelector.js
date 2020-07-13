@@ -100,23 +100,25 @@ const ModeSelector = observer(({ setIsDarkMode }) => {
   };
 
   return (
-    <animated.div style={{ transform }}>
-      <CustomIcon
-        onClick={handleChange}
-        style={{
-          // transform: 'rotateZ(180deg)',
-          // transformOrigin: 'center',
-          margin: 0,
+    <div style={{ position: 'absolute', right: 12, top: -6 }}>
+      <animated.div style={{ transform }}>
+        <CustomIcon
+          onClick={handleChange}
+          style={{
+            // transform: 'rotateZ(180deg)',
+            // transformOrigin: 'center',
+            margin: 0,
 
-          color: common.useDark ? '#f0d74a' : '#ffffff',
-          fontSize: 38,
-          cursor: 'pointer',
-          marginTop: 20
-          // paddingBottom: 12
-        }}
-        type={common.useDark ? 'icon-night' : 'icon-brightness'}
-      />
-    </animated.div>
+            color: common.useDark ? '#f0d74a' : '#ffffff',
+            fontSize: 38,
+            cursor: 'pointer',
+            marginTop: 20
+            // paddingBottom: 12
+          }}
+          type={common.useDark ? 'icon-night' : 'icon-brightness'}
+        />
+      </animated.div>
+    </div>
   );
 });
 

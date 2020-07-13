@@ -3,6 +3,11 @@ import { Result } from 'antd';
 import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
 
 import Test from '../pages/test';
+import About from '../pages/about';
+import Blog from '../pages/blog';
+import Contact from '../pages/contact';
+import Portfolio from '../pages/portfolio';
+import Resume from '../pages/resume';
 import { AnimatePresence } from 'framer-motion';
 
 // 전역에서 사용되는 브라우저 라우터
@@ -21,11 +26,13 @@ const Routes = () => {
          *
          */}
 
-        <Redirect exact from="/" to="/test" />
-        <Route exact path="/" component={Test} />
-
-        {/*
-         */}
+        <Route exact path="/about" component={About} />
+        <Route exact path="/portfolio" component={Portfolio} />
+        <Route exact path="/blog" component={Blog} />
+        <Route exact path="/contact" component={Contact} />
+        <Route exact path="/resume" component={Resume} />
+        <Redirect exact from="/" to="/about" />
+        <Route exact path="/" component={About} />
       </Switch>
     </AnimatePresence>
   );

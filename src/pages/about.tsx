@@ -4,11 +4,12 @@ import styled from 'styled-components';
 import useWindowSize from '../hooks/useWindow';
 import { motion } from 'framer-motion';
 import { pageTransition, pageVariants, ContainerStyle, ItemStyle } from '../interfaces/Motion';
+import useStores from '../hooks/useStores';
 
 const IntroText = styled.h2`
   font-weight: 100;
   padding: 0px 32px;
-  color: ${(props: any) => (props.theme === 'default' ? '#345' : 'white')};
+  color: ${(props: any) => (props.theme ? 'grey' : 'white')};
   @media only screen and (min-width: 200px) and (max-width: 767px) {
     font-size: 14px;
   }
@@ -41,12 +42,12 @@ const BackStackBox = styled.div`
   height: 140px;
 `;
 
-type Props = {
-  theme: string;
-};
+type Props = {};
 
 const About: FunctionComponent<Props> = (props: Props) => {
-  const { theme } = props;
+  const {
+    common: { useDark }
+  } = useStores();
   const windowSize = useWindowSize();
   return (
     <motion.div
@@ -55,7 +56,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      style={{ position: 'absolute', width: '100%' }}
+      style={{ position: 'absolute', width: '100%', height: '100%' }}
       // style={pageStyle}
     >
       <Card
@@ -68,7 +69,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
           {/*  INTRODUCE */}
           <Col xs={24} sm={24} md={24} lg={18} xl={18}>
             <Divider orientation="left">INTRODUCE</Divider>
-            <IntroText theme={theme}>
+            <IntroText theme={useDark}>
               안녕하세요. 저는 현재 FrontEnd 직군을 메인으로
               <br /> 프로젝트를 진행하고있습니다. <br />
               {/* 저는

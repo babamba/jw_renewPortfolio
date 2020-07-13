@@ -27,12 +27,14 @@ function App() {
   return (
     <ThemeProvider theme={theme} onChange={value => handleDarkmode(value)}>
       <Layout
-        style={{ minHeight: '100vh' }}
+        style={{ height: '100%' }}
         className={`${isDarkMode ? 'dark' : 'light'} auth main-layout`}
       >
-        <Me stateTheme={stateTheme} />
-        <Mode setIsDarkMode={setIsDarkMode} />
-        <Tabs stateTheme={stateTheme} />
+        <Layout.Content>
+          <Me />
+          <Mode setIsDarkMode={setIsDarkMode} />
+        </Layout.Content>
+        <Tabs />
       </Layout>
     </ThemeProvider>
   );

@@ -16,6 +16,7 @@ import HistoryPage from '../../../pages/resume';
 import useWindowSize from '../../../hooks/useWindow';
 import styled, { keyframes } from 'styled-components';
 import Routes from '../../../route/Routes';
+import useStores from '../../../hooks/useStores';
 
 // interface PostPageProps {
 //   entries: BlogPost[];
@@ -41,7 +42,7 @@ const Gradient = keyframes`
 `;
 
 const LinkText = styled.span`
-  color: ${props => (props.theme === 'default' ? '#345' : 'white')};
+  color: ${props => (props.theme ? '#345' : 'white')};
   @media only screen and (min-width: 200px) and (max-width: 767px) {
     font-size: 20px;
   }
@@ -73,16 +74,17 @@ const ContentArea = styled.div`
     padding: 30px;
   }
 `;
-interface Props extends RouteComponentProps<any> {
-  stateTheme: string;
-}
+interface Props extends RouteComponentProps<any> {}
 //const Dynamic: NextPage<PostPageProps, any> = (props: PostPageProps) => {
 const Dynamic: FunctionComponent<Props> = (props: Props) => {
-  const { stateTheme, history } = props;
+  const { history } = props;
   const size = useWindowSize();
   const slideContentRef = useRef<any>(null);
   const slideTitleRef = useRef<any>(null);
   const [isInit, setIsInit] = useState(false);
+  const {
+    common: { useDark }
+  } = useStores();
 
   // const [slideIndex, setSlideIndex] = useState(0);
 
@@ -154,7 +156,6 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
   const catchPage = async () => {
     const num = await getPageNum();
     handlePage(num);
-    slideTitleRef.current.slickGoTo(num);
   };
 
   const getPageNum = async () => {
@@ -251,7 +252,7 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
                 }}
               >
                 <a onClick={e => history.push('/about')}>
-                  <LinkText theme={stateTheme}>
+                  <LinkText theme={useDark}>
                     <GradientFont isCurrent={currentPageIdx === 0}>About</GradientFont>
                   </LinkText>
                 </a>
@@ -271,7 +272,7 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
                 }}
               >
                 <a onClick={e => history.push('/portfolio')}>
-                  <LinkText theme={stateTheme}>
+                  <LinkText theme={useDark}>
                     <GradientFont isCurrent={currentPageIdx === 1}>Portfolio</GradientFont>
                   </LinkText>
                 </a>
@@ -292,7 +293,7 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
                 }}
               >
                 <a onClick={e => history.push('/resume')}>
-                  <LinkText theme={stateTheme}>
+                  <LinkText theme={useDark}>
                     <GradientFont isCurrent={currentPageIdx === 2}>Resume</GradientFont>
                   </LinkText>
                 </a>
@@ -312,7 +313,7 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
                 }}
               >
                 <a onClick={e => history.push('/contact')}>
-                  <LinkText theme={stateTheme}>
+                  <LinkText theme={useDark}>
                     <GradientFont isCurrent={currentPageIdx === 3}>Contact</GradientFont>
                   </LinkText>
                 </a>
@@ -333,7 +334,7 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
                 }}
               >
                 <a onClick={e => history.push('/blog')}>
-                  <LinkText theme={stateTheme}>
+                  <LinkText theme={useDark}>
                     <GradientFont isCurrent={currentPageIdx === 4}>Blog</GradientFont>
                   </LinkText>
                 </a>
@@ -344,11 +345,16 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
       </Card>
       <div>
         <Divider style={{ marginTop: 0 }} />
-        <Layout.Content style={{ width: '90%', margin: '0 auto' }}>
-          <div style={{ position: 'relative' }}>
-            <Routes />
-          </div>
-        </Layout.Content>
+        <Layout
+          style={{ minHeight: '100vh' }}
+          className={`${useDark ? 'dark' : 'light'} bottom-layout`}
+        >
+          <Layout.Content style={{ width: '90%', margin: '20px auto' }}>
+            <div style={{ position: 'relative' }}>
+              <Routes />
+            </div>
+          </Layout.Content>
+        </Layout>
       </div>
       {/* <div>
         <Divider style={{ margin: '4px 0px' }} />

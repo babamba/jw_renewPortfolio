@@ -4,6 +4,7 @@ import useWindowSize from '../../../hooks/useWindow';
 import ReactRotatingText from 'react-rotating-text';
 import { GithubOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
+import useStores from '../../../hooks/useStores';
 
 const MainIntroText = styled.h1`
   font-weight: 800;
@@ -31,14 +32,13 @@ const SubIntroText = styled.h2`
   }
 `;
 
-type Props = {
-  stateTheme: string;
-};
+type Props = {};
 const Me: FunctionComponent<Props> = (props: Props) => {
-  const { stateTheme } = props;
   const size = useWindowSize();
   const [ResponsiveFlex, setResponsiveFlex] = useState(false);
-
+  const {
+    common: { useDark }
+  } = useStores();
   useEffect(() => {
     // console.log('size : ', size);
     if (size !== null) {
@@ -58,7 +58,10 @@ const Me: FunctionComponent<Props> = (props: Props) => {
         justify={ResponsiveFlex ? 'center' : 'start'}
       >
         <Col style={{ flexDirection: 'column', padding: 8 }}>
-          <Avatar size={size !== null && size > 480 ? 140 : 100} src="/static/images/me.png" />
+          <Avatar
+            size={size !== null && size > 480 ? 140 : 100}
+            src={require('../../../assets/images/me.png')}
+          />
           <Typography.Title
             style={{
               margin: '.5em 0',
@@ -71,7 +74,7 @@ const Me: FunctionComponent<Props> = (props: Props) => {
           >
             JW{' '}
             <Typography.Link
-              style={{ color: stateTheme === 'default' ? 'black' : 'white' }}
+              style={{ color: useDark ? 'white' : 'black' }}
               href="https://github.com/babamba"
               target="_blank"
             >

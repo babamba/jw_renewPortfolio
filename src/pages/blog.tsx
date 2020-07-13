@@ -159,7 +159,9 @@ const Post: FunctionComponent<any> = () => {
                 renderItem={(item: any) => {
                   return (
                     <List.Item>
-                      <Card info={item} />
+                      <motion.div variants={ItemStyle}>
+                        <Card info={item} />
+                      </motion.div>
                     </List.Item>
                   );
                 }}

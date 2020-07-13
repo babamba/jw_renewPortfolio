@@ -4,6 +4,7 @@ import Routes from '../../route/Routes';
 import { observer } from 'mobx-react';
 import { ThemeProvider, useTheme } from 'antd-theme';
 import useStores from '../../hooks/useStores';
+import { Layout } from 'antd';
 
 import Tabs from './Tabs/Tabs';
 import Me from './Me/me.component';
@@ -25,9 +26,14 @@ function App() {
   };
   return (
     <ThemeProvider theme={theme} onChange={value => handleDarkmode(value)}>
-      <Me stateTheme={stateTheme} />
-      <Mode setIsDarkMode={setIsDarkMode} />
-      <Tabs stateTheme={stateTheme} />
+      <Layout
+        style={{ minHeight: '100vh' }}
+        className={`${isDarkMode ? 'dark' : 'light'} auth main-layout`}
+      >
+        <Me stateTheme={stateTheme} />
+        <Mode setIsDarkMode={setIsDarkMode} />
+        <Tabs stateTheme={stateTheme} />
+      </Layout>
     </ThemeProvider>
   );
 }

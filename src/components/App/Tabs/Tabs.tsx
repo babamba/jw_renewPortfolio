@@ -87,15 +87,16 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
   // const [slideIndex, setSlideIndex] = useState(0);
 
   const getPageIdx = () => {
-    if (history.location.pathname === 'portfolio') {
+    console.log('history : ', history.location.pathname);
+    if (history.location.pathname === '/portfolio') {
       return 1;
-    } else if (history.location.pathname === 'resume') {
+    } else if (history.location.pathname === '/resume') {
       return 2;
-    } else if (history.location.pathname === 'contact') {
+    } else if (history.location.pathname === '/contact') {
       return 3;
-    } else if (history.location.pathname === 'blog') {
+    } else if (history.location.pathname === '/blog') {
       return 4;
-    } else if (history.location.pathname === 'about') {
+    } else if (history.location.pathname === '/about') {
       return 0;
     }
   };
@@ -145,30 +146,15 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
   //   generateMeta();
   // }, []);
 
-  // useEffect(() => {
-  //   catchPage();
-  //   setIsInit(true);
-  // }, [tab]);
+  useEffect(() => {
+    catchPage();
+    setIsInit(true);
+  }, [history.location.pathname]);
 
   const catchPage = async () => {
-    await getPageNum();
-
-    // console.log('tab : ', tab);
-    // console.log('pageNum : ', pageNum);
-    // console.log('currentPageIdx : ', currentPageIdx);
-
-    // slideTitleRef.current.slickTogo();
-
-    // if (currentPageIdx === 4 && pageNum === 0) {
-    //   slideContentRef.current.slickNext();
-    // } else if (currentPageIdx === 0 && pageNum === 4) {
-    //   slideContentRef.current.slickPrev();
-    // } else {
-    // console.log('current : ', slideRef.current);
-    // if (slideContentRef !== undefined && slideContentRef.current !== undefined) {
-    //   console.log('catch page : ', pageNum);
-    // }
-    // }
+    const num = await getPageNum();
+    handlePage(num);
+    slideTitleRef.current.slickGoTo(num);
   };
 
   const getPageNum = async () => {
@@ -186,24 +172,6 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
     }
     await handlePage(number);
 
-    if (isInit) {
-      if (currentPageIdx === 4 && number === 0) {
-        // slideContentRef.current.props.rtl = true;
-        slideContentRef.current.slickNext();
-      } else if (currentPageIdx === 0 && number === 4) {
-        slideContentRef.current.slickPrev();
-      } else {
-        slideContentRef.current.slickGoTo(number);
-        slideTitleRef.current.slickGoTo(number);
-      }
-    } else {
-      slideContentRef.current.slickGoTo(number);
-      slideTitleRef.current.slickGoTo(number);
-    }
-
-    console.log('slideContentRef.current : ', slideContentRef.current);
-
-    console.log('page num : ', number);
     return number;
   };
 
@@ -220,33 +188,6 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
     swipeToSlide: false,
     focusOnSelect: true,
     arrows: false
-    // beforeChange: (current, next) => {
-    //   catchPage();
-    //   generateMeta();
-    // },
-    // beforeChange: (current, next) => {
-    //   console.log('current : ', current);
-    //   console.log('next : ', next);
-    //   if (isInit) {
-    //     if (current === 4 && next === 0) {
-    //       slideContentRef.current.slickNext();
-    //     } else if (current === 0 && next === 4) {
-    //       slideContentRef.current.slickPrev();
-    //     }
-    //     handlePage(next);
-    //   }
-    // },
-    // beforeChange: (current, next) => {
-    //   if (current === 4 && next === 0) {
-    //     slideContentRef.current.slickNext();
-    //   } else if (current === 0 && next === 4) {
-    //     slideContentRef.current.slickPrev();
-    //   }
-    //   handlePage(next);
-
-    //   // console.log('current : ', current);
-    //   // console.log('next : ', next);
-    // },
   };
   const handlePage = async (next: number) => {
     setCurrentPageIdx(next);
@@ -402,8 +343,8 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
         </Layout.Header>
       </Card>
       <div>
-        <Divider style={{ margin: '4px 0px' }} />
-        <Layout.Content style={{ width: '95%', margin: '0 auto' }}>
+        <Divider style={{ marginTop: 0 }} />
+        <Layout.Content style={{ width: '90%', margin: '0 auto' }}>
           <div style={{ position: 'relative' }}>
             <Routes />
           </div>

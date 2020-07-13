@@ -40,8 +40,8 @@ const Contact: FunctionComponent<Props> = ({}) => {
       <Card style={{ textAlign: 'center', padding: '10px 0px', borderRadius: 12 }}>
         <ContentBox>
           <Typography.Text style={{ fontWeight: 200 }}>
-            <StatusBadge status="success" /> 현재 사이트는 <br /> NextJS(React) / AntDesign /
-            ContentFul 으로 만들어졌습니다.
+            <StatusBadge status="success" /> 현재 사이트는 <br /> React / AntDesign / ContentFul
+            으로 만들어졌습니다.
           </Typography.Text>
         </ContentBox>
         <ContentBox>

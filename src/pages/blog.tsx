@@ -10,6 +10,8 @@ import Card from '../components/Card/card.component';
 import { Row, Col, List, Pagination, Divider, Card as CardView, Skeleton } from 'antd';
 // import { BookOutlined } from '@ant-design/icons';
 import useWindowSize from '../hooks/useWindow';
+import { pageTransition, pageVariants, ContainerStyle, ItemStyle } from '../interfaces/Motion';
+import { motion } from 'framer-motion';
 // type Props = {};
 interface PostPageProps {
   entries: BlogPost[];
@@ -106,76 +108,86 @@ const Post: FunctionComponent<any> = () => {
   };
 
   return (
-    <CardView
-      style={{ padding: '10px 0px', borderRadius: 12 }}
-      bodyStyle={{
-        padding: '18px 24px'
-      }}
+    <motion.div
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={pageTransition}
+      style={{ position: 'absolute', width: '100%' }}
+      // style={pageStyle}
     >
-      <Divider orientation="center">Blog</Divider>
-      <Row>
-        <Col span={24}>
-          <Row style={{ paddingBottom: 20 }}>
-            <Col span={12} style={{ alignSelf: 'center' }}>
-              {/* <TagFilters
+      <CardView
+        style={{ padding: '10px 0px', borderRadius: 12 }}
+        bodyStyle={{
+          padding: '18px 24px'
+        }}
+      >
+        <Divider orientation="center">Blog</Divider>
+        <Row>
+          <Col span={24}>
+            <Row style={{ paddingBottom: 20 }}>
+              <Col span={12} style={{ alignSelf: 'center' }}>
+                {/* <TagFilters
                 tags={content.tags}
                 updatePage={handleTagChosen}
                 selectedTagId={selectTag}
               /> */}
-            </Col>
-            <Col span={12} style={{ textAlign: 'right', alignSelf: 'center' }}>
-              <Pagination
-                {...pagination}
-                onChange={onHandlePaging}
-                size="small"
-                defaultCurrent={pagination.page}
+              </Col>
+              <Col span={12} style={{ textAlign: 'right', alignSelf: 'center' }}>
+                <Pagination
+                  {...pagination}
+                  onChange={onHandlePaging}
+                  size="small"
+                  defaultCurrent={pagination.page}
+                />
+              </Col>
+            </Row>
+            {content.entries.length > 0 ? (
+              <List
+                loading={loading}
+                grid={{
+                  gutter: 16,
+                  xs: 2,
+                  sm: 2,
+                  md: 2,
+                  lg: 4,
+                  xl: 4,
+                  xxl: 4
+                }}
+                dataSource={content.entries}
+                renderItem={(item: any) => {
+                  return (
+                    <List.Item>
+                      <Card info={item} />
+                    </List.Item>
+                  );
+                }}
               />
-            </Col>
-          </Row>
-          {content.entries.length > 0 ? (
-            <List
-              loading={loading}
-              grid={{
-                gutter: 16,
-                xs: 2,
-                sm: 2,
-                md: 2,
-                lg: 4,
-                xl: 4,
-                xxl: 4
-              }}
-              dataSource={content.entries}
-              renderItem={(item: any) => {
-                return (
-                  <List.Item>
-                    <Card info={item} />
-                  </List.Item>
-                );
-              }}
-            />
-          ) : (
-            <List
-              grid={{
-                gutter: 16,
-                xs: 2,
-                sm: 2,
-                md: 2,
-                lg: 4,
-                xl: 4,
-                xxl: 4
-              }}
-            >
-              <List.Item>
-                <Skeleton active />
-              </List.Item>
-              <List.Item>
-                <Skeleton active />
-              </List.Item>
-            </List>
-          )}
-        </Col>
-      </Row>
-    </CardView>
+            ) : (
+              <List
+                grid={{
+                  gutter: 16,
+                  xs: 2,
+                  sm: 2,
+                  md: 2,
+                  lg: 4,
+                  xl: 4,
+                  xxl: 4
+                }}
+              >
+                <List.Item>
+                  <Skeleton active />
+                </List.Item>
+                <List.Item>
+                  <Skeleton active />
+                </List.Item>
+              </List>
+            )}
+          </Col>
+        </Row>
+      </CardView>
+    </motion.div>
   );
 };
 

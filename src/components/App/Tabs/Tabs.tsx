@@ -15,6 +15,7 @@ import HistoryPage from '../../../pages/resume';
 
 import useWindowSize from '../../../hooks/useWindow';
 import styled, { keyframes } from 'styled-components';
+import Routes from '../../../route/Routes';
 
 // interface PostPageProps {
 //   entries: BlogPost[];
@@ -263,7 +264,7 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
           padding: 4
         }}
       >
-        {size !== null && size > 768 && (
+        {/* {size !== null && size > 768 && (
           <div style={{ float: 'left', paddingTop: 12, paddingLeft: 12 }}>
             <Typography.Paragraph
               style={{
@@ -284,7 +285,7 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
               <Avatar size={30} src="/static/images/me.png" style={{ marginLeft: 10 }} />
             </Typography.Paragraph>
           </div>
-        )}
+        )} */}
 
         <Layout.Header
           className="header"
@@ -400,6 +401,14 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
           </Slider>
         </Layout.Header>
       </Card>
+      <div>
+        <Divider style={{ margin: '4px 0px' }} />
+        <Layout.Content style={{ width: '95%', margin: '0 auto' }}>
+          <div style={{ position: 'relative' }}>
+            <Routes />
+          </div>
+        </Layout.Content>
+      </div>
       {/* <div>
         <Divider style={{ margin: '4px 0px' }} />
         <Layout.Content style={{ width: '95%', margin: '0 auto' }}>

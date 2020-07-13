@@ -5,8 +5,8 @@ export const CONTENT_TYPE_BLOGPOST = 'blogPost';
 export const CONTENT_TYPE_PERSON = 'author';
 export const CONTENT_TYPE_TAGS = 'tag';
 
-const Space = `${process.env.CONTENTFUL_SPACE}`;
-let Token = `${process.env.CONTENTFUL_TOKEN}`;
+const Space = `${process.env.REACT_APP_CONTENTFUL_SPACE}`;
+let Token = `${process.env.REACT_APP_CONTENTFUL_TOKEN}`;
 
 export class ContentfulService {
   private client = createClient({

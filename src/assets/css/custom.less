@@ -1,0 +1,217 @@
+/* noto-sans-regular - latin */
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+// * {
+//   font-family: "Noto Sans KR";
+// }
+
+* {
+  font-family: 'Noto Sans KR', 'Spoqa Han Sans', sans-serif;
+}
+
+.react-multi-carousel-dot-list {
+  padding-bottom: 20px !important;
+}
+.ant-card-hoverable:hover {
+  box-shadow: '0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0), 0 5px 12px 4px rgba(0, 0, 0, 0.09)' !important;
+}
+
+.ant-list-pagination {
+  margin-bottom: 24px !important;
+}
+.header {
+  background: transparent !important;
+}
+
+.slick-initialized {
+  .slick-track {
+    .slick-slide {
+      transition: 0.2s, opacity 0.1s ease-in;
+      opacity: 0.7 !important;
+      // filter: blur(1.5px);
+    }
+    .slick-center {
+      transition: 0.2s, opacity 0.1s ease-in;
+      opacity: 1 !important;
+      // filter: none;
+    }
+  }
+}
+
+.react-multi-carousel-list {
+  &.carousel-container {
+    .react-multi-carousel-dot--active {
+      button {
+        border-radius: 2px;
+        width: 16px !important;
+        background-color: rgba(122, 35, 204, 0.7) !important;
+      }
+    }
+    .react-multi-carousel-dot {
+      button {
+        border-radius: 2px;
+        width: 12px;
+        height: 6px;
+        border: none !important;
+        background-color: rgba(200, 200, 200, 0.7);
+      }
+    }
+    .ant-btn.carousel-arrow {
+      border: 0px;
+      color: rgb(255, 255, 255);
+      font-size: 20px;
+      position: absolute;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      transition: all 0.5s;
+      border-radius: 35px;
+      border: 0;
+      min-width: 43px;
+      min-height: 43px;
+      padding: 4px 4px;
+      @media only screen and (max-width: 500px) {
+        min-width: 23px;
+        min-height: 23px;
+        padding: 1px 4px;
+      }
+      &.right {
+        right: calc(4% + 1px);
+        &::hover {
+          background: rgba(0, 0, 0, 0.5);
+        }
+      }
+      &.left {
+        left: calc(4% + 1px);
+        &::hover {
+          background: rgba(0, 0, 0, 0.5);
+        }
+      }
+    }
+  }
+}
+
+.post {
+  img {
+    width: 100%;
+    padding-bottom: 12px;
+  }
+}
+
+body.light {
+  //브라우저 스크롤 요소
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: gray;
+  }
+  &::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+  }
+  .ant-drawer {
+    ::-webkit-scrollbar {
+      width: 4px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      border-radius: 8px;
+      background-color: gray;
+    }
+    ::-webkit-scrollbar-button {
+      width: 0;
+      height: 0;
+    }
+  }
+}
+
+body.dark {
+  //브라우저 스크롤 요소
+  &::-webkit-scrollbar {
+    width: 4px !important;
+    height: 6px !important;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent !important;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 8px !important;
+    background-color: rgba(255, 255, 255, 0.65) !important;
+  }
+  &::-webkit-scrollbar-button {
+    width: 0 !important;
+    height: 0 !important;
+  }
+  .ant-drawer {
+    ::-webkit-scrollbar {
+      width: 4px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      border-radius: 8px;
+      background-color: gray;
+    }
+    ::-webkit-scrollbar-button {
+      width: 0;
+      height: 0;
+    }
+  }
+}
+
+.ant-tag-magenta {
+  border-color: inherit;
+}
+
+.ant-tag-green {
+  border-color: inherit;
+}
+.ant-tag-processing {
+  border-color: inherit;
+}
+
+@-webkit-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@-moz-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

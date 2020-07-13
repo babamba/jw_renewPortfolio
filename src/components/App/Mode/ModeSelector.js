@@ -26,19 +26,19 @@ const ModeSelector = observer(({ setIsDarkMode }) => {
   //   }
   // });
 
-  const { transform } = useSpring({
-    from: {
-      opacity: 0,
-      transform: `perspective(0px) rotate(${common.useDark ? 180 : 0}deg)`,
-      transformOrigin: '0 0'
-    },
-    to: {
-      opacity: 1,
-      transform: `perspective(0px) rotate(${common.useDark ? 0 : 180}deg)`,
-      transformOrigin: '0 0'
-    },
-    config: { mass: 5, tension: 1000, friction: 80 }
-  });
+  // const { transform } = useSpring({
+  //   from: {
+  //     opacity: 0,
+  //     transform: `perspective(0px) rotate(${common.useDark ? 180 : 0}deg)`,
+  //     transformOrigin: '0 0'
+  //   },
+  //   to: {
+  //     opacity: 1,
+  //     transform: `perspective(0px) rotate(${common.useDark ? 0 : 180}deg)`,
+  //     transformOrigin: '0 0'
+  //   },
+  //   config: { mass: 5, tension: 1000, friction: 80 }
+  // });
 
   const initialTheme = {
     name: 'default',
@@ -101,23 +101,23 @@ const ModeSelector = observer(({ setIsDarkMode }) => {
 
   return (
     <div style={{ position: 'absolute', right: 12, top: -6 }}>
-      <animated.div style={{ transform }}>
-        <CustomIcon
-          onClick={handleChange}
-          style={{
-            // transform: 'rotateZ(180deg)',
-            // transformOrigin: 'center',
-            margin: 0,
+      {/* <animated.div style={{ transform }}> */}
+      <CustomIcon
+        onClick={handleChange}
+        style={{
+          // transform: 'rotateZ(180deg)',
+          // transformOrigin: 'center',
+          margin: 0,
 
-            color: common.useDark ? '#f0d74a' : '#ffffff',
-            fontSize: 38,
-            cursor: 'pointer',
-            marginTop: 20
-            // paddingBottom: 12
-          }}
-          type={common.useDark ? 'icon-night' : 'icon-brightness'}
-        />
-      </animated.div>
+          color: common.useDark ? '#f0d74a' : '#000000',
+          fontSize: 38,
+          cursor: 'pointer',
+          marginTop: 20
+          // paddingBottom: 12
+        }}
+        type={common.useDark ? 'icon-night' : 'icon-brightness'}
+      />
+      {/* </animated.div> */}
     </div>
   );
 });

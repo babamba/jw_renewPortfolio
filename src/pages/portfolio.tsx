@@ -6,6 +6,8 @@ import styled from 'styled-components';
 // import Slider from 'react-slick';
 import { ForwardOutlined, BackwardOutlined } from '@ant-design/icons';
 import Carousel from 'react-multi-carousel';
+import { pageTransition, pageVariants, ContainerStyle, ItemStyle } from '../interfaces/Motion';
+import { motion } from 'framer-motion';
 
 const FolioContainer = styled(Card)`
   /* height:%; */
@@ -28,27 +30,27 @@ const Portfolio: FunctionComponent<Props> = ({}) => {
   const responsive = {
     superLargeDevice: {
       breakpoint: { max: 4000, min: 1920 },
-      items: 1,
+      items: 1
     },
     desktop: {
       breakpoint: { max: 1920, min: 1634 },
       items: 1,
-      slidesToSlide: 1,
+      slidesToSlide: 1
     },
     labtop: {
       breakpoint: { max: 1633, min: 769 },
       items: 1,
-      slidesToSlide: 1,
+      slidesToSlide: 1
     },
     tablet: {
       breakpoint: { max: 768, min: 565 },
       items: 1,
-      slidesToSlide: 1,
+      slidesToSlide: 1
     },
     mobile: {
       breakpoint: { max: 564, min: 0 },
-      items: 1,
-    },
+      items: 1
+    }
   };
 
   // const arrowStyle = {
@@ -93,49 +95,59 @@ const Portfolio: FunctionComponent<Props> = ({}) => {
   // };
 
   return (
-    <FolioContainer>
-      <Carousel
-        containerClass="carousel-container"
-        centerMode={false}
-        // centerMode={true}
-        customLeftArrow={<CustomLeftArrow />}
-        customRightArrow={<CustomRightArrow />}
-        swipeable={true}
-        draggable={true}
-        infinite={true}
-        responsive={responsive}
-        // draggable={true}
-        showDots={true}
+    <motion.div
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={pageTransition}
+      style={{ position: 'absolute', width: '100%' }}
+      // style={pageStyle}
+    >
+      <FolioContainer>
+        <Carousel
+          containerClass="carousel-container"
+          centerMode={false}
+          // centerMode={true}
+          customLeftArrow={<CustomLeftArrow />}
+          customRightArrow={<CustomRightArrow />}
+          swipeable={true}
+          draggable={true}
+          infinite={true}
+          responsive={responsive}
+          // draggable={true}
+          showDots={true}
 
-        // dotListClass="carousel-dot-container"
-        // itemClass="search carousel-item"
-        // //
-        // containerClass="carousel-container"
-        // sliderClass="search carousel-slide"
-      >
-        <FolioDiv>
-          <FolioImg alt="텔레매틱스" src="/static/images/folio/tele.png" />
-        </FolioDiv>
-        <FolioDiv>
-          <FolioImg alt="키즈랜드" src="/static/images/folio/kidsland.png" />
-        </FolioDiv>
-        <FolioDiv>
-          <FolioImg alt="청약센터" src="/static/images/folio/gicoapart.png" />
-        </FolioDiv>
-        <FolioDiv>
-          <FolioImg alt="오산백년" src="/static/images/folio/osan.png" />
-        </FolioDiv>
-        <FolioDiv>
-          <FolioImg alt="충남대동력" src="/static/images/folio/cnuweb.png" />
-        </FolioDiv>
-        <FolioDiv>
-          <FolioImg alt="봉군웹" src="/static/images/folio/beeweb.png" />
-        </FolioDiv>
-        <FolioDiv>
-          <FolioImg alt="봉군앱" src="/static/images/folio/beeapp.png" />
-        </FolioDiv>
-      </Carousel>
-    </FolioContainer>
+          // dotListClass="carousel-dot-container"
+          // itemClass="search carousel-item"
+          // //
+          // containerClass="carousel-container"
+          // sliderClass="search carousel-slide"
+        >
+          <FolioDiv>
+            <FolioImg alt="텔레매틱스" src={require('../assets/images/folio/tele.png')} />
+          </FolioDiv>
+          <FolioDiv>
+            <FolioImg alt="키즈랜드" src={require('../assets/images/folio/kidsland.png')} />
+          </FolioDiv>
+          <FolioDiv>
+            <FolioImg alt="청약센터" src={require('../assets/images/folio/gicoapart.png')} />
+          </FolioDiv>
+          <FolioDiv>
+            <FolioImg alt="오산백년" src={require('../assets/images/folio/osan.png')} />
+          </FolioDiv>
+          <FolioDiv>
+            <FolioImg alt="충남대동력" src={require('../assets/images/folio/cnuweb.png')} />
+          </FolioDiv>
+          <FolioDiv>
+            <FolioImg alt="봉군웹" src={require('../assets/images/folio/beeweb.png')} />
+          </FolioDiv>
+          <FolioDiv>
+            <FolioImg alt="봉군앱" src={require('../assets/images/folio/beeapp.png')} />
+          </FolioDiv>
+        </Carousel>
+      </FolioContainer>
+    </motion.div>
   );
 };
 

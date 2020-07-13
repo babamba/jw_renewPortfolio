@@ -8,6 +8,8 @@ import RootStore from './store/index';
 import { BrowserRouter } from 'react-router-dom';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import 'react-multi-carousel/lib/styles.css';
+import './assets/css/custom.less';
 
 const rootStore = new RootStore(); // *** 루트 스토어 생성
 

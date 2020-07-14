@@ -1,9 +1,16 @@
 import React, { useEffect } from 'react';
+import styled from 'styled-components';
 import { observer } from 'mobx-react';
 import useStores from '../../../hooks/useStores';
 import { useTheme } from 'antd-theme';
 import { motion } from 'framer-motion';
 import { BulbOutlined } from '@ant-design/icons';
+
+const Container = styled.div`
+  position: absolute;
+  right: 12px;
+  top: 14px;
+`;
 
 const ThemeModeSelector = observer(({ setIsDarkMode }) => {
   //const { setIsDarkMode } = props;
@@ -61,18 +68,18 @@ const ThemeModeSelector = observer(({ setIsDarkMode }) => {
   };
 
   return (
-    <div style={{ position: 'fixed', right: 12, top: 14 }}>
+    <Container>
       <motion.div animate={common.useDark ? 'open' : 'closed'} variants={rotateVariants}>
         <BulbOutlined
           onClick={handleChange}
           style={{
             color: common.useDark ? '#f0d74a' : '#000000',
-            fontSize: 30,
+            fontSize: 24,
             cursor: 'pointer'
           }}
         />
       </motion.div>
-    </div>
+    </Container>
   );
 });
 

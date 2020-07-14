@@ -35,20 +35,18 @@ function App() {
     setInitialTheme(value);
   };
   return (
-    <div className="container">
-      <ThemeProvider theme={theme} onChange={value => handleDarkmode(value)}>
-        <Layout
-          style={{ height: '100%', transition: 'background 0.3s' }}
-          className={`${isDarkMode ? 'dark' : 'light'} auth main-layout`}
-        >
-          <Layout.Content>
-            <Me />
-            <Mode setIsDarkMode={setIsDarkMode} />
-          </Layout.Content>
-          <Tabs />
-        </Layout>
-      </ThemeProvider>
-    </div>
+    <ThemeProvider theme={theme} onChange={value => handleDarkmode(value)}>
+      <Layout
+        style={{ height: '100%', transition: 'background 0.3s' }}
+        className={`${isDarkMode ? 'dark' : 'light'} auth main-layout`}
+      >
+        <Layout.Content>
+          <Me />
+          <Mode setIsDarkMode={setIsDarkMode} />
+        </Layout.Content>
+        <Tabs />
+      </Layout>
+    </ThemeProvider>
   );
 }
 

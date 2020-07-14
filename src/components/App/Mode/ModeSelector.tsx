@@ -2,19 +2,14 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { observer } from 'mobx-react';
 import useStores from '../../../hooks/useStores';
-import { useTheme } from 'antd-theme';
+import { useTheme, ThemeProvider } from 'antd-theme';
 import CustomIcon from '../../Common/CustomIcon';
 import { motion } from 'framer-motion';
 
 const ModeSelector = observer(({ setIsDarkMode }) => {
   //const { setIsDarkMode } = props;
   const { common } = useStores();
-  const [{ name, variables, themes }, setTheme] = useTheme();
-
-  const initialTheme = {
-    name: 'default',
-    variables: {}
-  };
+  const [{ name, variables }, setTheme] = useTheme();
 
   useEffect(() => {
     init();
@@ -36,13 +31,11 @@ const ModeSelector = observer(({ setIsDarkMode }) => {
   const init = async () => {
     if (common.useDark) {
       setTheme({
-        name: themes[1].name,
-        variables: { ...themes[1].variables, ...initialTheme.variables }
+        name: 'dark'
       });
     } else {
       setTheme({
-        name: themes[0].name,
-        variables: { ...themes[0].variables, ...initialTheme.variables }
+        name: 'default'
       });
     }
   };
@@ -50,19 +43,14 @@ const ModeSelector = observer(({ setIsDarkMode }) => {
   const handleChange = async () => {
     if (common.useDark) {
       await common.setUseDark(false);
-      // setTheme(initialTheme);
-
       setTheme({
-        name: themes[0].name,
-        variables: { ...themes[0].variables, ...initialTheme.variables }
+        name: 'default'
       });
       setIsDarkMode(false);
     } else {
       await common.setUseDark(true);
-      //setTheme(themes[1]);
       setTheme({
-        name: themes[1].name,
-        variables: { ...themes[1].variables, ...initialTheme.variables }
+        name: 'dark'
       });
       setIsDarkMode(true);
     }

@@ -78,10 +78,6 @@
     "netlify",
     "typescript"
   ],
-  "reactSnap": {
-    "inlineCss": true,
-    "fixWebpackChunksIssue": false
-  },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.10.4",
     "customize-cra": "^1.0.0",

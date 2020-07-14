@@ -30,10 +30,17 @@ export class ContentfulService {
     }));
   }
 
-  async fetchPostBySlug(slug) {
+  async fetchPostBySlug(slug: string) {
     return await this.client.getEntries({
       content_type: CONTENT_TYPE_BLOGPOST,
       'fields.slug': slug
+    });
+  }
+
+  async fetchPostById(id: string) {
+    return await this.client.getEntries({
+      content_type: CONTENT_TYPE_BLOGPOST,
+      'sys.id': id
     });
   }
 
@@ -65,7 +72,7 @@ export class ContentfulService {
         include: 1,
         limit,
         skip,
-        order: 'fields.publishDate',
+        order: '-fields.publishDate',
         'fields.tags.sys.id': tag,
         content_type: CONTENT_TYPE_BLOGPOST
       });
@@ -99,6 +106,40 @@ export class ContentfulService {
     } catch (error) {
       // TODO: add error handling
       console.log(error);
+    }
+  }
+
+  async getPostById(id: string) {
+    try {
+      //console.log('getPostBySlug slug: ', slug);
+      const content: any = await this.fetchPostById(id);
+
+      //console.log('getPostByID content: ', content);
+
+      const entry: { sys: any; fields: any } = content.items[0];
+
+      const author = {
+        name: entry.fields.author.fields.name,
+        title: entry.fields.author.fields.title,
+        company: entry.fields.author.fields.company,
+        shortBio: entry.fields.author.fields.shortBio
+      };
+
+      return {
+        id: entry.sys.id,
+        slug: entry.fields.slug,
+        body: entry.fields.body,
+        title: entry.fields.title,
+        description: entry.fields.description,
+        tags: entry.fields.tags,
+        heroImage: { url: entry.fields.heroImage.fields.file.url },
+        author: { ...author, id: entry.fields.author.sys.id },
+        publishedAt: entry.fields.publishDate
+          ? new Date(entry.fields.publishDate)
+          : new Date(entry.sys.createdAt)
+      };
+    } catch (error) {
+      console.error(error);
     }
   }
 

@@ -7,11 +7,15 @@ import { BlogPost } from '../interfaces/post';
 // import { BlogPost } from '../../interfaces/post';
 import Card from '../components/Card/card.component';
 // import TagFilters from '../../shared/components/tag-filters/tag-filters.component';
-import { Row, Col, List, Pagination, Divider, Card as CardView, Skeleton } from 'antd';
+import { Row, Col, List, Pagination, Divider, Card as CardView, Skeleton, Empty } from 'antd';
 // import { BookOutlined } from '@ant-design/icons';
 import useWindowSize from '../hooks/useWindow';
-import { pageTransition, pageVariants, ContainerStyle, ItemStyle } from '../interfaces/Motion';
+import HeadMeta from '../components/Helmet/HeadMeta';
+import { pageTransition, pageVariants, FastContainerStyle, ItemStyle } from '../interfaces/Motion';
 import { motion } from 'framer-motion';
+import { useRouter } from '../hooks/useRouter';
+import ReactGA from 'react-ga';
+
 // type Props = {};
 interface PostPageProps {
   entries: BlogPost[];
@@ -27,6 +31,12 @@ interface PostPageProps {
 //console.log('props : ', props);
 
 const Post: FunctionComponent<any> = () => {
+  const router = useRouter();
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production') {
+      ReactGA.pageview(router.location.pathname + router.location.search);
+    }
+  }, []);
   // const router = useRouter();
   const windowSize = useWindowSize();
   // const { pagename } = router.query;
@@ -94,7 +104,11 @@ const Post: FunctionComponent<any> = () => {
       limit: responsivePageSize
     });
 
-    setContent(result);
+    //console.log('result : ', result);
+    if (result) {
+      setContent(result);
+    }
+
     setLoading(false);
   };
 
@@ -117,6 +131,7 @@ const Post: FunctionComponent<any> = () => {
       style={{ position: 'absolute', width: '100%' }}
       // style={pageStyle}
     >
+      <HeadMeta text="BLOG" />
       <CardView
         style={{ padding: '10px 0px', borderRadius: 12 }}
         bodyStyle={{
@@ -143,49 +158,59 @@ const Post: FunctionComponent<any> = () => {
                 />
               </Col>
             </Row>
-            {content.entries.length > 0 ? (
-              <List
-                loading={loading}
-                grid={{
-                  gutter: 16,
-                  xs: 2,
-                  sm: 2,
-                  md: 2,
-                  lg: 4,
-                  xl: 4,
-                  xxl: 4
-                }}
-                dataSource={content.entries}
-                renderItem={(item: any) => {
-                  return (
-                    <List.Item>
+            <motion.div
+              className="container"
+              variants={FastContainerStyle}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+            >
+              {content.entries === undefined ? (
+                <Empty description="포스팅 글이 없네요 :D" />
+              ) : content.entries.length > 0 ? (
+                <List
+                  loading={loading}
+                  grid={{
+                    gutter: 16,
+                    xs: 2,
+                    sm: 2,
+                    md: 2,
+                    lg: 4,
+                    xl: 4,
+                    xxl: 4
+                  }}
+                  dataSource={content.entries}
+                  renderItem={(item: any) => {
+                    return (
                       <motion.div variants={ItemStyle}>
-                        <Card info={item} />
+                        <List.Item>
+                          <Card info={item} />
+                        </List.Item>
                       </motion.div>
-                    </List.Item>
-                  );
-                }}
-              />
-            ) : (
-              <List
-                grid={{
-                  gutter: 16,
-                  xs: 2,
-                  sm: 2,
-                  md: 2,
-                  lg: 4,
-                  xl: 4,
-                  xxl: 4
-                }}
-              >
-                <List.Item>
-                  <Skeleton active />
-                </List.Item>
-                <List.Item>
-                  <Skeleton active />
-                </List.Item>
-              </List>
-            )}
+                    );
+                  }}
+                />
+              ) : (
+                <List
+                  grid={{
+                    gutter: 16,
+                    xs: 2,
+                    sm: 2,
+                    md: 2,
+                    lg: 4,
+                    xl: 4,
+                    xxl: 4
+                  }}
+                >
+                  <List.Item>
+                    <Skeleton active />
+                  </List.Item>
+                  <List.Item>
+                    <Skeleton active />
+                  </List.Item>
+                </List>
+              )}
+            </motion.div>
           </Col>
         </Row>
       </CardView>

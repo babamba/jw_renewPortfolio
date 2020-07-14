@@ -1,10 +1,13 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { Timeline, Row, Col, Card, Divider, Typography, Avatar, Badge, Tag } from 'antd';
 import styled from 'styled-components';
 // import Timeline from '../../shared/components/timeline/timeline.component';
 import { SyncOutlined } from '@ant-design/icons';
 import { pageTransition, pageVariants, ContainerStyle, ItemStyle } from '../interfaces/Motion';
 import { motion } from 'framer-motion';
+import HeadMeta from '../components/Helmet/HeadMeta';
+import { useRouter } from '../hooks/useRouter';
+import ReactGA from 'react-ga';
 
 const { Text, Link } = Typography;
 
@@ -75,6 +78,13 @@ const JobMainText = styled.h4`
 
 type Props = {};
 const History: FunctionComponent<Props> = ({}) => {
+  const router = useRouter();
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production') {
+      ReactGA.pageview(router.location.pathname + router.location.search);
+    }
+  }, []);
+
   return (
     <motion.div
       initial="initial"
@@ -85,6 +95,7 @@ const History: FunctionComponent<Props> = ({}) => {
       style={{ position: 'absolute', width: '100%' }}
       // style={pageStyle}
     >
+      <HeadMeta text="Resume" />
       <Card
         style={{
           padding: '6px 0px',
@@ -184,8 +195,7 @@ const History: FunctionComponent<Props> = ({}) => {
                               </JobMainText>
                               <JobText>
                                 - 국립농업과학원 봉군형성실 iot Project의 web console 개발진행{' '}
-                                <br />
-                                - Flask / mysql 로 개발된 서버의 API 를 가지고 클라이언트 개발{' '}
+                                <br />- Flask / mysql 로 개발된 서버의 API 를 가지고 클라이언트 개발{' '}
                                 <br />-{' '}
                                 <Text underline strong>
                                   React / Material-UI
@@ -201,9 +211,8 @@ const History: FunctionComponent<Props> = ({}) => {
                                 App 개발(2020.03 ~ 2020.06)
                               </JobMainText>
                               <JobText>
-                                - 국립 농과원 web project 기반 React Native로 App 개발 진행 <br />
-                                - Flask / mysql 로 개발된 서버의 API 를 가지고 클라이언트 개발{' '}
-                                <br />-
+                                - 국립 농과원 web project 기반 React Native로 App 개발 진행 <br />-
+                                Flask / mysql 로 개발된 서버의 API 를 가지고 클라이언트 개발 <br />-
                                 <Text underline strong>
                                   {' '}
                                   ReactNative / NativeBase / Victory Chart

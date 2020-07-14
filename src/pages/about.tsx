@@ -1,10 +1,13 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
 import { Row, Col, Divider, Card, Typography, Avatar, Badge } from 'antd';
 import styled from 'styled-components';
+import { useRouter } from '../hooks/useRouter';
 import useWindowSize from '../hooks/useWindow';
 import { motion } from 'framer-motion';
 import { pageTransition, pageVariants, ContainerStyle, ItemStyle } from '../interfaces/Motion';
 import useStores from '../hooks/useStores';
+import HeadMeta from '../components/Helmet/HeadMeta';
+import ReactGA from 'react-ga';
 
 const IntroText = styled.h2`
   font-weight: 100;
@@ -48,7 +51,15 @@ const About: FunctionComponent<Props> = (props: Props) => {
   const {
     common: { useDark }
   } = useStores();
+
   const windowSize = useWindowSize();
+  const router = useRouter();
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production') {
+      ReactGA.pageview(router.location.pathname + router.location.search);
+    }
+  }, []);
+
   return (
     <motion.div
       initial="initial"
@@ -59,6 +70,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
       style={{ position: 'absolute', width: '100%', height: '100%' }}
       // style={pageStyle}
     >
+      <HeadMeta text="About Me" />
       <Card
         style={{ padding: '10px 0px', borderRadius: 12 }}
         bodyStyle={{

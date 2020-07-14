@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { Card, Row, Col, Typography, Button } from 'antd';
 import styled from 'styled-components';
 
@@ -8,6 +8,9 @@ import { ForwardOutlined, BackwardOutlined } from '@ant-design/icons';
 import Carousel from 'react-multi-carousel';
 import { pageTransition, pageVariants, ContainerStyle, ItemStyle } from '../interfaces/Motion';
 import { motion } from 'framer-motion';
+import HeadMeta from '../components/Helmet/HeadMeta';
+import { useRouter } from '../hooks/useRouter';
+import ReactGA from 'react-ga';
 
 const FolioContainer = styled(Card)`
   /* height:%; */
@@ -27,6 +30,13 @@ const FolioImg = styled.img`
 
 type Props = {};
 const Portfolio: FunctionComponent<Props> = ({}) => {
+  const router = useRouter();
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production') {
+      ReactGA.pageview(router.location.pathname + router.location.search);
+    }
+  }, []);
+
   const responsive = {
     superLargeDevice: {
       breakpoint: { max: 4000, min: 1920 },
@@ -104,6 +114,7 @@ const Portfolio: FunctionComponent<Props> = ({}) => {
       style={{ position: 'absolute', width: '100%' }}
       // style={pageStyle}
     >
+      <HeadMeta text="Portfolio" />
       <FolioContainer>
         <Carousel
           containerClass="carousel-container"

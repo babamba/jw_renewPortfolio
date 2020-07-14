@@ -1,9 +1,12 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { Card, Typography, Badge } from 'antd';
 import { MailOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 import { pageTransition, pageVariants, ContainerStyle, ItemStyle } from '../interfaces/Motion';
 import { motion } from 'framer-motion';
+import HeadMeta from '../components/Helmet/HeadMeta';
+import { useRouter } from '../hooks/useRouter';
+import ReactGA from 'react-ga';
 
 const StatusBadge = styled(Badge)`
   position: relative;
@@ -27,6 +30,12 @@ const GuideText = styled.h4`
 
 type Props = {};
 const Contact: FunctionComponent<Props> = ({}) => {
+  const router = useRouter();
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production') {
+      ReactGA.pageview(router.location.pathname + router.location.search);
+    }
+  }, []);
   return (
     <motion.div
       initial="initial"
@@ -37,6 +46,7 @@ const Contact: FunctionComponent<Props> = ({}) => {
       style={{ position: 'absolute', width: '100%' }}
       // style={pageStyle}
     >
+      <HeadMeta text="Contact Me" />
       <Card style={{ textAlign: 'center', padding: '10px 0px', borderRadius: 12 }}>
         <ContentBox>
           <Typography.Text style={{ fontWeight: 200 }}>

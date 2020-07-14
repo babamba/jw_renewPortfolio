@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from 'react';
-
+import { withRouter, RouteComponentProps, Route } from 'react-router-dom';
 import { Button, Card, Col } from 'antd';
+import { motion, useMotionValue } from 'framer-motion';
 
-type Props = {
+interface Props extends RouteComponentProps {
   info: {
     id: string;
     title: string;
@@ -11,9 +12,9 @@ type Props = {
     publishedAt: Date;
     slug: string;
   };
-};
+}
 
-const CardView: FunctionComponent<Props> = ({ info }) => {
+const CardView: FunctionComponent<Props> = ({ info, history, match }) => {
   const cardBGStyles = {
     backgroundSize: 'cover',
     height: 150,
@@ -22,12 +23,13 @@ const CardView: FunctionComponent<Props> = ({ info }) => {
     background: `linear-gradient(45deg, rgba(18, 40, 76, 0.56), rgba(39, 173, 213, 0.56), rgba(79, 192, 176, 0.56)), url(https:${info.heroImage}) no-repeat`
   };
 
-  const handleClick = () => {
-    // Router.push(getHref(), getNavigationLink(info.slug));
+  const handleClick = (e, info) => {
+    console.log('info : ', info);
+    history.push(`${match.url}/${info.id}`);
   };
 
   return (
-    <Card onClick={handleClick} hoverable={true} cover={<div style={cardBGStyles} />}>
+    <Card onClick={e => handleClick(e, info)} hoverable={true} cover={<div style={cardBGStyles} />}>
       <Card.Meta
         title={info.title}
         description={
@@ -50,4 +52,4 @@ const CardView: FunctionComponent<Props> = ({ info }) => {
   );
 };
 
-export default CardView;
+export default withRouter(CardView);

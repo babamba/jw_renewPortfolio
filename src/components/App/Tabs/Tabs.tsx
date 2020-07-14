@@ -77,7 +77,7 @@ const ContentArea = styled.div`
 interface Props extends RouteComponentProps<any> {}
 //const Dynamic: NextPage<PostPageProps, any> = (props: PostPageProps) => {
 const Dynamic: FunctionComponent<Props> = (props: Props) => {
-  const { history } = props;
+  const { history, match } = props;
   const size = useWindowSize();
   const slideContentRef = useRef<any>(null);
   const slideTitleRef = useRef<any>(null);
@@ -89,18 +89,23 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
   // const [slideIndex, setSlideIndex] = useState(0);
 
   const getPageIdx = () => {
-    console.log('history : ', history.location.pathname);
-    if (history.location.pathname === '/portfolio') {
-      return 1;
-    } else if (history.location.pathname === '/resume') {
-      return 2;
-    } else if (history.location.pathname === '/contact') {
-      return 3;
-    } else if (history.location.pathname === '/blog') {
-      return 4;
-    } else if (history.location.pathname === '/about') {
-      return 0;
+    let pageNum = 0;
+    const pathname = history.location.pathname.split('/');
+    if (pathname[1] === 'portfolio') {
+      pageNum = 1;
+    } else if (pathname[1] === 'resume') {
+      pageNum = 2;
+    } else if (pathname[1] === 'contact') {
+      pageNum = 3;
+    } else if (pathname[1] === 'blog') {
+      pageNum = 4;
+    } else if (pathname[1] === 'about') {
+      pageNum = 0;
+    } else {
+      pageNum = 0;
     }
+
+    return pageNum;
   };
 
   const [topNav, setTopNav] = useState(null);
@@ -150,31 +155,39 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
 
   useEffect(() => {
     catchPage();
+
     setIsInit(true);
   }, [history.location.pathname]);
 
   const catchPage = async () => {
     const num = await getPageNum();
-    handlePage(num);
+    slideTitleRef.current.slickGoTo(num);
   };
 
   const getPageNum = async () => {
     let number = 0;
-    if (history.location.pathname === '/portfolio') {
+    const pathname = history.location.pathname.split('/');
+
+    if (pathname[1] === 'portfolio') {
       number = 1;
-    } else if (history.location.pathname === '/resume') {
+    } else if (pathname[1] === 'resume') {
       number = 2;
-    } else if (history.location.pathname === '/contact') {
+    } else if (pathname[1] === 'contact') {
       number = 3;
-    } else if (history.location.pathname === '/blog') {
+    } else if (pathname[1] === 'blog') {
       number = 4;
     } else {
       number = 0;
     }
-    await handlePage(number);
+
+    setCurrentPageIdx(number);
 
     return number;
   };
+
+  // const handleSetPageNum = async (next: number) => {
+  //   setCurrentPageIdx(next);
+  // };
 
   const sliderTitleSettings = {
     rtl: false,
@@ -189,9 +202,6 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
     swipeToSlide: false,
     focusOnSelect: true,
     arrows: false
-  };
-  const handlePage = async (next: number) => {
-    setCurrentPageIdx(next);
   };
 
   return (
@@ -346,7 +356,7 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
       <div>
         <Divider style={{ marginTop: 0 }} />
         <Layout
-          style={{ minHeight: '100vh' }}
+          style={{ minHeight: '100vh', transition: 'background 0.3s' }}
           className={`${useDark ? 'dark' : 'light'} bottom-layout`}
         >
           <Layout.Content style={{ width: '90%', margin: '20px auto' }}>
@@ -356,61 +366,8 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
           </Layout.Content>
         </Layout>
       </div>
-      {/* <div>
-        <Divider style={{ margin: '4px 0px' }} />
-        <Layout.Content style={{ width: '95%', margin: '0 auto' }}>
-          <Slider {...sliderContentSettings} ref={slideContentRef}>
-            <Router>
-              <ContentArea current={currentPageIdx === 0}>
-                <AboutPage theme={stateTheme} />
-              </ContentArea>
-              <ContentArea current={currentPageIdx === 1}>
-                <PortfolioPage />
-              </ContentArea>
-              <ContentArea current={currentPageIdx === 2}>
-                <HistoryPage />
-              </ContentArea>
-              <ContentArea current={currentPageIdx === 3}>
-                <ContactPage />
-              </ContentArea>
-              <ContentArea current={currentPageIdx === 4}>
-                <BlogPage />
-              </ContentArea>
-            </Router>
-          </Slider>
-        </Layout.Content>
-      </div> */}
     </>
   );
 };
-
-// Dynamic.getInitialProps = async ({ req, query }) => {
-//   // Call an external API endpoint to get posts
-
-//   console.log('getInitialProps : ', query.pagename);
-
-//   const contentfulService = new ContentfulService();
-//   let page: number = 1;
-
-//   if (query.page) {
-//     page = parseInt(query.page + '');
-//   }
-
-//   const { entries, total, skip, limit } = await contentfulService.getBlogPostEntries({
-//     tag: query.tag ? query.tag.toString() : '',
-//     skip: (page - 1) * 8,
-//     limit: 8,
-//   });
-
-//   const totalCount = await contentfulService.getAllEntriesCount({
-//     tag: query.tag ? query.tag.toString() : '',
-//   });
-
-//   // TODO: need to move outside
-//   const { tags } = await contentfulService.getAllTags();
-//   console.log('result : ', page, tags, entries, total, skip, limit, totalCount);
-
-//   return { page, tags, entries, total, skip, limit, totalCount };
-// };
 
 export default withRouter(Dynamic);

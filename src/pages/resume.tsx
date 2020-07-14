@@ -99,7 +99,8 @@ const History: FunctionComponent<Props> = ({}) => {
       <Card
         style={{
           padding: '6px 0px',
-          borderRadius: 12
+          borderRadius: 12,
+          marginBottom: 30
         }}
       >
         <Row>

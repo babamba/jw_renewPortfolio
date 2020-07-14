@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import App from './components/App/App';
 import { render, hydrate } from 'react-dom';
 import * as serviceWorker from './serviceWorker';
@@ -27,40 +26,40 @@ if (process.env.NODE_ENV === 'production') {
 
 const rootElement = document.getElementById('root');
 
-render(
-  <BrowserRouter>
-    <HelmetProvider>
-      <Provider {...rootStore}>
-        <App />
-      </Provider>
-    </HelmetProvider>
-  </BrowserRouter>,
-  rootElement
-);
+// render(
+//   <BrowserRouter>
+//     <HelmetProvider>
+//       <Provider {...rootStore}>
+//         <App />
+//       </Provider>
+//     </HelmetProvider>
+//   </BrowserRouter>,
+//   rootElement
+// );
 
-// if (rootElement !== null && rootElement.hasChildNodes()) {
-//   hydrate(
-//     <BrowserRouter>
-//       <HelmetProvider>
-//         <Provider {...rootStore}>
-//           <App />
-//         </Provider>
-//       </HelmetProvider>
-//     </BrowserRouter>,
-//     rootElement
-//   );
-// } else {
-//   render(
-//     <BrowserRouter>
-//       <HelmetProvider>
-//         <Provider {...rootStore}>
-//           <App />
-//         </Provider>
-//       </HelmetProvider>
-//     </BrowserRouter>,
-//     rootElement
-//   );
-// }
+if (rootElement !== null && rootElement.hasChildNodes()) {
+  hydrate(
+    <BrowserRouter>
+      <HelmetProvider>
+        <Provider {...rootStore}>
+          <App />
+        </Provider>
+      </HelmetProvider>
+    </BrowserRouter>,
+    rootElement
+  );
+} else {
+  render(
+    <BrowserRouter>
+      <HelmetProvider>
+        <Provider {...rootStore}>
+          <App />
+        </Provider>
+      </HelmetProvider>
+    </BrowserRouter>,
+    rootElement
+  );
+}
 
 // ReactDOM.render(
 //   // <React.StrictMode>

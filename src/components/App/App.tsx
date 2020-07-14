@@ -45,7 +45,19 @@ const App = () => {
         </Layout.Content>
 
         <Tabs />
+
+        <Layout.Content style={{ width: '90%', height: '100%', margin: '20px auto' }}>
+          <div style={{ position: 'relative' }}>
+            <Routes />
+          </div>
+        </Layout.Content>
       </Layout>
+      {/* <Layout
+        style={{ transition: 'background 0.3s', marginBottom: 70 }}
+        className={`${common.useDark ? 'dark' : 'light'} bottom-layout`}
+      >
+        
+      </Layout> */}
     </ThemeProvider>
   );
 };

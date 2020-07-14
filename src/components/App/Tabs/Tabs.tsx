@@ -261,11 +261,11 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
                   transition: 'opacity 0.3s ease 0s'
                 }}
               >
-                <a onClick={e => history.push('/about')}>
+                <Link to="/about">
                   <LinkText theme={useDark}>
                     <GradientFont isCurrent={currentPageIdx === 0}>About</GradientFont>
                   </LinkText>
-                </a>
+                </Link>
               </Typography.Paragraph>
             </div>
             <div onClick={e => history.push('/portfolio')}>
@@ -281,11 +281,11 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
                   transition: 'opacity 0.3s ease 0s'
                 }}
               >
-                <a onClick={e => history.push('/portfolio')}>
+                <Link to="/portfolio">
                   <LinkText theme={useDark}>
                     <GradientFont isCurrent={currentPageIdx === 1}>Portfolio</GradientFont>
                   </LinkText>
-                </a>
+                </Link>
               </Typography.Paragraph>
             </div>
 
@@ -302,11 +302,11 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
                   transition: 'opacity 0.3s ease 0s'
                 }}
               >
-                <a onClick={e => history.push('/resume')}>
+                <Link to="/resume">
                   <LinkText theme={useDark}>
                     <GradientFont isCurrent={currentPageIdx === 2}>Resume</GradientFont>
                   </LinkText>
-                </a>
+                </Link>
               </Typography.Paragraph>
             </div>
             <div onClick={e => history.push('/contact')}>
@@ -322,11 +322,11 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
                   transition: 'opacity 0.3s ease 0s'
                 }}
               >
-                <a onClick={e => history.push('/contact')}>
+                <Link to="/contact">
                   <LinkText theme={useDark}>
                     <GradientFont isCurrent={currentPageIdx === 3}>Contact</GradientFont>
                   </LinkText>
-                </a>
+                </Link>
               </Typography.Paragraph>
             </div>
 
@@ -343,29 +343,17 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
                   transition: 'opacity 0.3s ease 0s'
                 }}
               >
-                <a onClick={e => history.push('/blog')}>
+                <Link to="/blog">
+                  {/* <a onClick={e => history.push('/blog')}> */}
                   <LinkText theme={useDark}>
                     <GradientFont isCurrent={currentPageIdx === 4}>Blog</GradientFont>
                   </LinkText>
-                </a>
+                </Link>
               </Typography.Paragraph>
             </div>
           </Slider>
         </Layout.Header>
       </Card>
-      <div>
-        <Divider style={{ marginTop: 0 }} />
-        <Layout
-          style={{ minHeight: '100vh', transition: 'background 0.3s' }}
-          className={`${useDark ? 'dark' : 'light'} bottom-layout`}
-        >
-          <Layout.Content style={{ width: '90%', margin: '20px auto' }}>
-            <div style={{ position: 'relative' }}>
-              <Routes />
-            </div>
-          </Layout.Content>
-        </Layout>
-      </div>
     </>
   );
 };

@@ -63,8 +63,8 @@ const ThemeModeSelector = observer(({ setIsDarkMode }) => {
   };
 
   const rotateVariants = {
-    open: { scale: [1, 1.2, 1.2, 1] },
-    closed: { scale: [1, 1.2, 1.2, 1] }
+    open: { opacity: 1, scale: [1, 1.2, 1.2, 1] },
+    closed: { pacity: 1, scale: [1, 1.2, 1.2, 1] }
   };
 
   return (

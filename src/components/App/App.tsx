@@ -8,12 +8,12 @@ import { Layout } from 'antd';
 
 import Tabs from './Tabs/Tabs';
 import Me from './Me/me.component';
-import ModeSelector from './Mode/ModeSelector';
+import ThemeModeSelector from './ThemeMode/ThemeModeSelector';
 
 import { useRouter } from '../../hooks/useRouter';
 import ReactGA from 'react-ga';
 
-function App() {
+const App = () => {
   const { common } = useStores();
   const router = useRouter();
   const [isDarkMode, setIsDarkMode] = useState(common.useDark);
@@ -39,14 +39,15 @@ function App() {
         style={{ height: '100%', transition: 'background 0.3s' }}
         className={`${isDarkMode ? 'dark' : 'light'} auth main-layout`}
       >
+        <ThemeModeSelector setIsDarkMode={setIsDarkMode} />
         <Layout.Content>
           <Me />
         </Layout.Content>
-        <ModeSelector setIsDarkMode={setIsDarkMode} />
+
         <Tabs />
       </Layout>
     </ThemeProvider>
   );
-}
+};
 
 export default App;

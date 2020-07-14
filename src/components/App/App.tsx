@@ -8,7 +8,7 @@ import { Layout } from 'antd';
 
 import Tabs from './Tabs/Tabs';
 import Me from './Me/me.component';
-import Mode from './Mode/ModeSelector';
+import ModeSelector from './Mode/ModeSelector';
 
 import { useRouter } from '../../hooks/useRouter';
 import ReactGA from 'react-ga';
@@ -17,7 +17,6 @@ function App() {
   const { common } = useStores();
   const router = useRouter();
   const [isDarkMode, setIsDarkMode] = useState(common.useDark);
-  const [stateTheme, setStateTheme] = useState('default');
   const initialTheme = {
     name: 'default',
     variables: {}
@@ -42,8 +41,8 @@ function App() {
       >
         <Layout.Content>
           <Me />
-          <Mode setIsDarkMode={setIsDarkMode} />
         </Layout.Content>
+        <ModeSelector setIsDarkMode={setIsDarkMode} />
         <Tabs />
       </Layout>
     </ThemeProvider>

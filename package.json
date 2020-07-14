@@ -1,5 +1,6 @@
 {
   "name": "jw-portfolio",
+  "homepage": "https://www.glance-jw.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

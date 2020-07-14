@@ -7,6 +7,7 @@ import CommonStore from './CommonStore/store/CommonStore';
  */
 
 class RootStore {
+  common: any;
   constructor() {
     this.common = new CommonStore(this);
   }

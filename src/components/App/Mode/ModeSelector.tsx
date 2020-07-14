@@ -5,6 +5,7 @@ import useStores from '../../../hooks/useStores';
 import { useTheme, ThemeProvider } from 'antd-theme';
 import CustomIcon from '../../Common/CustomIcon';
 import { motion } from 'framer-motion';
+import { BulbOutlined } from '@ant-design/icons';
 
 const ModeSelector = observer(({ setIsDarkMode }) => {
   //const { setIsDarkMode } = props;
@@ -57,8 +58,8 @@ const ModeSelector = observer(({ setIsDarkMode }) => {
   };
 
   const rotateVariants = {
-    open: { rotate: [0, 270] },
-    closed: { rotate: [270, 0] }
+    open: { scale: [1, 1.2, 1.2, 1] },
+    closed: { scale: [1, 1.2, 1.2, 1] }
   };
 
   return (
@@ -73,7 +74,15 @@ const ModeSelector = observer(({ setIsDarkMode }) => {
     <div style={{ position: 'absolute', right: 12, top: 14 }}>
       <motion.div animate={common.useDark ? 'open' : 'closed'} variants={rotateVariants}>
         {/* <animated.div style={{ transform }}> */}
-        <CustomIcon
+        <BulbOutlined
+          onClick={handleChange}
+          style={{
+            color: common.useDark ? '#f0d74a' : '#000000',
+            fontSize: 30,
+            cursor: 'pointer'
+          }}
+        />
+        {/* <CustomIcon
           onClick={handleChange}
           style={{
             color: common.useDark ? '#f0d74a' : '#000000',
@@ -81,7 +90,7 @@ const ModeSelector = observer(({ setIsDarkMode }) => {
             cursor: 'pointer'
           }}
           type={common.useDark ? 'icon-night' : 'icon-brightness'}
-        />
+        /> */}
         {/* </animated.div> */}
       </motion.div>
     </div>

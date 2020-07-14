@@ -7,6 +7,8 @@ import { observable, action } from 'mobx';
  */
 
 class CommonStore {
+  rootStore: any;
+
   constructor(rootStore) {
     this.rootStore = rootStore;
   }
@@ -27,7 +29,7 @@ class CommonStore {
 
     if (currentMode === null) {
       console.log('not setting');
-      await localStorage.setItem('isDark', false);
+      await localStorage.setItem('isDark', 'false');
       this.useDark = false;
     } else if (currentMode === 'true') {
       this.useDark = true;

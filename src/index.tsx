@@ -12,6 +12,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'react-multi-carousel/lib/styles.css';
 import './assets/css/custom.less';
 import ReactGA from 'react-ga';
+import 'mobx-react/batchingForReactDom';
 
 const rootStore = new RootStore(); // *** 루트 스토어 생성
 

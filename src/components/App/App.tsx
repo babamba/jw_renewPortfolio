@@ -53,7 +53,7 @@ const App = observer(() => {
       ReactGA.pageview(router.location.pathname + router.location.search);
     }
     setLoading(false);
-    if (router.location.pathname === '/') router.history.push('/about');
+    // if (router.location.pathname === '/') router.history.push('/about');
   }, []);
 
   const [theme, setInitialTheme] = useState(initialTheme);
@@ -63,7 +63,7 @@ const App = observer(() => {
   };
   return (
     <>
-      <WaitForReact
+      {/* <WaitForReact
         applyProgressBeforeInteractive={applyProgressBeforeInteractive}
         promise={promise}
         progressInterval={transitionDuration}
@@ -81,7 +81,7 @@ const App = observer(() => {
             </div>
           );
         }}
-      </WaitForReact>
+      </WaitForReact> */}
       <ThemeProvider theme={theme} onChange={value => handleDarkmode(value)}>
         <Layout
           style={{ height: '80%', transition: 'background 0.3s' }}

@@ -14,7 +14,7 @@ interface Props extends RouteComponentProps {
   };
 }
 
-const CardView: FunctionComponent<Props> = ({ info, history, match }) => {
+const BlogCard: FunctionComponent<Props> = ({ info, history, match }) => {
   const cardBGStyles = {
     backgroundSize: 'cover',
     height: 150,
@@ -34,12 +34,7 @@ const CardView: FunctionComponent<Props> = ({ info, history, match }) => {
 
   return (
     <Link to={`${match.url}/${info.id}`}>
-      <Card
-        // onClick={e => handleClick(e, info)}
-        hoverable={true}
-        cover={<div style={cardBGStyles} />}
-        style={{ borderRadius: 12 }}
-      >
+      <Card hoverable={true} cover={<div style={cardBGStyles} />} style={{ borderRadius: 12 }}>
         <Card.Meta
           title={info.title}
           description={
@@ -63,4 +58,4 @@ const CardView: FunctionComponent<Props> = ({ info, history, match }) => {
   );
 };
 
-export default withRouter(CardView);
+export default withRouter(BlogCard);

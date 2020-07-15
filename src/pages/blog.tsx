@@ -5,7 +5,7 @@ import { BlogPost } from '../interfaces/post';
 
 // import { useRouter } from 'next/router';
 // import { BlogPost } from '../../interfaces/post';
-import Card from '../components/Card/card.component';
+import BlogCard from '../components/Card/BlogCard';
 // import TagFilters from '../../shared/components/tag-filters/tag-filters.component';
 import { Row, Col, List, Pagination, Divider, Card as CardView, Skeleton, Empty } from 'antd';
 // import { BookOutlined } from '@ant-design/icons';
@@ -16,7 +16,6 @@ import { motion } from 'framer-motion';
 import { useRouter } from '../hooks/useRouter';
 import ReactGA from 'react-ga';
 
-// type Props = {};
 interface PostPageProps {
   entries: BlogPost[];
   tags: { id: string; name: string }[];
@@ -142,14 +141,14 @@ const Post: FunctionComponent<any> = () => {
         <Row>
           <Col span={24}>
             <Row style={{ paddingBottom: 20 }}>
-              <Col span={12} style={{ alignSelf: 'center' }}>
-                {/* <TagFilters
-                tags={content.tags}
-                updatePage={handleTagChosen}
-                selectedTagId={selectTag}
-              /> */}
-              </Col>
-              <Col span={12} style={{ textAlign: 'right', alignSelf: 'center' }}>
+              {/* <Col span={12} style={{ alignSelf: 'center' }}>
+                <TagFilters
+                  tags={content.tags}
+                  updatePage={handleTagChosen}
+                  selectedTagId={selectTag}
+                />
+              </Col> */}
+              <Col span={24} style={{ textAlign: 'right', alignSelf: 'center' }}>
                 <Pagination
                   {...pagination}
                   onChange={onHandlePaging}
@@ -182,11 +181,11 @@ const Post: FunctionComponent<any> = () => {
                   dataSource={content.entries}
                   renderItem={(item: any) => {
                     return (
-                      <motion.div variants={ItemStyle}>
-                        <List.Item>
-                          <Card info={item} />
-                        </List.Item>
-                      </motion.div>
+                      <List.Item>
+                        <motion.div variants={ItemStyle}>
+                          <BlogCard info={item} />
+                        </motion.div>
+                      </List.Item>
                     );
                   }}
                 />

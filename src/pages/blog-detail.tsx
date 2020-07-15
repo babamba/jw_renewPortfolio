@@ -94,7 +94,7 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
 
   const getPost = async postId => {
     const article: any = await contentfulService.getPostById(postId);
-    //console.log('new article : ', article);
+    // console.log('new article : ', article);
     setArticle(article);
   };
 
@@ -114,7 +114,10 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
           exit="out"
           variants={pageDetailVariants}
           transition={pageDetailTransition}
-          style={{ position: 'absolute', width: '100%' }}
+          style={{
+            position: 'absolute',
+            width: '100%'
+          }}
         >
           <PostContainer className="post">
             {article === null && <Skeleton />}

@@ -41,7 +41,10 @@ const Routes = () => {
 
         <Route path="/blog" exact={true} component={Blog} />
         <Route path="/blog/:id" exact={true} component={BlogDetail} />
-        <Redirect to="/about" from="/" />
+
+        <Route path="/" exact component={About} />
+        <Redirect path="*" to="/" />
+        {/* <Redirect to="/about" from="/" /> */}
         {/*  */}
         {/* <Route component={NoMatchComponent} /> */}
       </Switch>

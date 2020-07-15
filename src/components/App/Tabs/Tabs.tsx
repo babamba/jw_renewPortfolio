@@ -162,7 +162,6 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
 
   useEffect(() => {
     catchPage();
-
     setIsInit(true);
   }, [history.location.pathname]);
 
@@ -175,7 +174,9 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
     let number = 0;
     const pathname = history.location.pathname.split('/');
 
-    if (pathname[1] === 'portfolio') {
+    if (pathname[1] === 'about') {
+      number = 0;
+    } else if (pathname[1] === 'portfolio') {
       number = 1;
     } else if (pathname[1] === 'resume') {
       number = 2;

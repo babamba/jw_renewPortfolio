@@ -1,7 +1,7 @@
 {
   "name": "jw-portfolio",
   "version": "0.1.0",
-  "homepage": "https://www.glance-jw.com",
+  "homepage": "https://www.glance-jw.com/",
   "private": true,
   "dependencies": {
     "@loadable/component": "^5.13.1",

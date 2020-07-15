@@ -111,7 +111,7 @@ const App = observer(() => {
               <Tabs />
 
               <Layout.Content
-                style={{ width: isPhone ? '90%' : '80%', height: '100%', margin: '20px auto' }}
+                style={{ width: isPhone ? '90%' : '80%', minHeight: '100vh', margin: '20px auto' }}
               >
                 <div style={{ position: 'relative' }}>
                   <Routes />

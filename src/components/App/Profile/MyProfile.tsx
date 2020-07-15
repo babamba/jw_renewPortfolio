@@ -51,7 +51,7 @@ const SubIntroText = styled.h2`
 `;
 
 type Props = {};
-const Me: FunctionComponent<Props> = (props: Props) => {
+const MyProfile: FunctionComponent<Props> = (props: Props) => {
   const size = useWindowSize();
   const [ResponsiveFlex, setResponsiveFlex] = useState(false);
   const {
@@ -73,7 +73,7 @@ const Me: FunctionComponent<Props> = (props: Props) => {
       <Row
         style={{
           alignItems: 'center',
-          padding: ResponsiveFlex ? '1.5em' : '1.5em 11em'
+          padding: ResponsiveFlex ? '18px 5%' : '20px 16%'
         }}
         align="middle"
         justify={ResponsiveFlex ? 'center' : 'start'}
@@ -142,4 +142,4 @@ const Me: FunctionComponent<Props> = (props: Props) => {
   );
 };
 
-export default Me;
+export default MyProfile;

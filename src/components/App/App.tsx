@@ -8,7 +8,7 @@ import { Layout, Spin, Typography } from 'antd';
 import useWindowSize from '../../hooks/useWindow';
 import Loader from '../Loader/Loader';
 import Tabs from './Tabs/Tabs';
-import Me from './Me/me.component';
+import MyProfile from './Profile/MyProfile';
 import ThemeModeSelector from './ThemeMode/ThemeModeSelector';
 import styled from 'styled-components';
 
@@ -52,7 +52,7 @@ const App = observer(() => {
   useEffect(() => {
     // console.log('size : ', size);
     if (size !== null) {
-      if (size < 400) {
+      if (size < 769) {
         SetIsPhone(true);
       } else {
         SetIsPhone(false);
@@ -105,7 +105,7 @@ const App = observer(() => {
             <>
               <ThemeModeSelector setIsDarkMode={setIsDarkMode} />
               <Layout.Content>
-                <Me />
+                <MyProfile />
               </Layout.Content>
 
               <Tabs />

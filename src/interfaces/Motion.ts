@@ -121,6 +121,23 @@ const ItemStyle = {
   }
 };
 
+const ItemLeftStyle = {
+  hidden: {
+    x: -4,
+    opacity: 0,
+    transition: {
+      y: { stiffness: 1000, velocity: -100 }
+    }
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      y: { stiffness: 1000 }
+    }
+  }
+};
+
 const openSpring = { type: 'spring', stiffness: 200, damping: 30 };
 const closeSpring = { type: 'spring', stiffness: 300, damping: 35 };
 
@@ -128,6 +145,7 @@ export {
   openSpring,
   closeSpring,
   pageVariants,
+  ItemLeftStyle,
   pageTransition,
   pageStyle,
   ContainerStyle,

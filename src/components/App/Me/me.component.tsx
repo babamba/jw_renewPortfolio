@@ -13,6 +13,24 @@ const MainIntroText = styled.h1`
   margin: 0;
   line-height: 1.5;
 `;
+
+const MainIntroSmallText = styled.h1`
+  font-weight: 300;
+  font-size: 1.7rem;
+  opacity: 0.5;
+  margin: 0;
+  line-height: 1.5;
+`;
+const SubIntroSmallText = styled.h1`
+  font-weight: 300;
+  font-size: 1rem;
+  opacity: 0.7;
+  margin: 0;
+  line-height: 1.5;
+  overflow: visible;
+  white-space: nowrap;
+`;
+
 const SubIntroText = styled.h2`
   font-weight: 800;
   font-size: 2rem;
@@ -53,7 +71,10 @@ const Me: FunctionComponent<Props> = (props: Props) => {
   return (
     <>
       <Row
-        style={{ alignItems: 'center', padding: ResponsiveFlex ? '1.5em' : '1.5em 11em' }}
+        style={{
+          alignItems: 'center',
+          padding: ResponsiveFlex ? '1.5em' : '1.5em 11em'
+        }}
         align="middle"
         justify={ResponsiveFlex ? 'center' : 'start'}
       >
@@ -102,7 +123,12 @@ const Me: FunctionComponent<Props> = (props: Props) => {
           </Typography.Paragraph>
         </Col>
 
-        {!ResponsiveFlex && (
+        {ResponsiveFlex ? (
+          <Col style={{ flexDirection: 'column', paddingLeft: '2em' }}>
+            <MainIntroSmallText>안녕하세요.</MainIntroSmallText>
+            <SubIntroSmallText>개발자 김진원입니다.</SubIntroSmallText>
+          </Col>
+        ) : (
           <Col style={{ flexDirection: 'column', paddingLeft: '3em' }}>
             <MainIntroText>안녕하세요.</MainIntroText>
             <SubIntroText>

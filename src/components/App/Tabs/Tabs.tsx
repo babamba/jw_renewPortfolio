@@ -112,43 +112,48 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
 
   const [topNav, setTopNav] = useState(null);
   const [currentPageIdx, setCurrentPageIdx] = useState(getPageIdx());
-  const [contentCenterPadding, setContentCenterPadding] = useState(160);
+  // const [contentCenterPadding, setContentCenterPadding] = useState(160);
   const [titlePadding, setTitlePadding] = useState(20);
-  const [titleCenterPaddingPer, setTitleCenterPaddingPer] = useState(80);
+  // const [titleCenterPaddingPer, setTitleCenterPaddingPer] = useState(80);
 
   useEffect(() => {
     // console.log('size : ', size);
     if (size !== null) {
+      if (size < 400) {
+        // setContentCenterPadding(0);
+        // setTitleCenterPaddingPer(30);
+        setTitlePadding(0);
+      }
       if (size < 768) {
-        setContentCenterPadding(0);
-        setTitleCenterPaddingPer(100);
+        // setContentCenterPadding(0);
+        // setTitleCenterPaddingPer(30);
         setTitlePadding(0);
       } else if (size < 1176) {
-        setContentCenterPadding(80);
-        setTitleCenterPaddingPer(80);
+        // setContentCenterPadding(80);
+        // setTitleCenterPaddingPer(40);
         setTitlePadding(20);
       } else {
-        setContentCenterPadding(120);
-        setTitleCenterPaddingPer(80);
+        // setContentCenterPadding(120);
+        // setTitleCenterPaddingPer(50);
         setTitlePadding(20);
       }
     }
   }, [size]);
 
-  const sliderContentSettings = {
-    className: 'center',
-    rtl: false,
-    // dots: true,
-    centerMode: true,
-    infinite: true,
-    centerPadding: `${contentCenterPadding}px`,
-    slidesToShow: 1,
-    speed: 500,
-    swipe: false,
-    swipeToSlide: false,
-    //focusOnSelect: false,
-    arrows: false
-  };
+  // const sliderContentSettings = {
+  //   className: 'center',
+  //   rtl: false,
+  //   // dots: true,
+  //   centerMode: true,
+  //   infinite: true,
+  //   centerPadding: `${contentCenterPadding}px`,
+  //   slidesToShow: 1,
+  //   speed: 500,
+  //   swipe: false,
+  //   swipeToSlide: false,
+  //   //focusOnSelect: false,
+  //   arrows: false
+  // };
 
   // useEffect(() => {
   //   catchPage();
@@ -182,14 +187,21 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
       number = 0;
     }
 
-    setCurrentPageIdx(number);
+    await setCurrentPageIdx(number);
 
     return number;
   };
 
-  // const handleSetPageNum = async (next: number) => {
-  //   setCurrentPageIdx(next);
-  // };
+  const swipePageNum = async (next: number) => {
+    if (next === 0) history.push('/about');
+    else if (next === 1) history.push('/portfolio');
+    else if (next === 2) history.push('/resume');
+    else if (next === 3) history.push('/contact');
+    else if (next === 4) history.push('/blog');
+    else history.push('/');
+
+    setCurrentPageIdx(next);
+  };
 
   const sliderTitleSettings = {
     rtl: false,
@@ -200,10 +212,13 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
     slidesToShow: 3,
     slidesToScroll: 1,
     speed: 600,
-    swipe: false,
-    swipeToSlide: false,
+    swipe: size !== null && size > 768 ? false : true,
+    swipeToSlide: size !== null && size > 768 ? false : true,
     focusOnSelect: true,
-    arrows: false
+    arrows: false,
+    beforeChange: (current, next) => {
+      swipePageNum(next);
+    }
   };
 
   return (
@@ -212,7 +227,8 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
         style={{
           backgroundColor: 'transparent',
           border: 'none',
-          opacity: 1
+          opacity: 1,
+          margin: size !== null && size > 768 ? '0 5rem' : '0'
         }}
         bodyStyle={{
           padding: 4
@@ -241,120 +257,120 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
           </div>
         )} */}
 
-        <Layout.Header
+        {/* <Layout.Header
           className="header"
           style={{
             background: 'transparent !important',
             width: `${titleCenterPaddingPer}%`,
             margin: '0 auto'
           }}
-        >
-          <Slider ref={slideTitleRef} {...sliderTitleSettings}>
-            <div onClick={e => history.push('/about')}>
-              <Typography.Paragraph
-                style={{
-                  textAlign: 'center',
-                  letterSpacing: '-2px',
+        > */}
+        <Slider ref={slideTitleRef} {...sliderTitleSettings}>
+          <div onClick={e => history.push('/about')}>
+            <Typography.Paragraph
+              style={{
+                textAlign: 'center',
+                letterSpacing: '-2px',
+                marginBottom: 0,
+                textDecoration: 'none',
+                fontWeight: 800,
+                fontSize: '2.7em',
+                opacity: currentPageIdx === 0 ? 1 : 0.5,
+                transition: 'opacity 0.3s ease 0s'
+              }}
+            >
+              <Link to="/about">
+                <LinkText theme={useDark}>
+                  <GradientFont isCurrent={currentPageIdx === 0}>About</GradientFont>
+                </LinkText>
+              </Link>
+            </Typography.Paragraph>
+          </div>
+          <div onClick={e => history.push('/portfolio')}>
+            <Typography.Paragraph
+              style={{
+                textAlign: 'center',
+                letterSpacing: '-2px',
+                marginBottom: 0,
+                textDecoration: 'none',
+                fontWeight: 800,
+                fontSize: '2.7em',
+                opacity: currentPageIdx === 1 ? 1 : 0.5,
+                transition: 'opacity 0.3s ease 0s'
+              }}
+            >
+              <Link to="/portfolio">
+                <LinkText theme={useDark}>
+                  <GradientFont isCurrent={currentPageIdx === 1}>Portfolio</GradientFont>
+                </LinkText>
+              </Link>
+            </Typography.Paragraph>
+          </div>
 
-                  textDecoration: 'none',
-                  fontWeight: 800,
-                  fontSize: '2.7em',
-                  opacity: currentPageIdx === 0 ? 1 : 0.5,
-                  transition: 'opacity 0.3s ease 0s'
-                }}
-              >
-                <Link to="/about">
-                  <LinkText theme={useDark}>
-                    <GradientFont isCurrent={currentPageIdx === 0}>About</GradientFont>
-                  </LinkText>
-                </Link>
-              </Typography.Paragraph>
-            </div>
-            <div onClick={e => history.push('/portfolio')}>
-              <Typography.Paragraph
-                style={{
-                  textAlign: 'center',
-                  letterSpacing: '-2px',
+          <div onClick={e => history.push('/resume')}>
+            <Typography.Paragraph
+              style={{
+                textAlign: 'center',
+                letterSpacing: '-2px',
+                marginBottom: 0,
+                textDecoration: 'none',
+                fontWeight: 800,
+                fontSize: '2.7em',
+                opacity: currentPageIdx === 2 ? 1 : 0.5,
+                transition: 'opacity 0.3s ease 0s'
+              }}
+            >
+              <Link to="/resume">
+                <LinkText theme={useDark}>
+                  <GradientFont isCurrent={currentPageIdx === 2}>Resume</GradientFont>
+                </LinkText>
+              </Link>
+            </Typography.Paragraph>
+          </div>
+          <div onClick={e => history.push('/contact')}>
+            <Typography.Paragraph
+              style={{
+                textAlign: 'center',
+                letterSpacing: '-2px',
+                marginBottom: 0,
+                textDecoration: 'none',
+                fontWeight: 800,
+                fontSize: '2.7em',
+                opacity: currentPageIdx === 3 ? 1 : 0.5,
+                transition: 'opacity 0.3s ease 0s'
+              }}
+            >
+              <Link to="/contact">
+                <LinkText theme={useDark}>
+                  <GradientFont isCurrent={currentPageIdx === 3}>Contact</GradientFont>
+                </LinkText>
+              </Link>
+            </Typography.Paragraph>
+          </div>
 
-                  textDecoration: 'none',
-                  fontWeight: 800,
-                  fontSize: '2.7em',
-                  opacity: currentPageIdx === 1 ? 1 : 0.5,
-                  transition: 'opacity 0.3s ease 0s'
-                }}
-              >
-                <Link to="/portfolio">
-                  <LinkText theme={useDark}>
-                    <GradientFont isCurrent={currentPageIdx === 1}>Portfolio</GradientFont>
-                  </LinkText>
-                </Link>
-              </Typography.Paragraph>
-            </div>
-
-            <div onClick={e => history.push('/resume')}>
-              <Typography.Paragraph
-                style={{
-                  textAlign: 'center',
-                  letterSpacing: '-2px',
-
-                  textDecoration: 'none',
-                  fontWeight: 800,
-                  fontSize: '2.7em',
-                  opacity: currentPageIdx === 2 ? 1 : 0.5,
-                  transition: 'opacity 0.3s ease 0s'
-                }}
-              >
-                <Link to="/resume">
-                  <LinkText theme={useDark}>
-                    <GradientFont isCurrent={currentPageIdx === 2}>Resume</GradientFont>
-                  </LinkText>
-                </Link>
-              </Typography.Paragraph>
-            </div>
-            <div onClick={e => history.push('/contact')}>
-              <Typography.Paragraph
-                style={{
-                  textAlign: 'center',
-                  letterSpacing: '-2px',
-
-                  textDecoration: 'none',
-                  fontWeight: 800,
-                  fontSize: '2.7em',
-                  opacity: currentPageIdx === 3 ? 1 : 0.5,
-                  transition: 'opacity 0.3s ease 0s'
-                }}
-              >
-                <Link to="/contact">
-                  <LinkText theme={useDark}>
-                    <GradientFont isCurrent={currentPageIdx === 3}>Contact</GradientFont>
-                  </LinkText>
-                </Link>
-              </Typography.Paragraph>
-            </div>
-
-            <div onClick={e => history.push('/blog')}>
-              <Typography.Paragraph
-                style={{
-                  textAlign: 'center',
-                  letterSpacing: '-2px',
-
-                  textDecoration: 'none',
-                  fontWeight: 800,
-                  fontSize: '2.7em',
-                  opacity: currentPageIdx === 4 ? 1 : 0.5,
-                  transition: 'opacity 0.3s ease 0s'
-                }}
-              >
-                <Link to="/blog">
-                  {/* <a onClick={e => history.push('/blog')}> */}
-                  <LinkText theme={useDark}>
-                    <GradientFont isCurrent={currentPageIdx === 4}>Blog</GradientFont>
-                  </LinkText>
-                </Link>
-              </Typography.Paragraph>
-            </div>
-          </Slider>
-        </Layout.Header>
+          <div onClick={e => history.push('/blog')}>
+            <Typography.Paragraph
+              style={{
+                textAlign: 'center',
+                letterSpacing: '-2px',
+                marginBottom: 0,
+                textDecoration: 'none',
+                fontWeight: 800,
+                fontSize: '2.7em',
+                opacity: currentPageIdx === 4 ? 1 : 0.5,
+                transition: 'opacity 0.3s ease 0s'
+              }}
+            >
+              <Link to="/blog">
+                {/* <a onClick={e => history.push('/blog')}> */}
+                <LinkText theme={useDark}>
+                  <GradientFont isCurrent={currentPageIdx === 4}>Blog</GradientFont>
+                </LinkText>
+              </Link>
+            </Typography.Paragraph>
+          </div>
+        </Slider>
+        {/* </Layout.Header> */}
       </Card>
     </>
   );

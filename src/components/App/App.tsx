@@ -5,7 +5,8 @@ import { observer } from 'mobx-react';
 import { ThemeProvider, useTheme } from 'antd-theme';
 import useStores from '../../hooks/useStores';
 import { Layout, Spin, Typography } from 'antd';
-
+import useWindowSize from '../../hooks/useWindow';
+import Loader from '../Loader/Loader';
 import Tabs from './Tabs/Tabs';
 import Me from './Me/me.component';
 import ThemeModeSelector from './ThemeMode/ThemeModeSelector';
@@ -13,32 +14,32 @@ import styled from 'styled-components';
 
 import { useRouter } from '../../hooks/useRouter';
 import ReactGA from 'react-ga';
-import WaitForReact from '@moxy/react-wait-for-react';
-import { LoadingOutlined } from '@ant-design/icons';
 
-const { Text, Title, Paragraph } = Typography;
-const LoaderContainer = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 45%;
-`;
+// const { Text, Title, Paragraph } = Typography;
+// const LoaderContainer = styled.div`
+//   position: absolute;
+//   top: 50%;
+//   left: 45%;
+// `;
 
-const LoaderContent = styled(Paragraph)`
-  display: block;
-  color: #fffd8f;
-  font-family: -apple-system, 'Helvetica Neue', sans-serif;
-  font-size: 34px;
-  font-weight: 300;
-`;
+// const LoaderContent = styled(Paragraph)`
+//   display: block;
+//   color: #fffd8f;
+//   font-family: -apple-system, 'Helvetica Neue', sans-serif;
+//   font-size: 34px;
+//   font-weight: 300;
+// `;
 
-const transitionDuration = 200 + 50; // Keep this value slightly higher than the CSS counterpart
-const applyProgressBeforeInteractive = `function (elements, progress) {
-    elements.progressBar.style = 'transform:scaleX(' + progress + ')';
-}`;
+// const transitionDuration = 200 + 50; // Keep this value slightly higher than the CSS counterpart
+// const applyProgressBeforeInteractive = `function (elements, progress) {
+//     elements.progressBar.style = 'transform:scaleX(' + progress + ')';
+// }`;
 
-const promise = new Promise(resolve => setTimeout(resolve, 4000));
+// const promise = new Promise(resolve => setTimeout(resolve, 4000));
 
 const App = observer(() => {
+  const size = useWindowSize();
+  const [isPhone, SetIsPhone] = useState(false);
   const [loading, setLoading] = useState(true);
   const { common } = useStores();
   const router = useRouter();
@@ -47,6 +48,17 @@ const App = observer(() => {
     name: 'default',
     variables: {}
   };
+
+  useEffect(() => {
+    // console.log('size : ', size);
+    if (size !== null) {
+      if (size < 400) {
+        SetIsPhone(true);
+      } else {
+        SetIsPhone(false);
+      }
+    }
+  }, [size]);
 
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
@@ -88,13 +100,7 @@ const App = observer(() => {
           className={`${common.useDark ? 'dark' : 'light'} auth main-layout`}
         >
           {loading ? (
-            <LoaderContainer>
-              <Spin
-                tip="화면을 구성중입니다..."
-                indicator={<LoadingOutlined style={{ fontSize: 24 }} spin />}
-                // style={{ position: 'absolute', top: '50%', left: '45%' }}
-              />
-            </LoaderContainer>
+            <Loader isDark={common.useDark} />
           ) : (
             <>
               <ThemeModeSelector setIsDarkMode={setIsDarkMode} />
@@ -104,7 +110,9 @@ const App = observer(() => {
 
               <Tabs />
 
-              <Layout.Content style={{ width: '80%', height: '100%', margin: '20px auto' }}>
+              <Layout.Content
+                style={{ width: isPhone ? '90%' : '80%', height: '100%', margin: '20px auto' }}
+              >
                 <div style={{ position: 'relative' }}>
                   <Routes />
                 </div>

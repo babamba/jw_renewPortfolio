@@ -133,7 +133,7 @@ const Post: FunctionComponent<any> = () => {
     >
       <HeadMeta text="BLOG" />
       <CardView
-        style={{ padding: '10px 0px', borderRadius: 12 }}
+        style={{ padding: '10px 0px', borderRadius: 12, marginBottom: 30 }}
         bodyStyle={{
           padding: '18px 24px'
         }}

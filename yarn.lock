@@ -1378,6 +1378,14 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
+"@moxy/react-wait-for-react@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@moxy/react-wait-for-react/-/react-wait-for-react-2.0.0.tgz#1d517985cb0b6eb7fd0e9de6e79e04ce29fd22af"
+  integrity sha512-fXVGs7OVRDWrZRWIwQBwCMKE8QqfgmjYdc/or9ZMspQzY5qhmSUaCaKLlBeYkyza21kH86f7U01IyzbGxkHX5Q==
+  dependencies:
+    lodash "^4.17.15"
+    prop-types "^15.7.2"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"

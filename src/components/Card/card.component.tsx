@@ -24,6 +24,7 @@ const CardView: FunctionComponent<Props> = ({ info, history, match }) => {
   };
 
   const handleClick = (e, info) => {
+    e.preventDefault();
     console.log('info : ', info);
     history.push(`${match.url}/${info.id}`);
   };

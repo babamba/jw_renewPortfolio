@@ -112,7 +112,7 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
   const [currentPageIdx, setCurrentPageIdx] = useState(getPageIdx());
   const [contentCenterPadding, setContentCenterPadding] = useState(160);
   const [titlePadding, setTitlePadding] = useState(20);
-  const [titleCenterPaddingPer, setTitleCenterPaddingPer] = useState(85);
+  const [titleCenterPaddingPer, setTitleCenterPaddingPer] = useState(80);
 
   useEffect(() => {
     // console.log('size : ', size);
@@ -123,11 +123,11 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
         setTitlePadding(0);
       } else if (size < 1176) {
         setContentCenterPadding(80);
-        setTitleCenterPaddingPer(85);
+        setTitleCenterPaddingPer(80);
         setTitlePadding(20);
       } else {
         setContentCenterPadding(120);
-        setTitleCenterPaddingPer(85);
+        setTitleCenterPaddingPer(80);
         setTitlePadding(20);
       }
     }

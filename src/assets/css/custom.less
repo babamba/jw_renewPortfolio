@@ -97,8 +97,49 @@
   }
 }
 
+.SplashScreen {
+  --transition-duration: 200ms;
+  overflow-y: hidden;
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #131313;
+  transition: opacity 0.4s var(--transition-duration) ease,
+    visibility 0s calc(0.4s + var(--transition-duration));
+}
+.SplashScreen::-webkit-scrollbar {
+  display: none;
+}
+
+.SplashScreen.loaded {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.Loader-ProgressBar {
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 4px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: #fffd8f;
+  pointer-events: none;
+  transition: transform var(--transition-duration) linear;
+}
+
 body.light {
   background: #f0f2f5;
+  transition: background 0.3s ease 0s;
   //브라우저 스크롤 요소
   &::-webkit-scrollbar {
     width: 4px;
@@ -136,6 +177,7 @@ body.light {
 
 body.dark {
   background: #1b1d21;
+  transition: background 0.3s ease 0s;
   //브라우저 스크롤 요소
   &::-webkit-scrollbar {
     width: 4px !important;

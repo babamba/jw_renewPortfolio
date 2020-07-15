@@ -9,7 +9,7 @@ import { BlogPost } from '../interfaces/post';
 // import { MetaTags, PageType, RobotsContent } from '../../interfaces/meta-tags';
 // import Card from '../../shared/components/card/card.component';
 import { motion } from 'framer-motion';
-import { Typography, PageHeader, Layout, List } from 'antd';
+import { Typography, PageHeader, Layout, List, Skeleton } from 'antd';
 import styled from 'styled-components';
 import {
   pageDetailVariants,
@@ -117,6 +117,7 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
           style={{ position: 'absolute', width: '100%' }}
         >
           <PostContainer className="post">
+            {article === null && <Skeleton />}
             <motion.div variants={backVariants}>
               <PageHeader
                 className="site-page-header"

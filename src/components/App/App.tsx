@@ -38,7 +38,7 @@ const applyProgressBeforeInteractive = `function (elements, progress) {
 
 const promise = new Promise(resolve => setTimeout(resolve, 4000));
 
-const App = () => {
+const App = observer(() => {
   const [loading, setLoading] = useState(true);
   const { common } = useStores();
   const router = useRouter();
@@ -53,6 +53,7 @@ const App = () => {
       ReactGA.pageview(router.location.pathname + router.location.search);
     }
     setLoading(false);
+    if (router.location.pathname === '/') router.history.push('/about');
   }, []);
 
   const [theme, setInitialTheme] = useState(initialTheme);
@@ -84,7 +85,7 @@ const App = () => {
       <ThemeProvider theme={theme} onChange={value => handleDarkmode(value)}>
         <Layout
           style={{ height: '80%', transition: 'background 0.3s' }}
-          className={`${isDarkMode ? 'dark' : 'light'} auth main-layout`}
+          className={`${common.useDark ? 'dark' : 'light'} auth main-layout`}
         >
           {loading ? (
             <LoaderContainer>
@@ -120,6 +121,6 @@ const App = () => {
       </ThemeProvider>
     </>
   );
-};
+});
 
 export default App;

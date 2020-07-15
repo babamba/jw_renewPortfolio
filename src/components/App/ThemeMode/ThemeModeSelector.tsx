@@ -23,12 +23,17 @@ const ThemeModeSelector = observer(({ setIsDarkMode }) => {
 
   useEffect(() => {
     const body = document.body.classList;
+    const mainLayout = document.getElementsByClassName('main-layout')[0].classList;
     //console.log('body : ', body);
     if (common.useDark) {
+      mainLayout.remove('light');
       body.remove('light');
+      mainLayout.add('dark');
       body.add('dark');
     } else {
+      mainLayout.remove('dark');
       body.remove('dark');
+      mainLayout.add('light');
       body.add('light');
     }
     init();

@@ -1,4 +1,5 @@
 import React from 'react';
+import 'mobx-react/batchingForReactDom';
 import App from './components/App/App';
 import { render, hydrate } from 'react-dom';
 import * as serviceWorker from './serviceWorker';
@@ -6,12 +7,9 @@ import { Provider } from 'mobx-react';
 import { HelmetProvider } from 'react-helmet-async';
 import RootStore from './store/index';
 import { BrowserRouter } from 'react-router-dom';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import 'react-multi-carousel/lib/styles.css';
+
 import './assets/css/custom.less';
 import ReactGA from 'react-ga';
-import 'mobx-react/batchingForReactDom';
 
 const rootStore = new RootStore(); // *** 루트 스토어 생성
 
@@ -26,40 +24,40 @@ if (process.env.NODE_ENV === 'production') {
 
 const rootElement = document.getElementById('root');
 
-// render(
-//   <BrowserRouter>
-//     <HelmetProvider>
-//       <Provider {...rootStore}>
-//         <App />
-//       </Provider>
-//     </HelmetProvider>
-//   </BrowserRouter>,
-//   rootElement
-// );
+render(
+  <BrowserRouter>
+    <HelmetProvider>
+      <Provider {...rootStore}>
+        <App />
+      </Provider>
+    </HelmetProvider>
+  </BrowserRouter>,
+  rootElement
+);
 
-if (rootElement !== null && rootElement.hasChildNodes()) {
-  hydrate(
-    <BrowserRouter>
-      <HelmetProvider>
-        <Provider {...rootStore}>
-          <App />
-        </Provider>
-      </HelmetProvider>
-    </BrowserRouter>,
-    rootElement
-  );
-} else {
-  render(
-    <BrowserRouter>
-      <HelmetProvider>
-        <Provider {...rootStore}>
-          <App />
-        </Provider>
-      </HelmetProvider>
-    </BrowserRouter>,
-    rootElement
-  );
-}
+// if (rootElement !== null && rootElement.hasChildNodes()) {
+//   hydrate(
+//     <BrowserRouter>
+//       <HelmetProvider>
+//         <Provider {...rootStore}>
+//           <App />
+//         </Provider>
+//       </HelmetProvider>
+//     </BrowserRouter>,
+//     rootElement
+//   );
+// } else {
+//   render(
+//     <BrowserRouter>
+//       <HelmetProvider>
+//         <Provider {...rootStore}>
+//           <App />
+//         </Provider>
+//       </HelmetProvider>
+//     </BrowserRouter>,
+//     rootElement
+//   );
+// }
 
 // ReactDOM.render(
 //   // <React.StrictMode>

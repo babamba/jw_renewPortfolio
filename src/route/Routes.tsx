@@ -1,16 +1,24 @@
 import React, { useEffect } from 'react';
 import { Result } from 'antd';
 import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
+import loadable from '@loadable/component';
 
-import About from '../pages/about';
-import Blog from '../pages/blog';
-import BlogDetail from '../pages/blog-detail';
-import Contact from '../pages/contact';
-import Portfolio from '../pages/portfolio';
-import Resume from '../pages/resume';
-import NoMatch from '../pages/404';
+// import About from '../pages/about';
+// import Blog from '../pages/blog';
+// import BlogDetail from '../pages/blog-detail';
+// import Contact from '../pages/contact';
+// import Portfolio from '../pages/portfolio';
+// import Resume from '../pages/resume';
+// import NoMatch from '../pages/404';
 import { AnimatePresence } from 'framer-motion';
 
+const AboutComponent = loadable(() => import('../pages/about'));
+const BlogComponent = loadable(() => import('../pages/blog'));
+const BlogDetailComponent = loadable(() => import('../pages/blog-detail'));
+const ContactComponent = loadable(() => import('../pages/contact'));
+const PortfolioComponent = loadable(() => import('../pages/portfolio'));
+const ResumeComponent = loadable(() => import('../pages/resume'));
+const NoMatchComponent = loadable(() => import('../pages/404'));
 // 전역에서 사용되는 브라우저 라우터
 
 const Routes = () => {
@@ -25,17 +33,17 @@ const Routes = () => {
          *  상세화면이 라우팅 되지 않는다.
          */}
 
-        <Route path="/about" exact={true} component={About} />
-        <Route path="/portfolio" exact={true} component={Portfolio} />
-        <Route path="/contact" exact={true} component={Contact} />
-        <Route path="/resume" exact={true} component={Resume} />
+        <Route path="/about" exact={true} component={AboutComponent} />
+        <Route path="/portfolio" exact={true} component={PortfolioComponent} />
+        <Route path="/contact" exact={true} component={ContactComponent} />
+        <Route path="/resume" exact={true} component={ResumeComponent} />
         {/* <Route path={['/blog/:id', '/blog']} component={Blog} /> */}
 
-        <Route path="/blog" exact={true} component={Blog} />
-        <Route path="/blog/:id" exact={true} component={BlogDetail} />
+        <Route path="/blog" exact={true} component={BlogComponent} />
+        <Route path="/blog/:id" exact={true} component={BlogDetailComponent} />
 
-        <Redirect to="/about" from="/" />
-        <Route component={NoMatch} />
+        {/* <Redirect to="/about" from="/" /> */}
+        <Route component={NoMatchComponent} />
       </Switch>
     </AnimatePresence>
   );

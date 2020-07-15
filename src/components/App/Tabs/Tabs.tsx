@@ -12,6 +12,8 @@ import HistoryPage from '../../../pages/resume';
 // import { defaultMetaTags } from '../../../core/constants';
 // import { MetaTags, PageType, RobotsContent } from '../../../interfaces/meta-tags';
 // import LayoutMeta from '../../../shared/components/layout/layout.component';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 import useWindowSize from '../../../hooks/useWindow';
 import styled, { keyframes } from 'styled-components';

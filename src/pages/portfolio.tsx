@@ -11,7 +11,7 @@ import { motion } from 'framer-motion';
 import HeadMeta from '../components/Helmet/HeadMeta';
 import { useRouter } from '../hooks/useRouter';
 import ReactGA from 'react-ga';
-
+import 'react-multi-carousel/lib/styles.css';
 const FolioContainer = styled(Card)`
   /* height:%; */
   overflow: hidden;

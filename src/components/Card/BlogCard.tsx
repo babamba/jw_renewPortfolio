@@ -32,28 +32,40 @@ const BlogCard: FunctionComponent<Props> = ({ info, history, match }) => {
     history.push(`${match.url}/${info.id}`);
   };
 
+  const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] };
+  const hoverframeVariants = {
+    hover: { scale: 0.98 }
+  };
+
   return (
     <Link to={`${match.url}/${info.id}`}>
-      <Card hoverable={true} cover={<div style={cardBGStyles} />} style={{ borderRadius: 12 }}>
-        <Card.Meta
-          title={info.title}
-          description={
-            <span
-              style={{
-                overflow: 'hidden !important',
-                textOverflow: 'ellipsis',
-                wordWrap: 'break-word',
-                display: '-webkit-box',
-                WebkitLineClamp: 5,
-                WebkitBoxOrient: 'vertical',
-                minHeight: 114
-              }}
-            >
-              {info.description}
-            </span>
-          }
-        />
-      </Card>
+      <motion.div
+        className="frame"
+        whileHover="hover"
+        variants={hoverframeVariants}
+        transition={transition}
+      >
+        <Card hoverable={true} cover={<div style={cardBGStyles} />} style={{ borderRadius: 12 }}>
+          <Card.Meta
+            title={info.title}
+            description={
+              <span
+                style={{
+                  overflow: 'hidden !important',
+                  textOverflow: 'ellipsis',
+                  wordWrap: 'break-word',
+                  display: '-webkit-box',
+                  WebkitLineClamp: 5,
+                  WebkitBoxOrient: 'vertical',
+                  minHeight: 114
+                }}
+              >
+                {info.description}
+              </span>
+            }
+          />
+        </Card>
+      </motion.div>
     </Link>
   );
 };

@@ -59,8 +59,8 @@ const MyProfile: FunctionComponent<Props> = (props: Props) => {
   } = useStores();
   useEffect(() => {
     // console.log('size : ', size);
-    if (size !== null) {
-      if (size < 768) {
+    if (size.width !== undefined) {
+      if (size.width < 768) {
         setResponsiveFlex(true);
       } else {
         setResponsiveFlex(false);
@@ -80,7 +80,7 @@ const MyProfile: FunctionComponent<Props> = (props: Props) => {
       >
         <Col style={{ flexDirection: 'column', padding: 8 }}>
           <Avatar
-            size={size !== null && size > 480 ? 140 : 100}
+            size={size.width !== undefined && size.width > 480 ? 140 : 100}
             src={require('../../../assets/images/me.png')}
           />
           <Typography.Title
@@ -88,7 +88,7 @@ const MyProfile: FunctionComponent<Props> = (props: Props) => {
               margin: '.5em 0',
               padding: 0,
               fontWeight: 300,
-              fontSize: size !== null && size > 480 ? '1.4em' : '1em',
+              fontSize: size.width !== undefined && size.width > 480 ? '1.4em' : '1em',
               lineHeight: 1.4,
               textAlign: 'center'
             }}

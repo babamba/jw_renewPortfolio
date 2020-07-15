@@ -3,13 +3,7 @@ import { Result } from 'antd';
 import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
 import loadable from '@loadable/component';
 
-import About from '../pages/about';
-import Blog from '../pages/blog';
-import BlogDetail from '../pages/blog-detail';
-import Contact from '../pages/contact';
-import Portfolio from '../pages/portfolio';
-import Resume from '../pages/resume';
-import NoMatch from '../pages/404';
+import LabMain from '../pages/LabMain';
 import { AnimatePresence } from 'framer-motion';
 
 // const AboutComponent = loadable(() => import('../pages/about'));
@@ -21,7 +15,7 @@ import { AnimatePresence } from 'framer-motion';
 // const NoMatchComponent = loadable(() => import('../pages/404'));
 // 전역에서 사용되는 브라우저 라우터
 
-const Routes = () => {
+const LabsRoute = () => {
   const location = useLocation();
 
   return (
@@ -33,23 +27,11 @@ const Routes = () => {
          *  상세화면이 라우팅 되지 않는다.
          */}
 
-        <Route path="/about" exact={true} component={About} />
-        <Route path="/portfolio" exact={true} component={Portfolio} />
-        <Route path="/contact" exact={true} component={Contact} />
-        <Route path="/resume" exact={true} component={Resume} />
-        {/* <Route path={['/blog/:id', '/blog']} component={Blog} /> */}
-
-        <Route path="/blog" exact={true} component={Blog} />
-        <Route path="/blog/:id" exact={true} component={BlogDetail} />
-
-        <Route path="/" exact component={About} />
-        <Redirect path="*" to="/" />
-        {/* <Redirect to="/about" from="/" /> */}
-        {/*  */}
-        {/* <Route component={NoMatchComponent} /> */}
+        <Route path="/lab" exact={true} component={LabMain} />
+        <Route path="/" exact component={LabMain} />
       </Switch>
     </AnimatePresence>
   );
 };
 
-export default Routes;
+export default LabsRoute;

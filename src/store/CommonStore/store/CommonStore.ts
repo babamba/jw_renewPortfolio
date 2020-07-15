@@ -13,6 +13,7 @@ class CommonStore {
     this.rootStore = rootStore;
   }
 
+  @observable useLabPage = false;
   @observable useDark = localStorage.getItem('isDark')
     ? localStorage.getItem('isDark') === 'true'
       ? true
@@ -43,6 +44,11 @@ class CommonStore {
     console.log('value : ', value);
     await localStorage.setItem('isDark', value);
     this.useDark = value;
+  }
+
+  @action.bound
+  async setUseLabpage(value) {
+    this.useLabPage = value;
   }
 }
 

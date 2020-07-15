@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, withRouter } from 'react-router-dom';
-import Routes from '../../route/Routes';
+import FolioRoutes from '../../route/FolioRoutes';
+import LabsRoutes from '../../route/LabsRoute';
 import { observer } from 'mobx-react';
 import { ThemeProvider, useTheme } from 'antd-theme';
 import useStores from '../../hooks/useStores';
@@ -10,8 +11,16 @@ import Loader from '../Loader/Loader';
 import Tabs from './Tabs/Tabs';
 import MyProfile from './Profile/MyProfile';
 import ThemeModeSelector from './ThemeMode/ThemeModeSelector';
+import LabModeSelector from './LabMode/LabModeSelector';
 import styled from 'styled-components';
 
+import {
+  pageTransition,
+  pageVariants,
+  FastContainerStyle,
+  ItemStyle
+} from '../../interfaces/Motion';
+import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import { useRouter } from '../../hooks/useRouter';
 import ReactGA from 'react-ga';
 
@@ -38,7 +47,10 @@ import ReactGA from 'react-ga';
 // const promise = new Promise(resolve => setTimeout(resolve, 4000));
 
 const App = observer(() => {
+  const [isBackButtonClicked, setBackbuttonPress] = useState(false);
   const size = useWindowSize();
+  const controls = useAnimation();
+  const [isInit, setIsInit] = useState(true);
   const [isPhone, SetIsPhone] = useState(false);
   const [loading, setLoading] = useState(true);
   const { common } = useStores();
@@ -49,10 +61,12 @@ const App = observer(() => {
     variables: {}
   };
 
+  // common.useLabPage ? 'open' : 'closed';
+
   useEffect(() => {
-    // console.log('size : ', size);
-    if (size !== null) {
-      if (size < 769) {
+    console.log('size : ', size);
+    if (size.width !== undefined) {
+      if (size.width < 769) {
         SetIsPhone(true);
       } else {
         SetIsPhone(false);
@@ -65,36 +79,91 @@ const App = observer(() => {
       ReactGA.pageview(router.location.pathname + router.location.search);
     }
     setLoading(false);
+    setIsInit(false);
     // if (router.location.pathname === '/') router.history.push('/about');
   }, []);
+
+  const closeAction = () => {
+    controls.start((height = 1000) => ({
+      clipPath: [
+        `circle(10px at 5px 5px)`,
+        `circle(${height}px at 40px 40px)`,
+        `circle(10px at 5px 5px)`
+      ],
+      transition: {
+        duration: 1,
+        type: 'spring',
+        stiffness: 400,
+        damping: 40
+      }
+    }));
+  };
+
+  const openAction = () => {
+    controls.start((height = 1000) => ({
+      clipPath: [
+        `circle(10px at 5px 5px)`,
+        `circle(${height + 200}px at 40px 40px)`,
+        `circle(${height + 600}px at 40px 40px)`,
+        `circle(${document.getElementsByTagName('body')[0].scrollHeight}px)`
+        // `circle(${height + 200}px at 40px 40px)`
+        // `circle(10px at 20px 20px)`
+      ],
+      transition: {
+        duration: 1.5,
+        type: 'spring',
+        stiffness: 400,
+        damping: 40
+      }
+    }));
+  };
+
+  // useEffect(() => {
+  //   console.log('router.history : ', router);
+  // }, [router]);
 
   const [theme, setInitialTheme] = useState(initialTheme);
   const handleDarkmode = value => {
     //console.log('value: ', value);
     setInitialTheme(value);
   };
+
+  const rotateVariants = {
+    open: { opacity: 1, scale: [1, 1.02, 1.04, 1.02, 1] },
+    closed: { pacity: 1, scale: [1, 1.02, 1.04, 1.02, 1] }
+  };
+
+  const clipVariants = {
+    open: (height = size.outerHeight !== undefined ? size.outerHeight : 1000) => ({
+      clipPath: [
+        `circle(${height * 2 + 200}px at 40px 40px)`,
+        `circle(30px at 40px 40px)`,
+        `circle(${height * 2 + 200}px at 40px 40px)`
+      ],
+      transition: {
+        type: 'spring',
+        stiffness: 20,
+        restDelta: 2
+      }
+    }),
+    closed: (height = size.outerHeight !== undefined ? size.outerHeight : 1000) => ({
+      clipPath: [
+        `circle(${height * 2 + 200}px at 40px 40px)`,
+        `circle(30px at 40px 40px)`,
+        `circle(${height * 2 + 200}px at 40px 40px)`
+      ],
+      transition: {
+        delay: 0.5,
+        type: 'spring',
+        stiffness: 400,
+        damping: 40
+      }
+    })
+  };
+
   return (
-    <>
-      {/* <WaitForReact
-        applyProgressBeforeInteractive={applyProgressBeforeInteractive}
-        promise={promise}
-        progressInterval={transitionDuration}
-      >
-        {({ progress }) => {
-          console.log('progress : ', progress);
-          return (
-            <div className={`SplashScreen ${progress >= 1 ? 'loaded' : ''}`}>
-              <div
-                data-wait-for-react-element="progressBar"
-                className="Loader-ProgressBar"
-                style={{ transform: `scaleX(${progress})` }}
-              />
-              <LoaderContent>안녕하세요. 김진원입니다.</LoaderContent>
-            </div>
-          );
-        }}
-      </WaitForReact> */}
-      <ThemeProvider theme={theme} onChange={value => handleDarkmode(value)}>
+    <ThemeProvider theme={theme} onChange={value => handleDarkmode(value)}>
+      <AnimatePresence>
         <Layout
           style={{ transition: 'background 0.3s' }}
           className={`${common.useDark ? 'dark' : 'light'} auth main-layout`}
@@ -104,30 +173,42 @@ const App = observer(() => {
           ) : (
             <>
               <ThemeModeSelector setIsDarkMode={setIsDarkMode} />
-              <Layout.Content>
-                <MyProfile />
-              </Layout.Content>
+              <LabModeSelector closeAction={closeAction} openAction={openAction} />
 
-              <Tabs />
+              <motion.div animate={controls}>
+                {common.useLabPage ? (
+                  <Layout.Content>
+                    <div style={{ position: 'relative' }}>
+                      <LabsRoutes />
+                    </div>
+                  </Layout.Content>
+                ) : (
+                  <>
+                    <Layout.Content>
+                      <MyProfile />
+                    </Layout.Content>
 
-              <Layout.Content
-                style={{ width: isPhone ? '90%' : '80%', minHeight: '100vh', margin: '20px auto' }}
-              >
-                <div style={{ position: 'relative' }}>
-                  <Routes />
-                </div>
-              </Layout.Content>
+                    <Tabs />
+
+                    <Layout.Content
+                      style={{
+                        width: isPhone ? '90%' : '80%',
+                        minHeight: '100vh',
+                        margin: '20px auto'
+                      }}
+                    >
+                      <div style={{ position: 'relative' }}>
+                        <FolioRoutes />
+                      </div>
+                    </Layout.Content>
+                  </>
+                )}
+              </motion.div>
             </>
           )}
         </Layout>
-        {/* <Layout
-        style={{ transition: 'background 0.3s', marginBottom: 70 }}
-        className={`${common.useDark ? 'dark' : 'light'} bottom-layout`}
-      >
-        
-      </Layout> */}
-      </ThemeProvider>
-    </>
+      </AnimatePresence>
+    </ThemeProvider>
   );
 });
 

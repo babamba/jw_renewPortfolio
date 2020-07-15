@@ -17,7 +17,7 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import useWindowSize from '../../../hooks/useWindow';
 import styled, { keyframes } from 'styled-components';
-import Routes from '../../../route/Routes';
+import FolioRoutes from '../../../route/FolioRoutes';
 import useStores from '../../../hooks/useStores';
 
 // interface PostPageProps {
@@ -118,17 +118,17 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
 
   useEffect(() => {
     // console.log('size : ', size);
-    if (size !== null) {
-      if (size < 400) {
+    if (size.width !== undefined) {
+      if (size.width < 400) {
         // setContentCenterPadding(0);
         // setTitleCenterPaddingPer(30);
         setTitlePadding(0);
       }
-      if (size < 768) {
+      if (size.width < 768) {
         // setContentCenterPadding(0);
         // setTitleCenterPaddingPer(30);
         setTitlePadding(0);
-      } else if (size < 1176) {
+      } else if (size.width < 1176) {
         // setContentCenterPadding(80);
         // setTitleCenterPaddingPer(40);
         setTitlePadding(20);
@@ -213,8 +213,8 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
     slidesToShow: 3,
     slidesToScroll: 1,
     speed: 600,
-    swipe: size !== null && size > 768 ? false : true,
-    swipeToSlide: size !== null && size > 768 ? false : true,
+    swipe: size.width !== undefined && size.width > 768 ? false : true,
+    swipeToSlide: size.width !== undefined && size.width > 768 ? false : true,
     focusOnSelect: true,
     arrows: false,
     beforeChange: (current, next) => {
@@ -229,7 +229,7 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
           backgroundColor: 'transparent',
           border: 'none',
           opacity: 1,
-          margin: size !== null && size > 768 ? '0 5rem' : '0'
+          margin: size.width !== undefined && size.width > 768 ? '0 5rem' : '0'
         }}
         bodyStyle={{
           padding: 4

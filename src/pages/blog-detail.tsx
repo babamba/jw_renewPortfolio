@@ -121,15 +121,29 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
         >
           <PostContainer className="post">
             {article === null && <Skeleton />}
-            <motion.div variants={backVariants}>
+            {/* <motion.div v */}
+            <motion.button
+              whileHover={{
+                scale: 1.05,
+                transition: { duration: 0.5 }
+              }}
+              whileTap={{ scale: 0.99 }}
+              onClick={() => history.push('/blog')}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                outline: 'none'
+              }}
+            >
               <PageHeader
-                className="site-page-header"
                 onBack={() => history.push('/blog')}
+                className="site-page-header"
                 title="이전 페이지"
-                style={{ background: 'transparent' }}
+                style={{ background: 'transparent', padding: '12px 0px' }}
                 // subTitle="이전 페이지"
               />
-            </motion.div>
+            </motion.button>
+            {/* </motion.div> */}
             <motion.div variants={textVariants}>
               <Typography.Title level={1}>{article?.title}</Typography.Title>
               <div className="author">

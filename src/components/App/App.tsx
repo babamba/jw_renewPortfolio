@@ -96,7 +96,7 @@ const App = observer(() => {
       </WaitForReact> */}
       <ThemeProvider theme={theme} onChange={value => handleDarkmode(value)}>
         <Layout
-          style={{ height: '80%', transition: 'background 0.3s' }}
+          style={{ transition: 'background 0.3s' }}
           className={`${common.useDark ? 'dark' : 'light'} auth main-layout`}
         >
           {loading ? (

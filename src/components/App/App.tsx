@@ -83,44 +83,51 @@ const App = observer(() => {
     // if (router.location.pathname === '/') router.history.push('/about');
   }, []);
 
-  const closeAction = () => {
-    controls.start((height = 1000) => ({
-      clipPath: [
-        `circle(10px at 5px 5px)`,
-        `circle(${height}px at 40px 40px)`,
-        `circle(10px at 5px 5px)`
-      ],
-      transition: {
-        duration: 1,
-        type: 'spring',
-        stiffness: 400,
-        damping: 40
-      }
-    }));
-  };
+  // const closeAction = () => {
+  //   controls.start((height = 1000) => ({
+  //     clipPath: [
+  //       `circle(10px at 5px 5px)`,
+  //       `circle(${height}px at 40px 40px)`,
+  //       `circle(10px at 5px 5px)`
+  //     ],
+  //     transition: {
+  //       duration: 1,
+  //       type: 'spring',
+  //       stiffness: 400,
+  //       damping: 40
+  //     }
+  //   }));
+  // };
 
-  const openAction = () => {
-    controls.start((height = 1000) => ({
-      clipPath: [
-        `circle(10px at 5px 5px)`,
-        `circle(${height + 200}px at 40px 40px)`,
-        `circle(${height + 600}px at 40px 40px)`,
-        `circle(${document.getElementsByTagName('body')[0].scrollHeight}px)`
-        // `circle(${height + 200}px at 40px 40px)`
-        // `circle(10px at 20px 20px)`
-      ],
-      transition: {
-        duration: 1.5,
-        type: 'spring',
-        stiffness: 400,
-        damping: 40
-      }
+  // const openAction = () => {
+  //   controls.start((height = 1000) => ({
+  //     clipPath: [
+  //       `circle(10px at 5px 5px)`,
+  //       `circle(${height + 200}px at 40px 40px)`,
+  //       `circle(${height + 600}px at 40px 40px)`,
+  //       `circle(${document.getElementsByTagName('body')[0].scrollHeight}px at at 40px 40px)`
+  //       // `circle(${height + 200}px at 40px 40px)`
+  //       // `circle(10px at 20px 20px)`
+  //     ],
+  //     transition: {
+  //       duration: 1.5,
+  //       type: 'spring',
+  //       stiffness: 400,
+  //       damping: 40
+  //     }
+  //   }));
+  // };
+
+  useEffect(() => {
+    controls.start(() => ({
+      opacity: [0, 1],
+      scale: [1, 1.02, 1.04, 1.02, 1]
     }));
-  };
+  }, [common.useLabPage]);
 
   // useEffect(() => {
   //   console.log('router.history : ', router);
-  // }, [router]);
+  // }, [router.location.pathname]);
 
   const [theme, setInitialTheme] = useState(initialTheme);
   const handleDarkmode = value => {
@@ -133,33 +140,33 @@ const App = observer(() => {
     closed: { pacity: 1, scale: [1, 1.02, 1.04, 1.02, 1] }
   };
 
-  const clipVariants = {
-    open: (height = size.outerHeight !== undefined ? size.outerHeight : 1000) => ({
-      clipPath: [
-        `circle(${height * 2 + 200}px at 40px 40px)`,
-        `circle(30px at 40px 40px)`,
-        `circle(${height * 2 + 200}px at 40px 40px)`
-      ],
-      transition: {
-        type: 'spring',
-        stiffness: 20,
-        restDelta: 2
-      }
-    }),
-    closed: (height = size.outerHeight !== undefined ? size.outerHeight : 1000) => ({
-      clipPath: [
-        `circle(${height * 2 + 200}px at 40px 40px)`,
-        `circle(30px at 40px 40px)`,
-        `circle(${height * 2 + 200}px at 40px 40px)`
-      ],
-      transition: {
-        delay: 0.5,
-        type: 'spring',
-        stiffness: 400,
-        damping: 40
-      }
-    })
-  };
+  // const clipVariants = {
+  //   open: (height = size.outerHeight !== undefined ? size.outerHeight : 1000) => ({
+  //     clipPath: [
+  //       `circle(${height * 2 + 200}px at 40px 40px)`,
+  //       `circle(30px at 40px 40px)`,
+  //       `circle(${height * 2 + 200}px at 40px 40px)`
+  //     ],
+  //     transition: {
+  //       type: 'spring',
+  //       stiffness: 20,
+  //       restDelta: 2
+  //     }
+  //   }),
+  //   closed: (height = size.outerHeight !== undefined ? size.outerHeight : 1000) => ({
+  //     clipPath: [
+  //       `circle(${height * 2 + 200}px at 40px 40px)`,
+  //       `circle(30px at 40px 40px)`,
+  //       `circle(${height * 2 + 200}px at 40px 40px)`
+  //     ],
+  //     transition: {
+  //       delay: 0.5,
+  //       type: 'spring',
+  //       stiffness: 400,
+  //       damping: 40
+  //     }
+  //   })
+  // };
 
   return (
     <ThemeProvider theme={theme} onChange={value => handleDarkmode(value)}>
@@ -173,9 +180,11 @@ const App = observer(() => {
           ) : (
             <>
               <ThemeModeSelector setIsDarkMode={setIsDarkMode} />
-              <LabModeSelector closeAction={closeAction} openAction={openAction} />
+              {/* <LabModeSelector closeAction={closeAction} openAction={openAction} /> */}
+              <LabModeSelector />
 
               <motion.div animate={controls}>
+                {/* <motion.div animate={controls} className="clippath-box"> */}
                 {common.useLabPage ? (
                   <Layout.Content>
                     <div style={{ position: 'relative' }}>

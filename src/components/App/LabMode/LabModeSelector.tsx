@@ -13,19 +13,19 @@ const Container = styled.div`
   z-index: 999;
 `;
 
-type Props = {
-  closeAction: Function;
-  openAction: Function;
-};
-
-const LabModeSelector: FC<Props> = observer(({ closeAction, openAction }) => {
+// type Props = {
+//   closeAction: Function;
+//   openAction: Function;
+// };
+const LabModeSelector: FC = observer(() => {
+  // const LabModeSelector: FC<Props> = observer(({ closeAction, openAction }) => {
   //const { setIsDarkMode } = props;
   const { common } = useStores();
   const router = useRouter();
 
   const handleChange = async () => {
     common.setUseLabpage(!common.useLabPage);
-    await closeAction();
+    //await closeAction();
 
     if (!common.useLabPage) {
       router.history.push('/about');
@@ -33,7 +33,7 @@ const LabModeSelector: FC<Props> = observer(({ closeAction, openAction }) => {
       router.history.push('lab');
     }
 
-    await openAction();
+    //await openAction();
   };
 
   const rotateVariants = {

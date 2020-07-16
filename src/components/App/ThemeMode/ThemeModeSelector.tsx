@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 import useStores from '../../../hooks/useStores';
 import { useTheme } from 'antd-theme';
 import { motion } from 'framer-motion';
-import { BulbOutlined, LinkedinOutlined } from '@ant-design/icons';
+import { BulbOutlined } from '@ant-design/icons';
 
 const Container = styled.div`
   position: absolute;

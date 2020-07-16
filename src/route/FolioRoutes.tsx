@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-import { Result } from 'antd';
 import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
-import loadable from '@loadable/component';
+// import loadable from '@loadable/component';
 
 import About from '../pages/about';
 import Blog from '../pages/blog';
@@ -9,7 +8,7 @@ import BlogDetail from '../pages/blog-detail';
 import Contact from '../pages/contact';
 import Portfolio from '../pages/portfolio';
 import Resume from '../pages/resume';
-import NoMatch from '../pages/404';
+// import NoMatch from '../pages/404';
 import { AnimatePresence } from 'framer-motion';
 
 // const AboutComponent = loadable(() => import('../pages/about'));

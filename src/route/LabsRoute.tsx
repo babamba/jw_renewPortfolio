@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
-import { Result } from 'antd';
+import React from 'react';
 import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
-import loadable from '@loadable/component';
+// import loadable from '@loadable/component';
 
 import LabMain from '../pages/LabMain';
 import { AnimatePresence } from 'framer-motion';

@@ -13,9 +13,4 @@ const HeadMeta: FC<MetaProps> = ({ text }) => {
     </Helmet>
   );
 };
-
-// HeadMeta.propTypes = {
-//   text: PropTypes.string
-// };
-
 export default HeadMeta;

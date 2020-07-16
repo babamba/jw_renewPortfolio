@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useEffect } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { Row, Col, Divider, Card, Typography, Avatar, Badge } from 'antd';
 import styled from 'styled-components';
 import { useRouter } from '../hooks/useRouter';

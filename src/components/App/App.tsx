@@ -179,7 +179,7 @@ const App = observer(() => {
           className={`${common.useDark ? 'dark' : 'light'} auth main-layout`}
         >
           {loading ? (
-            <Loader isDark={common.useDark} />
+            <Loader />
           ) : (
             <>
               <ThemeModeSelector setIsDarkMode={setIsDarkMode} />

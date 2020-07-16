@@ -1,10 +1,6 @@
 import React, { FC } from 'react';
 
-interface Props {
-  isDark: Boolean;
-}
-
-const Loader: FC<Props> = ({ isDark }) => {
+const Loader: FC = () => {
   return (
     <div
       className="divLoader"

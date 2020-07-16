@@ -1,15 +1,10 @@
-import React, { FunctionComponent, useState, useEffect, useRef } from 'react';
-
+import React, { FunctionComponent, useState, useEffect } from 'react';
 import { ContentfulService } from '../core/contentful';
 import { BlogPost } from '../interfaces/post';
 import { observer } from 'mobx-react';
 import useStores from '../hooks/useStores';
-// import { useRouter } from 'next/router';
-// import { BlogPost } from '../../interfaces/post';
 import BlogCard from '../components/Card/BlogCard';
-// import TagFilters from '../../shared/components/tag-filters/tag-filters.component';
 import { Row, Col, List, Pagination, Divider, Card as CardView, Skeleton, Empty } from 'antd';
-// import { BookOutlined } from '@ant-design/icons';
 import useWindowSize from '../hooks/useWindow';
 import HeadMeta from '../components/Helmet/HeadMeta';
 import { pageTransition, pageVariants, FastContainerStyle, ItemStyle } from '../interfaces/Motion';

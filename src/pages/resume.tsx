@@ -1,8 +1,6 @@
 import React, { FunctionComponent, useEffect } from 'react';
 import { Timeline, Row, Col, Card, Divider, Typography, Avatar, Badge, Tag } from 'antd';
 import styled from 'styled-components';
-// import Timeline from '../../shared/components/timeline/timeline.component';
-import { SyncOutlined } from '@ant-design/icons';
 import { pageTransition, pageVariants, ContainerStyle, ItemStyle } from '../interfaces/Motion';
 import { motion } from 'framer-motion';
 import HeadMeta from '../components/Helmet/HeadMeta';

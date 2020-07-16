@@ -1,35 +1,12 @@
 import React, { FunctionComponent, useEffect, useState, useRef } from 'react';
-import { Layout, Typography, Divider, Row, Affix, Card, Avatar } from 'antd';
+import { Typography, Card } from 'antd';
 import { Link, withRouter, RouteComponentProps, BrowserRouter as Router } from 'react-router-dom';
 import Slider from 'react-slick';
-import AboutPage from '../../../pages/about';
-import BlogPage from '../../../pages/blog';
-// import BlogPage from '../blog';
-import ContactPage from '../../../pages/contact';
-import PortfolioPage from '../../../pages/portfolio';
-import HistoryPage from '../../../pages/resume';
-
-// import { defaultMetaTags } from '../../../core/constants';
-// import { MetaTags, PageType, RobotsContent } from '../../../interfaces/meta-tags';
-// import LayoutMeta from '../../../shared/components/layout/layout.component';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
 import useWindowSize from '../../../hooks/useWindow';
 import styled, { keyframes } from 'styled-components';
-import FolioRoutes from '../../../route/FolioRoutes';
 import useStores from '../../../hooks/useStores';
-
-// interface PostPageProps {
-//   entries: BlogPost[];
-//   tags: { id: string; name: string }[];
-//   url: any;
-//   total: number;
-//   skip: number;
-//   limit: number;
-//   page?: number;
-//   totalCount: number;
-// }
 
 const Gradient = keyframes`
   0% {

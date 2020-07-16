@@ -1,23 +1,15 @@
-// import { NextPage } from 'next';
 import React, { FC, useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-// import Router from 'next/router';
-// import LayoutMeta from '../../shared/components/layout/layout.component';
 import { ContentfulService } from '../core/contentful';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { BlogPost } from '../interfaces/post';
-// import { MetaTags, PageType, RobotsContent } from '../../interfaces/meta-tags';
-// import Card from '../../shared/components/card/card.component';
 import { motion } from 'framer-motion';
 import { Typography, PageHeader, Layout, List, Skeleton } from 'antd';
 import styled from 'styled-components';
 import {
   pageDetailVariants,
   pageDetailTransition,
-  pageTransition,
-  pageVariants,
-  DetailContainerStyle,
-  ItemStyle
+  DetailContainerStyle
 } from '../interfaces/Motion';
 import HeadMeta from '../components/Helmet/HeadMeta';
 import { useRouter } from '../hooks/useRouter';

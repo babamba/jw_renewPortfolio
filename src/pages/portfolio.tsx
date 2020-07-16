@@ -1,19 +1,15 @@
 import React, { FunctionComponent, useEffect } from 'react';
-import { Card, Row, Col, Typography, Button } from 'antd';
+import { Card, Button } from 'antd';
 import styled from 'styled-components';
-
-// import TouchCarousel from 'react-touch-carousel';
-// import Slider from 'react-slick';
 import { ForwardOutlined, BackwardOutlined } from '@ant-design/icons';
 import Carousel from 'react-multi-carousel';
-import { pageTransition, pageVariants, ContainerStyle, ItemStyle } from '../interfaces/Motion';
+import { pageTransition, pageVariants } from '../interfaces/Motion';
 import { motion } from 'framer-motion';
 import HeadMeta from '../components/Helmet/HeadMeta';
 import { useRouter } from '../hooks/useRouter';
 import ReactGA from 'react-ga';
 import 'react-multi-carousel/lib/styles.css';
 const FolioContainer = styled(Card)`
-  /* height:%; */
   overflow: hidden;
   border-radius: 12px !important;
 `;
@@ -62,13 +58,6 @@ const Portfolio: FunctionComponent<Props> = ({}) => {
       items: 1
     }
   };
-
-  // const arrowStyle = {
-  //   background: 'transparent',
-  //   border: 0,
-  //   color: '#fff',
-  //   fontSize: '80px',
-  // };
 
   const CustomRightArrow = (props: any) => {
     return (

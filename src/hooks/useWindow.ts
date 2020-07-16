@@ -1,26 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
-
-// import { useLayoutEffect, useState, useEffect } from 'react';
-// const useWindowSize = () => {
-//   const [size, setSize] = useState<{ width: number; height: number } | null>(null);
-//   const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
-
-//   useIsomorphicLayoutEffect(() => {
-//     const updateSize = () => {
-//       console.log('test : ', document.getElementsByTagName('body')[0].scrollHeight);
-//       setSize({
-//         width: window.innerWidth,
-//         height: document.getElementsByTagName('body')[0].scrollHeight
-//       });
-//     };
-//     updateSize();
-//     window.addEventListener('resize', updateSize);
-//     return () => window.removeEventListener('resize', updateSize);
-//   }, []);
-//   return size;
-// };
-// export default useWindowSize;
-
+import { useEffect, useState, useCallback } from 'react';
 // Hook
 interface WindowSize {
   width?: number;

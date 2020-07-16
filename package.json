@@ -44,7 +44,7 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "build": "GENERATE_SOURCEMAP=false react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
     "populate:contentful": "contentful space migration --space-id 'tqm1iwn57h5i' utils/contentful.js --yes"
   },

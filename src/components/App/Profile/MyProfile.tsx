@@ -73,10 +73,10 @@ const MyProfile: FunctionComponent<Props> = (props: Props) => {
       <Row
         style={{
           alignItems: 'center',
-          padding: ResponsiveFlex ? '18px 5%' : '20px 16%'
+          padding: ResponsiveFlex ? '20px 10% 0px' : '20px 15%'
         }}
         align="middle"
-        justify={ResponsiveFlex ? 'center' : 'start'}
+        justify={ResponsiveFlex ? 'start' : 'start'}
       >
         <Col style={{ flexDirection: 'column', padding: 8 }}>
           <Avatar

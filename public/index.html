@@ -11,15 +11,36 @@
     <title>김진원 Kim Jin Won | Hello Im FrontEnd Developer JW</title>
     <style>
       .svgLoader {
-        animation: spin 0.8s ease-in infinite;
-        margin: auto;
+        animation: spin 1s ease-out infinite;
+        margin: 20px auto;
       }
       .divLoader {
-        width: 100vw;
         height: 100vh;
         display: flex;
+        flex: 1;
         align-items: center;
         justify-content: center;
+        flex-direction: column;
+      }
+
+      .text {
+        margin: 0;
+        padding: 0;
+      }
+      .loading-text-h1 {
+        font-weight: 300;
+        margin: 12px 0px;
+        line-height: 38px;
+        font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      }
+      .loading-text-paragraph {
+        font-weight: 300;
+        line-height: 24px;
+        margin: 0;
+        font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      }
+      .welcome {
+        line-height: 42px;
       }
       @keyframes spin {
         0% {
@@ -34,13 +55,13 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        opacity: 0.8;
+        opacity: 0.2;
         color: #fff;
         background: linear-gradient(-70deg, #22c1c3, #ebe650, #ee7752, #e73c7e, #23a6d5, #23d5ab);
         background-size: 300% 300%;
         -webkit-animation: Gradient 15s ease infinite;
         -moz-animation: Gradient 15s ease infinite;
-        animation: Gradient 15s ease infinite;
+        animation: Gradient 10s ease infinite;
       }
 
       @-webkit-keyframes Gradient {
@@ -78,6 +99,9 @@
           background-position: 0% 50%;
         }
       }
+      body {
+        margin: 0;
+      }
       /* .content {
         color: #fff;
         font-family: -apple-system, 'Helvetica Neue', sans-serif;
@@ -89,6 +113,7 @@
   <body>
     <noscript>Hello Im JW.</noscript>
     <div id="root">
+      <div class="gradient-background"></div>
       <div class="divLoader">
         <!-- <div className="content">Welcome</div> -->
         <svg
@@ -103,6 +128,11 @@
             d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"
           />
         </svg>
+        <h1 class="text loading-text-h1">Loading..</h1>
+
+        <!-- <p class="loading-text-paragraph welcome">이 화면이 보인다면 처음오신분이군요.</p> -->
+        <p class="loading-text-paragraph">개발자 김진원 이라고합니다.</p>
+        <p class="loading-text-paragraph">잘부탁드립니다.</p>
       </div>
     </div>
     <!--

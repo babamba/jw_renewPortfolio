@@ -112,29 +112,18 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
 
   const [topNav, setTopNav] = useState(null);
   const [currentPageIdx, setCurrentPageIdx] = useState(getPageIdx());
-  // const [contentCenterPadding, setContentCenterPadding] = useState(160);
   const [titlePadding, setTitlePadding] = useState(20);
-  // const [titleCenterPaddingPer, setTitleCenterPaddingPer] = useState(80);
 
   useEffect(() => {
-    // console.log('size : ', size);
     if (size.width !== undefined) {
       if (size.width < 400) {
-        // setContentCenterPadding(0);
-        // setTitleCenterPaddingPer(30);
         setTitlePadding(0);
       }
       if (size.width < 768) {
-        // setContentCenterPadding(0);
-        // setTitleCenterPaddingPer(30);
         setTitlePadding(0);
       } else if (size.width < 1176) {
-        // setContentCenterPadding(80);
-        // setTitleCenterPaddingPer(40);
         setTitlePadding(20);
       } else {
-        // setContentCenterPadding(120);
-        // setTitleCenterPaddingPer(50);
         setTitlePadding(20);
       }
     }

@@ -2,7 +2,8 @@ import React, { FunctionComponent, useState, useEffect, useRef } from 'react';
 
 import { ContentfulService } from '../core/contentful';
 import { BlogPost } from '../interfaces/post';
-
+import { observer } from 'mobx-react';
+import useStores from '../hooks/useStores';
 // import { useRouter } from 'next/router';
 // import { BlogPost } from '../../interfaces/post';
 import BlogCard from '../components/Card/BlogCard';
@@ -29,14 +30,11 @@ interface PostPageProps {
 //const Post: NextPage<PostPageProps, any> = (props: PostPageProps) => {
 //console.log('props : ', props);
 
-const Post: FunctionComponent<any> = () => {
+const Post: FunctionComponent<any> = observer(() => {
   const router = useRouter();
-  useEffect(() => {
-    if (process.env.NODE_ENV === 'production') {
-      ReactGA.pageview(router.location.pathname + router.location.search);
-    }
-  }, []);
-  // const router = useRouter();
+  const {
+    common: { currentPage, setBlogPage }
+  } = useStores();
   const windowSize = useWindowSize();
   // const { pagename } = router.query;
   //const entries = props.entries && props.entries.length ? props.entries : [];
@@ -44,7 +42,7 @@ const Post: FunctionComponent<any> = () => {
   // const [isFetch, setIsFetch] = useState(false);
   // const [entries, setEntries] = useState([]);
   // const [tags, setTags] = useState([]);
-  const [page, updatePage] = useState(1);
+  // const [page, updatePage] = useState(1);
   const [selectTag, updateTag] = useState('');
   // const [totalCount, settotalCount] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -53,12 +51,17 @@ const Post: FunctionComponent<any> = () => {
 
   const [pagination, setPagination] = useState({
     total: 1,
-    page: 1,
+    page: currentPage,
     pageSize: responsivePageSize
   });
 
+  useEffect(() => {
+    console.log('pagination : ', pagination);
+    console.log('currentPage : ', currentPage);
+  }, []);
+
   const [content, setContent] = useState({
-    page: 1,
+    page: currentPage,
     tags: [
       {
         id: '',
@@ -72,8 +75,19 @@ const Post: FunctionComponent<any> = () => {
   });
 
   useEffect(() => {
-    fetch(1, '');
-  }, [windowSize]);
+    fetch(currentPage, '');
+    console.log('currentPage : ', currentPage);
+  }, [windowSize.width]);
+
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production') {
+      ReactGA.pageview(router.location.pathname + router.location.search);
+    }
+    return () => {
+      console.log('unmount');
+      setBlogPage(1);
+    };
+  }, []);
 
   const setPage = async param => {
     setPagination({
@@ -86,7 +100,7 @@ const Post: FunctionComponent<any> = () => {
   const fetch = async (selectPage: number, selectTag: string = '') => {
     setLoading(true);
     const contentfulService = new ContentfulService();
-    const { tags } = await contentfulService.getAllTags();
+    // const { tags } = await contentfulService.getAllTags();
     const totalCount = await contentfulService.getAllEntriesCount({
       tag: selectTag ? selectTag.toString() : ''
     });
@@ -103,7 +117,6 @@ const Post: FunctionComponent<any> = () => {
       limit: responsivePageSize
     });
 
-    //console.log('result : ', result);
     if (result) {
       setContent(result);
     }
@@ -112,7 +125,8 @@ const Post: FunctionComponent<any> = () => {
   };
 
   const onHandlePaging = (page: number) => {
-    updatePage(page);
+    setBlogPage(page);
+    // updatePage(page);
     fetch(page, selectTag);
   };
   const handleTagChosen = tag => {
@@ -215,7 +229,7 @@ const Post: FunctionComponent<any> = () => {
       </CardView>
     </motion.div>
   );
-};
+});
 
 // Post.getInitialProps = async ({ req, query }) => {
 //   // Call an external API endpoint to get posts

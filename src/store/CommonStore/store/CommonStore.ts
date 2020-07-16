@@ -22,6 +22,8 @@ class CommonStore {
   @observable
   theme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
 
+  @observable currentPage = 1;
+
   @action
   checkMode = async () => {
     console.log('checkMode !');
@@ -37,6 +39,11 @@ class CommonStore {
     } else {
       this.useDark = false;
     }
+  };
+
+  @action
+  setBlogPage = async value => {
+    this.currentPage = value;
   };
 
   @action.bound

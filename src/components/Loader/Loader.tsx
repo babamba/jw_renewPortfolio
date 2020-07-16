@@ -9,7 +9,6 @@ const Loader: FC<Props> = ({ isDark }) => {
     <div
       className="divLoader"
       style={{
-        backgroundColor: isDark ? '#1b1d21' : '#f0f2f5',
         transition: 'background 0.3s ease 0s'
       }}
     >

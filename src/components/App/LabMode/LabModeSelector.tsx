@@ -48,14 +48,14 @@ const LabModeSelector: FC = observer(() => {
 
   return (
     <Container>
-      <motion.div
+      {/* <motion.div
         className="frame"
         whileHover="hover"
         whileTap={{ scale: 0.8 }}
         variants={hoverframeVariants}
         transition={transition}
-      >
-        {/* <motion.div animate={common.useLabPage ? 'open' : 'closed'} variants={rotateVariants}> */}
+      > */}
+      <motion.div animate={common.useLabPage ? 'open' : 'closed'} variants={rotateVariants}>
         {common.useLabPage ? (
           <LinkedinOutlined
             onClick={handleChange}

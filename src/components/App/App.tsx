@@ -51,7 +51,8 @@ const App = observer(() => {
   const size = useWindowSize();
   const controls = useAnimation();
   const [isInit, setIsInit] = useState(true);
-  const [isPhone, SetIsPhone] = useState(false);
+  const [isDeviceSize, SetIsDeviceSize] = useState('desktop');
+
   const [loading, setLoading] = useState(true);
   const { common } = useStores();
   const router = useRouter();
@@ -67,9 +68,11 @@ const App = observer(() => {
     console.log('size : ', size);
     if (size.width !== undefined) {
       if (size.width < 769) {
-        SetIsPhone(true);
+        SetIsDeviceSize('mobile');
+      } else if (size.width < 1201) {
+        SetIsDeviceSize('tablet');
       } else {
-        SetIsPhone(false);
+        SetIsDeviceSize('desktop');
       }
     }
   }, [size]);
@@ -121,7 +124,7 @@ const App = observer(() => {
   useEffect(() => {
     controls.start(() => ({
       opacity: [0, 1],
-      scale: [1, 1.02, 1.04, 1.02, 1]
+      scale: [1, 0.98, 0.97, 0.98, 1]
     }));
   }, [common.useLabPage]);
 
@@ -201,7 +204,12 @@ const App = observer(() => {
 
                     <Layout.Content
                       style={{
-                        width: isPhone ? '90%' : '80%',
+                        width:
+                          isDeviceSize === 'mobile'
+                            ? '90%'
+                            : isDeviceSize === 'tablet'
+                            ? '90%'
+                            : '70%',
                         minHeight: '100vh',
                         margin: '20px auto'
                       }}

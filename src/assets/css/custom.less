@@ -1,12 +1,13 @@
 /* noto-sans-regular - latin */
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+// @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 // * {
 //   font-family: "Noto Sans KR";
 // }
 
 * {
-  font-family: 'Noto Sans KR', 'Spoqa Han Sans', sans-serif;
+  font-family: 'Spoqa Han Sans', sans-serif;
+  // font-family: 'Noto Sans KR', 'Spoqa Han Sans', sans-serif;
 }
 
 .react-multi-carousel-dot-list {
@@ -92,7 +93,9 @@
 
 .post {
   img {
+    object-fit: cover;
     width: 100%;
+    max-height: 300px;
     padding-bottom: 12px;
   }
 }

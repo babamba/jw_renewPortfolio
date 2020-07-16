@@ -175,7 +175,8 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
     className: 'center',
     centerMode: true,
     infinite: true,
-    centerPadding: `${titlePadding}px`,
+    // centerPadding: `${titlePadding}px`,
+    centerPadding: `10px`,
     slidesToShow: 3,
     slidesToScroll: 1,
     speed: 600,
@@ -195,7 +196,7 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
           backgroundColor: 'transparent',
           border: 'none',
           opacity: 1,
-          margin: size.width !== undefined && size.width > 768 ? '0 5rem' : '0'
+          margin: size.width !== undefined && size.width > 1201 ? '0 16rem' : '0'
         }}
         bodyStyle={{
           padding: 4

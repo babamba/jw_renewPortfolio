@@ -8,7 +8,10 @@ import useStores from '../../hooks/useStores';
 import { Layout, Spin, Typography } from 'antd';
 import useWindowSize from '../../hooks/useWindow';
 import Loader from '../Loader/Loader';
+
 import Tabs from './Tabs/Tabs';
+import Menu from './Menu/Menu';
+
 import MyProfile from './Profile/MyProfile';
 import ThemeModeSelector from './ThemeMode/ThemeModeSelector';
 import LabModeSelector from './LabMode/LabModeSelector';
@@ -173,58 +176,58 @@ const App = observer(() => {
 
   return (
     <ThemeProvider theme={theme} onChange={value => handleDarkmode(value)}>
-      <AnimatePresence>
-        <Layout
-          style={{ transition: 'background 0.3s' }}
-          className={`${common.useDark ? 'dark' : 'light'} auth main-layout`}
-        >
-          {loading ? (
-            <Loader />
-          ) : (
-            <>
-              <ThemeModeSelector setIsDarkMode={setIsDarkMode} />
-              {/* <LabModeSelector closeAction={closeAction} openAction={openAction} /> */}
-              <LabModeSelector />
+      {/* <AnimatePresence> */}
+      <Layout
+        style={{ transition: 'background 0.3s' }}
+        className={`${common.useDark ? 'dark' : 'light'} auth main-layout`}
+      >
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+            <ThemeModeSelector setIsDarkMode={setIsDarkMode} />
+            {/* <LabModeSelector closeAction={closeAction} openAction={openAction} /> */}
+            <LabModeSelector />
 
-              <motion.div animate={controls}>
-                {/* <motion.div animate={controls} className="clippath-box"> */}
-                {common.useLabPage ? (
+            <motion.div animate={controls}>
+              {/* <motion.div animate={controls} className="clippath-box"> */}
+              {common.useLabPage ? (
+                <Layout.Content>
+                  <div style={{ position: 'relative' }}>
+                    <LabsRoutes />
+                  </div>
+                </Layout.Content>
+              ) : (
+                <>
                   <Layout.Content>
-                    <div style={{ position: 'relative' }}>
-                      <LabsRoutes />
-                    </div>
+                    <MyProfile />
                   </Layout.Content>
-                ) : (
-                  <>
-                    <Layout.Content>
-                      <MyProfile />
-                    </Layout.Content>
+                  <Menu />
+                  {/* <Tabs /> */}
 
-                    <Tabs />
-
-                    <Layout.Content
-                      style={{
-                        width:
-                          isDeviceSize === 'mobile'
-                            ? '90%'
-                            : isDeviceSize === 'tablet'
-                            ? '90%'
-                            : '70%',
-                        minHeight: '100vh',
-                        margin: '20px auto'
-                      }}
-                    >
-                      <div style={{ position: 'relative' }}>
-                        <FolioRoutes />
-                      </div>
-                    </Layout.Content>
-                  </>
-                )}
-              </motion.div>
-            </>
-          )}
-        </Layout>
-      </AnimatePresence>
+                  <Layout.Content
+                    style={{
+                      width:
+                        isDeviceSize === 'mobile'
+                          ? '90%'
+                          : isDeviceSize === 'tablet'
+                          ? '90%'
+                          : '60%',
+                      minHeight: '100vh',
+                      margin: '20px auto'
+                    }}
+                  >
+                    {/* <div style={{ position: 'relative' }}>
+                      <FolioRoutes />
+                    </div> */}
+                  </Layout.Content>
+                </>
+              )}
+            </motion.div>
+          </>
+        )}
+      </Layout>
+      {/* </AnimatePresence> */}
     </ThemeProvider>
   );
 });

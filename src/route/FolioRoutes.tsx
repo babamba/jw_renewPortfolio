@@ -32,14 +32,14 @@ const FolioRoutes = () => {
   const location = useLocation();
 
   return (
-    <AnimatePresence>
-      <React.Suspense
-        fallback={
-          <div>
-            <LazyLoader />
-          </div>
-        }
-      >
+    <React.Suspense
+      fallback={
+        <div>
+          <LazyLoader />
+        </div>
+      }
+    >
+      <AnimatePresence>
         <Switch location={location} key={location.pathname}>
           {/* exact 대신 매칭되는 첫번째 라우트만 보여주고 나머지는 보여주지 않는다.
            * 주의점 : 비교 할 라우트를 위에 작성해야 한다.
@@ -49,6 +49,8 @@ const FolioRoutes = () => {
 
           {/* <Route path="/about" exact={true} component={About} /> */}
           <Route path={['/', '/about']} exact component={About} />
+          {/* <Route path="/blog" exact={true} component={Blog} /> */}
+
           <Route path="/portfolio" exact={true} component={PortfolioComponent} />
           <Route path="/contact" exact={true} component={ContactComponent} />
           <Route path="/resume" exact={true} component={ResumeComponent} />
@@ -57,7 +59,7 @@ const FolioRoutes = () => {
           {/* <Route path="/portfolio" exact={true} component={Portfolio} />
           <Route path="/contact" exact={true} component={Contact} />
           <Route path="/resume" exact={true} component={Resume} />
-          <Route path="/blog" exact={true} component={Blog} />
+          
           <Route path="/blog/:id" exact={true} component={BlogDetail} /> */}
           {/* <Route path={['/blog/:id', '/blog']} component={Blog} /> */}
 
@@ -66,8 +68,8 @@ const FolioRoutes = () => {
           {/*  */}
           {/* <Route component={NoMatchComponent} /> */}
         </Switch>
-      </React.Suspense>
-    </AnimatePresence>
+      </AnimatePresence>
+    </React.Suspense>
   );
 };
 

@@ -73,7 +73,7 @@ const MyProfile: FunctionComponent<Props> = (props: Props) => {
       <Row
         style={{
           alignItems: 'center',
-          padding: ResponsiveFlex ? '20px 10% 0px' : '20px 15%'
+          padding: ResponsiveFlex ? '20px 10% 0px' : '20px 20%'
         }}
         align="middle"
         justify={ResponsiveFlex ? 'start' : 'start'}

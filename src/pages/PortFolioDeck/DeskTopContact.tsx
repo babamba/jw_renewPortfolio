@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent } from 'react';
 import { Typography, Badge } from 'antd';
 import { MailOutlined } from '@ant-design/icons';
 import styled from 'styled-components';

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { withRouter, RouteComponentProps, Route, Link } from 'react-router-dom';
-import { Button, Card, Col } from 'antd';
-import { motion, useMotionValue } from 'framer-motion';
+import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
+import { Card } from 'antd';
+import { motion } from 'framer-motion';
 import useWindowSize from '../../hooks/useWindow';
 
 interface Props extends RouteComponentProps {

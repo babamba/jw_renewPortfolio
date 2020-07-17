@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSprings, animated, interpolate } from 'react-spring';
+import { useSprings } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 
 import Card from './Card';

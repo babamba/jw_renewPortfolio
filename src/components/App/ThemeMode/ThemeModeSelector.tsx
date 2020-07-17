@@ -75,13 +75,6 @@ const ThemeModeSelector = observer(() => {
 
   return (
     <Container>
-      {/* <motion.div
-        className="frame"
-        whileHover="hover"
-        whileTap={{ scale: 0.8 }}
-        variants={hoverframeVariants}
-        transition={transition}
-      > */}
       <motion.div animate={common.useDark ? 'open' : 'closed'} variants={rotateVariants}>
         <BulbOutlined
           onClick={handleChange}
@@ -92,7 +85,6 @@ const ThemeModeSelector = observer(() => {
           }}
         />
       </motion.div>
-      {/* </motion.div> */}
     </Container>
   );
 });

@@ -1,10 +1,7 @@
 import React, { FC, useState, useEffect } from 'react';
-import { string, number, array } from 'prop-types';
-import { animated, interpolate } from 'react-spring';
-import { Card as AntdCard, Typography } from 'antd';
-import useWindowSize from '../../hooks/useWindow';
+import { Typography } from 'antd';
 import { motion, useAnimation } from 'framer-motion';
-import { pageTransition, pageVariants, ContainerStyle, ItemStyle } from '../../interfaces/Motion';
+import { ContainerStyle, ItemStyle } from '../../interfaces/Motion';
 
 interface Props {
   data: {
@@ -18,20 +15,6 @@ interface Props {
 const Card: FC<Props> = (props: Props) => {
   const { name, age, distance, position } = props.data;
   const controls = useAnimation();
-  const size = useWindowSize();
-  const [isDeviceSize, SetIsDeviceSize] = useState('desktop');
-
-  useEffect(() => {
-    if (size.width !== undefined) {
-      if (size.width < 769) {
-        SetIsDeviceSize('mobile');
-      } else if (size.width < 1201) {
-        SetIsDeviceSize('tablet');
-      } else {
-        SetIsDeviceSize('desktop');
-      }
-    }
-  }, [size]);
 
   return (
     <motion.div

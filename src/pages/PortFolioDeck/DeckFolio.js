@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter, BrowserRouter as Router } from 'react-router-dom';
 import useWindowSize from '../../hooks/useWindow';
-import useStores from '../../hooks/useStores';
 import Deck from './Deck';
 import { motion, useAnimation } from 'framer-motion';
 import { pageOpacityVariants, pageOpacityTransition } from '../../interfaces/Motion';
@@ -9,15 +8,11 @@ import ListData from './ListData';
 import DetailInfo from './DetailInfo';
 
 const DeckFolio = props => {
-  const {
-    common: { useDark }
-  } = useStores();
   const size = useWindowSize();
   const controls = useAnimation();
   const [isDeviceSize, SetIsDeviceSize] = useState('desktop');
   const [currentIdx, SetCurrentIdx] = useState(0);
   const [prevIdx, setPrevIdx] = useState(0);
-  const [loading, setLoading] = useState(false);
 
   const callback = idx => {
     setPrevIdx(currentIdx);
@@ -36,17 +31,7 @@ const DeckFolio = props => {
     }
   }, [size]);
 
-  const DeskTopStyle = {
-    position: 'relative',
-    top: isDeviceSize === 'desktop' ? '0%' : '-25%',
-    right: isDeviceSize === 'desktop' ? '20px' : '0'
-    // left: '0%'
-  };
-
   useEffect(() => {
-    console.log('prevIdx : ', prevIdx);
-    console.log('currentIdx : ', currentIdx);
-
     if (prevIdx === 1 && currentIdx === 0) {
       closeAction();
       setLoading(true);

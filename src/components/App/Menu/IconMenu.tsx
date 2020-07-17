@@ -1,22 +1,12 @@
-import React, { FunctionComponent, useEffect, useState, useRef } from 'react';
-import { Typography, Card, Row, Col } from 'antd';
-import { Link, withRouter, RouteComponentProps, BrowserRouter as Router } from 'react-router-dom';
-import {
-  BulbOutlined,
-  ReadOutlined,
-  PictureOutlined,
-  IdcardOutlined,
-  CoffeeOutlined
-} from '@ant-design/icons';
-import useWindowSize from '../../../hooks/useWindow';
-import styled, { keyframes } from 'styled-components';
-import useStores from '../../../hooks/useStores';
+import React, { FunctionComponent, useEffect, useState } from 'react';
+import { Row, Col } from 'antd';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { ReadOutlined, PictureOutlined, IdcardOutlined, CoffeeOutlined } from '@ant-design/icons';
 import { ContainerStyle, ItemStyle } from '../../../interfaces/Motion';
 import { motion } from 'framer-motion';
 import ThemeModeSelector from '../ThemeMode/ThemeModeSelector';
 
 interface Props extends RouteComponentProps<any> {}
-//const Dynamic: NextPage<PostPageProps, any> = (props: PostPageProps) => {
 const Menu: FunctionComponent<Props> = (props: Props) => {
   const [selected, setSelected] = useState('/');
   const { history, match } = props;

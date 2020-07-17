@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { Row, Col, Typography, Avatar, Affix } from 'antd';
+import { Row, Col, Typography, Avatar } from 'antd';
 import useWindowSize from '../../../hooks/useWindow';
 import ReactRotatingText from 'react-rotating-text';
 import { GithubOutlined } from '@ant-design/icons';

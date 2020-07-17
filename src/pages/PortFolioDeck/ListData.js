@@ -25,14 +25,14 @@ export default [
   },
   {
     pics: require('../../assets/images/folio/beeapp.png'),
-    name: 'National Institute of Agricultural Sciences Web',
+    name: 'National Institute of Agricultural Sciences App',
     age: '2020.03 ~ 2020.06',
     distance: 'Complete',
     position: 'FrontEnd React'
   },
   {
     pics: require('../../assets/images/folio/beeweb.png'),
-    name: 'National Institute of Agricultural Sciences App',
+    name: 'National Institute of Agricultural Sciences Web',
     age: '2020.01 ~ Now',
     distance: 'Progress',
     position: 'FrontEnd ReactNative'

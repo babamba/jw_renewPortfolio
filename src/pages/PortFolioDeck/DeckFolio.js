@@ -32,12 +32,14 @@ const DeckFolio = props => {
   }, [size]);
 
   useEffect(() => {
+    console.log('test idx : ', currentIdx);
+    console.log('test idx : ', ListData[-currentIdx]);
+    console.log('length : ', ListData.length);
+    console.log('test list[i]: ');
     if (prevIdx === 1 && currentIdx === 0) {
       closeAction();
-      setLoading(true);
 
       setTimeout(() => {
-        setLoading(false);
         openAction();
       }, 600);
     }
@@ -98,7 +100,7 @@ const DeckFolio = props => {
           }}
         >
           <motion.div animate={controls}>
-            <DetailInfo data={ListData[currentIdx]} />
+            <DetailInfo data={ListData[ListData.length - 1 - currentIdx]} />
           </motion.div>
         </div>
       </div>

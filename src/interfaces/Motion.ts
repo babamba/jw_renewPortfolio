@@ -13,6 +13,24 @@ const pageVariants = {
   }
 };
 
+const pageOpacityVariants = {
+  initial: {
+    opacity: 0
+  },
+  in: {
+    opacity: 1
+  },
+  out: {
+    opacity: 0
+  }
+};
+
+const pageOpacityTransition = {
+  type: 'tween',
+  duration: 1,
+  ease: 'anticipate'
+};
+
 const pageTransition = {
   type: 'tween',
   duration: 1,
@@ -153,5 +171,7 @@ export {
   DetailContainerStyle,
   ItemStyle,
   pageDetailVariants,
-  pageDetailTransition
+  pageDetailTransition,
+  pageOpacityVariants,
+  pageOpacityTransition
 };

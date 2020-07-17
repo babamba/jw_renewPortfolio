@@ -1,7 +1,8 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { withRouter, RouteComponentProps, Route, Link } from 'react-router-dom';
 import { Button, Card, Col } from 'antd';
 import { motion, useMotionValue } from 'framer-motion';
+import useWindowSize from '../../hooks/useWindow';
 
 interface Props extends RouteComponentProps {
   info: {
@@ -15,9 +16,23 @@ interface Props extends RouteComponentProps {
 }
 
 const BlogCard: FunctionComponent<Props> = ({ info, history, match }) => {
+  const size = useWindowSize();
+  const [isDeviceSize, SetIsDeviceSize] = useState('desktop');
+  useEffect(() => {
+    if (size.width !== undefined) {
+      if (size.width < 769) {
+        SetIsDeviceSize('mobile');
+      } else if (size.width < 1201) {
+        SetIsDeviceSize('tablet');
+      } else {
+        SetIsDeviceSize('desktop');
+      }
+    }
+  }, [size]);
+
   const cardBGStyles = {
     backgroundSize: 'cover',
-    height: 150,
+    height: isDeviceSize === 'desktop' ? 150 : 100,
     borderTopRightRadius: 12,
     borderTopLeftRadius: 12,
     background: `linear-gradient(45deg,  rgba(18, 40, 76, 0.56), rgba(89, 89, 89, 0.3)) , url(https:${info.heroImage}) no-repeat`
@@ -55,9 +70,9 @@ const BlogCard: FunctionComponent<Props> = ({ info, history, match }) => {
                   textOverflow: 'ellipsis',
                   wordWrap: 'break-word',
                   display: '-webkit-box',
-                  WebkitLineClamp: 5,
+                  WebkitLineClamp: isDeviceSize === 'desktop' ? 5 : 4,
                   WebkitBoxOrient: 'vertical',
-                  minHeight: 114
+                  minHeight: isDeviceSize === 'desktop' ? 114 : 80
                 }}
               >
                 {info.description}

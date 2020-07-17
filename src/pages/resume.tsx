@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Timeline, Row, Col, Card, Divider, Typography, Avatar, Badge, Tag } from 'antd';
 import styled from 'styled-components';
 import { pageTransition, pageVariants, ContainerStyle, ItemStyle } from '../interfaces/Motion';
@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import HeadMeta from '../components/Helmet/HeadMeta';
 import { useRouter } from '../hooks/useRouter';
 import ReactGA from 'react-ga';
+import useWindowSize from '../hooks/useWindow';
 
 const { Text, Link } = Typography;
 
@@ -77,6 +78,21 @@ const JobMainText = styled.h4`
 type Props = {};
 const History: FunctionComponent<Props> = ({}) => {
   const router = useRouter();
+
+  const size = useWindowSize();
+  const [isDeviceSize, SetIsDeviceSize] = useState('desktop');
+  useEffect(() => {
+    if (size.width !== undefined) {
+      if (size.width < 769) {
+        SetIsDeviceSize('mobile');
+      } else if (size.width < 1201) {
+        SetIsDeviceSize('tablet');
+      } else {
+        SetIsDeviceSize('desktop');
+      }
+    }
+  }, [size]);
+
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
       ReactGA.pageview(router.location.pathname + router.location.search);
@@ -98,7 +114,8 @@ const History: FunctionComponent<Props> = ({}) => {
         style={{
           padding: '6px 0px',
           borderRadius: 12,
-          marginBottom: 30
+          marginBottom: isDeviceSize === 'desktop' ? 0 : 30,
+          margin: isDeviceSize === 'desktop' ? '40px' : 0
         }}
       >
         <Row>

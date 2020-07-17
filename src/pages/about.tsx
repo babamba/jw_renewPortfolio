@@ -1,8 +1,8 @@
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Row, Col, Divider, Card, Typography, Avatar, Badge } from 'antd';
 import styled from 'styled-components';
 import { useRouter } from '../hooks/useRouter';
-import usesize from '../hooks/useWindow';
+import useWindowSize from '../hooks/useWindow';
 import { motion } from 'framer-motion';
 import { pageTransition, pageVariants, ContainerStyle, ItemStyle } from '../interfaces/Motion';
 import useStores from '../hooks/useStores';
@@ -52,13 +52,26 @@ const About: FunctionComponent<Props> = (props: Props) => {
     common: { useDark }
   } = useStores();
 
-  const size = usesize();
+  const size = useWindowSize();
   const router = useRouter();
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
       ReactGA.pageview(router.location.pathname + router.location.search);
     }
   }, []);
+
+  const [isDeviceSize, SetIsDeviceSize] = useState('desktop');
+  useEffect(() => {
+    if (size.width !== undefined) {
+      if (size.width < 769) {
+        SetIsDeviceSize('mobile');
+      } else if (size.width < 1201) {
+        SetIsDeviceSize('tablet');
+      } else {
+        SetIsDeviceSize('desktop');
+      }
+    }
+  }, [size]);
 
   return (
     <motion.div
@@ -72,7 +85,13 @@ const About: FunctionComponent<Props> = (props: Props) => {
     >
       <HeadMeta text="About Me" />
       <Card
-        style={{ padding: '10px 0px', borderRadius: 12, marginBottom: 30 }}
+        // margin: ;
+        style={{
+          padding: '10px 0px',
+          borderRadius: 12,
+          marginBottom: isDeviceSize === 'desktop' ? 0 : 30,
+          margin: isDeviceSize === 'desktop' ? '40px' : 0
+        }}
         bodyStyle={{
           padding: '18px 24px'
         }}

@@ -39,7 +39,6 @@ const GradientFont = styled.span`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   padding: 2px;
-
   animation: ${props => props.isCurrent && `Gradient 5s ease infinite alternate`};
 `;
 
@@ -175,8 +174,7 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
     className: 'center',
     centerMode: true,
     infinite: true,
-    // centerPadding: `${titlePadding}px`,
-    centerPadding: `10px`,
+    centerPadding: `${titlePadding}px`,
     slidesToShow: 3,
     slidesToScroll: 1,
     speed: 600,
@@ -196,7 +194,7 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
           backgroundColor: 'transparent',
           border: 'none',
           opacity: 1,
-          margin: size.width !== undefined && size.width > 1201 ? '0 16rem' : '0'
+          margin: size.width !== undefined && size.width > 768 ? '0 5rem' : '0'
         }}
         bodyStyle={{
           padding: 4

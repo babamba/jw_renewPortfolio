@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
 // import loadable from '@loadable/component';
 
@@ -8,6 +8,7 @@ import BlogDetail from '../pages/blog-detail';
 import Contact from '../pages/contact';
 import Portfolio from '../pages/portfolio';
 import Resume from '../pages/resume';
+import DeckFolio from '../pages/PortFolioDeck/DeckFolio';
 // import NoMatch from '../pages/404';
 import { AnimatePresence } from 'framer-motion';
 
@@ -16,8 +17,10 @@ import LazyLoader from '../components/Loader/LazyLoader';
 const BlogComponent = React.lazy(() => import('../pages/blog'));
 const BlogDetailComponent = React.lazy(() => import('../pages/blog-detail'));
 const ContactComponent = React.lazy(() => import('../pages/contact'));
-const PortfolioComponent = React.lazy(() => import('../pages/portfolio'));
+const PortfolioComponent = React.lazy(() => import('../pages/PortFolioDeck/DeckFolio'));
 const ResumeComponent = React.lazy(() => import('../pages/resume'));
+
+import useWindowSize from '../hooks/useWindow';
 
 // const AboutComponent = loadable(() => import('../pages/about'));
 // const BlogComponent = loadable(() => import('../pages/blog'));
@@ -29,28 +32,43 @@ const ResumeComponent = React.lazy(() => import('../pages/resume'));
 // 전역에서 사용되는 브라우저 라우터
 
 const FolioRoutes = () => {
+  const [isMobile, setIsMobile] = useState(false);
   const location = useLocation();
+  const size = useWindowSize();
+
+  useEffect(() => {
+    if (size.width !== undefined) {
+      if (size.width < 769) {
+        setIsMobile(true);
+      } else if (size.width < 1201) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    }
+  }, [size]);
 
   return (
-    <React.Suspense
-      fallback={
-        <div>
-          <LazyLoader />
-        </div>
-      }
-    >
-      <AnimatePresence>
+    <AnimatePresence>
+      <React.Suspense
+        fallback={
+          <div>
+            <LazyLoader />
+          </div>
+        }
+      >
         <Switch location={location} key={location.pathname}>
           {/* exact 대신 매칭되는 첫번째 라우트만 보여주고 나머지는 보여주지 않는다.
            * 주의점 : 비교 할 라우트를 위에 작성해야 한다.
            *  만약에 /statistics 을 /statistics/searchDetail 보다 위에 넣어준다면,
            *  상세화면이 라우팅 되지 않는다.
            */}
+          <Route path={['/', '/about']} exact={true} component={About} />
+          {/* <Route path={['/', '/main']} exact component={DeckFolio} />
+          <Route path="/about" exact={true} component={About} /> */}
 
-          {/* <Route path="/about" exact={true} component={About} /> */}
-          <Route path={['/', '/about']} exact component={About} />
           {/* <Route path="/blog" exact={true} component={Blog} /> */}
-
+          {/* <Route path="/portfolio" exact={true} component={DeckFolio} /> */}
           <Route path="/portfolio" exact={true} component={PortfolioComponent} />
           <Route path="/contact" exact={true} component={ContactComponent} />
           <Route path="/resume" exact={true} component={ResumeComponent} />
@@ -68,8 +86,8 @@ const FolioRoutes = () => {
           {/*  */}
           {/* <Route component={NoMatchComponent} /> */}
         </Switch>
-      </AnimatePresence>
-    </React.Suspense>
+      </React.Suspense>
+    </AnimatePresence>
   );
 };
 

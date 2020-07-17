@@ -7,13 +7,11 @@ import { motion } from 'framer-motion';
 import { BulbOutlined } from '@ant-design/icons';
 
 const Container = styled.div`
-  position: absolute;
-  right: 12px;
-  top: 14px;
+  position: relative;
   z-index: 999;
 `;
 
-const ThemeModeSelector = observer(({ setIsDarkMode }) => {
+const ThemeModeSelector = observer(() => {
   //const { setIsDarkMode } = props;
   const { common } = useStores();
   const [{ name, variables }, setTheme] = useTheme();
@@ -58,13 +56,11 @@ const ThemeModeSelector = observer(({ setIsDarkMode }) => {
       setTheme({
         name: 'default'
       });
-      setIsDarkMode(false);
     } else {
       await common.setUseDark(true);
       setTheme({
         name: 'dark'
       });
-      setIsDarkMode(true);
     }
   };
 
@@ -91,7 +87,7 @@ const ThemeModeSelector = observer(({ setIsDarkMode }) => {
           onClick={handleChange}
           style={{
             color: common.useDark ? '#f0d74a' : '#6b6b6b',
-            fontSize: 24,
+            fontSize: 20,
             cursor: 'pointer'
           }}
         />

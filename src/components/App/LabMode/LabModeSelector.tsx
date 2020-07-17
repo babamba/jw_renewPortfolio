@@ -6,9 +6,7 @@ import { motion } from 'framer-motion';
 import { ExperimentOutlined, LinkedinOutlined } from '@ant-design/icons';
 import { useRouter } from '../../../hooks/useRouter';
 const Container = styled.div`
-  position: absolute;
-  right: 12px;
-  top: 60px;
+  position: relative;
   z-index: 999;
 `;
 

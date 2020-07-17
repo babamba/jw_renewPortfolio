@@ -31,6 +31,20 @@ const Post: FunctionComponent<any> = observer(() => {
     common: { currentPage, setBlogPage }
   } = useStores();
   const windowSize = useWindowSize();
+
+  const [isDeviceSize, SetIsDeviceSize] = useState('desktop');
+  useEffect(() => {
+    if (windowSize.width !== undefined) {
+      if (windowSize.width < 769) {
+        SetIsDeviceSize('mobile');
+      } else if (windowSize.width < 1201) {
+        SetIsDeviceSize('tablet');
+      } else {
+        SetIsDeviceSize('desktop');
+      }
+    }
+  }, [windowSize]);
+
   // const { pagename } = router.query;
   //const entries = props.entries && props.entries.length ? props.entries : [];
   //   const tags = props.tags || [];
@@ -141,7 +155,12 @@ const Post: FunctionComponent<any> = observer(() => {
     >
       <HeadMeta text="BLOG" />
       <CardView
-        style={{ padding: '10px 0px', borderRadius: 12, marginBottom: 30 }}
+        style={{
+          padding: '10px 0px',
+          borderRadius: 12,
+          marginBottom: isDeviceSize === 'desktop' ? 0 : 30,
+          margin: isDeviceSize === 'desktop' ? '80px 44px' : 0
+        }}
         bodyStyle={{
           padding: '18px 24px'
         }}

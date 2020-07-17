@@ -6,7 +6,6 @@ import { observer } from 'mobx-react';
 import { ThemeProvider, useTheme } from 'antd-theme';
 import useStores from '../../hooks/useStores';
 import { Layout, Spin, Typography, Row, Col, Affix } from 'antd';
-import { AffixProps } from 'antd/lib/affix';
 import useWindowSize from '../../hooks/useWindow';
 import Loader from '../Loader/Loader';
 
@@ -17,21 +16,13 @@ import DeckFolio from '../../pages/PortFolioDeck/DeckFolio';
 
 import MyProfile from './Profile/MyProfile';
 import ThemeModeSelector from './ThemeMode/ThemeModeSelector';
-import LabModeSelector from './LabMode/LabModeSelector';
+// import LabModeSelector from './LabMode/LabModeSelector';
 import styled from 'styled-components';
-import Menu from '../../components/App/Menu/Menu';
 
-import {
-  pageTransition,
-  pageVariants,
-  FastContainerStyle,
-  ItemStyle
-} from '../../interfaces/Motion';
 import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import { useRouter } from '../../hooks/useRouter';
 import ReactGA from 'react-ga';
 
-import DetailInfo from '../../pages/PortFolioDeck/DetailInfo';
 import DeskTopContact from '../../pages/PortFolioDeck/DeskTopContact';
 
 // const { Text, Title, Paragraph } = Typography;

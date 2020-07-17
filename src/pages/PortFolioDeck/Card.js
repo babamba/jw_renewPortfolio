@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { string, number, array } from 'prop-types';
+import { string, number } from 'prop-types';
 import { animated, interpolate } from 'react-spring';
-import { Card as AntdCard } from 'antd';
 import useWindowSize from '../../hooks/useWindow';
 
 const Card = props => {

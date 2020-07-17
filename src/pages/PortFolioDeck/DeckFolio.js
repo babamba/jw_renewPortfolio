@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Col, Spin } from 'antd';
-import { Link, withRouter, RouteComponentProps, BrowserRouter as Router } from 'react-router-dom';
+import { withRouter, BrowserRouter as Router } from 'react-router-dom';
 import useWindowSize from '../../hooks/useWindow';
-import styled, { keyframes } from 'styled-components';
 import useStores from '../../hooks/useStores';
 import Deck from './Deck';
-import MyProfile from '../../components/App/Profile/MyProfile';
-import Menu from '../../components/App/Menu/Menu';
 import { motion, useAnimation } from 'framer-motion';
 import { pageOpacityVariants, pageOpacityTransition } from '../../interfaces/Motion';
 import ListData from './ListData';
 import DetailInfo from './DetailInfo';
-import DeskTopContact from './DeskTopContact';
 
 const DeckFolio = props => {
   const {

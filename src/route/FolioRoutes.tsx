@@ -3,12 +3,12 @@ import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
 // import loadable from '@loadable/component';
 
 import About from '../pages/about';
-import Blog from '../pages/blog';
-import BlogDetail from '../pages/blog-detail';
-import Contact from '../pages/contact';
-import Portfolio from '../pages/portfolio';
-import Resume from '../pages/resume';
-import DeckFolio from '../pages/PortFolioDeck/DeckFolio';
+// import Blog from '../pages/blog';
+// import BlogDetail from '../pages/blog-detail';
+// import Contact from '../pages/contact';
+// import Portfolio from '../pages/portfolio';
+// import Resume from '../pages/resume';
+// import DeckFolio from '../pages/PortFolioDeck/DeckFolio';
 // import NoMatch from '../pages/404';
 import { AnimatePresence } from 'framer-motion';
 
@@ -20,8 +20,6 @@ const ContactComponent = React.lazy(() => import('../pages/contact'));
 const PortfolioComponent = React.lazy(() => import('../pages/PortFolioDeck/DeckFolio'));
 const ResumeComponent = React.lazy(() => import('../pages/resume'));
 
-import useWindowSize from '../hooks/useWindow';
-
 // const AboutComponent = loadable(() => import('../pages/about'));
 // const BlogComponent = loadable(() => import('../pages/blog'));
 // const BlogDetailComponent = loadable(() => import('../pages/blog-detail'));
@@ -32,21 +30,7 @@ import useWindowSize from '../hooks/useWindow';
 // 전역에서 사용되는 브라우저 라우터
 
 const FolioRoutes = () => {
-  const [isMobile, setIsMobile] = useState(false);
   const location = useLocation();
-  const size = useWindowSize();
-
-  useEffect(() => {
-    if (size.width !== undefined) {
-      if (size.width < 769) {
-        setIsMobile(true);
-      } else if (size.width < 1201) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
-    }
-  }, [size]);
 
   return (
     <AnimatePresence>

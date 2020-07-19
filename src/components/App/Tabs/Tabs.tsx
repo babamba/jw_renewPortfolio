@@ -105,26 +105,6 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
     }
   }, [size]);
 
-  // const sliderContentSettings = {
-  //   className: 'center',
-  //   rtl: false,
-  //   // dots: true,
-  //   centerMode: true,
-  //   infinite: true,
-  //   centerPadding: `${contentCenterPadding}px`,
-  //   slidesToShow: 1,
-  //   speed: 500,
-  //   swipe: false,
-  //   swipeToSlide: false,
-  //   //focusOnSelect: false,
-  //   arrows: false
-  // };
-
-  // useEffect(() => {
-  //   catchPage();
-  //   generateMeta();
-  // }, []);
-
   useEffect(() => {
     catchPage();
     setIsInit(true);
@@ -180,10 +160,12 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
     speed: 600,
     swipe: size.width !== undefined && size.width > 768 ? false : true,
     swipeToSlide: size.width !== undefined && size.width > 768 ? false : true,
-    focusOnSelect: true,
+    focusOnSelect: size.width !== undefined && size.width > 768 ? false : true,
     arrows: false,
     beforeChange: (current, next) => {
-      swipePageNum(next);
+      if(size.width !== undefined && size.width > 768){
+        swipePageNum(next);
+      }
     }
   };
 
@@ -200,37 +182,6 @@ const Dynamic: FunctionComponent<Props> = (props: Props) => {
           padding: 4
         }}
       >
-        {/* {size !== null && size > 768 && (
-          <div style={{ float: 'left', paddingTop: 12, paddingLeft: 12 }}>
-            <Typography.Paragraph
-              style={{
-                fontSize: '1em',
-                margin: '.1em',
-                display: 'inline-block',
-                fontStyle: 'italic',
-                padding: '6px 10px',
-                background: '#faf46a',
-                color: 'rgba(51, 68, 85,.7)',
-                borderRadius: 4,
-                lineHeight: 1,
-                width: '100%',
-                textAlign: 'center'
-              }}
-            >
-              JW
-              <Avatar size={30} src="/static/images/me.png" style={{ marginLeft: 10 }} />
-            </Typography.Paragraph>
-          </div>
-        )} */}
-
-        {/* <Layout.Header
-          className="header"
-          style={{
-            background: 'transparent !important',
-            width: `${titleCenterPaddingPer}%`,
-            margin: '0 auto'
-          }}
-        > */}
         <Slider ref={slideTitleRef} {...sliderTitleSettings}>
           <div onClick={e => history.push('/about')}>
             <Typography.Paragraph

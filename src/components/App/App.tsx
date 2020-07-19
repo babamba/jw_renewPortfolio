@@ -24,6 +24,7 @@ import { useRouter } from '../../hooks/useRouter';
 import ReactGA from 'react-ga';
 
 import DeskTopContact from '../../pages/PortFolioDeck/DeskTopContact';
+import MobileMenu from '../App/Menu/Mobile/MobileMenu';
 
 // const { Text, Title, Paragraph } = Typography;
 // const LoaderContainer = styled.div`
@@ -147,7 +148,8 @@ const App = observer(() => {
                           {/* <LabModeSelector /> */}
                         </ControlCenter>
                         <MyProfile />
-                        <Tabs />
+                        <MobileMenu />
+                        {/* <Tabs /> */}
                         <Layout.Content
                           style={{
                             width:

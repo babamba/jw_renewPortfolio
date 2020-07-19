@@ -159,7 +159,7 @@ const Post: FunctionComponent<any> = observer(() => {
           padding: '10px 0px',
           borderRadius: 12,
           marginBottom: isDeviceSize === 'desktop' ? 0 : 30,
-          margin: isDeviceSize === 'desktop' ? '80px 44px' : 0
+          margin: isDeviceSize === 'desktop' ? '32px' : 0
         }}
         bodyStyle={{
           padding: '18px 24px'

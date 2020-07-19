@@ -1,6 +1,17 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { Typography } from "antd";
+import { Link } from "react-router-dom";
+
+interface Props {
+  toggle: Function;
+  item: {
+    text: string;
+    link: string;
+    icon: any;
+  };
+}
 
 const List = styled(motion.li)`
   list-style: none;
@@ -18,8 +29,6 @@ const IconPlaceholder = styled.div`
   margin-right: 20px;
   height: 4px;
   border-radius: 4px 4px 0px 0px;
-  background: linear-gradient(0.25turn, #e66465, #9198e5);
-  /* border: 2px solid #ff008c, #d309e1, #9c1aff, #7700ff, #4400ff; */
 `;
 
 const TextPlaceholder = styled.div`
@@ -27,7 +36,6 @@ const TextPlaceholder = styled.div`
   width: 200px;
   height: 20px;
   flex: 1;
-  border: 2px solid #ff008c, #d309e1, #9c1aff, #7700ff, #4400ff;
 `;
 
 const variants = {
@@ -47,15 +55,20 @@ const variants = {
   },
 };
 
-const MenuItems = ({ i }) => {
+const MenuItems = ({ i, item, toggle }) => {
+  const { text, link, icon } = item;
   return (
     <List
       variants={variants}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
-      <IconPlaceholder />
-      <TextPlaceholder />
+      <IconPlaceholder>{icon} </IconPlaceholder>
+      <Link to={link} onClick={() => toggle()}>
+        <TextPlaceholder>
+          <Typography.Title level={3}>{text}</Typography.Title>
+        </TextPlaceholder>
+      </Link>
     </List>
   );
 };

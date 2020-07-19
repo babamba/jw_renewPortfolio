@@ -8,7 +8,7 @@ import { useRouter } from "../../../../hooks/useRouter";
 import useStores from "../../../../hooks/useStores";
 
 const BackgroundBox = styled(motion.div)`
-  background: ${(props) => (props.useDark ? "#1b1d21" : "#FFF")};
+  background: ${(props) => (props.useDark ? "#3d3e40" : "#ebebeb")};
   width: 100%;
   height: 100vh;
 `;
@@ -56,10 +56,11 @@ const MobileMenu: FC = ({}) => {
       animate={isOpen ? "open" : "closed"}
       custom={height}
       ref={containerRef}
+      isOpen={isOpen}
     >
       <MenuToggle toggle={() => toggleOpen()} />
       <BackgroundBox variants={sidebar} useDark={common.useDark} />
-      <Navigation />
+      <Navigation toggle={() => toggleOpen()} />
     </NavContainer>
   );
 };

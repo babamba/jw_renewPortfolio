@@ -1,16 +1,30 @@
-import React, { FunctionComponent, useState, useEffect } from 'react';
-import { ContentfulService } from '../core/contentful';
-import { BlogPost } from '../interfaces/post';
-import { observer } from 'mobx-react';
-import useStores from '../hooks/useStores';
-import BlogCard from '../components/Card/BlogCard';
-import { Row, Col, List, Pagination, Divider, Card as CardView, Skeleton, Empty } from 'antd';
-import useWindowSize from '../hooks/useWindow';
-import HeadMeta from '../components/Helmet/HeadMeta';
-import { pageTransition, pageVariants, FastContainerStyle, ItemStyle } from '../interfaces/Motion';
-import { motion } from 'framer-motion';
-import { useRouter } from '../hooks/useRouter';
-import ReactGA from 'react-ga';
+import React, { FunctionComponent, useState, useEffect } from "react";
+import { ContentfulService } from "../core/contentful";
+import { BlogPost } from "../interfaces/post";
+import { observer } from "mobx-react";
+import useStores from "../hooks/useStores";
+import BlogCard from "../components/Card/BlogCard";
+import {
+  Row,
+  Col,
+  List,
+  Pagination,
+  Divider,
+  Card as CardView,
+  Skeleton,
+  Empty,
+} from "antd";
+import useWindowSize from "../hooks/useWindow";
+import HeadMeta from "../components/Helmet/HeadMeta";
+import {
+  pageTransition,
+  pageVariants,
+  FastContainerStyle,
+  ItemStyle,
+} from "../interfaces/Motion";
+import { motion } from "framer-motion";
+import { useRouter } from "../hooks/useRouter";
+import ReactGA from "react-ga";
 
 interface PostPageProps {
   entries: BlogPost[];
@@ -28,19 +42,19 @@ interface PostPageProps {
 const Post: FunctionComponent<any> = observer(() => {
   const router = useRouter();
   const {
-    common: { currentPage, setBlogPage }
+    common: { currentPage, setBlogPage },
   } = useStores();
   const windowSize = useWindowSize();
 
-  const [isDeviceSize, SetIsDeviceSize] = useState('desktop');
+  const [isDeviceSize, SetIsDeviceSize] = useState("desktop");
   useEffect(() => {
     if (windowSize.width !== undefined) {
       if (windowSize.width < 769) {
-        SetIsDeviceSize('mobile');
+        SetIsDeviceSize("mobile");
       } else if (windowSize.width < 1201) {
-        SetIsDeviceSize('tablet');
+        SetIsDeviceSize("tablet");
       } else {
-        SetIsDeviceSize('desktop');
+        SetIsDeviceSize("desktop");
       }
     }
   }, [windowSize]);
@@ -52,7 +66,7 @@ const Post: FunctionComponent<any> = observer(() => {
   // const [entries, setEntries] = useState([]);
   // const [tags, setTags] = useState([]);
   // const [page, updatePage] = useState(1);
-  const [selectTag, updateTag] = useState('');
+  const [selectTag, updateTag] = useState("");
   // const [totalCount, settotalCount] = useState(0);
   const [loading, setLoading] = useState(false);
 
@@ -61,69 +75,69 @@ const Post: FunctionComponent<any> = observer(() => {
   const [pagination, setPagination] = useState({
     total: 1,
     page: currentPage,
-    pageSize: responsivePageSize
+    pageSize: responsivePageSize,
   });
 
   useEffect(() => {
-    console.log('pagination : ', pagination);
-    console.log('currentPage : ', currentPage);
+    console.log("pagination : ", pagination);
+    console.log("currentPage : ", currentPage);
   }, []);
 
   const [content, setContent] = useState({
     page: currentPage,
     tags: [
       {
-        id: '',
-        name: ''
-      }
+        id: "",
+        name: "",
+      },
     ],
     entries: [],
     total: 0,
     skip: 0,
-    limit: 0
+    limit: 0,
   });
 
   useEffect(() => {
-    fetch(currentPage, '');
-    console.log('currentPage : ', currentPage);
+    fetch(currentPage, "");
+    console.log("currentPage : ", currentPage);
   }, [windowSize.width]);
 
   useEffect(() => {
-    if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV === "production") {
       ReactGA.pageview(router.location.pathname + router.location.search);
     }
     return () => {
-      console.log('unmount');
+      console.log("unmount");
       setBlogPage(1);
     };
   }, []);
 
-  const setPage = async param => {
+  const setPage = async (param) => {
     setPagination({
       total: param.totalCount,
       page: param.selectPage,
-      pageSize: param.responsivePageSize
+      pageSize: param.responsivePageSize,
     });
   };
 
-  const fetch = async (selectPage: number, selectTag: string = '') => {
+  const fetch = async (selectPage: number, selectTag: string = "") => {
     setLoading(true);
     const contentfulService = new ContentfulService();
     // const { tags } = await contentfulService.getAllTags();
     const totalCount = await contentfulService.getAllEntriesCount({
-      tag: selectTag ? selectTag.toString() : ''
+      tag: selectTag ? selectTag.toString() : "",
     });
 
     await setPage({
       totalCount,
       selectPage,
-      responsivePageSize
+      responsivePageSize,
     });
 
     const result: any = await contentfulService.getBlogPostEntries({
-      tag: selectTag ? selectTag.toString() : '',
+      tag: selectTag ? selectTag.toString() : "",
       skip: (selectPage - 1) * responsivePageSize,
-      limit: responsivePageSize
+      limit: responsivePageSize,
     });
 
     if (result) {
@@ -138,7 +152,7 @@ const Post: FunctionComponent<any> = observer(() => {
     // updatePage(page);
     fetch(page, selectTag);
   };
-  const handleTagChosen = tag => {
+  const handleTagChosen = (tag) => {
     updateTag(tag.id);
     fetch(1, tag.id);
   };
@@ -150,22 +164,23 @@ const Post: FunctionComponent<any> = observer(() => {
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      style={{ position: 'absolute', width: '100%' }}
+      style={{ position: "absolute", width: "100%" }}
       // style={pageStyle}
     >
       <HeadMeta text="BLOG" />
       <CardView
         style={{
-          padding: '10px 0px',
           borderRadius: 12,
-          marginBottom: isDeviceSize === 'desktop' ? 0 : 30,
-          margin: isDeviceSize === 'desktop' ? '32px' : 0
+          marginBottom: isDeviceSize === "desktop" ? 0 : 30,
+          margin: isDeviceSize === "desktop" ? "32px" : 0,
         }}
         bodyStyle={{
-          padding: '18px 24px'
+          padding: "18px",
         }}
       >
-        <Divider orientation="center">Blog</Divider>
+        <Divider orientation="center" style={{ marginTop: 0 }}>
+          Blog
+        </Divider>
         <Row>
           <Col span={24}>
             <Row style={{ paddingBottom: 20 }}>
@@ -176,7 +191,10 @@ const Post: FunctionComponent<any> = observer(() => {
                   selectedTagId={selectTag}
                 />
               </Col> */}
-              <Col span={24} style={{ textAlign: 'right', alignSelf: 'center' }}>
+              <Col
+                span={24}
+                style={{ textAlign: "right", alignSelf: "center" }}
+              >
                 <Pagination
                   {...pagination}
                   onChange={onHandlePaging}
@@ -204,7 +222,7 @@ const Post: FunctionComponent<any> = observer(() => {
                     md: 2,
                     lg: 4,
                     xl: 4,
-                    xxl: 4
+                    xxl: 4,
                   }}
                   dataSource={content.entries}
                   renderItem={(item: any) => {
@@ -226,7 +244,7 @@ const Post: FunctionComponent<any> = observer(() => {
                     md: 2,
                     lg: 4,
                     xl: 4,
-                    xxl: 4
+                    xxl: 4,
                   }}
                 >
                   <List.Item>

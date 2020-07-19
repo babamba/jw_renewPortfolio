@@ -2,6 +2,12 @@ import * as React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import MenuItems from "./MenuItems";
+import {
+  ReadOutlined,
+  PictureOutlined,
+  IdcardOutlined,
+  CoffeeOutlined,
+} from "@ant-design/icons";
 
 const ListBox = styled(motion.ul)`
   padding: 25px;
@@ -19,12 +25,40 @@ const variants = {
   },
 };
 
-const Navigation = () => {
+const Navigation = ({ toggle }) => {
+  const item = [
+    {
+      text: "About",
+      link: "/about",
+      icon: <IdcardOutlined />,
+    },
+    {
+      text: "Blog",
+      link: "/Blog",
+      icon: <IdcardOutlined />,
+    },
+    {
+      text: "Portfolio",
+      link: "/portfolio",
+      icon: <IdcardOutlined />,
+    },
+    {
+      text: "Resume",
+      link: "/resume",
+      icon: <IdcardOutlined />,
+    },
+    {
+      text: "Contact",
+      link: "/contact",
+      icon: <IdcardOutlined />,
+    },
+  ];
+
   const itemIds = [0, 1, 2, 3, 4];
   return (
     <ListBox variants={variants}>
-      {itemIds.map((i) => (
-        <MenuItems i={i} key={i} />
+      {item.map((item, i) => (
+        <MenuItems i={i} key={i} item={item} toggle={toggle} />
       ))}
     </ListBox>
   );

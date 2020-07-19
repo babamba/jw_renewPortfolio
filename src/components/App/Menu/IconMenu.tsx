@@ -45,7 +45,7 @@ const Menu: FunctionComponent<Props> = (props: Props) => {
             <IdcardOutlined
               style={{
                 fontSize: selected === "/about" || selected === "/" ? 24 : 20,
-                transition: "0.3s",
+                transition: "0.2s",
               }}
               onClick={() => history.push("/about")}
             />
@@ -57,7 +57,7 @@ const Menu: FunctionComponent<Props> = (props: Props) => {
             <PictureOutlined
               style={{
                 fontSize: selected === "/portfolio" ? 24 : 20,
-                transition: "0.5s",
+                transition: "0.2s",
               }}
               onClick={() => history.push("/portfolio")}
             />
@@ -68,7 +68,7 @@ const Menu: FunctionComponent<Props> = (props: Props) => {
             <ReadOutlined
               style={{
                 fontSize: selected === "/resume" ? 24 : 20,
-                transition: "0.5s",
+                transition: "0.2s",
               }}
               onClick={() => history.push("/resume")}
             />
@@ -79,7 +79,7 @@ const Menu: FunctionComponent<Props> = (props: Props) => {
             <CoffeeOutlined
               style={{
                 fontSize: selected === "/blog" ? 24 : 20,
-                transition: "0.5s",
+                transition: "0.2s",
               }}
               onClick={() => history.push("/blog")}
             />

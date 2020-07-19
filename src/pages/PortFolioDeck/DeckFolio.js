@@ -1,20 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { withRouter, BrowserRouter as Router } from 'react-router-dom';
-import useWindowSize from '../../hooks/useWindow';
-import Deck from './Deck';
-import { motion, useAnimation } from 'framer-motion';
-import { pageOpacityVariants, pageOpacityTransition } from '../../interfaces/Motion';
-import ListData from './ListData';
-import DetailInfo from './DetailInfo';
+import React, { useEffect, useState } from "react";
+import { withRouter, BrowserRouter as Router } from "react-router-dom";
+import useWindowSize from "../../hooks/useWindow";
+import Deck from "./Deck";
+import { motion, useAnimation } from "framer-motion";
+import {
+  pageOpacityVariants,
+  pageOpacityTransition,
+} from "../../interfaces/Motion";
+import PortfolioData from "./PortfolioData";
+import DetailInfo from "./FolioInfo";
 
-const DeckFolio = props => {
+const DeckFolio = (props) => {
   const size = useWindowSize();
   const controls = useAnimation();
-  const [isDeviceSize, SetIsDeviceSize] = useState('desktop');
+  const [isDeviceSize, SetIsDeviceSize] = useState("desktop");
   const [currentIdx, SetCurrentIdx] = useState(0);
   const [prevIdx, setPrevIdx] = useState(0);
 
-  const callback = idx => {
+  const callback = (idx) => {
     setPrevIdx(currentIdx);
     SetCurrentIdx(idx);
   };
@@ -22,20 +25,20 @@ const DeckFolio = props => {
   useEffect(() => {
     if (size.width !== undefined) {
       if (size.width < 769) {
-        SetIsDeviceSize('mobile');
+        SetIsDeviceSize("mobile");
       } else if (size.width < 1201) {
-        SetIsDeviceSize('tablet');
+        SetIsDeviceSize("tablet");
       } else {
-        SetIsDeviceSize('desktop');
+        SetIsDeviceSize("desktop");
       }
     }
   }, [size]);
 
   useEffect(() => {
-    console.log('test idx : ', currentIdx);
-    console.log('test idx : ', ListData[-currentIdx]);
-    console.log('length : ', ListData.length);
-    console.log('test list[i]: ');
+    console.log("test idx : ", currentIdx);
+    console.log("test idx : ", PortfolioData[-currentIdx]);
+    console.log("length : ", PortfolioData.length);
+    console.log("test list[i]: ");
     if (prevIdx === 1 && currentIdx === 0) {
       closeAction();
 
@@ -50,10 +53,10 @@ const DeckFolio = props => {
       opacity: 0,
       transition: {
         duration: 1,
-        type: 'spring',
+        type: "spring",
         stiffness: 400,
-        damping: 40
-      }
+        damping: 40,
+      },
     }));
   };
 
@@ -62,10 +65,10 @@ const DeckFolio = props => {
       opacity: 1,
       transition: {
         duration: 1,
-        type: 'spring',
+        type: "spring",
         stiffness: 400,
-        damping: 40
-      }
+        damping: 40,
+      },
     }));
   };
 
@@ -76,16 +79,20 @@ const DeckFolio = props => {
       exit="out"
       variants={pageOpacityVariants}
       transition={pageOpacityTransition}
-      style={{ position: 'absolute', width: '100%', height: '100%' }}
+      style={{ position: "absolute", width: "100%", height: "100%" }}
       // style={pageStyle}
     >
-      <div className={isDeviceSize === 'desktop' ? 'deck-area-desktop' : 'deck-area-mobile'}>
+      <div
+        className={
+          isDeviceSize === "desktop" ? "deck-area-desktop" : "deck-area-mobile"
+        }
+      >
         <div
           style={{
-            position: isDeviceSize === 'desktop' ? 'fixed' : 'relative',
-            width: '100vh',
-            height: isDeviceSize === 'desktop' ? '75vh' : '55vh',
-            top: isDeviceSize === 'desktop' ? '10%' : '0'
+            position: isDeviceSize === "desktop" ? "fixed" : "relative",
+            width: "100vh",
+            height: isDeviceSize === "desktop" ? "75vh" : "55vh",
+            top: isDeviceSize === "desktop" ? "10%" : "0",
           }}
         >
           <Deck callback={callback} />
@@ -93,14 +100,16 @@ const DeckFolio = props => {
 
         <div
           style={{
-            position: 'relative',
-            textAlign: 'left',
-            padding: '10px 15%',
-            top: isDeviceSize === 'desktop' ? '75%' : '0'
+            position: "relative",
+            textAlign: "left",
+            padding: "10px 15%",
+            top: isDeviceSize === "desktop" ? "75%" : "0",
           }}
         >
           <motion.div animate={controls}>
-            <DetailInfo data={ListData[ListData.length - 1 - currentIdx]} />
+            <DetailInfo
+              data={PortfolioData[PortfolioData.length - 1 - currentIdx]}
+            />
           </motion.div>
         </div>
       </div>

@@ -20,7 +20,8 @@ const PostContainer = styled.div`
   padding: 0px 20px;
 
   @media only screen and (min-width: 200px) and (max-width: 992px) {
-    padding: 0px 50px 40px;
+    padding: 0px 20px;
+    margin: 0px;
   }
 `;
 
@@ -121,7 +122,7 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({
             {/* <motion.div v */}
             <motion.button
               whileHover={{
-                scale: 1.05,
+                scale: 1.02,
                 transition: { duration: 0.5 },
               }}
               whileTap={{ scale: 0.99 }}
@@ -130,6 +131,7 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({
                 background: "transparent",
                 border: "none",
                 outline: "none",
+                cursor: "pointer",
               }}
             >
               <PageHeader

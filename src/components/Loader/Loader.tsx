@@ -1,18 +1,18 @@
-import React, { FC } from 'react';
+import React, { FC } from "react";
 
 const Loader: FC = () => {
   return (
     <div
       className="divLoader"
       style={{
-        transition: 'background 0.3s ease 0s'
+        transition: "background 0.3s ease 0s",
       }}
     >
       <svg
         className="svgLoader"
         viewBox="0 0 1024 1024"
-        width="10em"
-        height="10em"
+        width="4em"
+        height="4em"
         aria-hidden="true"
       >
         <path

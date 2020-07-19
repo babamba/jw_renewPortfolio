@@ -7,13 +7,14 @@ import About from "../pages/about";
 // import BlogDetail from '../pages/blog-detail';
 // import Contact from '../pages/contact';
 // import Portfolio from '../pages/portfolio';
-// import Resume from '../pages/resume';
+import Resume from "../pages/resume";
 // import DeckFolio from '../pages/PortFolioDeck/DeckFolio';
 // import NoMatch from '../pages/404';
 import { AnimatePresence } from "framer-motion";
 
 // const AboutComponent = loadable(() => import('../pages/about'));
 import LazyLoader from "../components/Loader/LazyLoader";
+
 const BlogComponent = React.lazy(() => import("../pages/blog"));
 const BlogDetailComponent = React.lazy(() => import("../pages/blog-detail"));
 const ContactComponent = React.lazy(() => import("../pages/contact"));
@@ -21,6 +22,9 @@ const PortfolioComponent = React.lazy(() =>
   import("../pages/PortFolioDeck/DeckFolio")
 );
 const ResumeComponent = React.lazy(() => import("../pages/resume"));
+const FolioDetailComponent = React.lazy(() =>
+  import("../pages/Portfolio-detail")
+);
 
 // const AboutComponent = loadable(() => import('../pages/about'));
 // const BlogComponent = loadable(() => import('../pages/blog'));
@@ -35,14 +39,14 @@ const FolioRoutes = () => {
   const location = useLocation();
 
   return (
-    <AnimatePresence>
-      <React.Suspense
-        fallback={
-          <div>
-            <LazyLoader />
-          </div>
-        }
-      >
+    <React.Suspense
+      fallback={
+        <div>
+          <LazyLoader />
+        </div>
+      }
+    >
+      <AnimatePresence>
         <Switch location={location} key={location.pathname}>
           {/* exact 대신 매칭되는 첫번째 라우트만 보여주고 나머지는 보여주지 않는다.
            * 주의점 : 비교 할 라우트를 위에 작성해야 한다.
@@ -60,17 +64,24 @@ const FolioRoutes = () => {
             exact={true}
             component={PortfolioComponent}
           />
-          <Route path="/contact" exact={true} component={ContactComponent} />
-          <Route path="/resume" exact={true} component={ResumeComponent} />
+          <Route
+            path="/portfolio/:id"
+            exact={true}
+            component={FolioDetailComponent}
+          />
+          {/* <Route path="/contact" exact={true} component={ContactComponent} /> */}
+          <Route path="/resume" exact={true} component={Resume} />
+          {/* <Route path="/resume" exact={true} component={ResumeComponent} /> */}
           <Route path="/blog" exact={true} component={BlogComponent} />
           <Route
             path="/blog/:id"
             exact={true}
             component={BlogDetailComponent}
           />
+
           {/* <Route path="/portfolio" exact={true} component={Portfolio} />
           <Route path="/contact" exact={true} component={Contact} />
-          <Route path="/resume" exact={true} component={Resume} />
+         
           
           <Route path="/blog/:id" exact={true} component={BlogDetail} /> */}
           {/* <Route path={['/blog/:id', '/blog']} component={Blog} /> */}
@@ -80,8 +91,8 @@ const FolioRoutes = () => {
           {/*  */}
           {/* <Route component={NoMatchComponent} /> */}
         </Switch>
-      </React.Suspense>
-    </AnimatePresence>
+      </AnimatePresence>
+    </React.Suspense>
   );
 };
 

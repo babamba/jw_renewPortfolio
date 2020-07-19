@@ -31,7 +31,9 @@ const Menu: FunctionComponent<Props> = (props: Props) => {
 
   useEffect(() => {
     console.log("test : ", location.pathname);
-    setSelected(location.pathname);
+    const pathname = location.pathname.split("/");
+
+    setSelected(pathname[1]);
   }, [match]);
 
   return (
@@ -57,10 +59,10 @@ const Menu: FunctionComponent<Props> = (props: Props) => {
           style={{
             textAlign: "center",
             transform:
-              selected === "/about" || selected === "/"
+              selected === "about" || selected === ""
                 ? "scale( 1.2 )"
                 : "scale( 1 )",
-
+            textDecoration: selected === "about" ? "underline" : "unset",
             transition: ".2s",
           }}
         >
@@ -90,11 +92,8 @@ const Menu: FunctionComponent<Props> = (props: Props) => {
           span={5}
           style={{
             textAlign: "center",
-            transform:
-              selected === "/portfolio" || selected === "/"
-                ? "scale( 1.2 )"
-                : "scale( 1 )",
-
+            transform: selected === "portfolio" ? "scale( 1.2 )" : "scale( 1 )",
+            textDecoration: selected === "portfolio" ? "underline" : "unset",
             transition: ".2s",
           }}
         >
@@ -123,11 +122,8 @@ const Menu: FunctionComponent<Props> = (props: Props) => {
           span={5}
           style={{
             textAlign: "center",
-            transform:
-              selected === "/resume" || selected === "/"
-                ? "scale( 1.2 )"
-                : "scale( 1 )",
-
+            transform: selected === "resume" ? "scale( 1.2 )" : "scale( 1 )",
+            textDecoration: selected === "resume" ? "underline" : "unset",
             transition: ".2s",
           }}
         >
@@ -156,11 +152,8 @@ const Menu: FunctionComponent<Props> = (props: Props) => {
           span={5}
           style={{
             textAlign: "center",
-            transform:
-              selected === "/blog" || selected === "/"
-                ? "scale( 1.2 )"
-                : "scale( 1 )",
-
+            transform: selected === "blog" ? "scale( 1.2 )" : "scale( 1 )",
+            textDecoration: selected === "blog" ? "underline" : "unset",
             transition: ".2s",
           }}
         >

@@ -121,7 +121,13 @@ const About: FunctionComponent<Props> = (props: Props) => {
             </HashTag>
           </Col>
         </Row>
-        <Divider orientation="left">FrontEnd Stack</Divider>
+        <Divider orientation="left">
+          FrontEnd Stack
+          <StackText style={{ paddingLeft: 12, fontSize: 12, fontWeight: 100 }}>
+            <Badge status="processing" color="green" />: 프로젝트에서 사용중
+          </StackText>
+        </Divider>
+
         <motion.div
           className="container"
           variants={ContainerStyle}
@@ -387,6 +393,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                         src={require('../assets/images/stack/apollo.png')}
                       />
                       <TitleBox>
+                        <Badge status="processing" color="green" />
                         <StackText>Apollo</StackText>
                       </TitleBox>
                     </motion.div>
@@ -615,7 +622,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
           </Row>
         </motion.div>
         {/* 관심스택 */}
-        <Divider orientation="left">Technology of Interest</Divider>
+        <Divider orientation="left">Interest Tech</Divider>
         <motion.div
           className="container"
           variants={ContainerStyle}

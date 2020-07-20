@@ -1,20 +1,15 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
-import { Row, Col, Typography, Tooltip } from "antd";
-import { withRouter, RouteComponentProps } from "react-router-dom";
-import {
-  ReadOutlined,
-  PictureOutlined,
-  IdcardOutlined,
-  CoffeeOutlined,
-} from "@ant-design/icons";
-import { ContainerStyle, ItemStyle } from "../../../interfaces/Motion";
-import { motion } from "framer-motion";
-import ThemeModeSelector from "../ThemeMode/ThemeModeSelector";
-import useWindowSize from "../../../hooks/useWindow";
+import React, { FunctionComponent, useEffect, useState } from 'react';
+import { Row, Col, Typography, Tooltip } from 'antd';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { ReadOutlined, PictureOutlined, IdcardOutlined, CoffeeOutlined } from '@ant-design/icons';
+import { ContainerStyle, ItemStyle } from '../../../interfaces/Motion';
+import { motion } from 'framer-motion';
+import ThemeModeSelector from '../ThemeMode/ThemeModeSelector';
+import useWindowSize from '../../../hooks/useWindow';
 
 interface Props extends RouteComponentProps<any> {}
-const Menu: FunctionComponent<Props> = (props: Props) => {
-  const [selected, setSelected] = useState("/");
+const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
+  const [selected, setSelected] = useState('/');
   const [isMobile, setIsMobile] = useState(false);
   const { history, match } = props;
   const size = useWindowSize();
@@ -30,8 +25,8 @@ const Menu: FunctionComponent<Props> = (props: Props) => {
   }, [size]);
 
   useEffect(() => {
-    console.log("test : ", location.pathname);
-    const pathname = location.pathname.split("/");
+    console.log('test : ', location.pathname);
+    const pathname = location.pathname.split('/');
 
     setSelected(pathname[1]);
   }, [match]);
@@ -44,12 +39,8 @@ const Menu: FunctionComponent<Props> = (props: Props) => {
       animate="visible"
       exit="hidden"
     >
-      <Row
-        justify="center"
-        align="middle"
-        style={{ padding: "0px 8px", margin: "auto 1rem" }}
-      >
-        <Col span={4} style={{ textAlign: "center" }}>
+      <Row justify="center" align="middle" style={{ padding: '0px 8px', margin: 'auto 1rem' }}>
+        <Col span={4} style={{ textAlign: 'center' }}>
           <motion.div variants={ItemStyle}>
             <ThemeModeSelector size={16} />
           </motion.div>
@@ -57,28 +48,31 @@ const Menu: FunctionComponent<Props> = (props: Props) => {
         <Col
           span={5}
           style={{
-            textAlign: "center",
-            transform:
-              selected === "about" || selected === ""
-                ? "scale( 1.2 )"
-                : "scale( 1 )",
-            textDecoration: selected === "about" ? "underline" : "unset",
-            transition: ".2s",
+            textAlign: 'center',
+            transform: selected === 'about' || selected === '' ? 'scale( 1.2 )' : 'scale( 1 )',
+            textDecoration: selected === 'about' ? 'underline' : 'unset',
+
+            transition: '.2s'
           }}
+          onClick={() => history.push('/about')}
         >
           <motion.div
             variants={ItemStyle}
-            style={{ cursor: "pointer" }}
-            onClick={() => history.push("/about")}
+            style={{
+              cursor: 'pointer',
+              backgroundColor:
+                isMobile && selected === 'about' ? 'rgba(152, 44, 255, 0.15)' : 'transparent',
+              borderRadius: 12
+            }}
           >
             {isMobile ? (
-              <Tooltip placement="bottom" title={"About Me"}>
+              <Tooltip placement="bottom" title={'About Me'}>
                 <IdcardOutlined />
               </Tooltip>
             ) : (
               <>
                 <IdcardOutlined />
-                <Tooltip placement="bottom" title={"About Me"}>
+                <Tooltip placement="bottom" title={'About Me'}>
                   <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>
                     About
                   </Typography.Text>
@@ -91,25 +85,31 @@ const Menu: FunctionComponent<Props> = (props: Props) => {
         <Col
           span={5}
           style={{
-            textAlign: "center",
-            transform: selected === "portfolio" ? "scale( 1.2 )" : "scale( 1 )",
-            textDecoration: selected === "portfolio" ? "underline" : "unset",
-            transition: ".2s",
+            textAlign: 'center',
+            transform: selected === 'portfolio' ? 'scale( 1.2 )' : 'scale( 1 )',
+            textDecoration: selected === 'portfolio' ? 'underline' : 'unset',
+
+            transition: '.2s'
           }}
+          onClick={() => history.push('/portfolio')}
         >
           <motion.div
             variants={ItemStyle}
-            style={{ cursor: "pointer" }}
-            onClick={() => history.push("/portfolio")}
+            style={{
+              cursor: 'pointer',
+              backgroundColor:
+                isMobile && selected === 'portfolio' ? 'rgba(152, 44, 255, 0.15)' : 'transparent',
+              borderRadius: 12
+            }}
           >
             {isMobile ? (
-              <Tooltip placement="bottom" title={"My PortFolio"}>
+              <Tooltip placement="bottom" title={'My PortFolio'}>
                 <PictureOutlined />
               </Tooltip>
             ) : (
               <>
                 <PictureOutlined />
-                <Tooltip placement="bottom" title={"My PortFolio"}>
+                <Tooltip placement="bottom" title={'My PortFolio'}>
                   <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>
                     Portfolio
                   </Typography.Text>
@@ -121,25 +121,31 @@ const Menu: FunctionComponent<Props> = (props: Props) => {
         <Col
           span={5}
           style={{
-            textAlign: "center",
-            transform: selected === "resume" ? "scale( 1.2 )" : "scale( 1 )",
-            textDecoration: selected === "resume" ? "underline" : "unset",
-            transition: ".2s",
+            textAlign: 'center',
+            transform: selected === 'resume' ? 'scale( 1.2 )' : 'scale( 1 )',
+            textDecoration: selected === 'resume' ? 'underline' : 'unset',
+
+            transition: '.2s'
           }}
+          onClick={() => history.push('/resume')}
         >
           <motion.div
             variants={ItemStyle}
-            style={{ cursor: "pointer" }}
-            onClick={() => history.push("/resume")}
+            style={{
+              cursor: 'pointer',
+              backgroundColor:
+                isMobile && selected === 'resume' ? 'rgba(152, 44, 255, 0.15)' : 'transparent',
+              borderRadius: 12
+            }}
           >
             {isMobile ? (
-              <Tooltip placement="bottom" title={"My Resume"}>
+              <Tooltip placement="bottom" title={'My Resume'}>
                 <ReadOutlined />
               </Tooltip>
             ) : (
               <>
                 <ReadOutlined />
-                <Tooltip placement="bottom" title={"Resume"}>
+                <Tooltip placement="bottom" title={'Resume'}>
                   <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>
                     Resume
                   </Typography.Text>
@@ -151,25 +157,31 @@ const Menu: FunctionComponent<Props> = (props: Props) => {
         <Col
           span={5}
           style={{
-            textAlign: "center",
-            transform: selected === "blog" ? "scale( 1.2 )" : "scale( 1 )",
-            textDecoration: selected === "blog" ? "underline" : "unset",
-            transition: ".2s",
+            textAlign: 'center',
+            transform: selected === 'blog' ? 'scale( 1.2 )' : 'scale( 1 )',
+            textDecoration: selected === 'blog' ? 'underline' : 'unset',
+
+            transition: '.2s'
           }}
+          onClick={() => history.push('/blog')}
         >
           <motion.div
             variants={ItemStyle}
-            style={{ cursor: "pointer" }}
-            onClick={() => history.push("/blog")}
+            style={{
+              cursor: 'pointer',
+              backgroundColor:
+                isMobile && selected === 'blog' ? 'rgba(152, 44, 255, 0.15)' : 'transparent',
+              borderRadius: 12
+            }}
           >
             {isMobile ? (
-              <Tooltip placement="bottom" title={"My Blog"}>
+              <Tooltip placement="bottom" title={'My Blog'}>
                 <CoffeeOutlined />
               </Tooltip>
             ) : (
               <>
                 <ReadOutlined />
-                <Tooltip placement="bottom" title={"Blog"}>
+                <Tooltip placement="bottom" title={'Blog'}>
                   <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>
                     Blog
                   </Typography.Text>
@@ -183,4 +195,4 @@ const Menu: FunctionComponent<Props> = (props: Props) => {
   );
 };
 
-export default withRouter(Menu);
+export default withRouter(IconMobileMenu);

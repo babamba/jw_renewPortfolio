@@ -269,6 +269,7 @@ const History: FunctionComponent<Props> = ({}) => {
                             </motion.div>
                             <CustomDivider />
 
+                            <motion.div variants={ItemStyle}>
                             <JobMainText>
                               <StatusBadge status="success" /> 충남대학교
                               농업동력 테스트 프로젝트(2020.02 ~ 2020.03)
@@ -286,6 +287,7 @@ const History: FunctionComponent<Props> = ({}) => {
                               </Text>
                               로 개발.
                             </JobText>
+                            </motion.div>
                           </ProjectBox>
                         </Col>
                       </Row>

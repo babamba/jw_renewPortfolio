@@ -1,19 +1,19 @@
-import React, { FC, useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown";
-import { ContentfulService } from "../core/contentful";
-import { withRouter, RouteComponentProps } from "react-router-dom";
-import { BlogPost } from "../interfaces/post";
-import { motion } from "framer-motion";
-import { Typography, PageHeader, Layout, List, Skeleton } from "antd";
-import styled from "styled-components";
+import React, { FC, useEffect, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
+import { ContentfulService } from '../core/contentful';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { BlogPost } from '../interfaces/post';
+import { motion } from 'framer-motion';
+import { Typography, PageHeader, Layout, List, Skeleton } from 'antd';
+import styled from 'styled-components';
 import {
   pageDetailVariants,
   pageDetailTransition,
-  DetailContainerStyle,
-} from "../interfaces/Motion";
-import HeadMeta from "../components/Helmet/HeadMeta";
-import { useRouter } from "../hooks/useRouter";
-import ReactGA from "react-ga";
+  DetailContainerStyle
+} from '../interfaces/Motion';
+import HeadMeta from '../components/Helmet/HeadMeta';
+import { useRouter } from '../hooks/useRouter';
+import ReactGA from 'react-ga';
 
 const PostContainer = styled.div`
   margin: 40px;
@@ -37,8 +37,8 @@ const textVariants = {
   in: {
     y: 0,
     opacity: 1,
-    transition: { delay: 0.1, duration: 0.5, ease: easing },
-  },
+    transition: { delay: 0.1, duration: 0.5, ease: easing }
+  }
 };
 
 const backVariants = {
@@ -47,8 +47,8 @@ const backVariants = {
     opacity: 0,
     transition: {
       duration: 0.5,
-      ease: easing,
-    },
+      ease: easing
+    }
   },
   in: {
     x: 0,
@@ -56,9 +56,9 @@ const backVariants = {
     transition: {
       delay: 0.5,
       duration: 0.5,
-      ease: easing,
-    },
-  },
+      ease: easing
+    }
+  }
 };
 
 interface Props extends RouteComponentProps {
@@ -74,23 +74,19 @@ interface MatchParams {
 //   article?: ;
 // }
 
-const PostPage: FC<RouteComponentProps<MatchParams>> = ({
-  history,
-  match,
-  location,
-}) => {
+const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, location }) => {
   const router = useRouter();
   const contentfulService = new ContentfulService();
   const [article, setArticle] = useState<BlogPost>();
 
   useEffect(() => {
     getPost(match.params.id);
-    if (process.env.NODE_ENV === "production") {
+    if (process.env.NODE_ENV === 'production') {
       ReactGA.pageview(router.location.pathname + router.location.search);
     }
   }, []);
 
-  const getPost = async (postId) => {
+  const getPost = async postId => {
     const article: any = await contentfulService.getPostById(postId);
     // console.log('new article : ', article);
     setArticle(article);
@@ -113,8 +109,8 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({
           variants={pageDetailVariants}
           transition={pageDetailTransition}
           style={{
-            position: "absolute",
-            width: "100%",
+            position: 'absolute',
+            width: '100%'
           }}
         >
           <PostContainer className="post">
@@ -123,22 +119,22 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({
             <motion.button
               whileHover={{
                 scale: 1.02,
-                transition: { duration: 0.5 },
+                transition: { duration: 0.5 }
               }}
               whileTap={{ scale: 0.99 }}
-              onClick={() => history.push("/blog")}
+              onClick={() => history.push('/blog')}
               style={{
-                background: "transparent",
-                border: "none",
-                outline: "none",
-                cursor: "pointer",
+                background: 'transparent',
+                border: 'none',
+                outline: 'none',
+                cursor: 'pointer'
               }}
             >
               <PageHeader
-                onBack={() => history.push("/blog")}
+                onBack={() => history.push('/blog')}
                 className="site-page-header"
                 title="이전 페이지"
-                style={{ background: "transparent", padding: "12px 0px" }}
+                style={{ background: 'transparent', padding: '12px 0px' }}
                 // subTitle="이전 페이지"
               />
             </motion.button>

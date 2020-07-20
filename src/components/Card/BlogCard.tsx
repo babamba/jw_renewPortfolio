@@ -70,9 +70,9 @@ const BlogCard: FunctionComponent<Props> = ({ info, history, match }) => {
                   textOverflow: 'ellipsis',
                   wordWrap: 'break-word',
                   display: '-webkit-box',
-                  WebkitLineClamp: isDeviceSize === 'desktop' ? 5 : 4,
+                  WebkitLineClamp: isDeviceSize === 'desktop' ? 5 : 3,
                   WebkitBoxOrient: 'vertical',
-                  minHeight: isDeviceSize === 'desktop' ? 114 : 80
+                  minHeight: isDeviceSize === 'desktop' ? 114 : 70
                 }}
               >
                 {info.description}

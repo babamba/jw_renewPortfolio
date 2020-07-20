@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { Row, Col, Typography, Tooltip } from 'antd';
+import { Row, Col, Typography } from 'antd';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { ReadOutlined, PictureOutlined, IdcardOutlined, CoffeeOutlined } from '@ant-design/icons';
 import { ContainerStyle, ItemStyle } from '../../../interfaces/Motion';
@@ -66,17 +66,12 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
             }}
           >
             {isMobile ? (
-              <Tooltip placement="bottom" title={'About Me'}>
-                <IdcardOutlined />
-              </Tooltip>
+              <IdcardOutlined />
             ) : (
               <>
                 <IdcardOutlined />
-                <Tooltip placement="bottom" title={'About Me'}>
-                  <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>
-                    About
-                  </Typography.Text>
-                </Tooltip>
+
+                <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>About</Typography.Text>
               </>
             )}
           </motion.div>
@@ -103,17 +98,13 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
             }}
           >
             {isMobile ? (
-              <Tooltip placement="bottom" title={'My PortFolio'}>
-                <PictureOutlined />
-              </Tooltip>
+              <PictureOutlined />
             ) : (
               <>
                 <PictureOutlined />
-                <Tooltip placement="bottom" title={'My PortFolio'}>
-                  <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>
-                    Portfolio
-                  </Typography.Text>
-                </Tooltip>
+                <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>
+                  Portfolio
+                </Typography.Text>
               </>
             )}
           </motion.div>
@@ -139,17 +130,14 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
             }}
           >
             {isMobile ? (
-              <Tooltip placement="bottom" title={'My Resume'}>
-                <ReadOutlined />
-              </Tooltip>
+              <ReadOutlined />
             ) : (
               <>
                 <ReadOutlined />
-                <Tooltip placement="bottom" title={'Resume'}>
-                  <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>
-                    Resume
-                  </Typography.Text>
-                </Tooltip>
+
+                <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>
+                  Resume
+                </Typography.Text>
               </>
             )}
           </motion.div>
@@ -175,17 +163,12 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
             }}
           >
             {isMobile ? (
-              <Tooltip placement="bottom" title={'My Blog'}>
-                <CoffeeOutlined />
-              </Tooltip>
+              <CoffeeOutlined />
             ) : (
               <>
                 <ReadOutlined />
-                <Tooltip placement="bottom" title={'Blog'}>
-                  <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>
-                    Blog
-                  </Typography.Text>
-                </Tooltip>
+
+                <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>Blog</Typography.Text>
               </>
             )}
           </motion.div>

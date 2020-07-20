@@ -103,10 +103,6 @@ const About: FunctionComponent<Props> = (props: Props) => {
             <IntroText theme={useDark}>
               안녕하세요. 저는 현재 FrontEnd 직군을 메인으로
               <br /> 프로젝트를 진행하고있습니다. <br />
-              {/* 저는
-            <ReactRotatingText items={['프론트', '리액트', '백엔드', '함께하는', '커피사랑']} />
-            개발자 입니다.
-            <br /> */}
               Javascript 언어를 가장 좋아합니다. <br />
               FrontEnd 및 BackEnd 직군으로 프로젝트를 진행한 경력이 있습니다. <br />
               항상 도전하고 배우겠습니다.
@@ -141,18 +137,6 @@ const About: FunctionComponent<Props> = (props: Props) => {
                 <Col xs={8} sm={8} md={6} lg={4} xl={4}>
                   <FrontStackBox>
                     <motion.div variants={ItemStyle}>
-                      {/* <FlagFilled
-                  style={{
-                    position: 'absolute',
-                    zIndex: 9,
-                    top: -6,
-                    right: 10,
-                    color: '#fcb503',
-                    fontSize: '1.5em',
-                  }}
-                  rotate={45}
-                /> */}
-
                       <Avatar
                         shape="square"
                         size={size.width !== undefined && size.width > 480 ? 80 : 60}

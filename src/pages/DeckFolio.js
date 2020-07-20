@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter, BrowserRouter as Router } from 'react-router-dom';
-import useWindowSize from '../../hooks/useWindow';
-import Deck from './Deck';
+import useWindowSize from '../hooks/useWindow';
+import Deck from './PortFolioDeck/Deck';
 import { motion, useAnimation } from 'framer-motion';
-import { pageOpacityVariants, pageOpacityTransition } from '../../interfaces/Motion';
-import PortfolioData from './PortfolioData';
-import DetailInfo from './FolioInfo';
+import { pageOpacityVariants, pageOpacityTransition } from '../interfaces/Motion';
+import PortfolioData from './PortFolioDeck/PortfolioData';
+import DetailInfo from './PortFolioDeck/FolioInfo';
 
 const DeckFolio = props => {
   const size = useWindowSize();

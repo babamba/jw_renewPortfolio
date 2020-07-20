@@ -9,11 +9,8 @@ import { Layout, Spin, Typography, Row, Col, Affix } from 'antd';
 import useWindowSize from '../../hooks/useWindow';
 import Loader from '../Loader/Loader';
 
-import Tabs from './Tabs/Tabs';
-
 import IconMenu from '../App/Menu/IconMenu';
 import IconMobileMenu from '../App/Menu/IconMobileMenu';
-import DeckFolio from '../../pages/PortFolioDeck/DeckFolio';
 
 import MyProfile from './Profile/MyProfile';
 import ThemeModeSelector from './ThemeMode/ThemeModeSelector';
@@ -26,27 +23,6 @@ import ReactGA from 'react-ga';
 
 import DeskTopContact from '../../pages/PortFolioDeck/DeskTopContact';
 
-// const { Text, Title, Paragraph } = Typography;
-// const LoaderContainer = styled.div`
-//   position: absolute;
-//   top: 50%;
-//   left: 45%;
-// `;
-
-// const LoaderContent = styled(Paragraph)`
-//   display: block;
-//   color: #fffd8f;
-//   font-family: -apple-system, 'Helvetica Neue', sans-serif;
-//   font-size: 34px;
-//   font-weight: 300;
-// `;
-
-// const transitionDuration = 200 + 50; // Keep this value slightly higher than the CSS counterpart
-// const applyProgressBeforeInteractive = `function (elements, progress) {
-//     elements.progressBar.style = 'transform:scaleX(' + progress + ')';
-// }`;
-
-// const promise = new Promise(resolve => setTimeout(resolve, 4000));
 const ControlCenter = styled.div`
   display: flex;
   justify-content: space-around;
@@ -73,8 +49,6 @@ const App = observer(() => {
     name: 'default',
     variables: {}
   };
-
-  // common.useLabPage ? 'open' : 'closed';
 
   useEffect(() => {
     if (size.width !== undefined) {
@@ -108,20 +82,6 @@ const App = observer(() => {
     setInitialTheme(value);
   };
 
-  type ButtonProps = React.HTMLProps<HTMLButtonElement>;
-
-  // const FancyButton = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => (
-  //   <button type="button" ref={ref} className="FancyButton">
-  //     {props.children}
-  //   </button>
-  // ))
-
-  // const MenuAffix = React.forwardRef(({ ...props }, ref) => (
-  //   <Affix {...props} offsetTop={top}>
-  //     <IconMenu />
-  //   </Affix>
-  // ));
-
   return (
     <ThemeProvider theme={theme} onChange={value => handleDarkmode(value)}>
       <AnimatePresence>
@@ -134,7 +94,6 @@ const App = observer(() => {
           ) : (
             <Layout.Content>
               <motion.div animate={controls}>
-                {/* <motion.div animate={controls} className="clippath-box"> */}
                 {common.useLabPage ? (
                   <div style={{ position: 'relative' }}>
                     <LabsRoutes />
@@ -143,13 +102,7 @@ const App = observer(() => {
                   <Layout.Content>
                     {isDeviceSize !== 'desktop' ? (
                       <>
-                        {/* <ControlCenter>
-                          <ThemeModeSelector />
-                          <LabModeSelector /> 
-                        </ControlCenter> */}
                         <MyProfile />
-                        {/* <MobileMenu /> */}
-                        {/* <Tabs /> */}
                         <IconMobileMenu />
                         <Layout.Content
                           style={{

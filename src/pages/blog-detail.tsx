@@ -25,11 +25,6 @@ const PostContainer = styled.div`
   }
 `;
 
-// type Props = {
-//   article: BlogPost;
-//   suggestedArticles: BlogPost[];
-// };
-
 let easing = [0.175, 0.85, 0.42, 0.96];
 
 const textVariants = {
@@ -69,10 +64,6 @@ interface Props extends RouteComponentProps {
 interface MatchParams {
   id: string;
 }
-
-// interface PostState {
-//   article?: ;
-// }
 
 const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, location }) => {
   const router = useRouter();
@@ -149,7 +140,6 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
               <ReactMarkdown className="markdown" source={article?.body} />
             </motion.div>
           </PostContainer>
-          {/* <div className="suggestions">{renderCards(props.suggestedArticles)}</div> */}
         </motion.div>
       </motion.div>
     </Layout.Content>

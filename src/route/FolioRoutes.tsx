@@ -1,30 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { Route, Switch, Redirect, useLocation } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
 // import loadable from '@loadable/component';
 
-import About from "../pages/about";
+import About from '../pages/about';
 // import Blog from '../pages/blog';
 // import BlogDetail from '../pages/blog-detail';
 // import Contact from '../pages/contact';
 // import Portfolio from '../pages/portfolio';
-import Resume from "../pages/resume";
+import Resume from '../pages/resume';
 // import DeckFolio from '../pages/PortFolioDeck/DeckFolio';
 // import NoMatch from '../pages/404';
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from 'framer-motion';
 
 // const AboutComponent = loadable(() => import('../pages/about'));
-import LazyLoader from "../components/Loader/LazyLoader";
+import LazyLoader from '../components/Loader/LazyLoader';
 
-const BlogComponent = React.lazy(() => import("../pages/blog"));
-const BlogDetailComponent = React.lazy(() => import("../pages/blog-detail"));
-const ContactComponent = React.lazy(() => import("../pages/contact"));
-const PortfolioComponent = React.lazy(() =>
-  import("../pages/PortFolioDeck/DeckFolio")
-);
-const ResumeComponent = React.lazy(() => import("../pages/resume"));
-const FolioDetailComponent = React.lazy(() =>
-  import("../pages/Portfolio-detail")
-);
+const BlogComponent = React.lazy(() => import('../pages/blog'));
+const BlogDetailComponent = React.lazy(() => import('../pages/blog-detail'));
+const ContactComponent = React.lazy(() => import('../pages/contact'));
+const PortfolioComponent = React.lazy(() => import('../pages/DeckFolio'));
+const ResumeComponent = React.lazy(() => import('../pages/resume'));
+const FolioDetailComponent = React.lazy(() => import('../pages/Portfolio-detail'));
 
 // const AboutComponent = loadable(() => import('../pages/about'));
 // const BlogComponent = loadable(() => import('../pages/blog'));
@@ -53,31 +49,19 @@ const FolioRoutes = () => {
            *  만약에 /statistics 을 /statistics/searchDetail 보다 위에 넣어준다면,
            *  상세화면이 라우팅 되지 않는다.
            */}
-          <Route path={["/", "/about"]} exact={true} component={About} />
+          <Route path={['/', '/about']} exact={true} component={About} />
           {/* <Route path={['/', '/main']} exact component={DeckFolio} />
           <Route path="/about" exact={true} component={About} /> */}
 
           {/* <Route path="/blog" exact={true} component={Blog} /> */}
           {/* <Route path="/portfolio" exact={true} component={DeckFolio} /> */}
-          <Route
-            path="/portfolio"
-            exact={true}
-            component={PortfolioComponent}
-          />
-          <Route
-            path="/portfolio/:id"
-            exact={true}
-            component={FolioDetailComponent}
-          />
+          <Route path="/portfolio" exact={true} component={PortfolioComponent} />
+          <Route path="/portfolio/:id" exact={true} component={FolioDetailComponent} />
           {/* <Route path="/contact" exact={true} component={ContactComponent} /> */}
-          <Route path="/resume" exact={true} component={Resume} />
-          {/* <Route path="/resume" exact={true} component={ResumeComponent} /> */}
+          {/* <Route path="/resume" exact={true} component={Resume} /> */}
+          <Route path="/resume" exact={true} component={ResumeComponent} />
           <Route path="/blog" exact={true} component={BlogComponent} />
-          <Route
-            path="/blog/:id"
-            exact={true}
-            component={BlogDetailComponent}
-          />
+          <Route path="/blog/:id" exact={true} component={BlogDetailComponent} />
 
           {/* <Route path="/portfolio" exact={true} component={Portfolio} />
           <Route path="/contact" exact={true} component={Contact} />

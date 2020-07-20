@@ -10,27 +10,18 @@ const Container = styled.div`
   z-index: 999;
 `;
 
-// type Props = {
-//   closeAction: Function;
-//   openAction: Function;
-// };
 const LabModeSelector: FC = observer(() => {
-  // const LabModeSelector: FC<Props> = observer(({ closeAction, openAction }) => {
-  //const { setIsDarkMode } = props;
   const { common } = useStores();
   const router = useRouter();
 
   const handleChange = async () => {
     common.setUseLabpage(!common.useLabPage);
-    //await closeAction();
 
     if (!common.useLabPage) {
       router.history.push('/about');
     } else {
       router.history.push('lab');
     }
-
-    //await openAction();
   };
 
   const rotateVariants = {
@@ -38,20 +29,8 @@ const LabModeSelector: FC = observer(() => {
     closed: { pacity: 1, scale: [1, 1.2, 1.2, 1] }
   };
 
-  const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] };
-  const hoverframeVariants = {
-    hover: { scale: 1.2 }
-  };
-
   return (
     <Container>
-      {/* <motion.div
-        className="frame"
-        whileHover="hover"
-        whileTap={{ scale: 0.8 }}
-        variants={hoverframeVariants}
-        transition={transition}
-      > */}
       <motion.div animate={common.useLabPage ? 'open' : 'closed'} variants={rotateVariants}>
         {common.useLabPage ? (
           <LinkedinOutlined

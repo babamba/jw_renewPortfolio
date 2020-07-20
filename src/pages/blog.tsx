@@ -1,30 +1,16 @@
-import React, { FunctionComponent, useState, useEffect } from "react";
-import { ContentfulService } from "../core/contentful";
-import { BlogPost } from "../interfaces/post";
-import { observer } from "mobx-react";
-import useStores from "../hooks/useStores";
-import BlogCard from "../components/Card/BlogCard";
-import {
-  Row,
-  Col,
-  List,
-  Pagination,
-  Divider,
-  Card as CardView,
-  Skeleton,
-  Empty,
-} from "antd";
-import useWindowSize from "../hooks/useWindow";
-import HeadMeta from "../components/Helmet/HeadMeta";
-import {
-  pageTransition,
-  pageVariants,
-  FastContainerStyle,
-  ItemStyle,
-} from "../interfaces/Motion";
-import { motion } from "framer-motion";
-import { useRouter } from "../hooks/useRouter";
-import ReactGA from "react-ga";
+import React, { FunctionComponent, useState, useEffect } from 'react';
+import { ContentfulService } from '../core/contentful';
+import { BlogPost } from '../interfaces/post';
+import { observer } from 'mobx-react';
+import useStores from '../hooks/useStores';
+import BlogCard from '../components/Card/BlogCard';
+import { Row, Col, List, Pagination, Divider, Card as CardView, Skeleton, Empty } from 'antd';
+import useWindowSize from '../hooks/useWindow';
+import HeadMeta from '../components/Helmet/HeadMeta';
+import { pageTransition, pageVariants, FastContainerStyle, ItemStyle } from '../interfaces/Motion';
+import { motion } from 'framer-motion';
+import { useRouter } from '../hooks/useRouter';
+import ReactGA from 'react-ga';
 
 interface PostPageProps {
   entries: BlogPost[];
@@ -36,38 +22,27 @@ interface PostPageProps {
   page?: number;
   totalCount: number;
 }
-//const Post: NextPage<PostPageProps, any> = (props: PostPageProps) => {
-//console.log('props : ', props);
 
 const Post: FunctionComponent<any> = observer(() => {
   const router = useRouter();
   const {
-    common: { currentPage, setBlogPage },
+    common: { currentPage, setBlogPage }
   } = useStores();
   const windowSize = useWindowSize();
 
-  const [isDeviceSize, SetIsDeviceSize] = useState("desktop");
+  const [isDeviceSize, SetIsDeviceSize] = useState('desktop');
   useEffect(() => {
     if (windowSize.width !== undefined) {
       if (windowSize.width < 769) {
-        SetIsDeviceSize("mobile");
+        SetIsDeviceSize('mobile');
       } else if (windowSize.width < 1201) {
-        SetIsDeviceSize("tablet");
+        SetIsDeviceSize('tablet');
       } else {
-        SetIsDeviceSize("desktop");
+        SetIsDeviceSize('desktop');
       }
     }
   }, [windowSize]);
-
-  // const { pagename } = router.query;
-  //const entries = props.entries && props.entries.length ? props.entries : [];
-  //   const tags = props.tags || [];
-  // const [isFetch, setIsFetch] = useState(false);
-  // const [entries, setEntries] = useState([]);
-  // const [tags, setTags] = useState([]);
-  // const [page, updatePage] = useState(1);
-  const [selectTag, updateTag] = useState("");
-  // const [totalCount, settotalCount] = useState(0);
+  const [selectTag, updateTag] = useState('');
   const [loading, setLoading] = useState(false);
 
   const [responsivePageSize, setResponsivePageSize] = useState(8);
@@ -75,69 +50,69 @@ const Post: FunctionComponent<any> = observer(() => {
   const [pagination, setPagination] = useState({
     total: 1,
     page: currentPage,
-    pageSize: responsivePageSize,
+    pageSize: responsivePageSize
   });
 
   useEffect(() => {
-    console.log("pagination : ", pagination);
-    console.log("currentPage : ", currentPage);
+    console.log('pagination : ', pagination);
+    console.log('currentPage : ', currentPage);
   }, []);
 
   const [content, setContent] = useState({
     page: currentPage,
     tags: [
       {
-        id: "",
-        name: "",
-      },
+        id: '',
+        name: ''
+      }
     ],
     entries: [],
     total: 0,
     skip: 0,
-    limit: 0,
+    limit: 0
   });
 
   useEffect(() => {
-    fetch(currentPage, "");
-    console.log("currentPage : ", currentPage);
+    fetch(currentPage, '');
+    console.log('currentPage : ', currentPage);
   }, [windowSize.width]);
 
   useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
+    if (process.env.NODE_ENV === 'production') {
       ReactGA.pageview(router.location.pathname + router.location.search);
     }
     return () => {
-      console.log("unmount");
+      console.log('unmount');
       setBlogPage(1);
     };
   }, []);
 
-  const setPage = async (param) => {
+  const setPage = async param => {
     setPagination({
       total: param.totalCount,
       page: param.selectPage,
-      pageSize: param.responsivePageSize,
+      pageSize: param.responsivePageSize
     });
   };
 
-  const fetch = async (selectPage: number, selectTag: string = "") => {
+  const fetch = async (selectPage: number, selectTag: string = '') => {
     setLoading(true);
     const contentfulService = new ContentfulService();
     // const { tags } = await contentfulService.getAllTags();
     const totalCount = await contentfulService.getAllEntriesCount({
-      tag: selectTag ? selectTag.toString() : "",
+      tag: selectTag ? selectTag.toString() : ''
     });
 
     await setPage({
       totalCount,
       selectPage,
-      responsivePageSize,
+      responsivePageSize
     });
 
     const result: any = await contentfulService.getBlogPostEntries({
-      tag: selectTag ? selectTag.toString() : "",
+      tag: selectTag ? selectTag.toString() : '',
       skip: (selectPage - 1) * responsivePageSize,
-      limit: responsivePageSize,
+      limit: responsivePageSize
     });
 
     if (result) {
@@ -152,7 +127,7 @@ const Post: FunctionComponent<any> = observer(() => {
     // updatePage(page);
     fetch(page, selectTag);
   };
-  const handleTagChosen = (tag) => {
+  const handleTagChosen = tag => {
     updateTag(tag.id);
     fetch(1, tag.id);
   };
@@ -164,18 +139,18 @@ const Post: FunctionComponent<any> = observer(() => {
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      style={{ position: "absolute", width: "100%" }}
+      style={{ position: 'absolute', width: '100%' }}
       // style={pageStyle}
     >
       <HeadMeta text="BLOG" />
       <CardView
         style={{
           borderRadius: 12,
-          marginBottom: isDeviceSize === "desktop" ? 0 : 30,
-          margin: isDeviceSize === "desktop" ? "32px" : 0,
+          marginBottom: isDeviceSize === 'desktop' ? 0 : 30,
+          margin: isDeviceSize === 'desktop' ? '32px' : 0
         }}
         bodyStyle={{
-          padding: "18px",
+          padding: '18px'
         }}
       >
         <Divider orientation="center" style={{ marginTop: 0 }}>
@@ -191,10 +166,7 @@ const Post: FunctionComponent<any> = observer(() => {
                   selectedTagId={selectTag}
                 />
               </Col> */}
-              <Col
-                span={24}
-                style={{ textAlign: "right", alignSelf: "center" }}
-              >
+              <Col span={24} style={{ textAlign: 'right', alignSelf: 'center' }}>
                 <Pagination
                   {...pagination}
                   onChange={onHandlePaging}
@@ -222,7 +194,7 @@ const Post: FunctionComponent<any> = observer(() => {
                     md: 2,
                     lg: 4,
                     xl: 4,
-                    xxl: 4,
+                    xxl: 4
                   }}
                   dataSource={content.entries}
                   renderItem={(item: any) => {
@@ -244,7 +216,7 @@ const Post: FunctionComponent<any> = observer(() => {
                     md: 2,
                     lg: 4,
                     xl: 4,
-                    xxl: 4,
+                    xxl: 4
                   }}
                 >
                   <List.Item>
@@ -262,34 +234,5 @@ const Post: FunctionComponent<any> = observer(() => {
     </motion.div>
   );
 });
-
-// Post.getInitialProps = async ({ req, query }) => {
-//   // Call an external API endpoint to get posts
-
-//   console.log('getInitialProps : ', query.pagename);
-
-//   const contentfulService = new ContentfulService();
-//   let page: number = 1;
-
-//   if (query.page) {
-//     page = parseInt(query.page + '');
-//   }
-
-//   const { entries, total, skip, limit } = await contentfulService.getBlogPostEntries({
-//     tag: query.tag ? query.tag.toString() : '',
-//     skip: (page - 1) * 8,
-//     limit: 8,
-//   });
-
-//   const totalCount = await contentfulService.getAllEntriesCount({
-//     tag: query.tag ? query.tag.toString() : '',
-//   });
-
-//   // TODO: need to move outside
-//   const { tags } = await contentfulService.getAllTags();
-//   console.log('result : ', page, tags, entries, total, skip, limit, totalCount);
-
-//   return { page, tags, entries, total, skip, limit, totalCount };
-// };
 
 export default Post;

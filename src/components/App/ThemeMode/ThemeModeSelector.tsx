@@ -12,7 +12,6 @@ const Container = styled.div`
 `;
 
 const ThemeModeSelector = observer(({ size }) => {
-  //const { setIsDarkMode } = props;
   const { common } = useStores();
   const [{ name, variables }, setTheme] = useTheme();
 
@@ -23,7 +22,6 @@ const ThemeModeSelector = observer(({ size }) => {
   useEffect(() => {
     const body = document.body.classList;
     const mainLayout = document.getElementsByClassName('main-layout')[0].classList;
-    //console.log('body : ', body);
     if (common.useDark) {
       mainLayout.remove('light');
       body.remove('light');
@@ -64,18 +62,14 @@ const ThemeModeSelector = observer(({ size }) => {
     }
   };
 
-  const rotateVariants = {
+  const scaleVariants = {
     open: { opacity: 1, scale: [1, 1.2, 1.2, 1] },
     closed: { pacity: 1, scale: [1, 1.2, 1.2, 1] }
-  };
-  const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] };
-  const hoverframeVariants = {
-    hover: { scale: 1.2 }
   };
 
   return (
     <Container>
-      <motion.div animate={common.useDark ? 'open' : 'closed'} variants={rotateVariants}>
+      <motion.div animate={common.useDark ? 'open' : 'closed'} variants={scaleVariants}>
         <BulbOutlined
           onClick={handleChange}
           style={{

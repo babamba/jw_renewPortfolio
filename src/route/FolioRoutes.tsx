@@ -5,13 +5,13 @@ import { AnimatePresence } from 'framer-motion';
 import LazyLoader from '../components/Loader/LazyLoader';
 
 // 전역에서 사용되는 브라우저 라우터
+const BlogComponent = React.lazy(() => import('../pages/blog'));
+const BlogDetailComponent = React.lazy(() => import('../pages/blog-detail'));
+const PortfolioComponent = React.lazy(() => import('../pages/DeckFolio'));
+const ResumeComponent = React.lazy(() => import('../pages/resume'));
+const FolioDetailComponent = React.lazy(() => import('../pages/Portfolio-detail'));
 
 const FolioRoutes = () => {
-  const BlogComponent = React.lazy(() => import('../pages/blog'));
-  const BlogDetailComponent = React.lazy(() => import('../pages/blog-detail'));
-  const PortfolioComponent = React.lazy(() => import('../pages/DeckFolio'));
-  const ResumeComponent = React.lazy(() => import('../pages/resume'));
-  const FolioDetailComponent = React.lazy(() => import('../pages/Portfolio-detail'));
   const location = useLocation();
 
   return (

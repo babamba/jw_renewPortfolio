@@ -27,7 +27,6 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
   useEffect(() => {
     console.log('test : ', location.pathname);
     const pathname = location.pathname.split('/');
-
     setSelected(pathname[1]);
   }, [match]);
 

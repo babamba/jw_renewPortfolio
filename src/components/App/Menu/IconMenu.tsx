@@ -13,7 +13,8 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
 
   useEffect(() => {
     console.log('test : ', location.pathname);
-    setSelected(location.pathname);
+    const pathname = location.pathname.split('/');
+    setSelected(pathname[1]);
   }, [match]);
 
   return (
@@ -39,9 +40,9 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
           <motion.div variants={ItemStyle}>
             <IdcardOutlined
               style={{
-                fontSize: selected === '/about' || selected === '/' ? 24 : 20,
-                border: selected === '/about' ? '1px dashed grey' : 'none',
-                padding: selected === '/about' ? 8 : 0,
+                fontSize: selected === 'about' || selected === '' ? 24 : 20,
+                border: selected === 'about' ? '1px dashed grey' : 'none',
+                padding: selected === 'about' ? 8 : 0,
                 borderRadius: 18,
                 transition: '0.5s'
               }}
@@ -54,9 +55,9 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
           <motion.div variants={ItemStyle}>
             <PictureOutlined
               style={{
-                fontSize: selected === '/portfolio' ? 24 : 20,
-                border: selected === '/portfolio' ? '1px dashed grey' : 'none',
-                padding: selected === '/portfolio' ? 8 : 0,
+                fontSize: selected === 'portfolio' ? 24 : 20,
+                border: selected === 'portfolio' ? '1px dashed grey' : 'none',
+                padding: selected === 'portfolio' ? 8 : 0,
                 borderRadius: 18,
                 transition: '0.5s'
               }}
@@ -68,9 +69,9 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
           <motion.div variants={ItemStyle}>
             <ReadOutlined
               style={{
-                fontSize: selected === '/resume' ? 24 : 20,
-                border: selected === '/resume' ? '1px dashed grey' : 'none',
-                padding: selected === '/resume' ? 8 : 0,
+                fontSize: selected === 'resume' ? 24 : 20,
+                border: selected === 'resume' ? '1px dashed grey' : 'none',
+                padding: selected === 'resume' ? 8 : 0,
                 borderRadius: 18,
                 transition: '0.5s'
               }}
@@ -82,9 +83,9 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
           <motion.div variants={ItemStyle}>
             <CoffeeOutlined
               style={{
-                fontSize: selected === '/blog' ? 24 : 20,
-                border: selected === '/blog' ? '1px dashed grey' : 'none',
-                padding: selected === '/blog' ? 8 : 0,
+                fontSize: selected === 'blog' ? 24 : 20,
+                border: selected === 'blog' ? '1px dashed grey' : 'none',
+                padding: selected === 'blog' ? 8 : 0,
                 borderRadius: 18,
                 transition: '0.5s'
               }}

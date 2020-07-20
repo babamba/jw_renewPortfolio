@@ -66,7 +66,6 @@ const MyProfile: FunctionComponent<Props> = (props: Props) => {
   const size = useWindowSize();
   const [ResponsiveFlex, setResponsiveFlex] = useState(false);
   useEffect(() => {
-    // console.log('size : ', size);
     if (size.width !== undefined) {
       if (size.width < 1201) {
         setResponsiveFlex(true);
@@ -76,7 +75,6 @@ const MyProfile: FunctionComponent<Props> = (props: Props) => {
     }
   }, [size]);
 
-  let easing = [0.175, 0.85, 0.42, 0.96];
   const textVariants = {
     out: { x: 10, opacity: 0 },
     in: {
@@ -86,8 +84,122 @@ const MyProfile: FunctionComponent<Props> = (props: Props) => {
     }
   };
 
-  return (
-    <Affix offsetTop={10}>
+  return ResponsiveFlex ? (
+    <motion.div
+      initial="out"
+      animate="in"
+      exit="out"
+      variants={pageDetailVariants}
+      transition={pageDetailTransition}
+      style={{
+        width: '100%'
+      }}
+    >
+      <Row
+        style={{
+          alignItems: 'center',
+          padding: '1.5rem 2rem',
+          paddingBottom: ResponsiveFlex ? '1rem' : '0'
+        }}
+        align="middle"
+        justify={ResponsiveFlex ? 'start' : 'start'}
+      >
+        <Col
+          style={{
+            flexDirection: ResponsiveFlex ? 'row' : 'column',
+            padding: 8
+          }}
+        >
+          <div>
+            <Avatar
+              size={ResponsiveFlex ? 50 : 100}
+              src={require('../../../assets/images/me.png')}
+            />
+
+            <Typography.Title
+              style={{
+                display: ResponsiveFlex ? 'inline' : 'block',
+                margin: '.5em 0',
+                padding: 0,
+                fontWeight: 300,
+                fontSize: size.width !== undefined && size.width > 480 ? '1.4em' : '1em',
+                lineHeight: 1.4,
+                textAlign: 'center',
+                marginLeft: ResponsiveFlex ? 15 : 0
+              }}
+            >
+              JW{' '}
+              <Typography.Link
+                style={{ color: useDark ? 'white' : 'black' }}
+                href="https://github.com/babamba"
+                target="_blank"
+              >
+                <GithubOutlined />
+              </Typography.Link>
+            </Typography.Title>
+          </div>
+          <Typography.Paragraph
+            style={{
+              fontSize: '1em',
+              // margin: '.1em 0 .6em',
+              display: 'inline-block',
+              fontStyle: 'italic',
+              padding: '6px 10px',
+              background: 'rgba(152,44,255, .8)',
+              color: '#d9d9d9',
+              // background: '#faf46a',
+              // color: 'rgba(51, 68, 85,.7)',
+              borderRadius: 4,
+              lineHeight: 1,
+              width: '100%',
+              textAlign: 'center',
+              marginTop: ResponsiveFlex ? 10 : 0,
+              marginBottom: 0
+            }}
+          >
+            Js Developer
+          </Typography.Paragraph>
+        </Col>
+
+        {ResponsiveFlex ? (
+          <Col style={{ flexDirection: 'column', paddingLeft: '1em' }}>
+            <motion.div variants={textVariants}>
+              <MainIntroSmallText>안녕하세요.</MainIntroSmallText>
+            </motion.div>
+            <motion.div variants={textVariants}>
+              <SubIntroSmallText>개발자 김진원입니다.</SubIntroSmallText>
+            </motion.div>
+          </Col>
+        ) : (
+          <Col
+            style={{
+              flexDirection: 'column',
+              paddingLeft: size.width !== undefined && size.width > 1513 ? '2.5em' : 0
+            }}
+            span={size.width !== undefined && size.width > 1513 ? 17 : 24}
+          >
+            <motion.div variants={textVariants}>
+              <MainIntroText>안녕하세요.</MainIntroText>
+            </motion.div>
+            <motion.div variants={textVariants}>
+              <SubIntroText>
+                <ReactRotatingText
+                  items={['Front', 'React', 'UI ', 'BackEnd', '진지한', '배고픈']}
+                />
+                개발자 김진원입니다.
+              </SubIntroText>
+            </motion.div>
+          </Col>
+        )}
+      </Row>
+    </motion.div>
+  ) : (
+    <Affix
+      offsetTop={10}
+      style={{
+        position: ResponsiveFlex ? 'relative' : 'relative'
+      }}
+    >
       <motion.div
         initial="out"
         animate="in"

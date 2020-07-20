@@ -39,7 +39,7 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
       animate="visible"
       exit="hidden"
     >
-      <Row justify="center" align="middle" style={{ padding: '0px 8px', margin: 'auto 1rem' }}>
+      <Row justify="center" align="middle" style={{ padding: '6px 8px', margin: 'auto 1rem' }}>
         <Col span={4} style={{ textAlign: 'center' }}>
           <motion.div variants={ItemStyle}>
             <ThemeModeSelector size={16} />
@@ -51,8 +51,7 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
             textAlign: 'center',
             transform: selected === 'about' || selected === '' ? 'scale( 1.2 )' : 'scale( 1 )',
             textDecoration: selected === 'about' ? 'underline' : 'unset',
-
-            transition: '.2s'
+            transition: '.4s'
           }}
           onClick={() => history.push('/about')}
         >
@@ -65,15 +64,26 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
               borderRadius: 12
             }}
           >
-            {isMobile ? (
-              <IdcardOutlined />
-            ) : (
-              <>
+            <div
+              style={{
+                border: selected === 'about' && !isMobile ? '1px dashed grey' : 'none',
+                padding: selected === 'about' && !isMobile ? '4px 12px' : '4px 0px',
+                borderRadius: 18,
+                display: 'inline-block'
+              }}
+            >
+              {isMobile ? (
                 <IdcardOutlined />
+              ) : (
+                <>
+                  <IdcardOutlined />
 
-                <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>About</Typography.Text>
-              </>
-            )}
+                  <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>
+                    About
+                  </Typography.Text>
+                </>
+              )}
+            </div>
           </motion.div>
         </Col>
 
@@ -83,8 +93,7 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
             textAlign: 'center',
             transform: selected === 'portfolio' ? 'scale( 1.2 )' : 'scale( 1 )',
             textDecoration: selected === 'portfolio' ? 'underline' : 'unset',
-
-            transition: '.2s'
+            transition: '.4s'
           }}
           onClick={() => history.push('/portfolio')}
         >
@@ -97,16 +106,26 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
               borderRadius: 12
             }}
           >
-            {isMobile ? (
-              <PictureOutlined />
-            ) : (
-              <>
+            <div
+              style={{
+                border: selected === 'portfolio' && !isMobile ? '1px dashed grey' : 'none',
+                padding: selected === 'portfolio' && !isMobile ? '4px 12px' : '4px 0px',
+                borderRadius: 18,
+                transition: '0.4s',
+                display: 'inline-block'
+              }}
+            >
+              {isMobile ? (
                 <PictureOutlined />
-                <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>
-                  Portfolio
-                </Typography.Text>
-              </>
-            )}
+              ) : (
+                <>
+                  <PictureOutlined />
+                  <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>
+                    Portfolio
+                  </Typography.Text>
+                </>
+              )}
+            </div>
           </motion.div>
         </Col>
         <Col
@@ -115,8 +134,7 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
             textAlign: 'center',
             transform: selected === 'resume' ? 'scale( 1.2 )' : 'scale( 1 )',
             textDecoration: selected === 'resume' ? 'underline' : 'unset',
-
-            transition: '.2s'
+            transition: '.4s'
           }}
           onClick={() => history.push('/resume')}
         >
@@ -129,17 +147,26 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
               borderRadius: 12
             }}
           >
-            {isMobile ? (
-              <ReadOutlined />
-            ) : (
-              <>
+            <div
+              style={{
+                border: selected === 'resume' && !isMobile ? '1px dashed grey' : 'none',
+                padding: selected === 'resume' && !isMobile ? '4px 12px' : '4px 0px',
+                borderRadius: 18,
+                display: 'inline-block'
+              }}
+            >
+              {isMobile ? (
                 <ReadOutlined />
+              ) : (
+                <>
+                  <ReadOutlined />
 
-                <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>
-                  Resume
-                </Typography.Text>
-              </>
-            )}
+                  <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>
+                    Resume
+                  </Typography.Text>
+                </>
+              )}
+            </div>
           </motion.div>
         </Col>
         <Col
@@ -148,8 +175,7 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
             textAlign: 'center',
             transform: selected === 'blog' ? 'scale( 1.2 )' : 'scale( 1 )',
             textDecoration: selected === 'blog' ? 'underline' : 'unset',
-
-            transition: '.2s'
+            transition: '.4s'
           }}
           onClick={() => history.push('/blog')}
         >
@@ -162,15 +188,26 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
               borderRadius: 12
             }}
           >
-            {isMobile ? (
-              <CoffeeOutlined />
-            ) : (
-              <>
-                <ReadOutlined />
+            <div
+              style={{
+                border: selected === 'blog' && !isMobile ? '1px dashed grey' : 'none',
+                padding: selected === 'blog' && !isMobile ? '4px 12px' : '4px 0px',
+                borderRadius: 18,
+                display: 'inline-block'
+              }}
+            >
+              {isMobile ? (
+                <CoffeeOutlined />
+              ) : (
+                <>
+                  <ReadOutlined />
 
-                <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>Blog</Typography.Text>
-              </>
-            )}
+                  <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>
+                    Blog
+                  </Typography.Text>
+                </>
+              )}
+            </div>
           </motion.div>
         </Col>
       </Row>

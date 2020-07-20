@@ -82,12 +82,11 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
   const size = useWindowSize();
   const [folio, setFolio] = useState<State | undefined>(undefined);
   const cardBGStyles = {
-    backgroundSize: 'cover',
     height: '40vh',
     borderRadius: 12,
     background: `linear-gradient(45deg,  rgba(18, 40, 76, 0.56), rgba(89, 89, 89, 0.3)) , url(${
       folio ? folio.pics : 'empty'
-    }) no-repeat center center`
+    }) no-repeat center center/cover`
   };
 
   useEffect(() => {
@@ -111,23 +110,6 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
       <br />
     </>
   );
-
-  const DescVariants = {
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        y: { stiffness: 1000, velocity: -100 }
-      }
-    },
-    hidden: {
-      x: -10,
-      opacity: 0,
-      transition: {
-        y: { stiffness: 1000 }
-      }
-    }
-  };
 
   return (
     <motion.div

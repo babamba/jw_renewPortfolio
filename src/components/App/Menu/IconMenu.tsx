@@ -24,7 +24,12 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
       animate="visible"
       exit="hidden"
     >
-      <Row justify="center" align="middle" gutter={[0, 32]} style={{ paddingTop: 30 }}>
+      <Row
+        justify="center"
+        align="middle"
+        gutter={[0, 32]}
+        style={{ paddingTop: 30, paddingLeft: 8 }}
+      >
         <Col span={24} style={{ textAlign: 'center' }}>
           <motion.div variants={ItemStyle}>
             <ThemeModeSelector size={20} />
@@ -35,7 +40,10 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
             <IdcardOutlined
               style={{
                 fontSize: selected === '/about' || selected === '/' ? 24 : 20,
-                transition: '0.2s'
+                border: selected === '/about' ? '1px dashed grey' : 'none',
+                padding: selected === '/about' ? 8 : 0,
+                borderRadius: 18,
+                transition: '0.5s'
               }}
               onClick={() => history.push('/about')}
             />
@@ -47,7 +55,10 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
             <PictureOutlined
               style={{
                 fontSize: selected === '/portfolio' ? 24 : 20,
-                transition: '0.2s'
+                border: selected === '/portfolio' ? '1px dashed grey' : 'none',
+                padding: selected === '/portfolio' ? 8 : 0,
+                borderRadius: 18,
+                transition: '0.5s'
               }}
               onClick={() => history.push('/portfolio')}
             />
@@ -58,7 +69,10 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
             <ReadOutlined
               style={{
                 fontSize: selected === '/resume' ? 24 : 20,
-                transition: '0.2s'
+                border: selected === '/resume' ? '1px dashed grey' : 'none',
+                padding: selected === '/resume' ? 8 : 0,
+                borderRadius: 18,
+                transition: '0.5s'
               }}
               onClick={() => history.push('/resume')}
             />
@@ -69,7 +83,10 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
             <CoffeeOutlined
               style={{
                 fontSize: selected === '/blog' ? 24 : 20,
-                transition: '0.2s'
+                border: selected === '/blog' ? '1px dashed grey' : 'none',
+                padding: selected === '/blog' ? 8 : 0,
+                borderRadius: 18,
+                transition: '0.5s'
               }}
               onClick={() => history.push('/blog')}
             />

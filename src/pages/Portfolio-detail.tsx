@@ -30,7 +30,8 @@ const FolioInTitleContainer = styled.div`
   padding: 16px;
 `;
 
-const FolioTitle = styled(Typography.Text)`
+const FolioTitle = styled.span`
+  color: rgba(255, 255, 255, 0.65);
   letter-spacing: -1.2px;
   font-weight: 600;
   font-size: 1.6rem;
@@ -40,10 +41,11 @@ const FolioImageBox = styled.div`
   position: relative;
 `;
 
-const FolioDate = styled(Typography.Text)`
+const FolioDate = styled.span`
   letter-spacing: -1.2px;
   font-weight: 300;
   font-size: 1rem;
+  color: rgba(255, 255, 255, 0.65);
 `;
 
 const StackText = styled(Typography.Title)``;

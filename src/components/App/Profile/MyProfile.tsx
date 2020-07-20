@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { Row, Col, Typography, Avatar } from 'antd';
+import { Row, Col, Typography, Avatar, Affix } from 'antd';
 import useWindowSize from '../../../hooks/useWindow';
 import ReactRotatingText from 'react-rotating-text';
 import { GithubOutlined } from '@ant-design/icons';
@@ -71,7 +71,7 @@ const MyProfile: FunctionComponent<Props> = (props: Props) => {
   }, [size]);
 
   return (
-    <>
+    <Affix offsetTop={10}>
       <Row
         style={{
           alignItems: 'center',
@@ -159,7 +159,7 @@ const MyProfile: FunctionComponent<Props> = (props: Props) => {
           </Col>
         )}
       </Row>
-    </>
+    </Affix>
   );
 };
 

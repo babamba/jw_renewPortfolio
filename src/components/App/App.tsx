@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BrowserRouter as Router, withRouter } from 'react-router-dom';
 import FolioRoutes from '../../route/FolioRoutes';
 import LabsRoutes from '../../route/LabsRoute';
 import { observer } from 'mobx-react';
-import { ThemeProvider, useTheme } from 'antd-theme';
+import { ThemeProvider } from 'antd-theme';
 import useStores from '../../hooks/useStores';
-import { Layout, Spin, Typography, Row, Col, Affix } from 'antd';
+import { Layout, Row, Col, Affix } from 'antd';
 import useWindowSize from '../../hooks/useWindow';
 import Loader from '../Loader/Loader';
 
@@ -13,7 +12,6 @@ import IconMenu from '../App/Menu/IconMenu';
 import IconMobileMenu from '../App/Menu/IconMobileMenu';
 
 import MyProfile from './Profile/MyProfile';
-import ThemeModeSelector from './ThemeMode/ThemeModeSelector';
 // import LabModeSelector from './LabMode/LabModeSelector';
 import styled from 'styled-components';
 
@@ -127,15 +125,13 @@ const App = observer(() => {
                         }}
                       >
                         <Col span={1} style={{ alignSelf: 'center' }}>
-                          <Affix ref={menuSticky} offsetTop={10}>
+                          <Affix ref={menuSticky} offsetTop={20}>
                             <IconMenu />
                           </Affix>
                         </Col>
                         <Col span={8} style={{ alignSelf: 'center' }}>
-                          <Affix ref={profileSticky} offsetTop={10}>
-                            <MyProfile />
-                            <DeskTopContact />
-                          </Affix>
+                          <MyProfile />
+                          <DeskTopContact />
                         </Col>
 
                         <Col span={15}>

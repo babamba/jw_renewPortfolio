@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import 'mobx-react/batchingForReactDom';
 import App from './components/App/App';
 import { render, hydrate } from 'react-dom';
@@ -14,7 +14,6 @@ import ReactGA from 'react-ga';
 const rootStore = new RootStore(); // *** 루트 스토어 생성
 
 if (process.env.NODE_ENV === 'production') {
-  // console.log('enterprise', process.env.REACT_APP_ENTERPRISE);
   console.log = function no_console() {};
   ReactGA.initialize(`${process.env.REACT_APP_GA_TRACKING_ID}`);
   console.log('Production Mode');

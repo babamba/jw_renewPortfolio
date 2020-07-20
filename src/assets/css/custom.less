@@ -10,9 +10,6 @@
   // font-family: 'Noto Sans KR', 'Spoqa Han Sans', sans-serif;
 }
 
-.react-multi-carousel-dot-list {
-  padding-bottom: 20px !important;
-}
 .ant-card-hoverable:hover {
   box-shadow: '0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0), 0 5px 12px 4px rgba(0, 0, 0, 0.09)' !important;
 }
@@ -35,58 +32,6 @@
       transition: 0.2s, opacity 0.1s ease-in;
       opacity: 1 !important;
       // filter: none;
-    }
-  }
-}
-
-.react-multi-carousel-list {
-  &.carousel-container {
-    .react-multi-carousel-dot--active {
-      button {
-        border-radius: 2px;
-        width: 16px !important;
-        background-color: rgba(122, 35, 204, 0.7) !important;
-      }
-    }
-    .react-multi-carousel-dot {
-      button {
-        border-radius: 2px;
-        width: 12px;
-        height: 6px;
-        border: none !important;
-        background-color: rgba(200, 200, 200, 0.7);
-      }
-    }
-    .ant-btn.carousel-arrow {
-      border: 0px;
-      color: rgb(255, 255, 255);
-      font-size: 20px;
-      position: absolute;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1000;
-      transition: all 0.5s;
-      border-radius: 35px;
-      border: 0;
-      min-width: 43px;
-      min-height: 43px;
-      padding: 4px 4px;
-      @media only screen and (max-width: 500px) {
-        min-width: 23px;
-        min-height: 23px;
-        padding: 1px 4px;
-      }
-      &.right {
-        right: calc(4% + 1px);
-        &::hover {
-          background: rgba(0, 0, 0, 0.5);
-        }
-      }
-      &.left {
-        left: calc(4% + 1px);
-        &::hover {
-          background: rgba(0, 0, 0, 0.5);
-        }
-      }
     }
   }
 }

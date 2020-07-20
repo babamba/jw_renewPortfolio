@@ -1,37 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
-// import loadable from '@loadable/component';
-
 import About from '../pages/about';
-// import Blog from '../pages/blog';
-// import BlogDetail from '../pages/blog-detail';
-// import Contact from '../pages/contact';
-// import Portfolio from '../pages/portfolio';
-import Resume from '../pages/resume';
-// import DeckFolio from '../pages/PortFolioDeck/DeckFolio';
-// import NoMatch from '../pages/404';
 import { AnimatePresence } from 'framer-motion';
-
-// const AboutComponent = loadable(() => import('../pages/about'));
 import LazyLoader from '../components/Loader/LazyLoader';
 
-const BlogComponent = React.lazy(() => import('../pages/blog'));
-const BlogDetailComponent = React.lazy(() => import('../pages/blog-detail'));
-const ContactComponent = React.lazy(() => import('../pages/contact'));
-const PortfolioComponent = React.lazy(() => import('../pages/DeckFolio'));
-const ResumeComponent = React.lazy(() => import('../pages/resume'));
-const FolioDetailComponent = React.lazy(() => import('../pages/Portfolio-detail'));
-
-// const AboutComponent = loadable(() => import('../pages/about'));
-// const BlogComponent = loadable(() => import('../pages/blog'));
-// const BlogDetailComponent = loadable(() => import('../pages/blog-detail'));
-// const ContactComponent = loadable(() => import('../pages/contact'));
-// const PortfolioComponent = loadable(() => import('../pages/portfolio'));
-// const ResumeComponent = loadable(() => import('../pages/resume'));
-// const NoMatchComponent = loadable(() => import('../pages/404'));
 // 전역에서 사용되는 브라우저 라우터
 
 const FolioRoutes = () => {
+  const BlogComponent = React.lazy(() => import('../pages/blog'));
+  const BlogDetailComponent = React.lazy(() => import('../pages/blog-detail'));
+  const PortfolioComponent = React.lazy(() => import('../pages/DeckFolio'));
+  const ResumeComponent = React.lazy(() => import('../pages/resume'));
+  const FolioDetailComponent = React.lazy(() => import('../pages/Portfolio-detail'));
   const location = useLocation();
 
   return (

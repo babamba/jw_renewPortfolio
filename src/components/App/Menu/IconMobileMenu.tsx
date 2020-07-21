@@ -77,7 +77,7 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
                 <>
                   <IdcardOutlined />
 
-                  <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>
+                  <Typography.Text style={{ paddingLeft: 4, fontWeight: 300, fontSize: 16 }}>
                     About
                   </Typography.Text>
                 </>
@@ -119,7 +119,7 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
               ) : (
                 <>
                   <PictureOutlined />
-                  <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>
+                  <Typography.Text style={{ paddingLeft: 4, fontWeight: 300, fontSize: 16 }}>
                     Portfolio
                   </Typography.Text>
                 </>
@@ -160,7 +160,7 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
                 <>
                   <ReadOutlined />
 
-                  <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>
+                  <Typography.Text style={{ paddingLeft: 4, fontWeight: 300, fontSize: 16 }}>
                     Resume
                   </Typography.Text>
                 </>
@@ -201,7 +201,7 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
                 <>
                   <ReadOutlined />
 
-                  <Typography.Text style={{ paddingLeft: 4, fontWeight: 300 }}>
+                  <Typography.Text style={{ paddingLeft: 4, fontWeight: 300, fontSize: 16 }}>
                     Blog
                   </Typography.Text>
                 </>

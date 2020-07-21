@@ -89,7 +89,7 @@ export default [
     age: '2020.01 ~ Now',
     distance: 'Progress',
     position: 'FrontEnd ReactNative',
-    titleDetail: '국립농원과학원 봉군형성실 Web Console 개발( 2020.01 ~ 현재 )',
+    titleDetail: '국립농원과학원 봉군형성실 Web Console 개발',
     stack: '주 사용 기술 : React(ES6 JavaScript)',
     link: '',
     subDescriptions: [

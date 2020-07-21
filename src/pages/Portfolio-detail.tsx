@@ -52,6 +52,7 @@ const StackText = styled(Typography.Title)``;
 const SubscriptionText = styled(Typography.Text)`
   line-height: 32px;
   font-weight: 300;
+  font-size: 16px;
 `;
 const TextContentBox = styled.div`
   padding: 0px 12px;
@@ -151,7 +152,8 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
         </motion.button>
         <Card
           style={{
-            textAlign: 'center'
+            textAlign: 'center',
+            borderRadius: 12
           }}
         >
           <motion.div

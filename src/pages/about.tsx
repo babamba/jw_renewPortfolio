@@ -14,7 +14,7 @@ const IntroText = styled.h2`
   padding: 0px 32px;
   color: ${(props: any) => (props.theme ? 'grey' : 'white')};
   @media only screen and (min-width: 200px) and (max-width: 767px) {
-    font-size: 14px;
+    font-size: 18px;
   }
   @media only screen and (min-width: 768px) and (max-width: 4000px) {
     font-size: 28px;
@@ -23,6 +23,7 @@ const IntroText = styled.h2`
 
 const StackText = styled.span`
   font-weight: 300;
+  font-size: 15px;
 `;
 
 const HashTag = styled.p`
@@ -32,7 +33,7 @@ const HashTag = styled.p`
 
 const TitleBox = styled.div`
   display: block;
-  padding-top: 8px;
+  padding-top: 16px;
 `;
 
 const FrontStackBox = styled.div`
@@ -87,7 +88,6 @@ const About: FunctionComponent<Props> = (props: Props) => {
       <Card
         // margin: ;
         style={{
-          padding: '10px 0px',
           borderRadius: 12,
           marginBottom: isDeviceSize === 'desktop' ? 0 : 30,
           margin: isDeviceSize === 'desktop' ? '40px' : 0
@@ -133,7 +133,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
         >
           <Row gutter={16}>
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-              <Row>
+              <Row gutter={[0, 16]}>
                 <Col xs={8} sm={8} md={6} lg={4} xl={4}>
                   <FrontStackBox>
                     <motion.div variants={ItemStyle}>
@@ -479,7 +479,10 @@ const About: FunctionComponent<Props> = (props: Props) => {
                         src={require('../assets/images/stack/Appsync.png')}
                       />
                       <TitleBox>
-                        <StackText>AWS.AppSync</StackText>
+                        <StackText>
+                          <Badge status="processing" color="green" />
+                          AWS.AppSync
+                        </StackText>
                       </TitleBox>
                     </motion.div>
                   </BackStackBox>

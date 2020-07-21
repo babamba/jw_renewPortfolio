@@ -19,7 +19,7 @@ import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import { useRouter } from '../../hooks/useRouter';
 import ReactGA from 'react-ga';
 
-import DeskTopContact from '../../pages/PortFolioDeck/DeskTopContact';
+import DeskTopContact from '../../pages/DeskTopContact';
 
 const ControlCenter = styled.div`
   display: flex;

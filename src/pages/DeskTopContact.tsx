@@ -2,13 +2,8 @@ import React, { FunctionComponent, useState, useEffect } from 'react';
 import { Typography, Badge, Affix } from 'antd';
 import { MailOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
-import useWindowSize from '../../hooks/useWindow';
-import {
-  pageTransition,
-  pageVariants,
-  ContainerStyle,
-  ItemLeftStyle
-} from '../../interfaces/Motion';
+import useWindowSize from '../hooks/useWindow';
+import { pageTransition, pageVariants, ContainerStyle, ItemLeftStyle } from '../interfaces/Motion';
 import { motion } from 'framer-motion';
 
 const StatusBadge = styled(Badge)`

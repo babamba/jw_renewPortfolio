@@ -48,11 +48,21 @@ const FolioDate = styled.span`
   color: rgba(255, 255, 255, 0.65);
 `;
 
-const StackText = styled(Typography.Title)``;
+const StackText = styled.h4`
+  font-weight: 600;
+  font-size: 22px;
+  @media only screen and (min-width: 200px) and (max-width: 767px) {
+    font-size: 18px;
+  }
+`;
+
 const SubscriptionText = styled(Typography.Text)`
   line-height: 32px;
   font-weight: 300;
   font-size: 16px;
+  @media only screen and (min-width: 200px) and (max-width: 767px) {
+    font-size: 14px;
+  }
 `;
 const TextContentBox = styled.div`
   padding: 0px 12px;
@@ -103,15 +113,14 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
     const find: any = PortfolioData.find(item => {
       return item.id === match.params.id;
     });
-    console.log('find data : ', find);
     setFolio(find);
   };
 
-  const renderDescText = data => (
-    <>
+  const renderDescText = (data, index) => (
+    <div key={index}>
       <SubscriptionText>- {data}</SubscriptionText>
       <br />
-    </>
+    </div>
   );
 
   return (
@@ -181,7 +190,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
               {/* <img src={folio && folio.pics} /> */}
               <TextContentBox>
                 <motion.div variants={ItemLeftStyle}>
-                  <StackText level={4}>{folio && folio.stack}</StackText>
+                  <StackText>{folio && folio.stack}</StackText>
                 </motion.div>
 
                 <br />
@@ -196,7 +205,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
                 <motion.div variants={ItemLeftStyle}>
                   {folio !== undefined &&
                     folio.subDescriptions.map((item, index) => {
-                      return renderDescText(item);
+                      return renderDescText(item, index);
                     })}
                 </motion.div>
                 {/* {renderDescText(folio !== undefined && folio.subDescriptions)} */}

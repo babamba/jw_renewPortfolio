@@ -1,10 +1,10 @@
-import React, { FC, useState, useEffect } from "react";
-import { Typography } from "antd";
-import { motion, useAnimation } from "framer-motion";
-import { ContainerStyle, ItemStyle } from "../../interfaces/Motion";
-import styled from "styled-components";
-import { withRouter, RouteComponentProps, Link } from "react-router-dom";
-import useStores from "../../hooks/useStores";
+import React, { FC, useState, useEffect } from 'react';
+import { Typography } from 'antd';
+import { motion, useAnimation } from 'framer-motion';
+import { ContainerStyle, ItemStyle } from '../../interfaces/Motion';
+import styled from 'styled-components';
+import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
+import useStores from '../../hooks/useStores';
 
 const InfoContainer = styled(motion.div)`
   &:hover {
@@ -35,9 +35,7 @@ const Card: FC<Props> = (props: Props) => {
     <Link
       to={`${match.url}/${id}`}
       style={{
-        color: common.useDark
-          ? "rgba(255, 255, 255, 0.65)"
-          : "rgba(0, 0, 0, 0.65)",
+        color: common.useDark ? 'rgba(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.65)'
       }}
     >
       <InfoContainer
@@ -53,19 +51,19 @@ const Card: FC<Props> = (props: Props) => {
               fontSize: 30,
               marginBottom: 14,
               fontWeight: 600,
-              letterSpacing: -2,
+              letterSpacing: -2
             }}
           >
             {name}
           </Typography.Text>
         </motion.div>
         <motion.div variants={ItemStyle}>
-          <Typography.Text style={{ margin: 0, fontWeight: 300 }}>
+          <Typography.Text style={{ margin: 0, fontWeight: 300, fontSize: 20 }}>
             {age}
           </Typography.Text>
         </motion.div>
         <motion.div variants={ItemStyle}>
-          <Typography.Text style={{ margin: 0, fontWeight: 300, fontSize: 14 }}>
+          <Typography.Text style={{ margin: 0, fontWeight: 300, fontSize: 18 }}>
             {distance}
           </Typography.Text>
         </motion.div>

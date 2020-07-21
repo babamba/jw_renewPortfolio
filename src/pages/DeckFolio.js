@@ -6,6 +6,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { pageOpacityVariants, pageOpacityTransition } from '../interfaces/Motion';
 import PortfolioData from './PortFolioDeck/PortfolioData';
 import DetailInfo from './PortFolioDeck/FolioInfo';
+import { ForwardOutlined } from '@ant-design/icons';
 
 const DeckFolio = props => {
   const size = useWindowSize();
@@ -96,6 +97,10 @@ const DeckFolio = props => {
           }}
         >
           <motion.div animate={controls}>
+            {/* <div style={{ margin: '12px 0px' }} onClick={() => gestureTrigger()}>
+              <ForwardOutlined style={{ fontSize: 18 }} />
+            </div> */}
+
             <DetailInfo data={PortfolioData[currentIdx]} />
           </motion.div>
         </div>

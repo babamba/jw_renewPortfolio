@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useImperativeHandle } from 'react';
 import { useSprings } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
+import { ForwardOutlined } from '@ant-design/icons';
 
 import Card from './Card';
 import CardData from './PortfolioData';
@@ -19,8 +20,44 @@ const from = i => ({ x: 3000, rot: 0, scale: 1.5, y: 0 });
 const trans = (r, s) =>
   `perspective(1300px) rotateX(0deg) rotateY(${r / 500}deg) rotateZ(${r}deg) scale(${s})`;
 
-function Deck(Parent) {
-  const { callback } = Parent;
+const Deck = React.forwardRef((Parent, ref) => {
+  const { callback, currentIdx } = Parent;
+
+  useImperativeHandle(ref, () => ({
+    getNext() {
+      next();
+    }
+  }));
+
+  const next = () => {
+    set(i => {
+      // 반복 돌면서
+      if (currentIdx === i) {
+        // 현재 카드번호의 카드를 찾는다
+        gone.add(currentIdx); // 지나간 카드 오브젝트 gone에 해당 카드번호를 주입
+
+        console.log(' gone : ', gone);
+        if (gone.has(currentIdx)) {
+          // Set에 해당 번호가 있으면
+          callback(i); // 부모에게 해당 인덱스를 콜백함수로 주입.
+        }
+
+        return {
+          x: 300 + window.innerWidth,
+          rot: -10 + Math.random() * 200,
+          scale: 1.03,
+          delay: undefined,
+          config: { friction: 50, tension: 130 }
+        };
+      } else if (gone.size === CardData.length) {
+        setTimeout(() => gone.clear() || set(i => to(i)), 600);
+      }
+    });
+  };
+
+  useEffect(() => {
+    console.log('changed : ', currentIdx);
+  }, [currentIdx]);
 
   const [gone] = useState(() => new Set()); // The set flags all the cards that are flicked out
   const [props, set] = useSprings(CardData.length, i => ({
@@ -47,6 +84,7 @@ function Deck(Parent) {
         const scale = down ? 1.03 : 1; // Active cards lift up a bit
 
         if (isGone) {
+          console.log('callback');
           callback(index);
         }
 
@@ -65,7 +103,7 @@ function Deck(Parent) {
   );
 
   // Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
-  return props.map(({ x, y, rot, scale }, i) => {
+  const DeckList = props.map(({ x, y, rot, scale }, i) => {
     return (
       <Card
         key={i}
@@ -80,6 +118,19 @@ function Deck(Parent) {
       />
     );
   });
-}
+
+  return DeckList;
+  // return (
+  //   <div style={{ position: 'absolute' }}>
+  //     {}
+  //     <div
+  //       style={{ margin: '12px 0px', position: 'absolute', bottom: 70, left: 120 }}
+  //       onClick={() => next()}
+  //     >
+  //       <ForwardOutlined style={{ fontSize: 18 }} onClick={() => next()} />
+  //     </div>
+  //   </div>
+  // );
+});
 
 export default Deck;

@@ -10,6 +10,7 @@ const BlogDetailComponent = React.lazy(() => import('../pages/blog-detail'));
 const PortfolioComponent = React.lazy(() => import('../pages/DeckFolio'));
 const ResumeComponent = React.lazy(() => import('../pages/resume'));
 const FolioDetailComponent = React.lazy(() => import('../pages/Portfolio-detail'));
+const ContactComponent = React.lazy(() => import('../pages/contact'));
 
 const FolioRoutes = () => {
   const location = useLocation();
@@ -42,9 +43,9 @@ const FolioRoutes = () => {
           <Route path="/resume" exact={true} component={ResumeComponent} />
           <Route path="/blog" exact={true} component={BlogComponent} />
           <Route path="/blog/:id" exact={true} component={BlogDetailComponent} />
-
+          <Route path="/contact" exact={true} component={ContactComponent} />
           {/* <Route path="/portfolio" exact={true} component={Portfolio} />
-          <Route path="/contact" exact={true} component={Contact} />
+
          
           
           <Route path="/blog/:id" exact={true} component={BlogDetail} /> */}

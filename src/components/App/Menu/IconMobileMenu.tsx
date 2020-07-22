@@ -6,6 +6,56 @@ import { ContainerStyle, ItemStyle } from '../../../interfaces/Motion';
 import { motion } from 'framer-motion';
 import ThemeModeSelector from '../ThemeMode/ThemeModeSelector';
 import useWindowSize from '../../../hooks/useWindow';
+import styled from 'styled-components';
+import { observer } from 'mobx-react';
+import useStores from '../../../hooks/useStores';
+
+const MotionMenuBox = styled(motion.div)`
+  cursor: pointer;
+  background-color: ${props =>
+    props.isMobile && props.selected === props.current
+      ? 'rgba(152, 44, 255, 0.15)'
+      : 'transparent'};
+  border-radius: 12px;
+  margin: 0px 12px;
+`;
+
+const MenuBttonBox = styled.div`
+  display: inline-block;
+  padding: ${props =>
+    props.selected === props.current && !props.isMobile ? '4px 8px' : '4px 0px'};
+
+  background: ${props =>
+    props.selected === props.current && !props.isMobile
+      ? 'linear-gradient(to top, rgba(152, 44, 255, 0.3) 40%, transparent 30%)'
+      : 'transparent'};
+  transition: all 0.5s ease-out;
+
+  &:hover {
+    transition: all 0.5s ease;
+    background: ${props =>
+      !props.isMobile && 'linear-gradient(to top, rgba(152, 44, 255, 0.3) 40%, transparent 30%)'};
+  }
+`;
+
+const CustomColumn = styled(Col)`
+  text-align: center;
+  transform: ${props => (props.selected === props.current ? 'scale( 1.1 )' : 'scale( 1 )')};
+  text-decoration: ${props => (props.selected === props.current ? 'underline' : 'unset')};
+  transition: 0.4s;
+  padding: 4;
+`;
+
+const MenuText = styled(Typography.Text)`
+  padding-left: 4px;
+  font-weight: 300;
+  font-size: 16px;
+  color: ${props =>
+    props.selected === props.current &&
+    (props.usedark === 'true'
+      ? 'rgba(255, 255, 255, 0.95) !important'
+      : 'rgba(0, 0, 0, 0.95) !important')};
+`;
 
 interface Props extends RouteComponentProps<any> {}
 const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
@@ -13,10 +63,13 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
   const [isMobile, setIsMobile] = useState(false);
   const { history, match } = props;
   const size = useWindowSize();
+  const {
+    common: { useDark }
+  } = useStores();
 
   useEffect(() => {
     if (size.width !== undefined) {
-      if (size.width < 570) {
+      if (size.width < 650) {
         setIsMobile(true);
       } else {
         setIsMobile(false);
@@ -29,6 +82,10 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
     const pathname = location.pathname.split('/');
     setSelected(pathname[1]);
   }, [match]);
+
+  useEffect(() => {
+    console.log('useDark : ', useDark);
+  }, []);
 
   return (
     <motion.div
@@ -44,174 +101,138 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
             <ThemeModeSelector size={16} />
           </motion.div>
         </Col>
-        <Col
-          span={5}
-          style={{
-            textAlign: 'center',
-            transform: selected === 'about' || selected === '' ? 'scale( 1.2 )' : 'scale( 1 )',
-            textDecoration: selected === 'about' ? 'underline' : 'unset',
-            transition: '.4s'
-          }}
+        <CustomColumn
+          span={4}
           onClick={() => history.push('/about')}
+          selected={'about'}
+          current={selected}
         >
-          <motion.div
+          <MotionMenuBox
             variants={ItemStyle}
-            style={{
-              cursor: 'pointer',
-              backgroundColor:
-                isMobile && selected === 'about' ? 'rgba(152, 44, 255, 0.15)' : 'transparent',
-              borderRadius: 12
-            }}
+            selected={'about'}
+            isMobile={isMobile}
+            current={selected}
           >
-            <div
-              style={{
-                border: selected === 'about' && !isMobile ? '1px dashed grey' : 'none',
-                padding: selected === 'about' && !isMobile ? '4px 12px' : '4px 0px',
-                borderRadius: 18,
-                display: 'inline-block'
-              }}
-            >
-              {isMobile ? (
-                <IdcardOutlined />
-              ) : (
-                <>
-                  <IdcardOutlined />
-
-                  <Typography.Text style={{ paddingLeft: 4, fontWeight: 300, fontSize: 16 }}>
-                    About
-                  </Typography.Text>
-                </>
+            <MenuBttonBox selected={'about'} isMobile={isMobile} current={selected}>
+              <IdcardOutlined />
+              {!isMobile && (
+                <MenuText
+                  selected={'about'}
+                  current={selected}
+                  usedark={useDark ? 'true' : 'false'}
+                >
+                  About
+                </MenuText>
               )}
-            </div>
-          </motion.div>
-        </Col>
+            </MenuBttonBox>
+            {/* </div> */}
+          </MotionMenuBox>
+        </CustomColumn>
 
-        <Col
-          span={5}
-          style={{
-            textAlign: 'center',
-            transform: selected === 'portfolio' ? 'scale( 1.2 )' : 'scale( 1 )',
-            textDecoration: selected === 'portfolio' ? 'underline' : 'unset',
-            transition: '.4s'
-          }}
+        <CustomColumn
+          span={4}
           onClick={() => history.push('/portfolio')}
+          selected={'portfolio'}
+          current={selected}
         >
-          <motion.div
+          <MotionMenuBox
             variants={ItemStyle}
-            style={{
-              cursor: 'pointer',
-              backgroundColor:
-                isMobile && selected === 'portfolio' ? 'rgba(152, 44, 255, 0.15)' : 'transparent',
-              borderRadius: 12
-            }}
+            selected={'portfolio'}
+            isMobile={isMobile}
+            current={selected}
           >
-            <div
-              style={{
-                border: selected === 'portfolio' && !isMobile ? '1px dashed grey' : 'none',
-                padding: selected === 'portfolio' && !isMobile ? '4px 12px' : '4px 0px',
-                borderRadius: 18,
-                transition: '0.4s',
-                display: 'inline-block'
-              }}
-            >
-              {isMobile ? (
-                <PictureOutlined />
-              ) : (
-                <>
-                  <PictureOutlined />
-                  <Typography.Text style={{ paddingLeft: 4, fontWeight: 300, fontSize: 16 }}>
-                    Portfolio
-                  </Typography.Text>
-                </>
+            <MenuBttonBox selected={'portfolio'} isMobile={isMobile} current={selected}>
+              <PictureOutlined />
+              {!isMobile && (
+                <MenuText
+                  selected={'portfolio'}
+                  current={selected}
+                  usedark={useDark ? 'true' : 'false'}
+                >
+                  Portfolio
+                </MenuText>
               )}
-            </div>
-          </motion.div>
-        </Col>
-        <Col
-          span={5}
-          style={{
-            textAlign: 'center',
-            transform: selected === 'resume' ? 'scale( 1.2 )' : 'scale( 1 )',
-            textDecoration: selected === 'resume' ? 'underline' : 'unset',
-            transition: '.4s'
-          }}
+            </MenuBttonBox>
+          </MotionMenuBox>
+        </CustomColumn>
+
+        <CustomColumn
+          span={4}
           onClick={() => history.push('/resume')}
+          selected={'resume'}
+          current={selected}
         >
-          <motion.div
+          <MotionMenuBox
             variants={ItemStyle}
-            style={{
-              cursor: 'pointer',
-              backgroundColor:
-                isMobile && selected === 'resume' ? 'rgba(152, 44, 255, 0.15)' : 'transparent',
-              borderRadius: 12
-            }}
+            selected={'resume'}
+            isMobile={isMobile}
+            current={selected}
           >
-            <div
-              style={{
-                border: selected === 'resume' && !isMobile ? '1px dashed grey' : 'none',
-                padding: selected === 'resume' && !isMobile ? '4px 12px' : '4px 0px',
-                borderRadius: 18,
-                display: 'inline-block'
-              }}
-            >
-              {isMobile ? (
-                <ReadOutlined />
-              ) : (
-                <>
-                  <ReadOutlined />
-
-                  <Typography.Text style={{ paddingLeft: 4, fontWeight: 300, fontSize: 16 }}>
-                    Resume
-                  </Typography.Text>
-                </>
+            <MenuBttonBox selected={'resume'} isMobile={isMobile} current={selected}>
+              <ReadOutlined />
+              {!isMobile && (
+                <MenuText
+                  selected={'resume'}
+                  current={selected}
+                  usedark={useDark ? 'true' : 'false'}
+                >
+                  Resume
+                </MenuText>
               )}
-            </div>
-          </motion.div>
-        </Col>
-        <Col
-          span={5}
-          style={{
-            textAlign: 'center',
-            transform: selected === 'blog' ? 'scale( 1.2 )' : 'scale( 1 )',
-            textDecoration: selected === 'blog' ? 'underline' : 'unset',
-            transition: '.4s'
-          }}
+            </MenuBttonBox>
+          </MotionMenuBox>
+        </CustomColumn>
+        <CustomColumn
+          span={4}
           onClick={() => history.push('/blog')}
+          selected={'blog'}
+          current={selected}
         >
-          <motion.div
+          <MotionMenuBox
             variants={ItemStyle}
-            style={{
-              cursor: 'pointer',
-              backgroundColor:
-                isMobile && selected === 'blog' ? 'rgba(152, 44, 255, 0.15)' : 'transparent',
-              borderRadius: 12
-            }}
+            selected={'blog'}
+            isMobile={isMobile}
+            current={selected}
           >
-            <div
-              style={{
-                border: selected === 'blog' && !isMobile ? '1px dashed grey' : 'none',
-                padding: selected === 'blog' && !isMobile ? '4px 12px' : '4px 0px',
-                borderRadius: 18,
-                display: 'inline-block'
-              }}
-            >
-              {isMobile ? (
-                <CoffeeOutlined />
-              ) : (
-                <>
-                  <ReadOutlined />
-
-                  <Typography.Text style={{ paddingLeft: 4, fontWeight: 300, fontSize: 16 }}>
-                    Blog
-                  </Typography.Text>
-                </>
+            <MenuBttonBox selected={'blog'} isMobile={isMobile} current={selected}>
+              <CoffeeOutlined />
+              {!isMobile && (
+                <MenuText selected={'blog'} current={selected} usedark={useDark ? 'true' : 'false'}>
+                  Blog
+                </MenuText>
               )}
-            </div>
-          </motion.div>
-        </Col>
+            </MenuBttonBox>
+          </MotionMenuBox>
+        </CustomColumn>
+        <CustomColumn
+          span={4}
+          onClick={() => history.push('/contact')}
+          selected={'contact'}
+          current={selected}
+        >
+          <MotionMenuBox
+            variants={ItemStyle}
+            selected={'contact'}
+            isMobile={isMobile}
+            current={selected}
+          >
+            <MenuBttonBox selected={'contact'} isMobile={isMobile} current={selected}>
+              <ReadOutlined />
+              {!isMobile && (
+                <MenuText
+                  selected={'contact'}
+                  current={selected}
+                  usedark={useDark ? 'true' : 'false'}
+                >
+                  Contact
+                </MenuText>
+              )}
+            </MenuBttonBox>
+          </MotionMenuBox>
+        </CustomColumn>
       </Row>
     </motion.div>
   );
 };
 
-export default withRouter(IconMobileMenu);
+export default withRouter(observer(IconMobileMenu));

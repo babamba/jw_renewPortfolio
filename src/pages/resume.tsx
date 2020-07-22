@@ -1,7 +1,13 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Timeline, Row, Col, Card, Divider, Typography, Avatar, Badge, Tag } from 'antd';
 import styled from 'styled-components';
-import { pageTransition, pageVariants, ContainerStyle, ItemStyle } from '../interfaces/Motion';
+import {
+  pageTransition,
+  pageVariants,
+  FastContainerStyle,
+  ContainerStyle,
+  ItemStyle
+} from '../interfaces/Motion';
 import { motion } from 'framer-motion';
 import HeadMeta from '../components/Helmet/HeadMeta';
 import { useRouter } from '../hooks/useRouter';
@@ -55,6 +61,9 @@ const JobText = styled.p`
   font-weight: 300;
   font-size: 15px;
   line-height: 2.5;
+  @media only screen and (min-width: 200px) and (max-width: 767px) {
+    line-height: 2;
+  }
 `;
 
 const StatusBadge = styled(Badge)`
@@ -118,12 +127,20 @@ const History: FunctionComponent<Props> = ({}) => {
           marginBottom: isDeviceSize === 'desktop' ? 0 : 30,
           margin: isDeviceSize === 'desktop' ? '40px' : 0
         }}
+        bodyStyle={{
+          padding: isDeviceSize === 'mobile' ? 14 : 24
+        }}
       >
         <Row>
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
             <Timeline>
               <Timeline.Item color="green">
-                <Card style={{ borderRadius: 12 }}>
+                <Card
+                  style={{ borderRadius: 12 }}
+                  bodyStyle={{
+                    padding: isDeviceSize === 'mobile' ? 18 : 24
+                  }}
+                >
                   <Row>
                     <Col xs={12} sm={12} md={12} lg={12} xl={12}>
                       <TimeText>2019.12 ~ 현재</TimeText>
@@ -148,7 +165,7 @@ const History: FunctionComponent<Props> = ({}) => {
                   <ContentBox>
                     <motion.div
                       className="container"
-                      variants={ContainerStyle}
+                      variants={FastContainerStyle}
                       initial="hidden"
                       animate="visible"
                       exit="hidden"

@@ -21,15 +21,16 @@ const MainIntroText = styled.h1`
 `;
 
 const MainIntroSmallText = styled.h1`
-  font-weight: 300;
-  font-size: 1.7rem;
+  font-weight: 600;
+  font-size: 2rem;
   opacity: 0.5;
   margin: 0;
   line-height: 1.5;
 `;
 const SubIntroSmallText = styled.h1`
   font-weight: 300;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  padding-left: 2px;
   opacity: 0.7;
   margin: 0;
   line-height: 1.5;

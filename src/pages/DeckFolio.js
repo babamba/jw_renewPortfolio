@@ -27,8 +27,12 @@ const DeckFolio = props => {
   const updatePercentage = () => {
     setTimeout(() => {
       if (isMount.current) setProgressBar(progressBar + 1);
-    }, 20);
+    }, 50);
   };
+
+  useEffect(() => {
+    window.dispatchEvent(new Event('scroll'));
+  }, []);
 
   useEffect(() => {
     if (percentage > 0) updatePercentage();
@@ -139,14 +143,18 @@ const DeckFolio = props => {
           }}
         >
           <div style={{ margin: '12px 0px' }}>
-            <Row justify="center" align="middle">
-              <Col span={1} onClick={() => gestureTrigger()} style={{ paddingTop: 2 }}>
+            <Row align="middle" gutter={[16, 8]}>
+              <Col
+                span={isDeviceSize === 'mobile' ? 2 : 1}
+                onClick={() => gestureTrigger()}
+                style={{ paddingTop: 8 }}
+              >
                 <ForwardOutlined style={{ fontSize: 18 }} />
               </Col>
-              <Col span={1} style={{ textAlign: 'center' }}>
+              <Col span={isDeviceSize === 'mobile' ? 2 : 1} style={{ textAlign: 'center' }}>
                 <span>{PortfolioData.length - currentIdx}</span>
               </Col>
-              <Col span={3}>
+              <Col span={isDeviceSize === 'mobile' ? 6 : 2}>
                 <Progress
                   style={{
                     borderRadius: 0
@@ -161,7 +169,7 @@ const DeckFolio = props => {
                   // }}
                 />
               </Col>
-              <Col span={1} style={{ textAlign: 'center' }}>
+              <Col span={isDeviceSize === 'mobile' ? 2 : 1} style={{ textAlign: 'center' }}>
                 <span>{PortfolioData.length}</span>
               </Col>
             </Row>

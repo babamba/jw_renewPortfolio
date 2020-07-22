@@ -5,9 +5,13 @@ import { ReadOutlined, PictureOutlined, IdcardOutlined, CoffeeOutlined } from '@
 import { ContainerStyle, ItemStyle } from '../../../interfaces/Motion';
 import { motion } from 'framer-motion';
 import ThemeModeSelector from '../ThemeMode/ThemeModeSelector';
+import useStores from '../../../hooks/useStores';
 
 interface Props extends RouteComponentProps<any> {}
 const IconMenu: FunctionComponent<Props> = (props: Props) => {
+  const {
+    common: { useDark }
+  } = useStores();
   const [selected, setSelected] = useState('/');
   const { history, match } = props;
 
@@ -40,11 +44,17 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
           <motion.div variants={ItemStyle}>
             <IdcardOutlined
               style={{
+                color:
+                  selected === 'about' && useDark
+                    ? 'rgba(255, 255, 255, 0.95) !important'
+                    : 'rgba(0, 0, 0, 0.95) !important',
                 fontSize: selected === 'about' || selected === '' ? 24 : 20,
-                border: selected === 'about' ? '1px dashed grey' : 'none',
+                background:
+                  selected === 'about'
+                    ? 'linear-gradient(to top, rgba(152, 44, 255, 0.3) 50%, transparent 30%)'
+                    : 'transparent',
                 padding: selected === 'about' ? 8 : 0,
-                borderRadius: 18,
-                transition: '0.5s'
+                transition: '0.8s'
               }}
               onClick={() => history.push('/about')}
             />
@@ -55,11 +65,17 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
           <motion.div variants={ItemStyle}>
             <PictureOutlined
               style={{
+                color:
+                  selected === 'portfolio' && useDark
+                    ? 'rgba(255, 255, 255, 0.95) !important'
+                    : 'rgba(0, 0, 0, 0.95) !important',
                 fontSize: selected === 'portfolio' ? 24 : 20,
-                border: selected === 'portfolio' ? '1px dashed grey' : 'none',
+                background:
+                  selected === 'portfolio'
+                    ? 'linear-gradient(to top, rgba(152, 44, 255, 0.3) 50%, transparent 30%)'
+                    : 'transparent',
                 padding: selected === 'portfolio' ? 8 : 0,
-                borderRadius: 18,
-                transition: '0.5s'
+                transition: '0.8s'
               }}
               onClick={() => history.push('/portfolio')}
             />
@@ -69,11 +85,17 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
           <motion.div variants={ItemStyle}>
             <ReadOutlined
               style={{
+                color:
+                  selected === 'resume' && useDark
+                    ? 'rgba(255, 255, 255, 0.95) !important'
+                    : 'rgba(0, 0, 0, 0.95) !important',
                 fontSize: selected === 'resume' ? 24 : 20,
-                border: selected === 'resume' ? '1px dashed grey' : 'none',
+                background:
+                  selected === 'resume'
+                    ? 'linear-gradient(to top, rgba(152, 44, 255, 0.3) 50%, transparent 30%)'
+                    : 'transparent',
                 padding: selected === 'resume' ? 8 : 0,
-                borderRadius: 18,
-                transition: '0.5s'
+                transition: '0.8s'
               }}
               onClick={() => history.push('/resume')}
             />
@@ -83,11 +105,19 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
           <motion.div variants={ItemStyle}>
             <CoffeeOutlined
               style={{
+                color:
+                  selected === 'blog'
+                    ? useDark
+                      ? 'rgba(255, 255, 255, 0.95) !important'
+                      : 'rgba(0, 0, 0, 0.95) !important'
+                    : '',
                 fontSize: selected === 'blog' ? 24 : 20,
-                border: selected === 'blog' ? '1px dashed grey' : 'none',
+                background:
+                  selected === 'blog'
+                    ? 'linear-gradient(to top, rgba(152, 44, 255, 0.3) 50%, transparent 30%)'
+                    : 'transparent',
                 padding: selected === 'blog' ? 8 : 0,
-                borderRadius: 18,
-                transition: '0.5s'
+                transition: '0.8s'
               }}
               onClick={() => history.push('/blog')}
             />

@@ -6,7 +6,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { pageOpacityVariants, pageOpacityTransition } from '../interfaces/Motion';
 import PortfolioData from './PortFolioDeck/PortfolioData';
 import DetailInfo from './PortFolioDeck/FolioInfo';
-import { ForwardOutlined } from '@ant-design/icons';
+import { ForwardOutlined, RetweetOutlined } from '@ant-design/icons';
 import { Progress, Row, Col } from 'antd';
 import useStores from '../hooks/useStores';
 import useMount from '../hooks/useMount';
@@ -23,6 +23,7 @@ const DeckFolio = props => {
 
   const [progressBar, setProgressBar] = useState(0);
   const [percentage, setPercentage] = useState(100);
+  const [InfoData, setInfoData] = useState({});
 
   const updatePercentage = () => {
     setTimeout(() => {
@@ -60,6 +61,10 @@ const DeckFolio = props => {
     DeckRef.current.getNext();
   };
 
+  const ReDeckTrigger = () => {
+    DeckRef.current.getRedeck();
+  };
+
   useEffect(() => {
     if (size.width !== undefined) {
       if (size.width < 769) {
@@ -76,8 +81,17 @@ const DeckFolio = props => {
     if (prevIdx === 0 && currentIdx === PortfolioData.length - 1) {
       closeAction();
       setTimeout(() => {
+        setInfoData(PortfolioData[currentIdx]);
         openAction();
       }, 1000);
+    }
+
+    if (prevIdx !== currentIdx) {
+      closeAction();
+      setTimeout(() => {
+        setInfoData(PortfolioData[currentIdx]);
+        openAction();
+      }, 600);
     }
   }, [currentIdx]);
 
@@ -151,8 +165,16 @@ const DeckFolio = props => {
               >
                 <ForwardOutlined style={{ fontSize: 18 }} />
               </Col>
+              <Col
+                span={isDeviceSize === 'mobile' ? 2 : 1}
+                onClick={() => ReDeckTrigger()}
+                style={{ paddingTop: 8 }}
+              >
+                <RetweetOutlined style={{ fontSize: 18 }} />
+              </Col>
+
               <Col span={isDeviceSize === 'mobile' ? 2 : 1} style={{ textAlign: 'center' }}>
-                <span>{PortfolioData.length - currentIdx}</span>
+                <span>0{PortfolioData.length - currentIdx}</span>
               </Col>
               <Col span={isDeviceSize === 'mobile' ? 6 : 2}>
                 <Progress
@@ -163,19 +185,15 @@ const DeckFolio = props => {
                   showInfo={false}
                   strokeLinecap="square"
                   strokeColor={common.useDark ? 'rgba(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.65)'}
-                  // strokeColor={{
-                  //   from: '#108ee9',
-                  //   to: '#87d068'
-                  // }}
                 />
               </Col>
               <Col span={isDeviceSize === 'mobile' ? 2 : 1} style={{ textAlign: 'center' }}>
-                <span>{PortfolioData.length}</span>
+                <span>0{PortfolioData.length}</span>
               </Col>
             </Row>
           </div>
           <motion.div animate={controls}>
-            <DetailInfo data={PortfolioData[currentIdx]} />
+            <DetailInfo data={InfoData} />
           </motion.div>
         </div>
       </div>

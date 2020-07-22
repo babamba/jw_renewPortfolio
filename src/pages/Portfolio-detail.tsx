@@ -18,7 +18,7 @@ const FolioContainer = styled.div`
   padding: 0px 20px;
 
   @media only screen and (min-width: 200px) and (max-width: 992px) {
-    padding: 0px 20px 20px;
+    padding: 0px 0px 20px;
     margin: 0px;
   }
 `;

@@ -4,7 +4,7 @@ import { useDrag } from 'react-use-gesture';
 import { ForwardOutlined } from '@ant-design/icons';
 
 import Card from './Card';
-import CardData from './PortfolioData';
+import PortfolioData from './PortfolioData';
 
 // These two are just helpers, they curate spring data, values that are later being interpolated into css
 const to = i => ({
@@ -26,8 +26,18 @@ const Deck = React.forwardRef((Parent, ref) => {
   useImperativeHandle(ref, () => ({
     getNext() {
       next();
+    },
+    getRedeck() {
+      reDeck();
     }
   }));
+
+  const reDeck = () => {
+    callback(PortfolioData.length);
+    set(i => {
+      setTimeout(() => gone.clear() || set(i => to(i)), 300);
+    });
+  };
 
   const next = () => {
     set(i => {
@@ -49,7 +59,7 @@ const Deck = React.forwardRef((Parent, ref) => {
           delay: undefined,
           config: { friction: 50, tension: 130 }
         };
-      } else if (gone.size === CardData.length) {
+      } else if (gone.size === PortfolioData.length) {
         setTimeout(() => gone.clear() || set(i => to(i)), 600);
       }
     });
@@ -60,7 +70,7 @@ const Deck = React.forwardRef((Parent, ref) => {
   }, [currentIdx]);
 
   const [gone] = useState(() => new Set()); // The set flags all the cards that are flicked out
-  const [props, set] = useSprings(CardData.length, i => ({
+  const [props, set] = useSprings(PortfolioData.length, i => ({
     ...to(i),
     from: from(i)
   })); // Create a bunch of springs using the helpers above
@@ -96,7 +106,7 @@ const Deck = React.forwardRef((Parent, ref) => {
           config: { friction: 50, tension: down ? 800 : isGone ? 200 : 500 }
         };
       });
-      if (!down && gone.size === CardData.length) {
+      if (!down && gone.size === PortfolioData.length) {
         setTimeout(() => gone.clear() || set(i => to(i)), 600);
       }
     }
@@ -113,7 +123,7 @@ const Deck = React.forwardRef((Parent, ref) => {
         rot={rot}
         scale={scale}
         trans={trans}
-        data={CardData[i]}
+        data={PortfolioData[i]}
         bind={bind}
       />
     );

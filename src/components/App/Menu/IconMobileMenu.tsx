@@ -36,6 +36,10 @@ const MenuBttonBox = styled.div`
     background: ${props =>
       !props.isMobile && 'linear-gradient(to top, rgba(152, 44, 255, 0.3) 40%, transparent 30%)'};
   }
+
+  @media only screen and (min-width: 200px) and (max-width: 773px) {
+    padding: 4px;
+  }
 `;
 
 const CustomColumn = styled(Col)`
@@ -55,6 +59,11 @@ const MenuText = styled(Typography.Text)`
     (props.usedark === 'true'
       ? 'rgba(255, 255, 255, 0.95) !important'
       : 'rgba(0, 0, 0, 0.95) !important')};
+  @media only screen and (min-width: 200px) and (max-width: 773px) {
+    padding-left: 2px;
+    font-size: 14px;
+    letter-spacing: -0.3px;
+  }
 `;
 
 interface Props extends RouteComponentProps<any> {}

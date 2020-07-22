@@ -16,13 +16,7 @@ const FolioRoutes = () => {
   const location = useLocation();
 
   return (
-    <React.Suspense
-      fallback={
-        <div>
-          <LazyLoader />
-        </div>
-      }
-    >
+    <React.Suspense fallback={<LazyLoader />}>
       <AnimatePresence>
         <Switch location={location} key={location.pathname}>
           {/* exact 대신 매칭되는 첫번째 라우트만 보여주고 나머지는 보여주지 않는다.

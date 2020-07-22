@@ -15,7 +15,7 @@ const Title = styled.span`
   line-height: 36px;
   font-size: 1.2rem;
   &:hover {
-    text-decoration: underline;
+    text-decoration: ${props => (props.isMobile ? 'underline' : 'none')};
   }
 `;
 
@@ -53,6 +53,7 @@ const Card = props => {
         }}
       >
         <Title
+          isMobile={isDeviceSize === 'mobile' ? true : false}
           onClick={() => {
             if (isDeviceSize === 'mobile') history.push(`${match.url}/${id}`);
           }}

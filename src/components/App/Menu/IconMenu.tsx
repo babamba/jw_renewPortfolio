@@ -45,15 +45,15 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
             <IdcardOutlined
               style={{
                 color:
-                  selected === 'about' && useDark
+                  (selected === 'about' || selected === '') && useDark
                     ? 'rgba(255, 255, 255, 0.95) !important'
                     : 'rgba(0, 0, 0, 0.95) !important',
                 fontSize: selected === 'about' || selected === '' ? 24 : 20,
                 background:
-                  selected === 'about'
+                  selected === 'about' || selected === ''
                     ? 'linear-gradient(to top, rgba(152, 44, 255, 0.3) 50%, transparent 30%)'
                     : 'transparent',
-                padding: selected === 'about' ? 8 : 0,
+                padding: selected === 'about' || selected === '' ? 8 : 0,
                 transition: '0.8s'
               }}
               onClick={() => history.push('/about')}

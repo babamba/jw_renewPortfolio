@@ -29,7 +29,6 @@ const Card: FC<Props> = (props: Props) => {
   const { common } = useStores();
   const { history, match } = props;
   const { id, name, age, distance, position } = props.data;
-  const controls = useAnimation();
 
   return (
     <Link

@@ -4,7 +4,13 @@ import styled from 'styled-components';
 import { useRouter } from '../hooks/useRouter';
 import useWindowSize from '../hooks/useWindow';
 import { motion } from 'framer-motion';
-import { pageTransition, pageVariants, ContainerStyle, ItemStyle } from '../interfaces/Motion';
+import {
+  pageTransition,
+  pageVariants,
+  ContainerStyle,
+  FastContainerStyle,
+  ItemStyle
+} from '../interfaces/Motion';
 import useStores from '../hooks/useStores';
 import HeadMeta from '../components/Helmet/HeadMeta';
 import ReactGA from 'react-ga';
@@ -96,7 +102,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
           padding: '18px 24px'
         }}
       >
-        <Row gutter={16}>
+        <Row gutter={24}>
           {/*  INTRODUCE */}
           <Col xs={24} sm={24} md={24} lg={18} xl={18}>
             <Divider orientation="left">INTRODUCE</Divider>
@@ -126,7 +132,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
 
         <motion.div
           className="container"
-          variants={ContainerStyle}
+          variants={FastContainerStyle}
           initial="hidden"
           animate="visible"
           exit="hidden"
@@ -512,7 +518,10 @@ const About: FunctionComponent<Props> = (props: Props) => {
                         src={require('../assets/images/stack/aws.png')}
                       />
                       <TitleBox>
-                        <StackText>AWS</StackText>
+                        <StackText>
+                          <Badge status="processing" color="green" />
+                          AWS
+                        </StackText>
                       </TitleBox>
                     </motion.div>
                   </BackStackBox>

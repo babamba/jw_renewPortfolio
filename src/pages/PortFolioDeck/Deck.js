@@ -34,9 +34,11 @@ const Deck = React.forwardRef((Parent, ref) => {
 
   const reDeck = () => {
     callback(PortfolioData.length);
-    set(i => {
-      setTimeout(() => gone.clear() || set(i => to(i)), 300);
-    });
+    gone.clear();
+    set(i => to(i));
+    // set(i => {
+    //   setTimeout(() => gone.clear() || , 300);
+    // });
   };
 
   const next = () => {

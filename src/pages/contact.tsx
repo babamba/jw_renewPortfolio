@@ -22,10 +22,10 @@ const GuideText = styled.h4`
   font-weight: 300;
 
   @media only screen and (min-width: 200px) and (max-width: 767px) {
-    font-size: 1em;
+    font-size: 1.1em;
   }
   @media only screen and (min-width: 768px) and (max-width: 4000px) {
-    font-size: 1.4em;
+    font-size: 1.2em;
   }
 `;
 
@@ -65,8 +65,6 @@ const Contact: FunctionComponent<Props> = ({}) => {
       <HeadMeta text="Contact Me" />
       <Card
         style={{
-          textAlign: 'center',
-          padding: '10px 0px',
           borderRadius: 12,
           marginBottom: isDeviceSize === 'desktop' ? 0 : 30,
           margin: isDeviceSize === 'desktop' ? '40px' : 0
@@ -81,10 +79,10 @@ const Contact: FunctionComponent<Props> = ({}) => {
         >
           <ContentBox>
             <motion.div variants={ItemLeftStyle}>
-              <Typography.Text style={{ fontWeight: 200 }}>
-                <StatusBadge status="success" /> 현재 사이트는 <br /> React / AntDesign / ContentFul
-                으로 만들어졌습니다.
-              </Typography.Text>
+              <GuideText>
+                <StatusBadge status="success" /> 현재 사이트는 React / AntDesign / ContentFul 으로
+                만들어졌습니다.
+              </GuideText>
             </motion.div>
           </ContentBox>
           <ContentBox>

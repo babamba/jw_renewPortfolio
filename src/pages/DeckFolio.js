@@ -7,7 +7,7 @@ import { pageOpacityVariants, pageOpacityTransition } from '../interfaces/Motion
 import PortfolioData from './PortFolioDeck/PortfolioData';
 import DetailInfo from './PortFolioDeck/FolioInfo';
 import { ForwardOutlined, RetweetOutlined } from '@ant-design/icons';
-import { Progress, Row, Col } from 'antd';
+import { Progress, Row, Col, Tooltip } from 'antd';
 import useStores from '../hooks/useStores';
 import useMount from '../hooks/useMount';
 
@@ -81,16 +81,20 @@ const DeckFolio = props => {
     if (prevIdx === 0 && currentIdx === PortfolioData.length - 1) {
       closeAction();
       setTimeout(() => {
-        setInfoData(PortfolioData[currentIdx]);
-        openAction();
+        if (isMount.current) {
+          setInfoData(PortfolioData[currentIdx]);
+          openAction();
+        }
       }, 1000);
     }
 
     if (prevIdx !== currentIdx) {
       closeAction();
       setTimeout(() => {
-        setInfoData(PortfolioData[currentIdx]);
-        openAction();
+        if (isMount.current) {
+          setInfoData(PortfolioData[currentIdx]);
+          openAction();
+        }
       }, 600);
     }
   }, [currentIdx]);
@@ -139,62 +143,94 @@ const DeckFolio = props => {
       <div className={isDeviceSize === 'desktop' ? 'deck-area-desktop' : 'deck-area-mobile'}>
         <div
           style={{
-            position: isDeviceSize === 'desktop' ? 'fixed' : 'relative',
-            width: '100vh',
-            height: isDeviceSize === 'desktop' ? '75vh' : '55vh',
-            top: isDeviceSize === 'desktop' ? '10%' : '0'
-          }}
-        >
-          <Deck ref={DeckRef} callback={callback} currentIdx={currentIdx} />
-        </div>
-
-        <div
-          style={{
             position: 'relative',
             textAlign: 'left',
-            padding: '10px 15%',
+            padding: isDeviceSize === 'desktop' ? '10px 15%' : 0,
             top: isDeviceSize === 'desktop' ? '75%' : '0'
           }}
         >
-          <div style={{ margin: '12px 0px' }}>
-            <Row align="middle" gutter={[16, 8]}>
-              <Col
-                span={isDeviceSize === 'mobile' ? 2 : 1}
-                onClick={() => gestureTrigger()}
-                style={{ paddingTop: 8 }}
+          <Row
+            align="middle"
+            gutter={[16, 8]}
+            justify={isDeviceSize === 'desktop' ? 'start' : 'center'}
+          >
+            <Col span={24}>
+              <div
+                style={{
+                  position: isDeviceSize === 'desktop' ? 'fixed' : 'relative',
+                  width: '100vh',
+                  height: isDeviceSize === 'desktop' ? '75vh' : '55vh',
+                  top: isDeviceSize === 'desktop' ? '7%' : '0'
+                }}
               >
-                <ForwardOutlined style={{ fontSize: 18 }} />
-              </Col>
-              <Col
-                span={isDeviceSize === 'mobile' ? 2 : 1}
-                onClick={() => ReDeckTrigger()}
-                style={{ paddingTop: 8 }}
-              >
-                <RetweetOutlined style={{ fontSize: 18 }} />
-              </Col>
+                <Deck ref={DeckRef} callback={callback} currentIdx={currentIdx} />
+              </div>
+            </Col>
 
-              <Col span={isDeviceSize === 'mobile' ? 2 : 1} style={{ textAlign: 'center' }}>
-                <span>0{PortfolioData.length - currentIdx}</span>
-              </Col>
-              <Col span={isDeviceSize === 'mobile' ? 6 : 2}>
-                <Progress
+            <Col
+              span={isDeviceSize === 'mobile' ? 2 : 1}
+              onClick={() => gestureTrigger()}
+              style={{ paddingTop: 8 }}
+            >
+              <ForwardOutlined style={{ fontSize: 18 }} />
+            </Col>
+            <Col
+              span={isDeviceSize === 'mobile' ? 2 : 1}
+              onClick={() => ReDeckTrigger()}
+              style={{ paddingTop: 8 }}
+            >
+              <RetweetOutlined style={{ fontSize: 18 }} />
+            </Col>
+
+            <Col
+              offset={1}
+              span={isDeviceSize === 'mobile' ? 2 : 1}
+              style={{ textAlign: 'center' }}
+            >
+              <span>0{PortfolioData.length - currentIdx}</span>
+            </Col>
+            <Col span={isDeviceSize === 'mobile' ? 6 : 2}>
+              <Progress
+                style={{
+                  borderRadius: 0
+                }}
+                percent={progressBar}
+                showInfo={false}
+                strokeLinecap="square"
+                strokeColor={common.useDark ? 'rgba(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.65)'}
+              />
+            </Col>
+            <Col span={isDeviceSize === 'mobile' ? 2 : 1} style={{ textAlign: 'center' }}>
+              <span>0{PortfolioData.length}</span>
+            </Col>
+
+            <Col offset={1} span={isDeviceSize === 'mobile' ? 2 : 8}>
+              {isDeviceSize !== 'mobile' && (
+                <span style={{ paddingRight: 12 }}>Swipe Left and Right</span>
+              )}
+
+              <Tooltip placement="topLeft" title={'You Can Try Swipe To Card'}>
+                <img
                   style={{
-                    borderRadius: 0
+                    width: 18,
+                    height: 18
                   }}
-                  percent={progressBar}
-                  showInfo={false}
-                  strokeLinecap="square"
-                  strokeColor={common.useDark ? 'rgba(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.65)'}
+                  src={require('../assets/images/swipe-light.png')}
                 />
-              </Col>
-              <Col span={isDeviceSize === 'mobile' ? 2 : 1} style={{ textAlign: 'center' }}>
-                <span>0{PortfolioData.length}</span>
-              </Col>
-            </Row>
-          </div>
-          <motion.div animate={controls}>
-            <DetailInfo data={InfoData} />
-          </motion.div>
+              </Tooltip>
+            </Col>
+
+            <Col
+              span={24}
+              style={{
+                padding: isDeviceSize === 'mobile' ? '8px 42px' : 8
+              }}
+            >
+              <motion.div animate={controls}>
+                <DetailInfo data={InfoData} />
+              </motion.div>
+            </Col>
+          </Row>
         </div>
       </div>
     </motion.div>

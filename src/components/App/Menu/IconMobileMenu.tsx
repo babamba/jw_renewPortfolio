@@ -1,7 +1,13 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Row, Col, Typography } from 'antd';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
-import { ReadOutlined, PictureOutlined, IdcardOutlined, CoffeeOutlined } from '@ant-design/icons';
+import {
+  ReadOutlined,
+  PictureOutlined,
+  IdcardOutlined,
+  CoffeeOutlined,
+  SmileOutlined
+} from '@ant-design/icons';
 import { ContainerStyle, ItemStyle } from '../../../interfaces/Motion';
 import { motion } from 'framer-motion';
 import ThemeModeSelector from '../ThemeMode/ThemeModeSelector';
@@ -226,7 +232,7 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
             current={selected}
           >
             <MenuBttonBox selected={'contact'} isMobile={isMobile} current={selected}>
-              <ReadOutlined />
+              <SmileOutlined />
               {!isMobile && (
                 <MenuText
                   selected={'contact'}

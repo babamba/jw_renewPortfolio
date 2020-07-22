@@ -78,6 +78,7 @@ const Post: FunctionComponent<any> = observer(() => {
   }, [windowSize.width]);
 
   useEffect(() => {
+    window.dispatchEvent(new Event('scroll'));
     if (process.env.NODE_ENV === 'production') {
       ReactGA.pageview(router.location.pathname + router.location.search);
     }
@@ -153,7 +154,7 @@ const Post: FunctionComponent<any> = observer(() => {
           padding: '18px'
         }}
       >
-        <Divider orientation="center" style={{ marginTop: 0 }}>
+        <Divider orientation="left" style={{ marginTop: 0 }}>
           Blog
         </Divider>
         <Row>

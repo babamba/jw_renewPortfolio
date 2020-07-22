@@ -33,14 +33,14 @@ const MenuBttonBox = styled.div`
 
   background: ${props =>
     props.selected === props.current && !props.isMobile
-      ? 'linear-gradient(to top, rgba(152, 44, 255, 0.3) 40%, transparent 30%)'
+      ? 'linear-gradient(to top, rgba(152, 44, 255, 0.4) 40%, transparent 30%)'
       : 'transparent'};
   transition: all 0.5s ease-out;
 
   &:hover {
     transition: all 0.5s ease;
     background: ${props =>
-      !props.isMobile && 'linear-gradient(to top, rgba(152, 44, 255, 0.3) 40%, transparent 30%)'};
+      !props.isMobile && 'linear-gradient(to top, rgba(152, 44, 255, 0.4) 40%, transparent 30%)'};
   }
 
   @media only screen and (min-width: 200px) and (max-width: 773px) {
@@ -52,7 +52,7 @@ const CustomColumn = styled(Col)`
   text-align: center;
   transform: ${props => (props.selected === props.current ? 'scale( 1.1 )' : 'scale( 1 )')};
   text-decoration: ${props => (props.selected === props.current ? 'underline' : 'unset')};
-  transition: 0.4s;
+  transition: 0.2s;
   padding: 4;
 `;
 

@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
 
 const Title = styled.span`
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.85);
   position: absolute;
   bottom: 10px;
   font-weight: 900;

@@ -51,7 +51,7 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
                 fontSize: selected === 'about' || selected === '' ? 24 : 20,
                 background:
                   selected === 'about' || selected === ''
-                    ? 'linear-gradient(to top, rgba(152, 44, 255, 0.3) 50%, transparent 30%)'
+                    ? 'linear-gradient(to top, rgba(152, 44, 255, 0.4) 50%, transparent 30%)'
                     : 'transparent',
                 padding: selected === 'about' || selected === '' ? 8 : 0,
                 transition: '0.8s'
@@ -72,7 +72,7 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
                 fontSize: selected === 'portfolio' ? 24 : 20,
                 background:
                   selected === 'portfolio'
-                    ? 'linear-gradient(to top, rgba(152, 44, 255, 0.3) 50%, transparent 30%)'
+                    ? 'linear-gradient(to top, rgba(152, 44, 255, 0.4) 50%, transparent 30%)'
                     : 'transparent',
                 padding: selected === 'portfolio' ? 8 : 0,
                 transition: '0.8s'
@@ -92,7 +92,7 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
                 fontSize: selected === 'resume' ? 24 : 20,
                 background:
                   selected === 'resume'
-                    ? 'linear-gradient(to top, rgba(152, 44, 255, 0.3) 50%, transparent 30%)'
+                    ? 'linear-gradient(to top, rgba(152, 44, 255, 0.4) 50%, transparent 30%)'
                     : 'transparent',
                 padding: selected === 'resume' ? 8 : 0,
                 transition: '0.8s'
@@ -114,7 +114,7 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
                 fontSize: selected === 'blog' ? 24 : 20,
                 background:
                   selected === 'blog'
-                    ? 'linear-gradient(to top, rgba(152, 44, 255, 0.3) 50%, transparent 30%)'
+                    ? 'linear-gradient(to top, rgba(152, 44, 255, 0.4) 50%, transparent 30%)'
                     : 'transparent',
                 padding: selected === 'blog' ? 8 : 0,
                 transition: '0.8s'

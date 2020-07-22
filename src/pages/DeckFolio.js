@@ -223,7 +223,12 @@ const DeckFolio = props => {
             <Col
               span={24}
               style={{
-                padding: isDeviceSize === 'mobile' ? '8px 42px' : 8
+                padding:
+                  isDeviceSize === 'mobile'
+                    ? '8px 42px'
+                    : isDeviceSize === 'tablet'
+                    ? '20px 15%'
+                    : 0
               }}
             >
               <motion.div animate={controls}>

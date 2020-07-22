@@ -18,7 +18,8 @@ import ReactGA from 'react-ga';
 const IntroText = styled.h2`
   font-weight: 100;
   padding: 0px 32px;
-  color: ${(props: any) => (props.theme ? 'grey' : 'white')};
+  color: ${(props: any) =>
+    props.theme === 'true' ? 'rgba(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.65)'};
   @media only screen and (min-width: 200px) and (max-width: 767px) {
     font-size: 18px;
   }
@@ -106,7 +107,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
           {/*  INTRODUCE */}
           <Col xs={24} sm={24} md={24} lg={18} xl={18}>
             <Divider orientation="left">INTRODUCE</Divider>
-            <IntroText theme={useDark}>
+            <IntroText theme={useDark ? 'true' : 'false'}>
               안녕하세요. 저는 현재 FrontEnd 직군을 메인으로
               <br /> 프로젝트를 진행하고있습니다. <br />
               Javascript 언어를 가장 좋아합니다. <br />

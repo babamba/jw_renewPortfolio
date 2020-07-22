@@ -58,7 +58,7 @@ const CustomColumn = styled(Col)`
 
 const MenuText = styled(Typography.Text)`
   padding-left: 4px;
-  font-weight: 300;
+  font-weight: ${props => (props.selected === props.current ? 600 : 300)};
   font-size: 16px;
   color: ${props =>
     props.selected === props.current &&
@@ -110,7 +110,7 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
       animate="visible"
       exit="hidden"
     >
-      <Row justify="center" align="middle" style={{ padding: '6px 8px', margin: 'auto 1rem' }}>
+      <Row justify="center" align="middle" style={{ padding: '6px 8px', margin: 'auto 1.5rem' }}>
         <Col span={4} style={{ textAlign: 'center' }}>
           <motion.div variants={ItemStyle}>
             <ThemeModeSelector size={16} />

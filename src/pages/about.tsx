@@ -93,11 +93,10 @@ const About: FunctionComponent<Props> = (props: Props) => {
     >
       <HeadMeta text="About Me" />
       <Card
-        // margin: ;
         style={{
           borderRadius: 12,
-          marginBottom: isDeviceSize === 'desktop' ? 0 : 30,
-          margin: isDeviceSize === 'desktop' ? '40px' : 0
+          margin: isDeviceSize === 'desktop' ? '40px' : 0,
+          marginBottom: 30
         }}
         bodyStyle={{
           padding: '18px 24px'
@@ -571,7 +570,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
           </Row>
         </motion.div>
         {/* 형상관리 */}
-        <Divider orientation="left">Intergration</Divider>
+        <Divider orientation="left">Remote Repository</Divider>
         <motion.div
           className="container"
           variants={ContainerStyle}

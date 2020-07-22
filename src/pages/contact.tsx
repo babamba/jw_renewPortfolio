@@ -105,8 +105,10 @@ const Contact: FunctionComponent<Props> = ({}) => {
                 당신과 함께 성장하고 싶습니다. <br />
               </motion.div>
               <motion.div variants={ItemLeftStyle}>
-                봐주셔서 감사합니다. <br /> 김진원 올림.
+                봐주셔서 감사합니다. <br />
               </motion.div>
+              <br />
+              <motion.div variants={ItemLeftStyle}>김진원 올림.</motion.div>
             </GuideText>
           </ContentBox>
         </motion.div>

@@ -124,11 +124,12 @@ const History: FunctionComponent<Props> = ({}) => {
         style={{
           padding: '6px 0px',
           borderRadius: 12,
-          marginBottom: isDeviceSize === 'desktop' ? 0 : 30,
-          margin: isDeviceSize === 'desktop' ? '40px' : 0
+          margin: isDeviceSize === 'desktop' ? '40px' : 0,
+          marginBottom: isDeviceSize === 'desktop' ? 0 : 30
         }}
         bodyStyle={{
-          padding: isDeviceSize === 'mobile' ? 14 : 24
+          padding: isDeviceSize === 'mobile' ? 14 : 24,
+          paddingBottom: 0
         }}
       >
         <Row>

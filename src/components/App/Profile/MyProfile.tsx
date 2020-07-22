@@ -123,7 +123,8 @@ const MyProfile: FunctionComponent<Props> = (props: Props) => {
                 margin: '.5em 0',
                 padding: 0,
                 fontWeight: 300,
-                fontSize: size.width !== undefined && size.width > 480 ? '1.4em' : '1em',
+                fontSize: '1.2rem',
+                // fontSize: size.width !== undefined && size.width > 480 ? '1.4em' : '1em',
                 lineHeight: 1.4,
                 textAlign: 'center',
                 marginLeft: ResponsiveFlex ? 15 : 0

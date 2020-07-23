@@ -15,7 +15,7 @@ import {
 const MainIntroText = styled.h1`
   font-weight: 800;
   font-size: 3.5rem;
-  opacity: 0.5;
+  opacity: 0.7;
   margin: 0;
   line-height: 1.5;
 `;
@@ -23,7 +23,7 @@ const MainIntroText = styled.h1`
 const MainIntroSmallText = styled.h1`
   font-weight: 600;
   font-size: 2rem;
-  opacity: 0.5;
+  opacity: 0.7;
   margin: 0;
   line-height: 1.5;
 `;
@@ -31,7 +31,7 @@ const SubIntroSmallText = styled.h1`
   font-weight: 300;
   font-size: 1.1rem;
   padding-left: 2px;
-  opacity: 0.7;
+  opacity: 0.8;
   margin: 0;
   line-height: 1.5;
   overflow: visible;
@@ -41,7 +41,7 @@ const SubIntroSmallText = styled.h1`
 const SubIntroText = styled.h2`
   font-weight: 800;
   font-size: 1.5rem;
-  opacity: 0.7;
+  opacity: 0.8;
   margin: 0;
   line-height: 1.5;
   overflow: visible;

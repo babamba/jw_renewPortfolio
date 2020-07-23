@@ -12,10 +12,12 @@ import ReactGA from 'react-ga';
 import useStores from '../hooks/useStores';
 import useMount from '../hooks/useMount';
 import HeadMeta from '../components/Helmet/HeadMeta';
+import { useRouter } from '../hooks/useRouter';
 
 const DeckFolio = props => {
   const { common } = useStores();
   const isMount = useMount();
+  const router = useRouter();
   const DeckRef = useRef();
   const size = useWindowSize();
   const controls = useAnimation();

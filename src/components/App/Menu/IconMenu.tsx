@@ -35,9 +35,9 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
         gutter={[0, 32]}
         style={{ paddingTop: 30, paddingLeft: 8 }}
       >
-        <Col span={24} style={{ textAlign: 'center' }}>
+        <Col span={24} style={{ textAlign: 'center', paddingBottom: 6 }}>
           <motion.div variants={ItemStyle}>
-            <ThemeModeSelector size={20} />
+            <ThemeModeSelector size={2.3} />
           </motion.div>
         </Col>
         <Col span={24} style={{ textAlign: 'center' }}>

@@ -5,6 +5,7 @@ import useStores from '../../../hooks/useStores';
 import { useTheme } from 'antd-theme';
 import { motion } from 'framer-motion';
 import { BulbOutlined } from '@ant-design/icons';
+import CustomIcon from '../../Common/CustomIcon';
 
 const Container = styled.div`
   position: relative;
@@ -63,20 +64,22 @@ const ThemeModeSelector = observer(({ size }) => {
   };
 
   const scaleVariants = {
-    open: { opacity: 1, scale: [1, 1.2, 1.2, 1] },
-    closed: { pacity: 1, scale: [1, 1.2, 1.2, 1] }
+    open: { opacity: 1, rotateZ: [0, 270] },
+    closed: { opacity: 1, rotateZ: [270, 0] }
   };
 
   return (
     <Container>
       <motion.div animate={common.useDark ? 'open' : 'closed'} variants={scaleVariants}>
-        <BulbOutlined
+        <CustomIcon
           onClick={handleChange}
           style={{
+            margin: 0,
             color: common.useDark ? '#f0d74a' : '#6b6b6b',
-            fontSize: size,
+            fontSize: `${size}rem`,
             cursor: 'pointer'
           }}
+          type={common.useDark ? 'icon-night' : 'icon-brightness'}
         />
       </motion.div>
     </Container>

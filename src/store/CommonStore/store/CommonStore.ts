@@ -18,7 +18,7 @@ class CommonStore {
     ? localStorage.getItem('isDark') === 'true'
       ? true
       : false
-    : false;
+    : true;
   @observable
   theme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
 
@@ -32,8 +32,8 @@ class CommonStore {
 
     if (currentMode === null) {
       console.log('not setting');
-      await localStorage.setItem('isDark', 'false');
-      this.useDark = false;
+      await localStorage.setItem('isDark', 'true');
+      this.useDark = true;
     } else if (currentMode === 'true') {
       this.useDark = true;
     } else {

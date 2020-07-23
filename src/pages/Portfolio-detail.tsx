@@ -31,7 +31,7 @@ const FolioInTitleContainer = styled.div`
 `;
 
 const FolioTitle = styled.span`
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.85);
   letter-spacing: -1.2px;
   font-weight: 600;
   font-size: 1.6rem;
@@ -45,7 +45,7 @@ const FolioDate = styled.span`
   letter-spacing: -1.2px;
   font-weight: 300;
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.85);
 `;
 
 const StackText = styled.h4`

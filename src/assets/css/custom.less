@@ -96,7 +96,7 @@ body.light {
   transition: background 0.3s ease 0s;
   //브라우저 스크롤 요소
   &::-webkit-scrollbar {
-    width: 4px;
+    width: 2px;
     height: 6px;
   }
   &::-webkit-scrollbar-track {
@@ -185,6 +185,20 @@ body.dark {
   }
   .ant-layout.dark.bottom-layout {
     background: #24272b;
+  }
+}
+
+.ant-timeline {
+  @media screen and (max-width: 769px) {
+    .ant-timeline-item-tail {
+      display: none;
+    }
+    .ant-timeline-item-head {
+      display: none;
+    }
+    .ant-timeline-item-content {
+      margin-left: 0;
+    }
   }
 }
 

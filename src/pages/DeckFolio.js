@@ -66,6 +66,10 @@ const DeckFolio = props => {
   };
 
   useEffect(() => {
+    openAction();
+  }, []);
+
+  useEffect(() => {
     if (size.width !== undefined) {
       if (size.width < 769) {
         SetIsDeviceSize('mobile');

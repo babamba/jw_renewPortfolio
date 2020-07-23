@@ -19,9 +19,7 @@ import useStores from '../../../hooks/useStores';
 const MotionMenuBox = styled(motion.div)`
   cursor: pointer;
   background-color: ${props =>
-    props.isMobile && props.selected === props.current
-      ? 'rgba(152, 44, 255, 0.15)'
-      : 'transparent'};
+    props.isMobile && props.selected === props.current ? 'rgba(152, 44, 255, 0.3)' : 'transparent'};
   border-radius: 12px;
   margin: 0px 12px;
 `;
@@ -113,7 +111,7 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
       <Row justify="center" align="middle" style={{ padding: '6px 8px', margin: 'auto 1.5rem' }}>
         <Col span={4} style={{ textAlign: 'center' }}>
           <motion.div variants={ItemStyle}>
-            <ThemeModeSelector size={16} />
+            <ThemeModeSelector size={1.6} />
           </motion.div>
         </Col>
         <CustomColumn

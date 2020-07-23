@@ -33,8 +33,7 @@ const TimeText = styled.p`
 `;
 
 const ContentBox = styled.div`
-  padding: 8px;
-  padding-bottom: 0px;
+  padding: 8px 8px 0px;
 `;
 const DescBox = styled.div`
   padding-left: 12px;
@@ -124,12 +123,12 @@ const History: FunctionComponent<Props> = ({}) => {
         style={{
           padding: '6px 0px',
           borderRadius: 12,
-          margin: isDeviceSize === 'desktop' ? '40px' : 0,
-          marginBottom: isDeviceSize === 'desktop' ? 0 : 30
+          margin: isDeviceSize === 'desktop' ? '40px 40px 0px' : '0px 0px 30px 0px'
+          // margin: isDeviceSize === 'desktop' ? '40px' : 0,
+          // marginBottom: isDeviceSize === 'desktop' ? 0 : 30
         }}
         bodyStyle={{
-          padding: isDeviceSize === 'mobile' ? 14 : 24,
-          paddingBottom: 0
+          padding: isDeviceSize === 'mobile' ? '14px 14px 0px' : '24px 24px 0px'
         }}
       >
         <Row>

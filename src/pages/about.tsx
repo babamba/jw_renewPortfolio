@@ -16,7 +16,7 @@ import HeadMeta from '../components/Helmet/HeadMeta';
 import ReactGA from 'react-ga';
 
 const IntroText = styled.h2`
-  font-weight: 100;
+  font-weight: 300;
   padding: 0px 32px;
   color: ${(props: any) =>
     props.theme === 'true' ? 'rgba(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.65)'};
@@ -95,8 +95,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
       <Card
         style={{
           borderRadius: 12,
-          margin: isDeviceSize === 'desktop' ? '40px' : 0,
-          marginBottom: 30
+          margin: isDeviceSize === 'desktop' ? '40px 40px 30px' : '0px 0px 30px 0px'
         }}
         bodyStyle={{
           padding: '18px 24px'

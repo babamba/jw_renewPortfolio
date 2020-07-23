@@ -8,8 +8,10 @@ import PortfolioData from './PortFolioDeck/PortfolioData';
 import DetailInfo from './PortFolioDeck/FolioInfo';
 import { ForwardOutlined, RetweetOutlined } from '@ant-design/icons';
 import { Progress, Row, Col, Tooltip } from 'antd';
+import ReactGA from 'react-ga';
 import useStores from '../hooks/useStores';
 import useMount from '../hooks/useMount';
+import HeadMeta from '../components/Helmet/HeadMeta';
 
 const DeckFolio = props => {
   const { common } = useStores();
@@ -66,6 +68,9 @@ const DeckFolio = props => {
   };
 
   useEffect(() => {
+    if (process.env.NODE_ENV === 'production') {
+      ReactGA.pageview(router.location.pathname + router.location.search);
+    }
     openAction();
   }, []);
 
@@ -144,6 +149,7 @@ const DeckFolio = props => {
       style={{ position: 'absolute', width: '100%', height: '100%' }}
       // style={pageStyle}
     >
+      <HeadMeta text="Project PortFolio" />
       <div className={isDeviceSize === 'desktop' ? 'deck-area-desktop' : 'deck-area-mobile'}>
         <div
           style={{

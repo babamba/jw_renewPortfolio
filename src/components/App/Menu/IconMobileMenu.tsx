@@ -22,6 +22,7 @@ const MotionMenuBox = styled(motion.div)`
     props.isMobile && props.selected === props.current ? 'rgba(152, 44, 255, 0.3)' : 'transparent'};
   border-radius: 12px;
   margin: 0px 12px;
+  transition: background 0.6s;
 `;
 
 const MenuBttonBox = styled.div`

@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect } from 'react';
 import { Typography } from 'antd';
 import { motion, useAnimation } from 'framer-motion';
-import { ContainerStyle, ItemStyle } from '../../interfaces/Motion';
+import { ContainerStyle, ItemStyle, FastContainerStyle } from '../../interfaces/Motion';
 import styled from 'styled-components';
 import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
 import useStores from '../../hooks/useStores';
@@ -13,6 +13,7 @@ const InfoContainer = styled(motion.div)`
 `;
 
 interface Props extends RouteComponentProps {
+  animating: Boolean;
   data: {
     id: string;
     name: string;
@@ -27,7 +28,7 @@ interface Props extends RouteComponentProps {
 
 const Card: FC<Props> = (props: Props) => {
   const { common } = useStores();
-  const { history, match } = props;
+  const { history, match, animating } = props;
   const { id, name, age, distance, position } = props.data;
 
   return (
@@ -39,15 +40,14 @@ const Card: FC<Props> = (props: Props) => {
     >
       <InfoContainer
         className="container"
-        variants={ContainerStyle}
+        variants={FastContainerStyle}
         initial="hidden"
-        animate="visible"
-        exit="hidden"
+        animate={animating ? 'visible' : 'hidden'}
       >
         <motion.div variants={ItemStyle}>
           <Typography.Text
             style={{
-              fontSize: 30,
+              fontSize: 28,
               marginBottom: 14,
               fontWeight: 600,
               letterSpacing: -2

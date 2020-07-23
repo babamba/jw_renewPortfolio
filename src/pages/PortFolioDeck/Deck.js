@@ -36,9 +36,6 @@ const Deck = React.forwardRef((Parent, ref) => {
     callback(PortfolioData.length);
     gone.clear();
     set(i => to(i));
-    // set(i => {
-    //   setTimeout(() => gone.clear() || , 300);
-    // });
   };
 
   const next = () => {
@@ -132,17 +129,6 @@ const Deck = React.forwardRef((Parent, ref) => {
   });
 
   return DeckList;
-  // return (
-  //   <div style={{ position: 'absolute' }}>
-  //     {}
-  //     <div
-  //       style={{ margin: '12px 0px', position: 'absolute', bottom: 70, left: 120 }}
-  //       onClick={() => next()}
-  //     >
-  //       <ForwardOutlined style={{ fontSize: 18 }} onClick={() => next()} />
-  //     </div>
-  //   </div>
-  // );
 });
 
 export default Deck;

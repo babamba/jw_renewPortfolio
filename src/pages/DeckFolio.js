@@ -21,6 +21,7 @@ const DeckFolio = props => {
   const DeckRef = useRef();
   const size = useWindowSize();
   const controls = useAnimation();
+  const [animating, setAnimating] = useState(false);
   const [isDeviceSize, SetIsDeviceSize] = useState('desktop');
   const [currentIdx, SetCurrentIdx] = useState(PortfolioData.length - 1);
   const [prevIdx, setPrevIdx] = useState(0);
@@ -110,35 +111,12 @@ const DeckFolio = props => {
     }
   }, [currentIdx]);
 
-  // const transitionDuration = 200 + 50; // Keep this value slightly higher than the CSS counterpart
-  // const applyProgressBeforeInteractive = `function (elements, progress) {
-  //     elements.progressBar.style = 'transform:scaleX(' + progress + ')';
-  // }`;
-
-  // const promise = new Promise(resolve => setTimeout(resolve, 4000));
-
   const closeAction = () => {
-    controls.start(() => ({
-      opacity: 0,
-      transition: {
-        duration: 1,
-        type: 'spring',
-        stiffness: 400,
-        damping: 40
-      }
-    }));
+    setAnimating(false);
   };
 
   const openAction = () => {
-    controls.start(() => ({
-      opacity: 1,
-      transition: {
-        duration: 1,
-        type: 'spring',
-        stiffness: 400,
-        damping: 40
-      }
-    }));
+    setAnimating(true);
   };
 
   return (
@@ -170,8 +148,7 @@ const DeckFolio = props => {
               <div
                 style={{
                   position: isDeviceSize === 'desktop' ? 'fixed' : 'relative',
-                  width: '100vh',
-                  height: isDeviceSize === 'desktop' ? '75vh' : '55vh',
+                  height: isDeviceSize === 'desktop' ? '75vh' : size.width > 473 ? '55vh' : '45vh',
                   top: isDeviceSize === 'desktop' ? '7%' : '0'
                 }}
               >
@@ -240,11 +217,11 @@ const DeckFolio = props => {
                     ? '8px 42px'
                     : isDeviceSize === 'tablet'
                     ? '20px 15%'
-                    : 0
+                    : '4px 8px'
               }}
             >
               <motion.div animate={controls}>
-                <DetailInfo data={InfoData} />
+                <DetailInfo data={InfoData} animating={animating} />
               </motion.div>
             </Col>
           </Row>

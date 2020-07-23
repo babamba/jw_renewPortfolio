@@ -4,12 +4,13 @@ import { ContentfulService } from '../core/contentful';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { BlogPost } from '../interfaces/post';
 import { motion } from 'framer-motion';
-import { Typography, PageHeader, Layout, List, Skeleton } from 'antd';
+import { Typography, PageHeader, Layout, Skeleton } from 'antd';
 import styled from 'styled-components';
 import {
   pageDetailVariants,
   pageDetailTransition,
-  DetailContainerStyle
+  DetailContainerStyle,
+  ContainerStyle
 } from '../interfaces/Motion';
 import HeadMeta from '../components/Helmet/HeadMeta';
 import { useRouter } from '../hooks/useRouter';
@@ -38,7 +39,7 @@ const textVariants = {
 
 const backVariants = {
   out: {
-    x: 100,
+    x: -10,
     opacity: 0,
     transition: {
       duration: 0.5,
@@ -88,7 +89,7 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
       <HeadMeta text={`${article?.title}`} />
       <motion.div
         className="container"
-        variants={DetailContainerStyle}
+        variants={ContainerStyle}
         initial="hidden"
         animate="visible"
         exit="hidden"
@@ -108,6 +109,7 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
             {article === null && <Skeleton />}
             {/* <motion.div v */}
             <motion.button
+              variants={backVariants}
               whileHover={{
                 scale: 1.02,
                 transition: { duration: 0.5 }

@@ -13,11 +13,19 @@ import HeadMeta from '../components/Helmet/HeadMeta';
 import { useRouter } from '../hooks/useRouter';
 import ReactGA from 'react-ga';
 import useWindowSize from '../hooks/useWindow';
+import useStores from '../hooks/useStores';
 
 const { Text, Link } = Typography;
 
 const CustomDivider = styled(Divider)`
   margin: 12px 0px;
+`;
+
+const StrongText = styled(Typography.Text)`
+  font-weight: 600;
+  color: ${props =>
+    props.usedark === 'true' ? 'rgba(220, 220, 220, 1) !important' : 'rgba(0, 0, 0, 1) !important'};
+  background: linear-gradient(to top, rgb(154 255 44 / 60%) 0%, transparent 30%);
 `;
 
 const HeadDiv = styled.div`
@@ -28,7 +36,7 @@ const HeadDiv = styled.div`
 `;
 const TimeText = styled.p`
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
   margin-bottom: 0.5em;
 `;
 
@@ -74,7 +82,7 @@ const StatusBadge = styled(Badge)`
 `;
 
 const JobMainText = styled.h4`
-  font-weight: 300;
+  font-weight: 900;
 
   @media only screen and (min-width: 200px) and (max-width: 767px) {
     font-size: 1em;
@@ -87,7 +95,9 @@ const JobMainText = styled.h4`
 type Props = {};
 const History: FunctionComponent<Props> = ({}) => {
   const router = useRouter();
-
+  const {
+    common: { useDark }
+  } = useStores();
   const size = useWindowSize();
   const [isDeviceSize, SetIsDeviceSize] = useState('desktop');
   useEffect(() => {
@@ -198,6 +208,11 @@ const History: FunctionComponent<Props> = ({}) => {
                                 개발 (2019.12 ~ 현재)
                               </JobMainText>
                               <JobText>
+                                - {''}
+                                <Text underline strong>
+                                  개발언어 : React(TypeScript) / Mobx / AntDesign / Appsync(Apollo)
+                                </Text>
+                                <br />
                                 - Gint-Connect 단말기로 쌓여진 트랙터 데이터를 이용한 Web Admin
                                 어플리케이션 개발
                                 <br />
@@ -228,14 +243,13 @@ const History: FunctionComponent<Props> = ({}) => {
                                 Console 개발( 2020.01 ~ 현재 )
                               </JobMainText>
                               <JobText>
-                                - 국립농업과학원 봉군형성실 iot Project의 web console 개발진행{' '}
-                                <br />- Flask / mysql 로 개발된 서버의 API 를 가지고 클라이언트 개발{' '}
-                                <br />-{' '}
+                                - {''}
                                 <Text underline strong>
-                                  React / Material-UI
+                                  개발언어 : React / Material UI
                                 </Text>
-                                로 개발. <br />- 실시간 데이터 fetching 처리 및 Data Visualization
-                                개발
+                                <br />- 국립농업과학원 봉군형성실 iot Project의 web console 개발진행{' '}
+                                <br />- Flask / mysql 로 개발된 서버의 API 를 가지고 클라이언트 개발{' '}
+                                <br />- 실시간 데이터 fetching 처리 및 Data Visualization 개발
                               </JobText>
                             </motion.div>
                             <CustomDivider />
@@ -245,13 +259,13 @@ const History: FunctionComponent<Props> = ({}) => {
                                 App 개발(2020.03 ~ 2020.06)
                               </JobMainText>
                               <JobText>
-                                - 국립 농과원 web project 기반 React Native로 App 개발 진행 <br />-
-                                Flask / mysql 로 개발된 서버의 API 를 가지고 클라이언트 개발 <br />-
+                                - {''}
                                 <Text underline strong>
-                                  {' '}
-                                  ReactNative / NativeBase / Victory Chart
-                                </Text>{' '}
-                                로 개발
+                                  개발언어 : React Native / NativeBase / Victory Chart
+                                </Text>
+                                <br />
+                                - 국립 농과원 web project 기반 React Native로 App 개발 진행 <br />-
+                                Flask / mysql 로 개발된 서버의 API 를 가지고 클라이언트 개발
                               </JobText>
                             </motion.div>
                             <CustomDivider />
@@ -262,16 +276,15 @@ const History: FunctionComponent<Props> = ({}) => {
                                 프로젝트(2020.02 ~ 2020.03)
                               </JobMainText>
                               <JobText>
+                                - {''}
+                                <Text underline strong>
+                                  개발언어 : React / AntDesign
+                                </Text>
+                                <br />
                                 - 충남대학교 트랙터 동력 테스트 Web console 개발 <br />- Aws lambda
                                 / sqs 서비스를 이용해 제작된 API를 가지고 클라이언트 개발 <br />-
                                 위치 데이터 입출력 처리(csv 1만개 이상 데이터) 및 이동경로 지도 표시{' '}
-                                <br />
-                                - 데이터 관리 및 실험 관리 개발
-                                <br />-{' '}
-                                <Text underline strong>
-                                  React / Ant.Design
-                                </Text>
-                                로 개발.
+                                <br />- 데이터 관리 및 실험 관리 개발
                               </JobText>
                             </motion.div>
                           </ProjectBox>
@@ -334,6 +347,10 @@ const History: FunctionComponent<Props> = ({}) => {
                             >
                               실제 서비스 관련 기사
                             </Link>
+                            <br />- {''}
+                            <Text underline strong>
+                              개발언어 : Javascript
+                            </Text>
                             <br />- 알티캐스트 & KT IPTV ACAP 미들웨어 어플리케이션 개발
                             <br />
                             - 셋탑 어플리케이션 모듈 키즈랜드2.0 프로젝트 <br />
@@ -348,10 +365,15 @@ const History: FunctionComponent<Props> = ({}) => {
 
                           <JobMainText>
                             <StatusBadge status="success" /> KT 기가지니 "미봇" 테스트용 프로젝트
-                            POC 프로젝트 (2018.05 ~ 2018.10)
+                            프로젝트 (2018.05 ~ 2018.10)
                           </JobMainText>
                           <JobText>
-                            - KT 기가지니 "미봇" 테스트용 프로젝트 POC 진행
+                            - {''}
+                            <Text underline strong>
+                              개발언어 : Javascript
+                            </Text>
+                            <br />
+                            - KT 기가지니 "미봇" 테스트용 프로젝트 진행
                             <br />- KT 셋탑 기가지니의 챗봇 관련 front 단 로직 및 UI/UX 적용 개발
                             진행
                             <br />- 셋탑 사양 대비 애니메이션 추가로 인한 효율적 소스 관리
@@ -364,6 +386,11 @@ const History: FunctionComponent<Props> = ({}) => {
                             프로젝트(2019.05~2019.09)
                           </JobMainText>
                           <JobText>
+                            - {''}
+                            <Text underline strong>
+                              개발언어 : Javascript
+                            </Text>
+                            <br />
                             - 알티캐스트 - KT IPTV ACAP 셋탑 어플리케이션 개발
                             <br />
                             - 결제 Voiceable 과 연동하여 자동 추천 및 할인율, 쿠폰 여부 에 따른
@@ -378,6 +405,11 @@ const History: FunctionComponent<Props> = ({}) => {
                             고도화 프로젝트(2018.12 ~ 2019.04)
                           </JobMainText>
                           <JobText>
+                            - {''}
+                            <Text underline strong>
+                              개발언어 : Javascript
+                            </Text>
+                            <br />
                             - 알티캐스트 - KT IPTV ACAP 셋탑 어플리케이션 모듈 키즈랜드 v2.0 안정화
                             프로젝트
                             <br />- 결제 관련 부분 UI 및 로직 담당
@@ -440,39 +472,31 @@ const History: FunctionComponent<Props> = ({}) => {
                             -{' '}
                             <Link href="https://www.osan.go.kr/osanedu/" target="_blank">
                               실제 서비스 링크
-                            </Link>
+                            </Link>{' '}
+                            <br />- {''}
+                            <Text underline strong>
+                              개발언어 : Spring(Java) / Ibatis / HTML & CSS & JQuery
+                            </Text>
                             <br />
-                            1. 분석 단계 - 요구사항 도출 및 화면 설계
+                            - 요구사항 도출 및 화면 설계
                             <br />
-                            2. 설계 단계 - 화면 설계를 통한 자료 사전 및 도메인 정의, ERD작성
+                            - 화면 설계를 통한 자료 사전 및 도메인 정의, ERD작성
                             <br />
-                            3. 학습 플랫폼(물음표 학교, 느낌표 학교) 개발
+                            - 관리자 서버 & 사용자 서버 분리 개발.
                             <br />
-                            4. 나눔 플랫폼(재능기부) 개발
+                            - End 유저(시민) Web Client 개발 (HTML / CSS / JQuery / JSP)
                             <br />
-                            5. 강사 관리 시스템 개발
+                            - 관리자(배너, 게시물 관리, 사업관리, 권한 관리, 통계, 접속 로그,
+                            회원관리, 예약관리, 공통코드관리 등) 화면 및 시스템 개발
                             <br />
-                            6. 통합 예약시스템(징검다리교실) 개발
+                            - 형상 관리(SVN), 젠킨스 CI / CD
                             <br />
-                            7. 시멘틱(의미 기반) 검색/분석 시스템 구축(Konan Search 솔루션 사용)
+                            - 리포팅 툴을 통한 관리자 통합 분석 및 보고서 제공(ClipReport 솔루션
+                            사용)
                             <br />
-                            8. 사용자 권한 별 관리 기능 제공
-                            <br />
-                            9. 클라이언트 접속 지연시간 튜닝(무거워진 메인/상세 페이지
-                            소스/라이브러리 관리) <br />
-                            10. 관리자 시스템 개발(배너, 게시물 관리, 사업관리, 권한 관리, 통계,
-                            접속 로그, 회원관리, 예약관리, 공통코드관리
-                            <br />
-                            11. 플랫폼 중심의 강사, 활동가, 수강생 간의 연계 네트워크 구성)
-                            <br />
-                            12. 형상 관리(SVN), 젠킨스(Maven빌드 tomcat war redeploy)
-                            <br />
-                            13. 리포팅 툴을 통한 관리자 통합 분석 및 보고서 제공(ClipReport)
-                            <br />
-                            14. 웹표준/웹접근성 관리
+                            - 웹표준/웹접근성 관리
                             <br />
                           </JobText>
-
                           <CustomDivider />
 
                           <JobMainText>
@@ -483,7 +507,11 @@ const History: FunctionComponent<Props> = ({}) => {
                             -{' '}
                             <Link href="https://apply.gico.or.kr/" target="_blank">
                               실제 서비스 링크
-                            </Link>
+                            </Link>{' '}
+                            <br />- {''}
+                            <Text underline strong>
+                              개발언어 : Spring(Java) / Ibatis / HTML & CSS & JQuery
+                            </Text>
                             <br />
                             - 경기도 및 경기도시공사에서 성공적으로 진행중인 따복하우스 사업을
                             인터넷시스템으로 구축 <br />
@@ -553,16 +581,19 @@ const History: FunctionComponent<Props> = ({}) => {
                           </JobMainText>
 
                           <JobText>
+                            -{' '}
+                            <Link href="https://github.com/babamba/hotdogEx" target="_blank">
+                              Github Link
+                            </Link>{' '}
+                            <br />- {''}
+                            <Text underline strong>
+                              개발언어 :Spring / MyBatis / Maria DB / HTML & CSS & JQuery
+                            </Text>
+                            <br />
                             - 응용 애플리케이션 개발과정 습득
                             <br />
                             - 졸업프로젝트 : HOT DOG(Pet Cam : Raspberry Pi를 이용한 웹/앱 스트리밍
-                            및 커뮤니티) <br />-{' '}
-                            <Link href="https://github.com/babamba/hotdogEx" target="_blank">
-                              Github 소스
-                            </Link>{' '}
-                            <br />
-                            - 주 업무 : 프론트엔드 개발 <br />- 사용기술 : Spring / MyBatis / Maria
-                            DB / Jquery <br />
+                            및 커뮤니티) <br />
                           </JobText>
                         </ProjectBox>
                       </Col>

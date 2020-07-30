@@ -13,7 +13,7 @@ import {
 } from '../../../interfaces/Motion';
 
 const MainIntroText = styled.h1`
-  font-weight: 800;
+  font-weight: 600;
   font-size: 3.5rem;
   opacity: 0.7;
   margin: 0;

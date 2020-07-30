@@ -116,7 +116,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
               FrontEnd 및 BackEnd 직군으로 프로젝트를 진행한 경력이 있습니다. <br />
               기술 트렌드와 실제 프로덕션의 중간에서 효율점을 찾아가며
               <br />
-              하루하루 발전해 나가고 있습니다.
+              하루하루 발전해 나가고 있습니다. 잘 부탁드립니다.
               <br />
               {/* 항상 도전하고 배우겠습니다. */}
             </IntroText>

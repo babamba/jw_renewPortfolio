@@ -82,7 +82,7 @@ const StatusBadge = styled(Badge)`
 `;
 
 const JobMainText = styled.h4`
-  font-weight: 900;
+  font-weight: 800;
 
   @media only screen and (min-width: 200px) and (max-width: 767px) {
     font-size: 1em;

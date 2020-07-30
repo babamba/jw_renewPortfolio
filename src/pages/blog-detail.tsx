@@ -88,72 +88,95 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
   return (
     <Layout.Content>
       <HeadMeta text={`${article?.title}`} />
-      {article === undefined ? (
-        <>
-          <Skeleton active paragraph={{ rows: 1 }} />
 
-          <Skeleton.Avatar active size={24} shape="square" />
-          <Skeleton active paragraph={{ rows: 10 }} />
-        </>
-      ) : (
+      <motion.div
+        className="container"
+        variants={ContainerStyle}
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+      >
         <motion.div
-          className="container"
-          variants={ContainerStyle}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
+          initial="initial"
+          animate="in"
+          exit="out"
+          variants={pageDetailVariants}
+          transition={pageDetailTransition}
+          style={{
+            position: 'absolute',
+            width: '100%'
+          }}
         >
-          <motion.div
-            initial="initial"
-            animate="in"
-            exit="out"
-            variants={pageDetailVariants}
-            transition={pageDetailTransition}
-            style={{
-              position: 'absolute',
-              width: '100%'
-            }}
-          >
-            <PostContainer className="post">
-              {article === null && <Skeleton />}
-              {/* <motion.div v */}
-              <motion.button
-                variants={backVariants}
-                whileHover={{
-                  scale: 1.02,
-                  transition: { duration: 0.5 }
-                }}
-                whileTap={{ scale: 0.99 }}
-                onClick={() => history.push('/blog')}
-                style={{
-                  background: 'transparent',
-                  border: 'none',
-                  outline: 'none',
-                  cursor: 'pointer'
-                }}
-              >
-                <PageHeader
-                  onBack={() => history.push('/blog')}
-                  className="site-page-header"
-                  title="이전 페이지"
-                  style={{ background: 'transparent', padding: '12px 0px' }}
-                  // subTitle="이전 페이지"
-                />
-              </motion.button>
-              {/* </motion.div> */}
-              <motion.div variants={textVariants}>
-                <Typography.Title level={1}>{article?.title}</Typography.Title>
-                <div className="author">
-                  <p>Written by {article?.author.name}</p>
-                </div>
-              </motion.div>
-              <motion.div variants={textVariants}>
-                <ReactMarkdown className="markdown" source={article?.body} />
-              </motion.div>
-            </PostContainer>
-          </motion.div>
+          <PostContainer className="post">
+            {article === undefined ? (
+              <>
+                <motion.button
+                  variants={backVariants}
+                  whileHover={{
+                    scale: 1.02,
+                    transition: { duration: 0.5 }
+                  }}
+                  whileTap={{ scale: 0.99 }}
+                  onClick={() => history.push('/blog')}
+                  style={{
+                    background: 'transparent',
+                    border: 'none',
+                    outline: 'none',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <PageHeader
+                    onBack={() => history.push('/blog')}
+                    className="site-page-header"
+                    title="이전 페이지"
+                    style={{ background: 'transparent', padding: '12px 0px' }}
+                    // subTitle="이전 페이지"
+                  />
+                </motion.button>
+                <Skeleton active paragraph={{ rows: 1 }} />
+                <Skeleton.Avatar active size={24} shape="square" />
+                <Skeleton active paragraph={{ rows: 10 }} />
+              </>
+            ) : (
+              <>
+                <motion.button
+                  variants={backVariants}
+                  whileHover={{
+                    scale: 1.02,
+                    transition: { duration: 0.5 }
+                  }}
+                  whileTap={{ scale: 0.99 }}
+                  onClick={() => history.push('/blog')}
+                  style={{
+                    background: 'transparent',
+                    border: 'none',
+                    outline: 'none',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <PageHeader
+                    onBack={() => history.push('/blog')}
+                    className="site-page-header"
+                    title="이전 페이지"
+                    style={{ background: 'transparent', padding: '12px 0px' }}
+                    // subTitle="이전 페이지"
+                  />
+                </motion.button>
+                {/* </motion.div> */}
+                <motion.div variants={textVariants}>
+                  <Typography.Title level={1}>{article?.title}</Typography.Title>
+                  <div className="author">
+                    <p>Written by {article?.author.name}</p>
+                  </div>
+                </motion.div>
+                <motion.div variants={textVariants}>
+                  <ReactMarkdown className="markdown" source={article?.body} />
+                </motion.div>
+              </>
+            )}
+          </PostContainer>
         </motion.div>
-      )}
+      </motion.div>
     </Layout.Content>
   );
 };

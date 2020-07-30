@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { Row, Col, Divider, Card, Typography, Avatar, Badge } from 'antd';
+import { Row, Col, Divider, Card, Typography, Avatar, Badge, Tooltip } from 'antd';
 import styled from 'styled-components';
 import { useRouter } from '../hooks/useRouter';
 import useWindowSize from '../hooks/useWindow';
@@ -81,6 +81,10 @@ const About: FunctionComponent<Props> = (props: Props) => {
     }
   }, [size]);
 
+  const RenderTooltip = text => {
+    return <Typography.Text>{text}</Typography.Text>;
+  };
+
   return (
     <motion.div
       initial="initial"
@@ -106,11 +110,15 @@ const About: FunctionComponent<Props> = (props: Props) => {
           <Col xs={24} sm={24} md={24} lg={18} xl={18}>
             <Divider orientation="left">INTRODUCE</Divider>
             <IntroText theme={useDark ? 'true' : 'false'}>
-              안녕하세요. 저는 현재 FrontEnd 직군을 메인으로
-              <br /> 프로젝트를 진행하고있습니다. <br />
+              안녕하세요. 저는 현재 <Typography.Text underline>FrontEnd</Typography.Text> 직군에서
+              프로젝트를 진행하고있습니다. <br />
               Javascript 언어를 가장 좋아합니다. <br />
               FrontEnd 및 BackEnd 직군으로 프로젝트를 진행한 경력이 있습니다. <br />
-              항상 도전하고 배우겠습니다.
+              기술 트렌드와 실제 프로덕션의 중간에서 효율점을 찾아가며
+              <br />
+              하루하루 발전해 나가고 있습니다.
+              <br />
+              {/* 항상 도전하고 배우겠습니다. */}
             </IntroText>
           </Col>
           {/* TAGS */}
@@ -125,7 +133,10 @@ const About: FunctionComponent<Props> = (props: Props) => {
         <Divider orientation="left">
           FrontEnd Stack
           <StackText style={{ paddingLeft: 12, fontSize: 12, fontWeight: 100 }}>
-            <Badge status="processing" color="green" />: 프로젝트에서 사용중
+            <Badge status="processing" color="green" />
+            {isDeviceSize !== 'mobile'
+              ? ': 현재 진행 중인 프로젝트에서 사용중'
+              : ': 현재 프로젝트에서 사용중'}
           </StackText>
         </Divider>
 
@@ -142,11 +153,18 @@ const About: FunctionComponent<Props> = (props: Props) => {
                 <Col xs={8} sm={8} md={6} lg={4} xl={4}>
                   <FrontStackBox>
                     <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={size.width !== undefined && size.width > 480 ? 80 : 60}
-                        src={require('../assets/images/stack/js.png')}
-                      />
+                      <Tooltip
+                        placement="topLeft"
+                        title={RenderTooltip(
+                          '프론트엔드 개발자로써 Dom 컨트롤 및 데이터 컨트롤을 위한 필수 요소'
+                        )}
+                      >
+                        <Avatar
+                          shape="square"
+                          size={size.width !== undefined && size.width > 480 ? 80 : 60}
+                          src={require('../assets/images/stack/js.png')}
+                        />
+                      </Tooltip>
                       <TitleBox>
                         <StackText>
                           <Badge status="processing" color="green" />
@@ -160,11 +178,16 @@ const About: FunctionComponent<Props> = (props: Props) => {
                 <Col xs={8} sm={8} md={6} lg={4} xl={4}>
                   <FrontStackBox>
                     <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={size.width !== undefined && size.width > 480 ? 80 : 60}
-                        src={require('../assets/images/stack/jses6.png')}
-                      />
+                      <Tooltip
+                        placement="topLeft"
+                        title={RenderTooltip('모던 자바스크립트 사용을 위한 필수요소')}
+                      >
+                        <Avatar
+                          shape="square"
+                          size={size.width !== undefined && size.width > 480 ? 80 : 60}
+                          src={require('../assets/images/stack/jses6.png')}
+                        />
+                      </Tooltip>
                       <TitleBox>
                         <StackText>
                           <Badge status="processing" color="green" />
@@ -177,11 +200,18 @@ const About: FunctionComponent<Props> = (props: Props) => {
                 <Col xs={8} sm={8} md={6} lg={4} xl={4}>
                   <FrontStackBox>
                     <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={size.width !== undefined && size.width > 480 ? 80 : 60}
-                        src={require('../assets/images/stack/typescript.png')}
-                      />
+                      <Tooltip
+                        placement="topLeft"
+                        title={RenderTooltip(
+                          '런타임에러 방지 및 신용 할 수 있는 코드를 위한 필수 요소'
+                        )}
+                      >
+                        <Avatar
+                          shape="square"
+                          size={size.width !== undefined && size.width > 480 ? 80 : 60}
+                          src={require('../assets/images/stack/typescript.png')}
+                        />
+                      </Tooltip>
                       <TitleBox>
                         <StackText>
                           <Badge status="processing" color="green" />
@@ -194,11 +224,18 @@ const About: FunctionComponent<Props> = (props: Props) => {
                 <Col xs={8} sm={8} md={6} lg={4} xl={4}>
                   <FrontStackBox>
                     <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={size.width !== undefined && size.width > 480 ? 80 : 60}
-                        src={require('../assets/images/stack/babel.png')}
-                      />
+                      <Tooltip
+                        placement="topLeft"
+                        title={RenderTooltip(
+                          '크로스브라우징을 위해 es6문법으로 작성된 js파일을 es5문법으로 작성된 js파일로 만들어 주기 위한 필수요소'
+                        )}
+                      >
+                        <Avatar
+                          shape="square"
+                          size={size.width !== undefined && size.width > 480 ? 80 : 60}
+                          src={require('../assets/images/stack/babel.png')}
+                        />
+                      </Tooltip>
                       <TitleBox>
                         <StackText>
                           <Badge status="processing" color="green" />
@@ -211,11 +248,18 @@ const About: FunctionComponent<Props> = (props: Props) => {
                 <Col xs={8} sm={8} md={6} lg={4} xl={4}>
                   <FrontStackBox>
                     <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={size.width !== undefined && size.width > 480 ? 80 : 60}
-                        src={require('../assets/images/stack/webpack.png')}
-                      />
+                      <Tooltip
+                        placement="topLeft"
+                        title={RenderTooltip(
+                          '각 파일로 나뉘어있는 소스들을 하나로묶어(번들링)서 네트워크 비용을 최소화 하는 필수 요소'
+                        )}
+                      >
+                        <Avatar
+                          shape="square"
+                          size={size.width !== undefined && size.width > 480 ? 80 : 60}
+                          src={require('../assets/images/stack/webpack.png')}
+                        />
+                      </Tooltip>
                       <TitleBox>
                         <StackText>
                           <Badge status="processing" color="green" />

@@ -21,10 +21,10 @@ const IntroText = styled.h2`
   color: ${(props: any) =>
     props.theme === 'true' ? 'rgba(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.65)'};
   @media only screen and (min-width: 200px) and (max-width: 767px) {
-    font-size: 18px;
+    font-size: 14px;
   }
   @media only screen and (min-width: 768px) and (max-width: 4000px) {
-    font-size: 28px;
+    font-size: 24px;
   }
 `;
 

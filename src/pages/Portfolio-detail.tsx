@@ -133,7 +133,13 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
       style={{ position: 'absolute', width: '100%' }}
     >
       <FolioContainer>
-        <HeadMeta text={`Portfolio | ${folio ? folio.id : 'empty'}`} />
+        <HeadMeta
+          title={`Portfolio | ${folio ? folio.id : 'empty'}`}
+          text={`Portfolio | ${folio ? folio.id : 'empty'}`}
+          keywords={`Portfolio | ${folio ? folio.id : 'empty'}`}
+          description={`Portfolio | ${folio ? folio.id : 'empty'}`}
+        />
+
         <motion.button
           whileHover={{
             scale: 1.02,

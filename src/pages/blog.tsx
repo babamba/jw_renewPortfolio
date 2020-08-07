@@ -143,7 +143,7 @@ const Post: FunctionComponent<any> = observer(() => {
       style={{ position: 'absolute', width: '100%' }}
       // style={pageStyle}
     >
-      <HeadMeta text="BLOG" />
+      <HeadMeta title="JW BLOG" text="JW BLOG" keywords="JW BLOG" description="JW BLOG" />
       <CardView
         style={{
           borderRadius: 12,

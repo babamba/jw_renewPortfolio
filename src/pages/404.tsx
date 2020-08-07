@@ -10,7 +10,7 @@ const Page_404: FC<RouteComponentProps> = ({ history }) => {
 
   return (
     <>
-      <HeadMeta text="404" />
+      <HeadMeta title="404 Page" text="404" keywords="404 Page" description="404 Page" />
       <Result
         status="404"
         title="404"

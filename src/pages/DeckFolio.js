@@ -129,7 +129,12 @@ const DeckFolio = props => {
       style={{ position: 'absolute', width: '100%', height: '100%' }}
       // style={pageStyle}
     >
-      <HeadMeta text="Project PortFolio" />
+      <HeadMeta
+        title="JW Project PortFolio"
+        text="JW Project PortFolio"
+        keywords="FrontEnd Developer React Project"
+        description="Project PortFolio"
+      />
       <div className={isDeviceSize === 'desktop' ? 'deck-area-desktop' : 'deck-area-mobile'}>
         <div
           style={{

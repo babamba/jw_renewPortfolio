@@ -128,7 +128,12 @@ const History: FunctionComponent<Props> = ({}) => {
       style={{ position: 'absolute', width: '100%' }}
       // style={pageStyle}
     >
-      <HeadMeta text="Resume" />
+      <HeadMeta
+        title="JW Resume"
+        text="JW Resume"
+        keywords="FrontEnd Developer React"
+        description="JW Resume"
+      />
       <Card
         style={{
           padding: '6px 0px',

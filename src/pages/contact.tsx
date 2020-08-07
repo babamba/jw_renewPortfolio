@@ -62,7 +62,12 @@ const Contact: FunctionComponent<Props> = ({}) => {
       style={{ position: 'absolute', width: '100%' }}
       // style={pageStyle}
     >
-      <HeadMeta text="Contact Me" />
+      <HeadMeta
+        title="Contact Me"
+        text="Contact Me"
+        keywords="Contact Me"
+        description="Contact Me"
+      />
       <Card
         style={{
           borderRadius: 12,

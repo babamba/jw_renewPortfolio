@@ -87,7 +87,12 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
 
   return (
     <Layout.Content>
-      <HeadMeta text={`${article?.title}`} />
+      <HeadMeta
+        title={`${article?.title}`}
+        text={`${article?.title}`}
+        keywords={`${article?.title}`}
+        description="JW BLOG"
+      />
 
       <motion.div
         className="container"

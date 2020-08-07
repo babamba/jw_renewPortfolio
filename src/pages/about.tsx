@@ -95,7 +95,13 @@ const About: FunctionComponent<Props> = (props: Props) => {
       style={{ position: 'absolute', width: '100%', height: '100%' }}
       // style={pageStyle}
     >
-      <HeadMeta text="About Me" />
+      <HeadMeta
+        title="About Me"
+        text="About Me"
+        keywords="FrontEnd Developer"
+        description="About JW"
+      />
+
       <Card
         style={{
           borderRadius: 12,

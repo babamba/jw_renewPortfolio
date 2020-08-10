@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Row, Col, Typography } from 'antd';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
 import {
   ReadOutlined,
   PictureOutlined,
@@ -121,6 +121,7 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
           selected={'about'}
           current={selected}
         >
+          <Link to="/about" />
           <MotionMenuBox
             variants={ItemStyle}
             selected={'about'}
@@ -149,6 +150,7 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
           selected={'portfolio'}
           current={selected}
         >
+          <Link to="/portfolio" />
           <MotionMenuBox
             variants={ItemStyle}
             selected={'portfolio'}
@@ -176,6 +178,7 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
           selected={'resume'}
           current={selected}
         >
+          <Link to="/resume" />
           <MotionMenuBox
             variants={ItemStyle}
             selected={'resume'}
@@ -202,6 +205,7 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
           selected={'blog'}
           current={selected}
         >
+          <Link to="/blog" />
           <MotionMenuBox
             variants={ItemStyle}
             selected={'blog'}
@@ -224,6 +228,7 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
           selected={'contact'}
           current={selected}
         >
+          <Link to="/contact" />
           <MotionMenuBox
             variants={ItemStyle}
             selected={'contact'}

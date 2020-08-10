@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Row, Col } from 'antd';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
 import { ReadOutlined, PictureOutlined, IdcardOutlined, CoffeeOutlined } from '@ant-design/icons';
 import { ContainerStyle, ItemStyle } from '../../../interfaces/Motion';
 import { motion } from 'framer-motion';
@@ -42,6 +42,7 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
         </Col>
         <Col span={24} style={{ textAlign: 'center' }}>
           <motion.div variants={ItemStyle}>
+            <Link to="/about" />
             <IdcardOutlined
               style={{
                 color:
@@ -63,6 +64,7 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
 
         <Col span={24} style={{ textAlign: 'center' }}>
           <motion.div variants={ItemStyle}>
+            <Link to="/portfolio" />
             <PictureOutlined
               style={{
                 color:
@@ -83,6 +85,7 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
         </Col>
         <Col span={24} style={{ textAlign: 'center' }}>
           <motion.div variants={ItemStyle}>
+            <Link to="/resume" />
             <ReadOutlined
               style={{
                 color:
@@ -103,6 +106,7 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
         </Col>
         <Col span={24} style={{ textAlign: 'center' }}>
           <motion.div variants={ItemStyle}>
+            <Link to="/blog" />
             <CoffeeOutlined
               style={{
                 color:

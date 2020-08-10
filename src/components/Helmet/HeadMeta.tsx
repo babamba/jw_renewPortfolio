@@ -12,7 +12,7 @@ interface MetaProps {
 const HeadMeta: FC<MetaProps> = ({ text, keywords = '', description = '', title = '' }) => {
   return (
     <Helmet>
-      <title>{text} | Hello Im FrontEnd Developer JW </title>
+      <title>{text} | I'm FrontEnd Developer</title>
       <meta name={text} content={`${text} content`} />
       <meta property="og:title" content={text} />
 

@@ -10887,6 +10887,11 @@ react-layout-effect@^1.0.1:
   resolved "https://registry.yarnpkg.com/react-layout-effect/-/react-layout-effect-1.0.5.tgz#0dc4e24452aee5de66c93c166f0ec512dfb1be80"
   integrity sha512-zdRXHuch+OBHU6bvjTelOGUCM+UDr/iCY+c0wXLEAc+G4/FlcJruD/hUOzlKH5XgO90Y/BUJPNhI/g9kl+VAsA==
 
+react-lazy-with-preload@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-lazy-with-preload/-/react-lazy-with-preload-2.0.1.tgz#5b6db529d235362539fb670c85ac568534b4d4ce"
+  integrity sha512-oww+nyE5n1IjLOszppkVIe+cCcBfw8YqVxj3g3J/1b9MEv6tWWlymxCTn+H8OFlASb940B8yDCZbyybYR6Z46w==
+
 react-markdown@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/react-markdown/-/react-markdown-4.3.1.tgz#39f0633b94a027445b86c9811142d05381300f2f"

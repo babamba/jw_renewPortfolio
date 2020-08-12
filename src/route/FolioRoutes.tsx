@@ -1,20 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
-import About from '../pages/about';
+// import About from '../pages/about';
 import { AnimatePresence } from 'framer-motion';
 import LazyLoader from '../components/Loader/LazyLoader';
+import lazy from 'react-lazy-with-preload';
 
 // 전역에서 사용되는 브라우저 라우터
-const BlogComponent = React.lazy(() => import('../pages/blog'));
-const BlogDetailComponent = React.lazy(() => import('../pages/blog-detail'));
-const PortfolioComponent = React.lazy(() => import('../pages/DeckFolio'));
-const ResumeComponent = React.lazy(() => import('../pages/resume'));
-const FolioDetailComponent = React.lazy(() => import('../pages/Portfolio-detail'));
-const ContactComponent = React.lazy(() => import('../pages/contact'));
-const NoMatchComponent = React.lazy(() => import('../pages/404'));
+const AboutComponent = lazy(() => import('../pages/about'));
+const BlogComponent = lazy(() => import('../pages/blog'));
+const BlogDetailComponent = lazy(() => import('../pages/blog-detail'));
+const PortfolioComponent = lazy(() => import('../pages/DeckFolio'));
+const ResumeComponent = lazy(() => import('../pages/resume'));
+const FolioDetailComponent = lazy(() => import('../pages/Portfolio-detail'));
+const ContactComponent = lazy(() => import('../pages/contact'));
+const NoMatchComponent = lazy(() => import('../pages/404'));
 
 const FolioRoutes = () => {
   const location = useLocation();
+
+  useEffect(() => {
+    AboutComponent.preload();
+    BlogComponent.preload();
+    BlogDetailComponent.preload();
+    PortfolioComponent.preload();
+    ResumeComponent.preload();
+    FolioDetailComponent.preload();
+    ContactComponent.preload();
+    NoMatchComponent.preload();
+  }, []);
 
   return (
     <React.Suspense fallback={<LazyLoader />}>
@@ -26,7 +39,7 @@ const FolioRoutes = () => {
            *  상세화면이 라우팅 되지 않는다.
            */}
           {/* <Route path={['/', '/about']} exact={true} component={About} /> */}
-          <Route path="/about" exact={true} component={About} />
+          <Route path="/about" exact={true} component={AboutComponent} />
           <Route path="/portfolio" exact={true} component={PortfolioComponent} />
           <Route path="/portfolio/:id" exact={true} component={FolioDetailComponent} />
           <Route path="/resume" exact={true} component={ResumeComponent} />

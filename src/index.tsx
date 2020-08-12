@@ -14,9 +14,9 @@ import ReactGA from 'react-ga';
 const rootStore = new RootStore(); // *** 루트 스토어 생성
 
 if (process.env.NODE_ENV === 'production') {
+  console.log('Production Mode');
   console.log = function no_console() {};
   ReactGA.initialize(`${process.env.REACT_APP_GA_TRACKING_ID}`);
-  console.log('Production Mode');
 } else if (process.env.NODE_ENV === 'development') {
   console.log('Development Mode');
 }

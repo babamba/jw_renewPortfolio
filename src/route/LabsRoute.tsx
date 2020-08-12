@@ -1,18 +1,7 @@
 import React from 'react';
 import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
-// import loadable from '@loadable/component';
-
 import LabMain from '../pages/LabMain';
 import { AnimatePresence } from 'framer-motion';
-
-// const AboutComponent = loadable(() => import('../pages/about'));
-// const BlogComponent = loadable(() => import('../pages/blog'));
-// const BlogDetailComponent = loadable(() => import('../pages/blog-detail'));
-// const ContactComponent = loadable(() => import('../pages/contact'));
-// const PortfolioComponent = loadable(() => import('../pages/portfolio'));
-// const ResumeComponent = loadable(() => import('../pages/resume'));
-// const NoMatchComponent = loadable(() => import('../pages/404'));
-// 전역에서 사용되는 브라우저 라우터
 
 const LabsRoute = () => {
   const location = useLocation();

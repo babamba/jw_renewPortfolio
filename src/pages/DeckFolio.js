@@ -33,7 +33,7 @@ const DeckFolio = props => {
   const updatePercentage = () => {
     setTimeout(() => {
       if (isMount.current) setProgressBar(progressBar + 1);
-    }, 50);
+    }, 80);
   };
 
   useEffect(() => {
@@ -138,9 +138,9 @@ const DeckFolio = props => {
       <div className={isDeviceSize === 'desktop' ? 'deck-area-desktop' : 'deck-area-mobile'}>
         <div
           style={{
-            position: 'relative',
+            position: isDeviceSize === 'desktop' ? 'fixed' : 'relative',
             textAlign: 'left',
-            padding: isDeviceSize === 'desktop' ? '10px 15%' : 0,
+            padding: isDeviceSize === 'desktop' ? '10px 10%' : 0,
             top: isDeviceSize === 'desktop' ? '75%' : '0'
           }}
         >

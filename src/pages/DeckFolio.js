@@ -135,96 +135,101 @@ const DeckFolio = props => {
         keywords="FrontEnd Developer React Project"
         description="Project PortFolio"
       />
-      <div className={isDeviceSize === 'desktop' ? 'deck-area-desktop' : 'deck-area-mobile'}>
+      {/* <div className={isDeviceSize === 'desktop' ? 'deck-area-desktop' : 'deck-area-mobile'}>
         <div
           style={{
-            position: isDeviceSize === 'desktop' ? 'fixed' : 'relative',
+            position: isDeviceSize === 'desktop' ? 'relative' : 'relative',
             textAlign: 'left',
             padding: isDeviceSize === 'desktop' ? '10px 10%' : 0,
-            top: isDeviceSize === 'desktop' ? '75%' : '0',
+            top: isDeviceSize === 'desktop' ? '70%' : '0',
             width: '100%'
           }}
-        >
-          <Row
-            align="middle"
-            gutter={[16, 8]}
-            justify={isDeviceSize === 'desktop' ? 'start' : 'center'}
+        > */}
+      <Row
+        align="middle"
+        justify={isDeviceSize === 'desktop' ? 'start' : 'center'}
+        style={{
+          overflowX: isDeviceSize === 'desktop' ? 'inherit' : 'hidden',
+          padding: isDeviceSize === 'mobile' ? '20px 20px 0px' : '20px 80px'
+        }}
+      >
+        <Col span={24}>
+          <div
+            style={{
+              position: 'relative',
+              alignItems: 'center',
+              display: 'flex',
+              flex: 1,
+              justifyContent: 'center',
+              height: isDeviceSize === 'desktop' ? '75vh' : size.width > 473 ? '55vh' : '45vh'
+              // minHeight: isDeviceSize === 'mobile' ? 600 :750
+            }}
           >
-            <Col span={24}>
-              <div
+            <Deck ref={DeckRef} callback={callback} currentIdx={currentIdx} />
+          </div>
+        </Col>
+        <Col
+          span={24}
+          style={{
+            padding: isDeviceSize === 'mobile' ? '10px' : '10px 10px 0px 80px'
+          }}
+        >
+          <Row justify={isDeviceSize === 'desktop' ? 'start' : 'center'}>
+            <Col span={isDeviceSize === 'mobile' ? 2 : 1} onClick={() => gestureTrigger()}>
+              <ForwardOutlined style={{ fontSize: 18 }} />
+            </Col>
+            <Col span={isDeviceSize === 'mobile' ? 2 : 1} onClick={() => ReDeckTrigger()}>
+              <RetweetOutlined style={{ fontSize: 18 }} />
+            </Col>
+
+            <Col span={isDeviceSize === 'mobile' ? 2 : 1} style={{ textAlign: 'center' }}>
+              <span>0{PortfolioData.length - currentIdx}</span>
+            </Col>
+            <Col span={isDeviceSize === 'mobile' ? 6 : 2}>
+              <Progress
                 style={{
-                  position: isDeviceSize === 'desktop' ? 'fixed' : 'relative',
-                  height: isDeviceSize === 'desktop' ? '75vh' : size.width > 473 ? '55vh' : '45vh',
-                  top: isDeviceSize === 'desktop' ? '7%' : '0'
+                  borderRadius: 0
                 }}
-              >
-                <Deck ref={DeckRef} callback={callback} currentIdx={currentIdx} />
-              </div>
+                percent={progressBar}
+                showInfo={false}
+                strokeLinecap="square"
+                strokeColor={common.useDark ? 'rgba(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.65)'}
+              />
             </Col>
-            <Col span={24}>
-              <Row justify={isDeviceSize === 'desktop' ? 'start' : 'center'}>
-                <Col span={isDeviceSize === 'mobile' ? 2 : 1} onClick={() => gestureTrigger()}>
-                  <ForwardOutlined style={{ fontSize: 18 }} />
-                </Col>
-                <Col span={isDeviceSize === 'mobile' ? 2 : 1} onClick={() => ReDeckTrigger()}>
-                  <RetweetOutlined style={{ fontSize: 18 }} />
-                </Col>
-
-                <Col span={isDeviceSize === 'mobile' ? 2 : 1} style={{ textAlign: 'center' }}>
-                  <span>0{PortfolioData.length - currentIdx}</span>
-                </Col>
-                <Col span={isDeviceSize === 'mobile' ? 6 : 2}>
-                  <Progress
-                    style={{
-                      borderRadius: 0
-                    }}
-                    percent={progressBar}
-                    showInfo={false}
-                    strokeLinecap="square"
-                    strokeColor={
-                      common.useDark ? 'rgba(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.65)'
-                    }
-                  />
-                </Col>
-                <Col span={isDeviceSize === 'mobile' ? 2 : 1} style={{ textAlign: 'center' }}>
-                  <span>0{PortfolioData.length}</span>
-                </Col>
-
-                <Col offset={1} span={isDeviceSize === 'mobile' ? 2 : 8}>
-                  {isDeviceSize !== 'mobile' && (
-                    <span style={{ paddingRight: 12 }}>Swipe Left and Right</span>
-                  )}
-
-                  <Tooltip placement="topLeft" title={'You Can Try Swipe To Card'}>
-                    <img
-                      style={{
-                        width: 18,
-                        height: 18
-                      }}
-                      src={require('../assets/images/swipe-light.png')}
-                    />
-                  </Tooltip>
-                </Col>
-              </Row>
+            <Col span={isDeviceSize === 'mobile' ? 2 : 1} style={{ textAlign: 'center' }}>
+              <span>0{PortfolioData.length}</span>
             </Col>
-            <Col
-              span={24}
-              style={{
-                padding:
-                  isDeviceSize === 'mobile'
-                    ? '8px 42px'
-                    : isDeviceSize === 'tablet'
-                    ? '20px 15%'
-                    : '4px 8px'
-              }}
-            >
-              <motion.div animate={controls}>
-                <DetailInfo data={InfoData} animating={animating} />
-              </motion.div>
+
+            <Col offset={1} span={isDeviceSize === 'mobile' ? 2 : 8}>
+              {isDeviceSize !== 'mobile' && (
+                <span style={{ paddingRight: 12 }}>Swipe Left and Right</span>
+              )}
+
+              <Tooltip placement="topLeft" title={'You Can Try Swipe To Card'}>
+                <img
+                  style={{
+                    width: 18,
+                    height: 18
+                  }}
+                  src={require('../assets/images/swipe-light.png')}
+                />
+              </Tooltip>
             </Col>
           </Row>
-        </div>
-      </div>
+        </Col>
+        <Col
+          span={24}
+          style={{
+            padding: isDeviceSize === 'mobile' ? '10px' : '10px 10px 0px 80px'
+          }}
+        >
+          <motion.div animate={controls}>
+            <DetailInfo data={InfoData} animating={animating} />
+          </motion.div>
+        </Col>
+      </Row>
+      {/* </div>
+      </div> */}
     </motion.div>
   );
 };

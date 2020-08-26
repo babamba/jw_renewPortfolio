@@ -48,6 +48,7 @@ const Card = props => {
         className={isDeviceSize === 'desktop' ? 'card-deck-desktop' : 'card-deck-mobile'}
         {...bind(i)}
         style={{
+          cursor: 'pointer',
           transform: to([rot, scale], trans),
           backgroundImage: `linear-gradient(45deg, rgba(18, 40, 76, 0.56), rgba(89, 89, 89, 0.3)), url(${pics})`
         }}

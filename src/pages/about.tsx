@@ -412,12 +412,29 @@ const About: FunctionComponent<Props> = (props: Props) => {
                       <Avatar
                         shape="square"
                         size={size.width !== undefined && size.width > 480 ? 80 : 60}
-                        src={require('../assets/images/stack/apex.png')}
+                        src={require('../assets/images/stack/chartjs.png')}
                       />
                       <TitleBox>
                         <StackText>
                           <Badge status="processing" color="green" />
-                          ApexChart
+                          Chart.js
+                        </StackText>
+                      </TitleBox>
+                    </motion.div>
+                  </FrontStackBox>
+                </Col>
+                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
+                  <FrontStackBox>
+                    <motion.div variants={ItemStyle}>
+                      <Avatar
+                        shape="square"
+                        size={size.width !== undefined && size.width > 480 ? 80 : 60}
+                        src={require('../assets/images/stack/lottie.png')}
+                      />
+                      <TitleBox>
+                        <StackText>
+                          <Badge status="processing" color="green" />
+                          Lottie
                         </StackText>
                       </TitleBox>
                     </motion.div>

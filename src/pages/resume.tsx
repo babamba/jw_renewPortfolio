@@ -234,13 +234,13 @@ const History: FunctionComponent<Props> = ({}) => {
                                 Subscription 기반 소켓통신 및 실시간 알림 및 실시간 데이터 변경 처리{' '}
                                 <br />- AppSync VTL 코드 작성 <br />
                                 - Mobx를 이용한 상태 관리 및 비즈니스 로직 분산 개발. <br />-
-                                ApexChart를 이용한 통계 관련 Data Visualization <br />- GitLab CI /
-                                CD 를 통한 Docker Container build test / e2e test / Deploy PipeLine
-                                작성 및 자동화 구성 <br />- AWS S3 / CloudFront를 이용한 프로덕션
-                                빌드 결과물 배포 <br />- Cypress를 이용한 e2e test code 작성 및
-                                테스트 자동화 <br />- 디자이너의 와이어프레임을 참고하여 StoryBook
-                                으로 UX / UI 문서화 진행. <br />- 서비스 기획 회의 및 요구사항도출
-                                문서화 <br />
+                                오픈소스 Chart.js를 이용한 통계 관련 Data Visualization <br />-
+                                GitLab CI / CD 를 통한 Docker Container build test / e2e test /
+                                Deploy PipeLine 작성 및 자동화 구성 <br />- Lottie를 이용한 Animate
+                                Loading <br />- AWS S3 / CloudFront를 이용한 프로덕션 빌드 결과물
+                                배포 <br />- Cypress를 이용한 e2e test code 작성 및 테스트 자동화{' '}
+                                <br />- 디자이너의 와이어프레임을 참고하여 StoryBook 으로 UX / UI
+                                문서화 진행. <br />- 서비스 기획 회의 및 요구사항도출 문서화 <br />
                               </JobText>
                             </motion.div>
                             <CustomDivider />

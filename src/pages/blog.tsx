@@ -5,7 +5,7 @@ import { observer } from 'mobx-react';
 import useStores from '../hooks/useStores';
 import BlogCard from '../components/Card/BlogCard';
 import { Row, Col, List, Pagination, Divider, Card as CardView, Skeleton, Empty } from 'antd';
-import useWindowSize from '../hooks/useWindow';
+import { useWindowWidth } from '@react-hook/window-size';
 import HeadMeta from '../components/Helmet/HeadMeta';
 import { pageTransition, pageVariants, FastContainerStyle, ItemStyle } from '../interfaces/Motion';
 import { motion } from 'framer-motion';
@@ -28,20 +28,20 @@ const Post: FunctionComponent<any> = observer(() => {
   const {
     common: { currentPage, setBlogPage }
   } = useStores();
-  const windowSize = useWindowSize();
+  const onlyWidth = useWindowWidth();
 
   const [isDeviceSize, SetIsDeviceSize] = useState('desktop');
   useEffect(() => {
-    if (windowSize.width !== undefined) {
-      if (windowSize.width < 769) {
+    if (onlyWidth !== undefined) {
+      if (onlyWidth < 769) {
         SetIsDeviceSize('mobile');
-      } else if (windowSize.width < 1201) {
+      } else if (onlyWidth < 1201) {
         SetIsDeviceSize('tablet');
       } else {
         SetIsDeviceSize('desktop');
       }
     }
-  }, [windowSize]);
+  }, [onlyWidth]);
   const [selectTag, updateTag] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -75,7 +75,7 @@ const Post: FunctionComponent<any> = observer(() => {
   useEffect(() => {
     fetch(currentPage, '');
     console.log('currentPage : ', currentPage);
-  }, [windowSize.width]);
+  }, [onlyWidth]);
 
   useEffect(() => {
     window.dispatchEvent(new Event('scroll'));

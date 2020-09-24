@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { withRouter, BrowserRouter as Router } from 'react-router-dom';
-import useWindowSize from '../hooks/useWindow';
 import Deck from './PortFolioDeck/Deck';
 import { motion, useAnimation } from 'framer-motion';
 import { pageOpacityVariants, pageOpacityTransition } from '../interfaces/Motion';
@@ -13,13 +12,14 @@ import useStores from '../hooks/useStores';
 import useMount from '../hooks/useMount';
 import HeadMeta from '../components/Helmet/HeadMeta';
 import { useRouter } from '../hooks/useRouter';
+import { useWindowWidth } from '@react-hook/window-size';
 
 const DeckFolio = props => {
+  const onlyWidth = useWindowWidth({ wait: 700 });
   const { common } = useStores();
   const isMount = useMount();
   const router = useRouter();
   const DeckRef = useRef();
-  const size = useWindowSize();
   const controls = useAnimation();
   const [animating, setAnimating] = useState(false);
   const [isDeviceSize, SetIsDeviceSize] = useState('desktop');
@@ -78,16 +78,16 @@ const DeckFolio = props => {
   }, []);
 
   useEffect(() => {
-    if (size.width !== undefined) {
-      if (size.width < 769) {
+    if (onlyWidth !== undefined) {
+      if (onlyWidth < 769) {
         SetIsDeviceSize('mobile');
-      } else if (size.width < 1201) {
+      } else if (onlyWidth < 1201) {
         SetIsDeviceSize('tablet');
       } else {
         SetIsDeviceSize('desktop');
       }
     }
-  }, [size]);
+  }, [onlyWidth]);
 
   useEffect(() => {
     if (prevIdx === 0 && currentIdx === PortfolioData.length - 1) {
@@ -161,7 +161,7 @@ const DeckFolio = props => {
               display: 'flex',
               flex: 1,
               justifyContent: 'center',
-              height: isDeviceSize === 'desktop' ? '75vh' : size.width > 473 ? '55vh' : '45vh'
+              height: isDeviceSize === 'desktop' ? '75vh' : onlyWidth > 473 ? '55vh' : '45vh'
               // minHeight: isDeviceSize === 'mobile' ? 600 :750
             }}
           >
@@ -171,10 +171,13 @@ const DeckFolio = props => {
         <Col
           span={24}
           style={{
-            padding: isDeviceSize === 'mobile' ? '10px' : '10px 10px 0px 80px'
+            padding: isDeviceSize === 'mobile' ? '10px' : '10px 12%'
           }}
         >
-          <Row justify={isDeviceSize === 'desktop' ? 'start' : 'center'}>
+          <Row
+            justify={isDeviceSize === 'desktop' ? 'start' : 'center'}
+            style={{ paddingBottom: 10 }}
+          >
             <Col span={isDeviceSize === 'mobile' ? 2 : 1} onClick={() => gestureTrigger()}>
               <ForwardOutlined style={{ fontSize: 18 }} />
             </Col>
@@ -216,16 +219,13 @@ const DeckFolio = props => {
               </Tooltip>
             </Col>
           </Row>
-        </Col>
-        <Col
-          span={24}
-          style={{
-            padding: isDeviceSize === 'mobile' ? '10px' : '10px 10px 0px 80px'
-          }}
-        >
-          <motion.div animate={controls}>
-            <DetailInfo data={InfoData} animating={animating} />
-          </motion.div>
+          <Row justify={isDeviceSize === 'desktop' ? 'center' : 'start'}>
+            <Col span={24}>
+              <motion.div animate={controls}>
+                <DetailInfo data={InfoData} animating={animating} />
+              </motion.div>
+            </Col>
+          </Row>
         </Col>
       </Row>
       {/* </div>

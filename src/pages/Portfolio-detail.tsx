@@ -5,7 +5,6 @@ import { pageTransition, pageVariants, ContainerStyle, ItemLeftStyle } from '../
 import { motion } from 'framer-motion';
 import HeadMeta from '../components/Helmet/HeadMeta';
 import ReactGA from 'react-ga';
-import useWindowSize from '../hooks/useWindow';
 import PortfolioData from './PortFolioDeck/PortfolioData';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
@@ -92,7 +91,6 @@ type State = {
 };
 
 const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match }) => {
-  const size = useWindowSize();
   const [folio, setFolio] = useState<State | undefined>(undefined);
   const cardBGStyles = {
     height: '40vh',

@@ -12,7 +12,7 @@ import { motion } from 'framer-motion';
 import HeadMeta from '../components/Helmet/HeadMeta';
 import { useRouter } from '../hooks/useRouter';
 import ReactGA from 'react-ga';
-import useWindowSize from '../hooks/useWindow';
+import { useWindowWidth } from '@react-hook/window-size';
 import useStores from '../hooks/useStores';
 
 const { Text, Link } = Typography;
@@ -98,19 +98,19 @@ const History: FunctionComponent<Props> = ({}) => {
   const {
     common: { useDark }
   } = useStores();
-  const size = useWindowSize();
+  const onlyWidth = useWindowWidth();
   const [isDeviceSize, SetIsDeviceSize] = useState('desktop');
   useEffect(() => {
-    if (size.width !== undefined) {
-      if (size.width < 769) {
+    if (onlyWidth !== undefined) {
+      if (onlyWidth < 769) {
         SetIsDeviceSize('mobile');
-      } else if (size.width < 1201) {
+      } else if (onlyWidth < 1201) {
         SetIsDeviceSize('tablet');
       } else {
         SetIsDeviceSize('desktop');
       }
     }
-  }, [size]);
+  }, [onlyWidth]);
 
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {

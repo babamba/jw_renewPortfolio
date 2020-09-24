@@ -11,7 +11,7 @@ import {
 import { ContainerStyle, ItemStyle } from '../../../interfaces/Motion';
 import { motion } from 'framer-motion';
 import ThemeModeSelector from '../ThemeMode/ThemeModeSelector';
-import useWindowSize from '../../../hooks/useWindow';
+import { useWindowWidth } from '@react-hook/window-size';
 import styled from 'styled-components';
 import { observer } from 'mobx-react';
 import useStores from '../../../hooks/useStores';
@@ -76,20 +76,20 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
   const [selected, setSelected] = useState('/');
   const [isMobile, setIsMobile] = useState(false);
   const { history, match } = props;
-  const size = useWindowSize();
+  const onlywidth = useWindowWidth();
   const {
     common: { useDark }
   } = useStores();
 
   useEffect(() => {
-    if (size.width !== undefined) {
-      if (size.width < 650) {
+    if (onlywidth !== undefined) {
+      if (onlywidth < 650) {
         setIsMobile(true);
       } else {
         setIsMobile(false);
       }
     }
-  }, [size]);
+  }, [onlywidth]);
 
   useEffect(() => {
     console.log('test : ', location.pathname);

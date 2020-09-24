@@ -7,11 +7,6 @@ import { motion } from 'framer-motion';
 import { BulbOutlined } from '@ant-design/icons';
 import CustomIcon from '../../Common/CustomIcon';
 
-const Container = styled.div`
-  position: relative;
-  cursor: pointer;
-`;
-
 const ThemeModeSelector = observer(({ size }) => {
   const { common } = useStores();
   const [{ name, variables }, setTheme] = useTheme();
@@ -63,26 +58,30 @@ const ThemeModeSelector = observer(({ size }) => {
     }
   };
 
-  const scaleVariants = {
-    open: { opacity: 1, rotateZ: [0, 270] },
-    closed: { opacity: 1, rotateZ: [270, 0] }
+  const spring = {
+    type: 'spring',
+    bounceDamping: 0,
+    bounceStiffness: 0
+  };
+
+  const RotateVariants = {
+    open: { rotateZ: [90, 0], transition: { spring } },
+    closed: { rotateZ: [0, 90], transition: { spring } }
   };
 
   return (
-    <Container>
-      <motion.div animate={common.useDark ? 'open' : 'closed'} variants={scaleVariants}>
-        <CustomIcon
-          onClick={handleChange}
-          style={{
-            margin: 0,
-            color: common.useDark ? '#f0d74a' : '#6b6b6b',
-            fontSize: `${size}rem`,
-            cursor: 'pointer'
-          }}
-          type={common.useDark ? 'icon-night' : 'icon-brightness'}
-        />
-      </motion.div>
-    </Container>
+    <motion.div animate={common.useDark ? 'open' : 'closed'} variants={RotateVariants}>
+      <CustomIcon
+        onClick={handleChange}
+        style={{
+          margin: 0,
+          color: common.useDark ? '#f0d74a' : '#6b6b6b',
+          fontSize: `${size}rem`,
+          cursor: 'pointer'
+        }}
+        type={common.useDark ? 'icon-night' : 'icon-brightness'}
+      />
+    </motion.div>
   );
 });
 

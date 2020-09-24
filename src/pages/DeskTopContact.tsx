@@ -2,7 +2,8 @@ import React, { FunctionComponent, useState, useEffect } from 'react';
 import { Typography, Badge, Affix } from 'antd';
 import { MailOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
-import useWindowSize from '../hooks/useWindow';
+import { useWindowWidth } from '@react-hook/window-size';
+
 import { pageTransition, pageVariants, ContainerStyle, ItemLeftStyle } from '../interfaces/Motion';
 import { motion } from 'framer-motion';
 
@@ -21,24 +22,24 @@ const Container = styled.div`
 
 type Props = {};
 const Contact: FunctionComponent<Props> = ({}) => {
-  const size = useWindowSize();
+  const onlyWidth = useWindowWidth();
   const [isMobileUI, setIsMobileUI] = useState(false);
   const [ResponsiveFlex, setResponsiveFlex] = useState(false);
   useEffect(() => {
-    if (size.width !== undefined) {
-      if (size.width < 1513) {
+    if (onlyWidth !== undefined) {
+      if (onlyWidth < 1513) {
         setResponsiveFlex(true);
       } else {
         setResponsiveFlex(false);
       }
 
-      if (size.width < 1201) {
+      if (onlyWidth < 1201) {
         setIsMobileUI(true);
       } else {
         setIsMobileUI(false);
       }
     }
-  }, [size]);
+  }, [onlyWidth]);
 
   return isMobileUI ? (
     <motion.div

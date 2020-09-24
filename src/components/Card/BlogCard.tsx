@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react';
 import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
 import { Card } from 'antd';
 import { motion } from 'framer-motion';
-import useWindowSize from '../../hooks/useWindow';
+import { useWindowWidth } from '@react-hook/window-size';
 
 interface Props extends RouteComponentProps {
   info: {
@@ -16,19 +16,19 @@ interface Props extends RouteComponentProps {
 }
 
 const BlogCard: FunctionComponent<Props> = ({ info, history, match }) => {
-  const size = useWindowSize();
+  const onlyWidth = useWindowWidth();
   const [isDeviceSize, SetIsDeviceSize] = useState('desktop');
   useEffect(() => {
-    if (size.width !== undefined) {
-      if (size.width < 769) {
+    if (onlyWidth !== undefined) {
+      if (onlyWidth < 769) {
         SetIsDeviceSize('mobile');
-      } else if (size.width < 1201) {
+      } else if (onlyWidth < 1201) {
         SetIsDeviceSize('tablet');
       } else {
         SetIsDeviceSize('desktop');
       }
     }
-  }, [size]);
+  }, [onlyWidth]);
 
   const cardBGStyles = {
     backgroundSize: 'cover',

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { string, number } from 'prop-types';
 import { animated, to } from 'react-spring';
-import useWindowSize from '../../hooks/useWindow';
+import { useWindowWidth } from '@react-hook/window-size';
 import CardData from './PortfolioData';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
@@ -24,19 +24,19 @@ const Card = props => {
   const { pics, name, age, distance, position, id } = data;
   //console.log('data : ', data);
   // const { name, age, distance, text, pics } = data;
-  const size = useWindowSize();
+  const onlyWidth = useWindowWidth();
   const [isDeviceSize, SetIsDeviceSize] = useState('desktop');
   useEffect(() => {
-    if (size.width !== undefined) {
-      if (size.width < 769) {
+    if (onlyWidth !== undefined) {
+      if (onlyWidth < 769) {
         SetIsDeviceSize('mobile');
-      } else if (size.width < 1201) {
+      } else if (onlyWidth < 1201) {
         SetIsDeviceSize('tablet');
       } else {
         SetIsDeviceSize('desktop');
       }
     }
-  }, [size]);
+  }, [onlyWidth]);
 
   return (
     <animated.div

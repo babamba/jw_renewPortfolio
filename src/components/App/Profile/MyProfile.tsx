@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Row, Col, Typography, Avatar, Affix } from 'antd';
-import useWindowSize from '../../../hooks/useWindow';
+import { useWindowWidth } from '@react-hook/window-size';
 import ReactRotatingText from 'react-rotating-text';
 import { GithubOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
@@ -64,17 +64,17 @@ const MyProfile: FunctionComponent<Props> = (props: Props) => {
     common: { useDark }
   } = useStores();
 
-  const size = useWindowSize();
+  const onlyWidth = useWindowWidth();
   const [ResponsiveFlex, setResponsiveFlex] = useState(false);
   useEffect(() => {
-    if (size.width !== undefined) {
-      if (size.width < 1201) {
+    if (onlyWidth !== undefined) {
+      if (onlyWidth < 1201) {
         setResponsiveFlex(true);
       } else {
         setResponsiveFlex(false);
       }
     }
-  }, [size]);
+  }, [onlyWidth]);
 
   const textVariants = {
     out: { x: 10, opacity: 0 },
@@ -124,7 +124,7 @@ const MyProfile: FunctionComponent<Props> = (props: Props) => {
                 padding: 0,
                 fontWeight: 300,
                 fontSize: '1.2rem',
-                // fontSize: size.width !== undefined && size.width > 480 ? '1.4em' : '1em',
+                // fontSize: onlyWidth !== undefined && onlyWidth > 480 ? '1.4em' : '1em',
                 lineHeight: 1.4,
                 textAlign: 'center',
                 marginLeft: ResponsiveFlex ? 15 : 0
@@ -176,9 +176,9 @@ const MyProfile: FunctionComponent<Props> = (props: Props) => {
           <Col
             style={{
               flexDirection: 'column',
-              paddingLeft: size.width !== undefined && size.width > 1513 ? '2.5em' : 0
+              paddingLeft: onlyWidth !== undefined && onlyWidth > 1513 ? '2.5em' : 0
             }}
-            span={size.width !== undefined && size.width > 1513 ? 17 : 24}
+            span={onlyWidth !== undefined && onlyWidth > 1513 ? 17 : 24}
           >
             <motion.div variants={textVariants}>
               <MainIntroText>안녕하세요.</MainIntroText>
@@ -239,7 +239,7 @@ const MyProfile: FunctionComponent<Props> = (props: Props) => {
                   margin: '.5em 0',
                   padding: 0,
                   fontWeight: 300,
-                  fontSize: size.width !== undefined && size.width > 480 ? '1.4em' : '1em',
+                  fontSize: onlyWidth !== undefined && onlyWidth > 480 ? '1.4em' : '1em',
                   lineHeight: 1.4,
                   textAlign: 'center',
                   marginLeft: ResponsiveFlex ? 15 : 0
@@ -291,9 +291,9 @@ const MyProfile: FunctionComponent<Props> = (props: Props) => {
             <Col
               style={{
                 flexDirection: 'column',
-                paddingLeft: size.width !== undefined && size.width > 1513 ? '2.5em' : 0
+                paddingLeft: onlyWidth !== undefined && onlyWidth > 1513 ? '2.5em' : 0
               }}
-              span={size.width !== undefined && size.width > 1513 ? 17 : 24}
+              span={onlyWidth !== undefined && onlyWidth > 1513 ? 17 : 24}
             >
               <motion.div variants={textVariants}>
                 <MainIntroText>안녕하세요.</MainIntroText>

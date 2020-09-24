@@ -5,8 +5,8 @@ import { observer } from 'mobx-react';
 import { ThemeProvider } from 'antd-theme';
 import useStores from '../../hooks/useStores';
 import { Layout, Row, Col, Affix } from 'antd';
-import useWindowSize from '../../hooks/useWindow';
 import Loader from '../Loader/Loader';
+import { useWindowWidth } from '@react-hook/window-size';
 
 import IconMenu from '../App/Menu/IconMenu';
 import IconMobileMenu from '../App/Menu/IconMobileMenu';
@@ -35,7 +35,7 @@ const App = observer(() => {
   const profileSticky = useRef(null);
   const [top, setTop] = useState(10);
   const [isBackButtonClicked, setBackbuttonPress] = useState(false);
-  const size = useWindowSize();
+  const onlyWidth = useWindowWidth();
   const controls = useAnimation();
   const [isInit, setIsInit] = useState(true);
   const [isDeviceSize, SetIsDeviceSize] = useState('desktop');
@@ -49,16 +49,16 @@ const App = observer(() => {
   };
 
   useEffect(() => {
-    if (size.width !== undefined) {
-      if (size.width < 769) {
+    if (onlyWidth !== undefined) {
+      if (onlyWidth < 769) {
         SetIsDeviceSize('mobile');
-      } else if (size.width < 1201) {
+      } else if (onlyWidth < 1201) {
         SetIsDeviceSize('tablet');
       } else {
         SetIsDeviceSize('desktop');
       }
     }
-  }, [size]);
+  }, [onlyWidth]);
 
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {

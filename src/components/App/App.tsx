@@ -1,25 +1,26 @@
-import React, { useState, useEffect, useRef } from 'react';
-import FolioRoutes from '../../route/FolioRoutes';
-import LabsRoutes from '../../route/LabsRoute';
-import { observer } from 'mobx-react';
-import { ThemeProvider } from 'antd-theme';
-import useStores from '../../hooks/useStores';
-import { Layout, Row, Col, Affix } from 'antd';
-import Loader from '../Loader/Loader';
-import { useWindowWidth } from '@react-hook/window-size';
+import React, { useState, useEffect, useRef } from "react";
+import FolioRoutes from "../../route/FolioRoutes";
+import LabsRoutes from "../../route/LabsRoute";
+import { observer } from "mobx-react-lite";
+import { ThemeProvider } from "antd-theme";
+import { useStore } from "hooks/useStore";
+import { Layout, Row, Col, Affix } from "antd";
+import Loader from "../Loader/Loader";
+import LottieLoader from "components/Common/LottieLoader";
+import { useWindowWidth } from "@react-hook/window-size";
 
-import IconMenu from '../App/Menu/IconMenu';
-import IconMobileMenu from '../App/Menu/IconMobileMenu';
+import IconMenu from "../App/Menu/IconMenu";
+import IconMobileMenu from "../App/Menu/IconMobileMenu";
 
-import MyProfile from './Profile/MyProfile';
+import MyProfile from "./Profile/MyProfile";
 // import LabModeSelector from './LabMode/LabModeSelector';
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { AnimatePresence, motion, useAnimation } from 'framer-motion';
-import { useRouter } from '../../hooks/useRouter';
-import ReactGA from 'react-ga';
+import { AnimatePresence, motion, useAnimation } from "framer-motion";
+import { useRouter } from "../../hooks/useRouter";
+import ReactGA from "react-ga";
 
-import DeskTopContact from '../../pages/DeskTopContact';
+import DeskTopContact from "../../pages/DeskTopContact";
 
 const ControlCenter = styled.div`
   display: flex;
@@ -31,6 +32,7 @@ const ControlCenter = styled.div`
 `;
 
 const App = observer(() => {
+  const scrollRef = useRef<HTMLDivElement>(null);
   const menuSticky = useRef(null);
   const profileSticky = useRef(null);
   const [top, setTop] = useState(10);
@@ -38,82 +40,84 @@ const App = observer(() => {
   const onlyWidth = useWindowWidth();
   const controls = useAnimation();
   const [isInit, setIsInit] = useState(true);
-  const [isDeviceSize, SetIsDeviceSize] = useState('desktop');
+  const [isDeviceSize, SetIsDeviceSize] = useState("desktop");
 
   const [loading, setLoading] = useState(true);
-  const { common } = useStores();
+  const { useLabPage, useDark } = useStore("common");
   const router = useRouter();
   const initialTheme = {
-    name: 'default',
-    variables: {}
+    name: "default",
+    variables: {},
   };
 
   useEffect(() => {
     if (onlyWidth !== undefined) {
       if (onlyWidth < 769) {
-        SetIsDeviceSize('mobile');
+        SetIsDeviceSize("mobile");
       } else if (onlyWidth < 1201) {
-        SetIsDeviceSize('tablet');
+        SetIsDeviceSize("tablet");
       } else {
-        SetIsDeviceSize('desktop');
+        SetIsDeviceSize("desktop");
       }
     }
   }, [onlyWidth]);
 
   useEffect(() => {
-    if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV === "production") {
       ReactGA.pageview(router.location.pathname + router.location.search);
     }
     setLoading(false);
     setIsInit(false);
   }, []);
 
+  // scrollRef.current?.scrollTo({ behavior: 'smooth', top: scrollRef.current.offsetTop });
+
   useEffect(() => {
     controls.start(() => ({
       opacity: [0, 1],
-      scale: [1, 0.98, 0.97, 0.98, 1]
+      scale: [1, 0.98, 0.97, 0.98, 1],
     }));
-  }, [common.useLabPage]);
+  }, [useLabPage]);
 
   const [theme, setInitialTheme] = useState(initialTheme);
-  const handleDarkmode = value => {
+  const handleDarkmode = (value) => {
     setInitialTheme(value);
   };
 
   return (
-    <ThemeProvider theme={theme} onChange={value => handleDarkmode(value)}>
+    <ThemeProvider theme={theme} onChange={(value) => handleDarkmode(value)}>
       <AnimatePresence>
         <Layout
-          style={{ transition: 'background 0.3s' }}
-          className={`${common.useDark ? 'dark' : 'light'} auth main-layout`}
+          style={{ transition: "background 0.3s" }}
+          className={`${useDark ? "dark" : "light"} auth main-layout`}
         >
           {loading ? (
-            <Loader />
+            <LottieLoader text="loadng" />
           ) : (
             <Layout.Content>
               <motion.div animate={controls}>
-                {common.useLabPage ? (
-                  <div style={{ position: 'relative' }}>
+                {useLabPage ? (
+                  <div style={{ position: "relative" }}>
                     <LabsRoutes />
                   </div>
                 ) : (
                   <Layout.Content>
-                    {isDeviceSize !== 'desktop' ? (
+                    {isDeviceSize !== "desktop" ? (
                       <>
                         <MyProfile />
                         <IconMobileMenu />
                         <Layout.Content
                           style={{
                             width:
-                              isDeviceSize === 'mobile'
-                                ? '90%'
-                                : isDeviceSize === 'tablet'
-                                ? '90%'
-                                : '60%',
-                            margin: '20px auto'
+                              isDeviceSize === "mobile"
+                                ? "90%"
+                                : isDeviceSize === "tablet"
+                                ? "90%"
+                                : "60%",
+                            margin: "20px auto",
                           }}
                         >
-                          <div style={{ position: 'relative' }}>
+                          <div style={{ position: "relative" }}>
                             <FolioRoutes />
                           </div>
                         </Layout.Content>
@@ -121,21 +125,21 @@ const App = observer(() => {
                     ) : (
                       <Row
                         style={{
-                          height: isDeviceSize === 'desktop' ? '100vh' : 'auto'
+                          height: isDeviceSize === "desktop" ? "100vh" : "auto",
                         }}
                       >
-                        <Col span={1} style={{ alignSelf: 'center' }}>
+                        <Col span={1} style={{ alignSelf: "center" }}>
                           <Affix ref={menuSticky} offsetTop={20}>
                             <IconMenu />
                           </Affix>
                         </Col>
-                        <Col span={8} style={{ alignSelf: 'center' }}>
+                        <Col span={8} style={{ alignSelf: "center" }}>
                           <MyProfile />
                           <DeskTopContact />
                         </Col>
 
                         <Col span={15}>
-                          <div style={{ position: 'relative' }}>
+                          <div style={{ position: "relative" }}>
                             <FolioRoutes />
                           </div>
                         </Col>

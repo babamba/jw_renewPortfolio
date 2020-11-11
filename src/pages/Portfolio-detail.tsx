@@ -1,12 +1,17 @@
-import React, { FC, useEffect, useState } from 'react';
-import { Card, Typography, Badge, Divider, PageHeader } from 'antd';
-import styled from 'styled-components';
-import { pageTransition, pageVariants, ContainerStyle, ItemLeftStyle } from '../interfaces/Motion';
-import { motion } from 'framer-motion';
-import HeadMeta from '../components/Helmet/HeadMeta';
-import ReactGA from 'react-ga';
-import PortfolioData from './PortFolioDeck/PortfolioData';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import React, { FC, useEffect, useState } from "react";
+import { Card, Typography, Badge, Divider, PageHeader } from "antd";
+import styled from "styled-components";
+import {
+  pageTransition,
+  pageVariants,
+  ContainerStyle,
+  ItemLeftStyle,
+} from "../interfaces/Motion";
+import { motion } from "framer-motion";
+import HeadMeta from "../components/Helmet/HeadMeta";
+import ReactGA from "react-ga";
+import PortfolioData from "./PortFolioDeck/PortfolioData";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 
 const ContentBox = styled.div`
   padding: 12px;
@@ -73,7 +78,6 @@ const ProductLink = styled.a`
   }
 `;
 
-type Props = {};
 interface MatchParams {
   id: string;
 }
@@ -90,25 +94,28 @@ type State = {
   link: string;
 };
 
-const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match }) => {
+const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({
+  history,
+  match,
+}) => {
   const [folio, setFolio] = useState<State | undefined>(undefined);
   const cardBGStyles = {
-    height: '40vh',
+    height: "40vh",
     borderRadius: 12,
     background: `linear-gradient(45deg,  rgba(18, 40, 76, 0.56), rgba(89, 89, 89, 0.3)) , url(${
-      folio ? folio.pics : 'empty'
-    }) no-repeat center center/cover`
+      folio ? folio.pics : "empty"
+    }) no-repeat center center/cover`,
   };
 
   useEffect(() => {
-    if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV === "production") {
       ReactGA.pageview(location.pathname + location.search);
     }
     findPortFolio();
   }, []);
 
   const findPortFolio = () => {
-    const find: any = PortfolioData.find(item => {
+    const find: any = PortfolioData.find((item) => {
       return item.id === match.params.id;
     });
     setFolio(find);
@@ -128,45 +135,45 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      style={{ position: 'absolute', width: '100%' }}
+      style={{ position: "absolute", width: "100%" }}
     >
       <FolioContainer>
         <HeadMeta
-          title={`Portfolio | ${folio ? folio.id : 'empty'}`}
-          text={`Portfolio | ${folio ? folio.id : 'empty'}`}
-          keywords={`Portfolio | ${folio ? folio.id : 'empty'}`}
-          description={`Portfolio | ${folio ? folio.id : 'empty'}`}
+          title={`Portfolio | ${folio ? folio.id : "empty"}`}
+          text={`Portfolio | ${folio ? folio.id : "empty"}`}
+          keywords={`Portfolio | ${folio ? folio.id : "empty"}`}
+          description={`Portfolio | ${folio ? folio.id : "empty"}`}
         />
 
         <motion.button
           whileHover={{
             scale: 1.02,
-            transition: { duration: 0.5 }
+            transition: { duration: 0.5 },
           }}
           whileTap={{ scale: 0.99 }}
-          onClick={e => {
+          onClick={(e) => {
             e.preventDefault();
             history.goBack();
           }}
           style={{
-            background: 'transparent',
-            border: 'none',
-            outline: 'none',
-            cursor: 'pointer'
+            background: "transparent",
+            border: "none",
+            outline: "none",
+            cursor: "pointer",
           }}
         >
           <PageHeader
-            onBack={() => console.log('')}
+            onBack={() => console.log("")}
             className="site-page-header"
             title="이전 페이지"
-            style={{ background: 'transparent', padding: '12px 0px' }}
+            style={{ background: "transparent", padding: "12px 0px" }}
             // subTitle="이전 페이지"
           />
         </motion.button>
         <Card
           style={{
-            textAlign: 'center',
-            borderRadius: 12
+            textAlign: "center",
+            borderRadius: 12,
           }}
         >
           <motion.div
@@ -175,7 +182,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
             initial="hidden"
             animate="visible"
             exit="hidden"
-            style={{ textAlign: 'left', marginBottom: 20, borderRadius: 12 }}
+            style={{ textAlign: "left", marginBottom: 20, borderRadius: 12 }}
           >
             <ContentBox>
               <FolioImageBox>
@@ -199,9 +206,9 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
 
                 <br />
                 <motion.div variants={ItemLeftStyle}>
-                  {folio !== undefined && folio.link !== '' && (
+                  {folio !== undefined && folio.link !== "" && (
                     <ProductLink href={folio.link} target="_blank">
-                      실제서비스 URL{' '}
+                      실제서비스 URL{" "}
                     </ProductLink>
                   )}
                 </motion.div>

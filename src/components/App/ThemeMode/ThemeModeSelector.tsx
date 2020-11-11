@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
-import styled from 'styled-components';
-import { observer } from 'mobx-react';
-import useStores from '../../../hooks/useStores';
-import { useTheme } from 'antd-theme';
-import { motion } from 'framer-motion';
-import { BulbOutlined } from '@ant-design/icons';
-import CustomIcon from '../../Common/CustomIcon';
+import React, { FC, useEffect } from "react";
+import { observer } from "mobx-react-lite";
+import { useStore } from "hooks/useStore";
+import { useTheme } from "antd-theme";
+import { motion } from "framer-motion";
+import CustomIcon from "../../Common/CustomIcon";
 
-const ThemeModeSelector = observer(({ size }) => {
-  const { common } = useStores();
+interface Props {
+  size: number;
+}
+const ThemeModeSelector: FC<Props> = (props: Props) => {
+  const { size } = props;
+  const { useDark, setUseDark } = useStore("common");
   const [{ name, variables }, setTheme] = useTheme();
 
   useEffect(() => {
@@ -17,72 +19,73 @@ const ThemeModeSelector = observer(({ size }) => {
 
   useEffect(() => {
     const body = document.body.classList;
-    const mainLayout = document.getElementsByClassName('main-layout')[0].classList;
-    if (common.useDark) {
-      mainLayout.remove('light');
-      body.remove('light');
-      mainLayout.add('dark');
-      body.add('dark');
+    const mainLayout = document.getElementsByClassName("main-layout")[0]
+      .classList;
+    if (useDark) {
+      mainLayout.remove("light");
+      body.remove("light");
+      mainLayout.add("dark");
+      body.add("dark");
     } else {
-      mainLayout.remove('dark');
-      body.remove('dark');
-      mainLayout.add('light');
-      body.add('light');
+      mainLayout.remove("dark");
+      body.remove("dark");
+      mainLayout.add("light");
+      body.add("light");
     }
     init();
-  }, [common.useDark]);
+  }, [useDark]);
 
   const init = async () => {
-    if (common.useDark) {
+    if (useDark) {
       setTheme({
-        name: 'dark'
+        name: "dark",
       });
     } else {
       setTheme({
-        name: 'default'
+        name: "default",
       });
     }
   };
 
   const handleChange = async () => {
-    if (common.useDark) {
-      await common.setUseDark(false);
+    if (useDark) {
+      await setUseDark(false);
       setTheme({
-        name: 'default'
+        name: "default",
       });
     } else {
-      await common.setUseDark(true);
+      await setUseDark(true);
       setTheme({
-        name: 'dark'
+        name: "dark",
       });
     }
   };
 
   const spring = {
-    type: 'spring',
+    type: "spring",
     bounceDamping: 0,
-    bounceStiffness: 0
+    bounceStiffness: 0,
   };
 
   const RotateVariants = {
     open: { rotateZ: [90, 0], transition: { spring } },
-    closed: { rotateZ: [0, 90], transition: { spring } }
+    closed: { rotateZ: [0, 90], transition: { spring } },
   };
 
   return (
-    <motion.div animate={common.useDark ? 'open' : 'closed'} variants={RotateVariants}>
+    <motion.div animate={useDark ? "open" : "closed"} variants={RotateVariants}>
       <CustomIcon
         onClick={handleChange}
         style={{
           margin: 0,
-          color: common.useDark ? '#f0d74a' : '#6b6b6b',
+          color: useDark ? "#f0d74a" : "#6b6b6b",
           fontSize: `${size}rem`,
-          cursor: 'pointer'
+          cursor: "pointer",
         }}
-        type={common.useDark ? 'icon-night' : 'icon-brightness'}
+        type={useDark ? "icon-night" : "icon-brightness"}
       />
     </motion.div>
   );
-});
+};
 
-export default ThemeModeSelector;
+export default observer(ThemeModeSelector);

@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "typeRoots": ["node_modules/@types"],
+    "baseUrl": "./",
+    "paths": {
+      "components/*": ["src/components/*"],
+      "hooks/*": ["src/hooks/*"],
+      "images/*": ["src/assets/images/*"],
+      "pages/*": ["src/pages/*"],
+      "store/*": ["src/store/*"],
+      "interfaces/*": ["src/interfaces/*"]
+    }
+  }
+}

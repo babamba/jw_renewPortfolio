@@ -11,52 +11,60 @@ const {
   fixBabelImports,
   addLessLoader,
   adjustStyleLoaders,
-  addWebpackPlugin
-} = require('customize-cra');
-
-const AntdThemePlugin = require('antd-theme/plugin');
+  addWebpackPlugin,
+  addWebpackAlias,
+} = require("customize-cra");
+const path = require("path");
+const AntdThemePlugin = require("antd-theme/plugin");
 
 //사용자 정의 웹팩 설정
 module.exports = {
-  webpack: override(disableEsLint(), addDecoratorsLegacy())
+  webpack: override(disableEsLint(), addDecoratorsLegacy()),
 };
 
 module.exports = override(
   //myOverrides,
-  fixBabelImports('import', {
-    libraryName: 'antd',
-    libraryDirectory: 'es',
-    style: true
+  fixBabelImports("import", {
+    libraryName: "antd",
+    libraryDirectory: "es",
+    style: true,
   }),
   addBabelPlugin([
-    'babel-plugin-styled-components',
+    "babel-plugin-styled-components",
     {
-      displayName: true
-    }
+      displayName: true,
+    },
   ]),
   addLessLoader({
     lessOptions: {
       javascriptEnabled: true,
-      modifyVars: { '@primary-color': '#1DA57A' }
-    }
+    },
   }),
-  adjustStyleLoaders(loaders => {
+  adjustStyleLoaders((loaders) => {
     loaders.use[0] = {
-      loader: AntdThemePlugin.loader
+      loader: AntdThemePlugin.loader,
     };
+  }),
+  addWebpackAlias({
+    ["components"]: path.resolve(__dirname, "./src/components"),
+    ["hooks"]: path.resolve(__dirname, "./src/hooks"),
+    ["pages"]: path.resolve(__dirname, "./src/pages"),
+    ["images"]: path.resolve(__dirname, "./src/assets/images"),
+    ["store"]: path.resolve(__dirname, "./src/store"),
+    ["interfaces"]: path.resolve(__dirname, "./src/interfaces"),
   }),
   addWebpackPlugin(
     new AntdThemePlugin({
       themes: [
         {
-          name: 'dark',
-          filename: require.resolve('antd/lib/style/themes/dark.less')
+          name: "dark",
+          filename: require.resolve("antd/es/style/themes/dark.less"),
         },
         {
-          name: 'default',
-          filename: require.resolve('antd/lib/style/themes/default.less')
-        }
-      ]
+          name: "default",
+          filename: require.resolve("antd/es/style/themes/default.less"),
+        },
+      ],
     })
   ),
   disableEsLint(),

@@ -1,34 +1,30 @@
-import React, { useEffect } from 'react';
-import 'mobx-react/batchingForReactDom';
-import App from './components/App/App';
-import { render, hydrate } from 'react-dom';
-import * as serviceWorker from './serviceWorker';
-import { Provider } from 'mobx-react';
-import { HelmetProvider } from 'react-helmet-async';
-import RootStore from './store/index';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import App from "./components/App/App";
+import { render } from "react-dom";
+import * as serviceWorker from "./serviceWorker";
+import { StoreProvider } from "hooks/useStore";
+import { HelmetProvider } from "react-helmet-async";
+import { BrowserRouter } from "react-router-dom";
 
-import './assets/css/custom.less';
-import ReactGA from 'react-ga';
+import "./assets/css/custom.less";
+import ReactGA from "react-ga";
 
-const rootStore = new RootStore(); // *** 루트 스토어 생성
-
-if (process.env.NODE_ENV === 'production') {
-  console.log('Production Mode');
+if (process.env.NODE_ENV === "production") {
+  console.log("Production Mode");
   console.log = function no_console() {};
   ReactGA.initialize(`${process.env.REACT_APP_GA_TRACKING_ID}`);
-} else if (process.env.NODE_ENV === 'development') {
-  console.log('Development Mode');
+} else if (process.env.NODE_ENV === "development") {
+  console.log("Development Mode");
 }
 
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById("root");
 
 render(
   <BrowserRouter>
     <HelmetProvider>
-      <Provider {...rootStore}>
+      <StoreProvider>
         <App />
-      </Provider>
+      </StoreProvider>
     </HelmetProvider>
   </BrowserRouter>,
   rootElement

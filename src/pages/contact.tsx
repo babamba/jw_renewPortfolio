@@ -1,13 +1,17 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
-import { Card, Typography, Badge } from 'antd';
-import { MailOutlined } from '@ant-design/icons';
-import styled from 'styled-components';
-import { pageTransition, pageVariants, ContainerStyle, ItemLeftStyle } from '../interfaces/Motion';
-import { motion } from 'framer-motion';
-import HeadMeta from '../components/Helmet/HeadMeta';
-import { useRouter } from '../hooks/useRouter';
-import ReactGA from 'react-ga';
-import { useWindowWidth } from '@react-hook/window-size';
+import React, { FunctionComponent, useEffect } from "react";
+import { Card, Grid, Badge } from "antd";
+import { MailOutlined } from "@ant-design/icons";
+import styled from "styled-components";
+import {
+  pageTransition,
+  pageVariants,
+  ContainerStyle,
+  ItemLeftStyle,
+} from "../interfaces/Motion";
+import { motion } from "framer-motion";
+import HeadMeta from "../components/Helmet/HeadMeta";
+import { useRouter } from "../hooks/useRouter";
+import ReactGA from "react-ga";
 
 const StatusBadge = styled(Badge)`
   position: relative;
@@ -32,23 +36,10 @@ const GuideText = styled.h4`
 type Props = {};
 const Contact: FunctionComponent<Props> = ({}) => {
   const router = useRouter();
-  const onlyWidth = useWindowWidth();
-  const [isDeviceSize, SetIsDeviceSize] = useState('desktop');
+  const screens = Grid.useBreakpoint();
 
   useEffect(() => {
-    if (onlyWidth !== undefined) {
-      if (onlyWidth < 769) {
-        SetIsDeviceSize('mobile');
-      } else if (onlyWidth < 1201) {
-        SetIsDeviceSize('tablet');
-      } else {
-        SetIsDeviceSize('desktop');
-      }
-    }
-  }, [onlyWidth]);
-
-  useEffect(() => {
-    if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV === "production") {
       ReactGA.pageview(router.location.pathname + router.location.search);
     }
   }, []);
@@ -59,7 +50,7 @@ const Contact: FunctionComponent<Props> = ({}) => {
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      style={{ position: 'absolute', width: '100%' }}
+      style={{ position: "absolute", width: "100%" }}
       // style={pageStyle}
     >
       <HeadMeta
@@ -71,8 +62,8 @@ const Contact: FunctionComponent<Props> = ({}) => {
       <Card
         style={{
           borderRadius: 12,
-          marginBottom: isDeviceSize === 'desktop' ? 0 : 30,
-          margin: isDeviceSize === 'desktop' ? '40px' : 0
+          marginBottom: screens.xl ? 0 : 30,
+          margin: screens.xl ? "40px" : 0,
         }}
       >
         <motion.div
@@ -85,8 +76,8 @@ const Contact: FunctionComponent<Props> = ({}) => {
           <ContentBox>
             <motion.div variants={ItemLeftStyle}>
               <GuideText>
-                <StatusBadge status="success" /> 현재 사이트는 React / AntDesign / ContentFul 으로
-                만들어졌습니다.
+                <StatusBadge status="success" /> 현재 사이트는 React / AntDesign
+                / ContentFul 으로 만들어졌습니다.
               </GuideText>
             </motion.div>
           </ContentBox>
@@ -97,14 +88,19 @@ const Contact: FunctionComponent<Props> = ({}) => {
             <motion.div variants={ItemLeftStyle}>
               <GuideText>
                 <MailOutlined />
-                <a style={{ paddingLeft: 8 }} className="email" href="mailto:orochi13@naver.com">
+                <a
+                  style={{ paddingLeft: 8 }}
+                  className="email"
+                  href="mailto:orochi13@naver.com"
+                >
                   orochi13@naver.com
                 </a>
               </GuideText>
             </motion.div>
             <GuideText>
               <motion.div variants={ItemLeftStyle}>
-                이메일로 연락주시면 상세한 이력서 보내드리겠습니다. <br /> <br />
+                이메일로 연락주시면 상세한 이력서 보내드리겠습니다. <br />{" "}
+                <br />
               </motion.div>
               <motion.div variants={ItemLeftStyle}>
                 당신과 함께 성장하고 싶습니다. <br />

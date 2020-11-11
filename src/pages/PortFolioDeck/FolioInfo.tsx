@@ -1,10 +1,10 @@
-import React, { FC, useState, useEffect } from 'react';
-import { Typography } from 'antd';
-import { motion, useAnimation } from 'framer-motion';
-import { ContainerStyle, ItemStyle, FastContainerStyle } from '../../interfaces/Motion';
-import styled from 'styled-components';
-import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
-import useStores from '../../hooks/useStores';
+import React, { FC, useState, useEffect } from "react";
+import { Typography } from "antd";
+import { motion } from "framer-motion";
+import { ItemStyle, FastContainerStyle } from "interfaces/Motion";
+import styled from "styled-components";
+import { withRouter, RouteComponentProps, Link } from "react-router-dom";
+import { useStore } from "hooks/useStore";
 
 const InfoContainer = styled(motion.div)`
   &:hover {
@@ -27,7 +27,7 @@ interface Props extends RouteComponentProps {
 }
 
 const Card: FC<Props> = (props: Props) => {
-  const { common } = useStores();
+  const { useDark } = useStore("common");
   const { history, match, animating } = props;
   const { id, name, age, distance, position } = props.data;
 
@@ -35,14 +35,14 @@ const Card: FC<Props> = (props: Props) => {
     <Link
       to={`${match.url}/${id}`}
       style={{
-        color: common.useDark ? 'rgba(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.65)'
+        color: useDark ? "rgba(255, 255, 255, 0.65)" : "rgba(0, 0, 0, 0.65)",
       }}
     >
       <InfoContainer
         className="container"
         variants={FastContainerStyle}
         initial="hidden"
-        animate={animating ? 'visible' : 'hidden'}
+        animate={animating ? "visible" : "hidden"}
       >
         <motion.div variants={ItemStyle}>
           <Typography.Text
@@ -50,7 +50,7 @@ const Card: FC<Props> = (props: Props) => {
               fontSize: 28,
               marginBottom: 14,
               fontWeight: 600,
-              letterSpacing: -2
+              letterSpacing: -2,
             }}
           >
             {name}

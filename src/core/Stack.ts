@@ -174,7 +174,7 @@ const FrontEndStack = [
     isUsed: true,
   },
   {
-    stackTitle: "Lottie.js",
+    stackTitle: "Lottie",
     imgUrl: "lottie.png",
     tooltipTitle: "",
     isUsed: true,

@@ -99,6 +99,7 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
       animate="visible"
       exit="hidden"
       style={{
+        transition: "background 0.5s ease",
         backgroundColor: useBackground
           ? useDark
             ? "rgba(255, 255, 255, 0.15)"

@@ -148,7 +148,7 @@ const Post: FunctionComponent<any> = () => {
       <CardView
         style={{
           borderRadius: 12,
-          margin: 20,
+          margin: screens.xs ? 0 : 20,
         }}
         bodyStyle={{
           padding: "18px",

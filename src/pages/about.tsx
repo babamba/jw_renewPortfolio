@@ -108,7 +108,7 @@ const About: FC<Props> = (props: Props) => {
       <Card
         style={{
           borderRadius: 12,
-          margin: 20,
+          margin: screens.xs ? 0 : 20,
         }}
         bodyStyle={{
           padding: "18px 24px",

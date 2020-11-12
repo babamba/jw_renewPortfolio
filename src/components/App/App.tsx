@@ -112,12 +112,6 @@ const App = () => {
                         offsetTop={screens.xxl ? 160 : screens.xl ? 20 : 0}
                         style={{
                           transition: "background 0.5s ease",
-                          backgroundColor:
-                            affixed && screens.xl === false
-                              ? useDark
-                                ? "rgba(255, 255, 255, 0.15)"
-                                : "rgba(0, 0, 0, 0.15)"
-                              : "rgba(255, 255, 255, 0)",
                         }}
                       >
                         {screens.xl ? (

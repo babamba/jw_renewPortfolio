@@ -128,7 +128,7 @@ const History: FunctionComponent<Props> = ({}) => {
         style={{
           padding: "6px 0px",
           borderRadius: 12,
-          margin: 20,
+          margin: screens.xs ? 0 : 20,
           // margin: isDeviceSize === 'desktop' ? '40px' : 0,
           // marginBottom: isDeviceSize === 'desktop' ? 0 : 30
         }}

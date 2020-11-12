@@ -132,7 +132,11 @@ const Post: FunctionComponent<any> = () => {
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      style={{ position: "absolute", width: "100%" }}
+      style={{
+        position: "absolute",
+        width: "100%",
+        padding: screens.xl ? "0px" : "20px",
+      }}
       // style={pageStyle}
     >
       <HeadMeta
@@ -144,8 +148,7 @@ const Post: FunctionComponent<any> = () => {
       <CardView
         style={{
           borderRadius: 12,
-          marginBottom: screens.xl ? 0 : 30,
-          margin: screens.xl ? "32px" : 0,
+          margin: 20,
         }}
         bodyStyle={{
           padding: "18px",

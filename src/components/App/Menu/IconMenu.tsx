@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
-import { Row, Col } from "antd";
+import { Grid, Row, Col } from "antd";
 import { withRouter, RouteComponentProps, Link } from "react-router-dom";
 import {
   ReadOutlined,
@@ -14,6 +14,7 @@ import { useStore } from "hooks/useStore";
 
 interface Props extends RouteComponentProps<any> {}
 const IconMenu: FunctionComponent<Props> = (props: Props) => {
+  const screens = Grid.useBreakpoint();
   const { useDark } = useStore("common");
   const [selected, setSelected] = useState("/");
   const { history, match } = props;
@@ -36,7 +37,11 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
         justify="center"
         align="middle"
         gutter={[0, 32]}
-        style={{ paddingTop: 30, paddingLeft: 8 }}
+        style={{
+          paddingTop: 30,
+          paddingLeft: 8,
+          marginTop: screens.xxl ? "-180px" : "-28px",
+        }}
       >
         <Col span={24} style={{ textAlign: "center", paddingBottom: 6 }}>
           <motion.div variants={ItemStyle}>

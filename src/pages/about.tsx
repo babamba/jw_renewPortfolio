@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import {
   Row,
   Col,
@@ -8,10 +8,10 @@ import {
   Avatar,
   Badge,
   Tooltip,
+  Grid,
 } from "antd";
 import styled from "styled-components";
 import { useRouter } from "../hooks/useRouter";
-import { useWindowWidth } from "@react-hook/window-size";
 
 import { motion } from "framer-motion";
 import {
@@ -67,10 +67,10 @@ const BackStackBox = styled.div`
 
 type Props = {};
 
-const About: FunctionComponent<Props> = (props: Props) => {
+const About: FC<Props> = (props: Props) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
   const { useDark } = useStore("common");
-
-  const onlyWidth = useWindowWidth();
+  const screens = Grid.useBreakpoint();
   const router = useRouter();
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
@@ -78,31 +78,24 @@ const About: FunctionComponent<Props> = (props: Props) => {
     }
   }, []);
 
-  const [isDeviceSize, SetIsDeviceSize] = useState("desktop");
-  useEffect(() => {
-    if (onlyWidth !== undefined) {
-      if (onlyWidth < 769) {
-        SetIsDeviceSize("mobile");
-      } else if (onlyWidth < 1201) {
-        SetIsDeviceSize("tablet");
-      } else {
-        SetIsDeviceSize("desktop");
-      }
-    }
-  }, [onlyWidth]);
-
   const RenderTooltip = (text) => {
     return <Typography.Text>{text}</Typography.Text>;
   };
 
   return (
     <motion.div
+      ref={scrollRef}
       initial="initial"
       animate="in"
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      style={{ position: "absolute", width: "100%", height: "100%" }}
+      style={{
+        position: "absolute",
+        width: "100%",
+        height: "100%",
+        padding: screens.xl ? "0px" : "20px",
+      }}
       // style={pageStyle}
     >
       <HeadMeta
@@ -115,8 +108,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
       <Card
         style={{
           borderRadius: 12,
-          margin:
-            isDeviceSize === "desktop" ? "40px 40px 30px" : "0px 0px 30px 0px",
+          margin: 20,
         }}
         bodyStyle={{
           padding: "18px 24px",
@@ -131,7 +123,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
               <Typography.Text underline>FrontEnd</Typography.Text> 직군에서
               프로젝트를 진행하고있습니다. <br />
               Javascript 언어를 가장 좋아합니다. <br />
-              FrontEnd 및 BackEnd 직군으로 프로젝트를 진행한 경력이 있습니다.{" "}
+              FrontEnd 및 BackEnd 직군으로 프로젝트를 진행한 경력이 있습니다.
               <br />
               기술 트렌드와 실제 프로덕션의 중간에서 효율점을 찾아가며
               <br />
@@ -153,7 +145,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
           FrontEnd Stack
           <StackText style={{ paddingLeft: 12, fontSize: 12, fontWeight: 100 }}>
             <Badge status="processing" color="green" />
-            {isDeviceSize !== "mobile"
+            {screens.md
               ? ": 현재 진행 중인 프로젝트에서 사용중"
               : ": 현재 프로젝트에서 사용중"}
           </StackText>
@@ -180,9 +172,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                       >
                         <Avatar
                           shape="square"
-                          size={
-                            onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                          }
+                          size={screens.xs ? 80 : 60}
                           src={require("../assets/images/stack/js.png")}
                         />
                       </Tooltip>
@@ -207,9 +197,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                       >
                         <Avatar
                           shape="square"
-                          size={
-                            onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                          }
+                          size={screens.xs ? 80 : 60}
                           src={require("../assets/images/stack/jses6.png")}
                         />
                       </Tooltip>
@@ -233,9 +221,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                       >
                         <Avatar
                           shape="square"
-                          size={
-                            onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                          }
+                          size={screens.xs ? 80 : 60}
                           src={require("../assets/images/stack/typescript.png")}
                         />
                       </Tooltip>
@@ -259,9 +245,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                       >
                         <Avatar
                           shape="square"
-                          size={
-                            onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                          }
+                          size={screens.xs ? 80 : 60}
                           src={require("../assets/images/stack/babel.png")}
                         />
                       </Tooltip>
@@ -285,9 +269,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                       >
                         <Avatar
                           shape="square"
-                          size={
-                            onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                          }
+                          size={screens.xs ? 80 : 60}
                           src={require("../assets/images/stack/webpack.png")}
                         />
                       </Tooltip>
@@ -305,9 +287,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/jquery.png")}
                       />
                       <TitleBox>
@@ -321,9 +301,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/react.png")}
                       />
                       <TitleBox>
@@ -340,9 +318,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/nextjs.png")}
                       />
                       <TitleBox>
@@ -356,9 +332,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/RN.png")}
                       />
                       <TitleBox>
@@ -377,9 +351,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/redux.png")}
                       />
                       <TitleBox>
@@ -393,9 +365,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/mobx.png")}
                       />
                       <TitleBox>
@@ -412,9 +382,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/styled-component.png")}
                       />
                       <TitleBox>
@@ -433,9 +401,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/ant.png")}
                       />
                       <TitleBox>
@@ -452,9 +418,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/chartjs.png")}
                       />
                       <TitleBox>
@@ -471,9 +435,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/lottie.png")}
                       />
                       <TitleBox>
@@ -490,9 +452,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/apollo.png")}
                       />
                       <TitleBox>
@@ -522,9 +482,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/spring.png")}
                       />
                       <TitleBox>
@@ -538,9 +496,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/node.png")}
                       />
                       <TitleBox>
@@ -556,9 +512,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/express.png")}
                       />
                       <TitleBox>
@@ -572,9 +526,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/graphql.png")}
                       />
                       <TitleBox>
@@ -589,9 +541,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/prisma.png")}
                       />
                       <TitleBox>
@@ -606,9 +556,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/Appsync.png")}
                       />
                       <TitleBox>
@@ -641,9 +589,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/aws.png")}
                       />
                       <TitleBox>
@@ -660,9 +606,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/docker.png")}
                       />
                       <TitleBox>
@@ -684,9 +628,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/gitlab-runner.png")}
                       />
                       <TitleBox>
@@ -719,9 +661,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/github.png")}
                       />
                       <TitleBox>
@@ -736,9 +676,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/gitlab.png")}
                       />
                       <TitleBox>
@@ -771,9 +709,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/k8s.png")}
                       />
                       <TitleBox>
@@ -787,9 +723,7 @@ const About: FunctionComponent<Props> = (props: Props) => {
                     <motion.div variants={ItemStyle}>
                       <Avatar
                         shape="square"
-                        size={
-                          onlyWidth !== undefined && onlyWidth > 480 ? 80 : 60
-                        }
+                        size={screens.xs ? 80 : 60}
                         src={require("../assets/images/stack/elk.png")}
                       />
                       <TitleBox>

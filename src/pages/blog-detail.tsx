@@ -4,7 +4,7 @@ import { ContentfulService } from "../core/contentful";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { BlogPost } from "../interfaces/post";
 import { motion } from "framer-motion";
-import { Typography, PageHeader, Layout, Skeleton } from "antd";
+import { Typography, PageHeader, Layout, Skeleton, Grid } from "antd";
 import styled from "styled-components";
 import {
   pageDetailVariants,
@@ -65,6 +65,7 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({
   location,
 }) => {
   const router = useRouter();
+  const screens = Grid.useBreakpoint();
   const contentfulService = new ContentfulService();
   const [article, setArticle] = useState<BlogPost | undefined>();
 
@@ -107,6 +108,7 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({
           style={{
             position: "absolute",
             width: "100%",
+            padding: screens.xl ? "0px" : "20px",
           }}
         >
           <PostContainer className="post">

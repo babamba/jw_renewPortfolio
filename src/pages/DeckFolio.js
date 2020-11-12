@@ -9,23 +9,21 @@ import {
 import PortfolioData from "./PortFolioDeck/PortfolioData";
 import DetailInfo from "./PortFolioDeck/FolioInfo";
 import { ForwardOutlined, RetweetOutlined } from "@ant-design/icons";
-import { Progress, Row, Col, Tooltip } from "antd";
+import { Grid, Progress, Row, Col, Tooltip } from "antd";
 import ReactGA from "react-ga";
 import { useStore } from "hooks/useStore";
 import useMount from "../hooks/useMount";
 import HeadMeta from "../components/Helmet/HeadMeta";
 import { useRouter } from "../hooks/useRouter";
-import { useWindowWidth } from "@react-hook/window-size";
 
 const DeckFolio = (props) => {
-  const onlyWidth = useWindowWidth({ wait: 700 });
   const { useDark } = useStore("common");
+  const screens = Grid.useBreakpoint();
   const isMount = useMount();
   const router = useRouter();
   const DeckRef = useRef();
   const controls = useAnimation();
   const [animating, setAnimating] = useState(false);
-  const [isDeviceSize, SetIsDeviceSize] = useState("desktop");
   const [currentIdx, SetCurrentIdx] = useState(PortfolioData.length - 1);
   const [prevIdx, setPrevIdx] = useState(0);
 
@@ -81,18 +79,6 @@ const DeckFolio = (props) => {
   }, []);
 
   useEffect(() => {
-    if (onlyWidth !== undefined) {
-      if (onlyWidth < 769) {
-        SetIsDeviceSize("mobile");
-      } else if (onlyWidth < 1201) {
-        SetIsDeviceSize("tablet");
-      } else {
-        SetIsDeviceSize("desktop");
-      }
-    }
-  }, [onlyWidth]);
-
-  useEffect(() => {
     if (prevIdx === 0 && currentIdx === PortfolioData.length - 1) {
       closeAction();
       setTimeout(() => {
@@ -138,22 +124,12 @@ const DeckFolio = (props) => {
         keywords="FrontEnd Developer React Project"
         description="Project PortFolio"
       />
-      {/* <div className={isDeviceSize === 'desktop' ? 'deck-area-desktop' : 'deck-area-mobile'}>
-        <div
-          style={{
-            position: isDeviceSize === 'desktop' ? 'relative' : 'relative',
-            textAlign: 'left',
-            padding: isDeviceSize === 'desktop' ? '10px 10%' : 0,
-            top: isDeviceSize === 'desktop' ? '70%' : '0',
-            width: '100%'
-          }}
-        > */}
       <Row
         align="middle"
-        justify={isDeviceSize === "desktop" ? "start" : "center"}
+        justify={screens.xl ? "start" : "center"}
         style={{
-          overflowX: isDeviceSize === "desktop" ? "inherit" : "hidden",
-          padding: isDeviceSize === "mobile" ? "20px 20px 0px" : "20px 80px",
+          overflowX: screens.xl ? "inherit" : "hidden",
+          padding: screens.md ? "20px 80px" : "20px 20px 0px",
         }}
       >
         <Col span={24}>
@@ -164,13 +140,7 @@ const DeckFolio = (props) => {
               display: "flex",
               flex: 1,
               justifyContent: "center",
-              height:
-                isDeviceSize === "desktop"
-                  ? "75vh"
-                  : onlyWidth > 473
-                  ? "55vh"
-                  : "45vh",
-              // minHeight: isDeviceSize === 'mobile' ? 600 :750
+              height: screens.xl ? "75vh" : "60vh",
             }}
           >
             <Deck ref={DeckRef} callback={callback} currentIdx={currentIdx} />
@@ -179,33 +149,24 @@ const DeckFolio = (props) => {
         <Col
           span={24}
           style={{
-            padding: isDeviceSize === "mobile" ? "10px" : "10px 12%",
+            padding: screens.xxl ? "10px 12%" : "10px",
           }}
         >
           <Row
-            justify={isDeviceSize === "desktop" ? "start" : "center"}
+            justify={screens.xl ? "start" : "center"}
             style={{ paddingBottom: 10 }}
           >
-            <Col
-              span={isDeviceSize === "mobile" ? 2 : 1}
-              onClick={() => gestureTrigger()}
-            >
+            <Col span={screens.xl ? 1 : 2} onClick={() => gestureTrigger()}>
               <ForwardOutlined style={{ fontSize: 18 }} />
             </Col>
-            <Col
-              span={isDeviceSize === "mobile" ? 2 : 1}
-              onClick={() => ReDeckTrigger()}
-            >
+            <Col span={screens.xl ? 1 : 2} onClick={() => ReDeckTrigger()}>
               <RetweetOutlined style={{ fontSize: 18 }} />
             </Col>
 
-            <Col
-              span={isDeviceSize === "mobile" ? 2 : 1}
-              style={{ textAlign: "center" }}
-            >
+            <Col span={screens.xl ? 1 : 2} style={{ textAlign: "center" }}>
               <span>0{PortfolioData.length - currentIdx}</span>
             </Col>
-            <Col span={isDeviceSize === "mobile" ? 6 : 2}>
+            <Col span={screens.xl ? 2 : 6}>
               <Progress
                 style={{
                   borderRadius: 0,
@@ -218,15 +179,12 @@ const DeckFolio = (props) => {
                 }
               />
             </Col>
-            <Col
-              span={isDeviceSize === "mobile" ? 2 : 1}
-              style={{ textAlign: "center" }}
-            >
+            <Col span={screens.xl ? 1 : 2} style={{ textAlign: "center" }}>
               <span>0{PortfolioData.length}</span>
             </Col>
 
-            <Col offset={1} span={isDeviceSize === "mobile" ? 2 : 8}>
-              {isDeviceSize !== "mobile" && (
+            <Col offset={1} span={screens.xl ? 8 : 2}>
+              {screens.xl && (
                 <span style={{ paddingRight: 12 }}>Swipe Left and Right</span>
               )}
 
@@ -241,7 +199,7 @@ const DeckFolio = (props) => {
               </Tooltip>
             </Col>
           </Row>
-          <Row justify={isDeviceSize === "desktop" ? "center" : "start"}>
+          <Row justify={screens.xl ? "center" : "start"}>
             <Col span={24}>
               <motion.div animate={controls}>
                 <DetailInfo data={InfoData} animating={animating} />

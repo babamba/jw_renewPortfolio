@@ -77,11 +77,13 @@ const MenuText = styled(Typography.Text)`
   }
 `;
 
-interface Props extends RouteComponentProps<any> {}
+interface Props extends RouteComponentProps<any> {
+  useBackground: boolean;
+}
 const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
   const [selected, setSelected] = useState("/");
   const screens = Grid.useBreakpoint();
-  const { history, match } = props;
+  const { history, match, useBackground } = props;
   const { useDark } = useStore("common");
 
   useEffect(() => {
@@ -96,6 +98,13 @@ const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
       initial="hidden"
       animate="visible"
       exit="hidden"
+      style={{
+        backgroundColor: useBackground
+          ? useDark
+            ? "rgba(255, 255, 255, 0.15)"
+            : "rgba(0, 0, 0, 0.15)"
+          : "transparent",
+      }}
     >
       <Row
         justify="center"

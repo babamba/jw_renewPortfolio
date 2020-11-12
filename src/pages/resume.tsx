@@ -111,7 +111,11 @@ const History: FunctionComponent<Props> = ({}) => {
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      style={{ position: "absolute", width: "100%" }}
+      style={{
+        position: "absolute",
+        width: "100%",
+        padding: screens.xl ? "0px" : "20px",
+      }}
       // style={pageStyle}
     >
       <HeadMeta
@@ -124,7 +128,7 @@ const History: FunctionComponent<Props> = ({}) => {
         style={{
           padding: "6px 0px",
           borderRadius: 12,
-          margin: screens.xl ? "40px 40px 0px" : "0px 0px 30px 0px",
+          margin: 20,
           // margin: isDeviceSize === 'desktop' ? '40px' : 0,
           // marginBottom: isDeviceSize === 'desktop' ? 0 : 30
         }}

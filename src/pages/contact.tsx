@@ -50,7 +50,11 @@ const Contact: FunctionComponent<Props> = ({}) => {
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      style={{ position: "absolute", width: "100%" }}
+      style={{
+        position: "absolute",
+        width: "100%",
+        padding: screens.xl ? "0px" : "20px",
+      }}
       // style={pageStyle}
     >
       <HeadMeta
@@ -83,7 +87,10 @@ const Contact: FunctionComponent<Props> = ({}) => {
           </ContentBox>
           <ContentBox>
             <motion.div variants={ItemLeftStyle}>
-              <GuideText>저에게 관심이 있으시다면</GuideText>
+              <GuideText>저에게 관심이 있으시거나,</GuideText>
+            </motion.div>
+            <motion.div variants={ItemLeftStyle}>
+              <GuideText>관심사에 대해 궁금한 점이 있다면,</GuideText>
             </motion.div>
             <motion.div variants={ItemLeftStyle}>
               <GuideText>
@@ -99,16 +106,17 @@ const Contact: FunctionComponent<Props> = ({}) => {
             </motion.div>
             <GuideText>
               <motion.div variants={ItemLeftStyle}>
-                이메일로 연락주시면 상세한 이력서 보내드리겠습니다. <br />{" "}
+                위의 이메일로 언제든 연락주세요. <br />
                 <br />
               </motion.div>
               <motion.div variants={ItemLeftStyle}>
                 당신과 함께 성장하고 싶습니다. <br />
               </motion.div>
-              <motion.div variants={ItemLeftStyle}>
-                봐주셔서 감사합니다. <br />
-              </motion.div>
               <br />
+              <motion.div variants={ItemLeftStyle}>
+                저의 포트폴리오를 시간내어 봐주셔서 감사합니다 :D <br />
+              </motion.div>
+
               <motion.div variants={ItemLeftStyle}>김진원 올림.</motion.div>
             </GuideText>
           </ContentBox>

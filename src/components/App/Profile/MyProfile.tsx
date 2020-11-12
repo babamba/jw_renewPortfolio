@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { Row, Col, Typography, Avatar, Affix, Grid } from "antd";
-import { useWindowWidth } from "@react-hook/window-size";
 import ReactRotatingText from "react-rotating-text";
 import { GithubOutlined } from "@ant-design/icons";
 import styled from "styled-components";
@@ -58,9 +57,6 @@ type Props = {};
 const MyProfile: FunctionComponent<Props> = (props: Props) => {
   const { useDark } = useStore("common");
   const screens = Grid.useBreakpoint();
-
-  const onlyWidth = useWindowWidth();
-
   const textVariants = {
     out: { x: 10, opacity: 0 },
     in: {
@@ -90,7 +86,7 @@ const MyProfile: FunctionComponent<Props> = (props: Props) => {
         <Row
           style={{
             alignItems: "center",
-            padding: "1.5rem 2rem",
+            padding: "1.5rem 2.5rem",
             paddingBottom: screens.xl ? "0" : "1rem",
           }}
           align="middle"
@@ -157,10 +153,9 @@ const MyProfile: FunctionComponent<Props> = (props: Props) => {
             <Col
               style={{
                 flexDirection: "column",
-                paddingLeft:
-                  onlyWidth !== undefined && onlyWidth > 1513 ? "2.5em" : 0,
+                paddingLeft: screens.xxl ? "2.5em" : 0,
               }}
-              span={onlyWidth !== undefined && onlyWidth > 1513 ? 17 : 24}
+              span={screens.xxl ? 17 : 24}
             >
               <motion.div variants={textVariants}>
                 <MainIntroText>안녕하세요.</MainIntroText>
@@ -208,7 +203,7 @@ const MyProfile: FunctionComponent<Props> = (props: Props) => {
       <Row
         style={{
           alignItems: "center",
-          padding: "1.5rem 2rem",
+          padding: "1.5rem 2.5rem",
           paddingBottom: screens.xl ? "0" : "1rem",
         }}
         align="middle"
@@ -233,7 +228,6 @@ const MyProfile: FunctionComponent<Props> = (props: Props) => {
                 padding: 0,
                 fontWeight: 300,
                 fontSize: "1.2rem",
-                // fontSize: onlyWidth !== undefined && onlyWidth > 480 ? '1.4em' : '1em',
                 lineHeight: 1.4,
                 textAlign: "center",
                 marginLeft: screens.xl ? 0 : 15,
@@ -276,10 +270,9 @@ const MyProfile: FunctionComponent<Props> = (props: Props) => {
           <Col
             style={{
               flexDirection: "column",
-              paddingLeft:
-                onlyWidth !== undefined && onlyWidth > 1513 ? "2.5em" : 0,
+              paddingLeft: screens.xxl ? "2.5em" : 0,
             }}
-            span={onlyWidth !== undefined && onlyWidth > 1513 ? 17 : 24}
+            span={screens.xxl ? 17 : 24}
           >
             <motion.div variants={textVariants}>
               <MainIntroText>안녕하세요.</MainIntroText>

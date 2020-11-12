@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { Card, Typography, Badge, Divider, PageHeader } from "antd";
+import { Card, Typography, Grid, Divider, PageHeader } from "antd";
 import styled from "styled-components";
 import {
   pageTransition,
@@ -22,7 +22,6 @@ const FolioContainer = styled.div`
   padding: 0px 20px;
 
   @media only screen and (min-width: 200px) and (max-width: 992px) {
-    padding: 0px 0px 20px;
     margin: 0px;
   }
 `;
@@ -99,6 +98,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({
   match,
 }) => {
   const [folio, setFolio] = useState<State | undefined>(undefined);
+  const screens = Grid.useBreakpoint();
   const cardBGStyles = {
     height: "40vh",
     borderRadius: 12,
@@ -115,9 +115,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({
   }, []);
 
   const findPortFolio = () => {
-    const find: any = PortfolioData.find((item) => {
-      return item.id === match.params.id;
-    });
+    const find: any = PortfolioData.find((item) => item.id === match.params.id);
     setFolio(find);
   };
 
@@ -135,7 +133,11 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      style={{ position: "absolute", width: "100%" }}
+      style={{
+        position: "absolute",
+        width: "100%",
+        padding: screens.xl ? "0px" : "20px",
+      }}
     >
       <FolioContainer>
         <HeadMeta
@@ -174,6 +176,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({
           style={{
             textAlign: "center",
             borderRadius: 12,
+            border: 0,
           }}
         >
           <motion.div

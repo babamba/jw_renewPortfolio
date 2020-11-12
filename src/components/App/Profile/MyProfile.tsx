@@ -105,7 +105,7 @@ const MyProfile: FunctionComponent<Props> = (props: Props) => {
                   margin: ".5em 0",
                   padding: 0,
                   fontWeight: 300,
-                  fontSize: screens.xs ? "1.4em" : "1em",
+                  fontSize: "1em",
                   lineHeight: 1.4,
                   textAlign: "center",
                   marginLeft: screens.xl ? 0 : 15,

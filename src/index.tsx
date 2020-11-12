@@ -1,3 +1,7 @@
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+import "react-app-polyfill/ie11";
+import "react-app-polyfill/stable";
 import React from "react";
 import App from "./components/App/App";
 import { render } from "react-dom";
@@ -5,9 +9,30 @@ import * as serviceWorker from "./serviceWorker";
 import { StoreProvider } from "hooks/useStore";
 import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter } from "react-router-dom";
-
+import font from "figlet/importable-fonts/Standard.js";
+import figlet from "figlet";
+import { configure } from "mobx";
 import "./assets/css/custom.less";
 import ReactGA from "react-ga";
+
+configure({
+  // default: "always"
+  // use "ifavailable" to use Proxy in modern envs only,
+  // and get DEV warnings about things that won't work in IE!
+  useProxies: "never",
+  enforceActions: "observed",
+});
+
+figlet.parseFont("Standard", font);
+figlet.text(
+  "Hello, I'm JW",
+  {
+    font: "Standard",
+  },
+  function (err, data) {
+    console.log(data);
+  }
+);
 
 if (process.env.NODE_ENV === "production") {
   console.log("Production Mode");

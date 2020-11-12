@@ -14,6 +14,7 @@ import {
   Skeleton,
   Empty,
   Grid,
+  Spin,
 } from "antd";
 import HeadMeta from "../components/Helmet/HeadMeta";
 import {
@@ -25,7 +26,7 @@ import {
 import { motion } from "framer-motion";
 import { useRouter } from "../hooks/useRouter";
 import ReactGA from "react-ga";
-import LottieLoader from "components/Common/LottieLoader";
+import LottieLoader from "components/Loader/LottieLoader";
 
 interface PostPageProps {
   entries: BlogPost[];
@@ -113,6 +114,12 @@ const Post: FunctionComponent<any> = () => {
     setLoading(false);
   };
 
+  const Loader = {
+    spinning: loading,
+    indicator: <LottieLoader text="loading" />,
+    // tip: '조회 중입니다'
+  };
+
   const onHandlePaging = (page: number) => {
     setCurrentPage(page);
     // updatePage(page);
@@ -188,7 +195,7 @@ const Post: FunctionComponent<any> = () => {
                 <Empty description="포스팅 글이 없네요 :D" />
               ) : content.entries.length > 0 ? (
                 <List
-                  loading={loading}
+                  loading={Loader}
                   grid={{
                     gutter: 16,
                     xs: 2,
@@ -210,24 +217,26 @@ const Post: FunctionComponent<any> = () => {
                   }}
                 />
               ) : (
-                <List
-                  grid={{
-                    gutter: 16,
-                    xs: 2,
-                    sm: 2,
-                    md: 2,
-                    lg: 4,
-                    xl: 4,
-                    xxl: 4,
-                  }}
-                >
-                  <List.Item>
-                    <Skeleton active />
-                  </List.Item>
-                  <List.Item>
-                    <Skeleton active />
-                  </List.Item>
-                </List>
+                <Spin {...Loader}>
+                  <List
+                    grid={{
+                      gutter: 16,
+                      xs: 2,
+                      sm: 2,
+                      md: 2,
+                      lg: 4,
+                      xl: 4,
+                      xxl: 4,
+                    }}
+                  >
+                    <List.Item>
+                      <Skeleton active />
+                    </List.Item>
+                    <List.Item>
+                      <Skeleton active />
+                    </List.Item>
+                  </List>
+                </Spin>
               )}
             </motion.div>
           </Col>

@@ -5,7 +5,6 @@ import { observer } from "mobx-react-lite";
 import { ThemeProvider } from "antd-theme";
 import { useStore } from "hooks/useStore";
 import { Layout, Row, Col, Affix, Grid } from "antd";
-import LottieLoader from "components/Common/LottieLoader";
 import IconMenu from "../App/Menu/IconMenu";
 import IconMobileMenu from "../App/Menu/IconMobileMenu";
 import MyProfile from "./Profile/MyProfile";
@@ -117,13 +116,18 @@ const App = () => {
                           transition: "background 0.5s ease",
                         }}
                       >
-                        {screens.xl ? (
-                          <IconMenu />
+                        <IconMenu
+                          useBackground={affixed && screens.xl === false}
+                        />
+                        {/* {screens.xl ? (
+                          <IconMenu
+                            useBackground={affixed && screens.xl === false}
+                          />
                         ) : (
                           <IconMobileMenu
                             useBackground={affixed && screens.xl === false}
                           />
-                        )}
+                        )} */}
                       </Affix>
                     </Col>
                     <Col xs={24} sm={24} md={24} lg={24} xl={15} xxl={15}>

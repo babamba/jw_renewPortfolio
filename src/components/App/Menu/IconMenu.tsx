@@ -1,28 +1,92 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Grid, Row, Col } from "antd";
-import { withRouter, RouteComponentProps, Link } from "react-router-dom";
-import {
-  ReadOutlined,
-  PictureOutlined,
-  IdcardOutlined,
-  CoffeeOutlined,
-} from "@ant-design/icons";
+import { useHistory, useRouteMatch } from "react-router-dom";
 import { ContainerStyle, ItemStyle } from "../../../interfaces/Motion";
 import { motion } from "framer-motion";
 import ThemeModeSelector from "../ThemeMode/ThemeModeSelector";
+import MenuItem from "./MenuItem";
+import styled from "styled-components";
 import { useStore } from "hooks/useStore";
 
-interface Props extends RouteComponentProps<any> {}
-const IconMenu: FunctionComponent<Props> = (props: Props) => {
-  const screens = Grid.useBreakpoint();
-  const { useDark } = useStore("common");
-  const [selected, setSelected] = useState("/");
-  const { history, match } = props;
+const CustomCol = styled(Col)`
+  text-align: center;
+  @media only screen and (min-width: 100px) and (max-width: 1199px) {
+    text-align: center;
+    transform: ${(props) =>
+      props.selected === props.current ? "scale( 1.1 )" : "scale( 1 )"};
+    text-decoration: ${(props) =>
+      props.selected === props.current ? "underline" : "unset"};
+    transition: 0.2s;
+    padding: 4;
+  }
 
-  useEffect(() => {
-    const pathname = location.pathname.split("/");
-    setSelected(pathname[1]);
-  }, [match]);
+  &:hover {
+    background: "linear-gradient(to top, rgba(152, 44, 255, 0.4) 40%, transparent 30%)";
+  }
+
+  /* text-align: center;
+    transform: scale(1.1);
+    text-decoration: underline;
+    transition: all 0.2s ease 0s; */
+`;
+
+const MotionMenuBox = styled(motion.div)`
+  cursor: pointer;
+
+  @media only screen and (min-width: 100px) and (max-width: 767px) {
+    background-color: ${(props) =>
+      props.selected === props.current
+        ? "rgba(152, 44, 255, 0.3)"
+        : "transparent"};
+    border-radius: 12px;
+    margin: 0px 12px;
+    transition: background 0.6s;
+  }
+
+  @media only screen and (min-width: 768px) and (max-width: 1199px) {
+    border-radius: 12px;
+    margin: 0px 12px;
+    transition: background 0.6s;
+  }
+`;
+
+const MenuButtonBox = styled.div`
+  /* @media only screen and (min-width: 200px) and (max-width: 773px) {
+    padding: 4px;
+  } */
+
+  @media only screen and (min-width: 767px) and (max-width: 1199px) {
+    display: inline-block;
+    padding: ${(props) =>
+      props.selected === props.current ? "4px 8px" : "4px 0px"};
+    background: ${(props) =>
+      props.selected === props.current
+        ? "linear-gradient(to top, rgba(152, 44, 255, 0.4) 40%, transparent 30%)"
+        : "transparent"};
+    transition: all 0.5s ease-out;
+  }
+
+  /* mobile */
+  @media only screen and (min-width: 100px) and (max-width: 767px) {
+    display: inline-block;
+    padding: ${(props) =>
+      props.selected === props.current ? "4px 8px" : "4px 0px"};
+  }
+`;
+
+interface Props {
+  useBackground: boolean;
+}
+const IconMenu: FC<Props> = (props: Props) => {
+  const { useDark } = useStore("common");
+  const { useBackground } = props;
+  const match = useRouteMatch();
+  const history = useHistory();
+  const screens = Grid.useBreakpoint();
+  const [selected, setSelected] = useState("/");
+
+  console.log("screens: ", screens);
+  useEffect(() => setSelected(location.pathname), [match]);
 
   return (
     <motion.div
@@ -31,112 +95,148 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
       initial="hidden"
       animate="visible"
       exit="hidden"
+      style={{
+        transition: "background 0.5s ease",
+        backgroundColor: useBackground
+          ? useDark
+            ? "rgba(255, 255, 255, 0.15)"
+            : "rgba(0, 0, 0, 0.15)"
+          : "transparent",
+      }}
     >
       <Row
         justify="center"
         align="middle"
-        gutter={[0, 32]}
-        style={{
-          paddingTop: 30,
-          paddingLeft: 8,
-          marginTop: screens.xxl ? "-180px" : "-28px",
-        }}
+        gutter={screens.xl ? [0, 32] : [0, 0]}
+        style={
+          screens.xl
+            ? {
+                paddingTop: 30,
+                paddingLeft: 8,
+                marginTop: screens.xxl ? "-180px" : "-28px",
+              }
+            : {
+                padding: "6px 8px",
+                margin: "auto 1.5rem",
+              }
+        }
       >
-        <Col span={24} style={{ textAlign: "center", paddingBottom: 6 }}>
+        <Col
+          span={screens.xl ? 24 : 4}
+          style={{ textAlign: "center", marginTop: 6 }}
+        >
           <motion.div variants={ItemStyle}>
-            <ThemeModeSelector size={2.3} />
-          </motion.div>
-        </Col>
-        <Col span={24} style={{ textAlign: "center" }}>
-          <motion.div variants={ItemStyle}>
-            <Link to="/about" />
-            <IdcardOutlined
-              style={{
-                color:
-                  (selected === "about" || selected === "") && useDark
-                    ? "rgba(255, 255, 255, 0.95) !important"
-                    : "rgba(0, 0, 0, 0.95) !important",
-                fontSize: selected === "about" || selected === "" ? 24 : 20,
-                background:
-                  selected === "about" || selected === ""
-                    ? "linear-gradient(to top, rgba(152, 44, 255, 0.4) 50%, transparent 30%)"
-                    : "transparent",
-                padding: selected === "about" || selected === "" ? 8 : 0,
-                transition: "0.8s",
-              }}
-              onClick={() => history.push("/about")}
-            />
+            <ThemeModeSelector size={screens.xl ? 2.3 : 1.6} />
           </motion.div>
         </Col>
 
-        <Col span={24} style={{ textAlign: "center" }}>
-          <motion.div variants={ItemStyle}>
-            <Link to="/portfolio" />
-            <PictureOutlined
-              style={{
-                color:
-                  selected === "portfolio" && useDark
-                    ? "rgba(255, 255, 255, 0.95) !important"
-                    : "rgba(0, 0, 0, 0.95) !important",
-                fontSize: selected === "portfolio" ? 24 : 20,
-                background:
-                  selected === "portfolio"
-                    ? "linear-gradient(to top, rgba(152, 44, 255, 0.4) 50%, transparent 30%)"
-                    : "transparent",
-                padding: selected === "portfolio" ? 8 : 0,
-                transition: "0.8s",
-              }}
-              onClick={() => history.push("/portfolio")}
-            />
-          </motion.div>
-        </Col>
-        <Col span={24} style={{ textAlign: "center" }}>
-          <motion.div variants={ItemStyle}>
-            <Link to="/resume" />
-            <ReadOutlined
-              style={{
-                color:
-                  selected === "resume" && useDark
-                    ? "rgba(255, 255, 255, 0.95) !important"
-                    : "rgba(0, 0, 0, 0.95) !important",
-                fontSize: selected === "resume" ? 24 : 20,
-                background:
-                  selected === "resume"
-                    ? "linear-gradient(to top, rgba(152, 44, 255, 0.4) 50%, transparent 30%)"
-                    : "transparent",
-                padding: selected === "resume" ? 8 : 0,
-                transition: "0.8s",
-              }}
-              onClick={() => history.push("/resume")}
-            />
-          </motion.div>
-        </Col>
-        <Col span={24} style={{ textAlign: "center" }}>
-          <motion.div variants={ItemStyle}>
-            <Link to="/blog" />
-            <CoffeeOutlined
-              style={{
-                color:
-                  selected === "blog"
-                    ? useDark
-                      ? "rgba(255, 255, 255, 0.95) !important"
-                      : "rgba(0, 0, 0, 0.95) !important"
-                    : "",
-                fontSize: selected === "blog" ? 24 : 20,
-                background:
-                  selected === "blog"
-                    ? "linear-gradient(to top, rgba(152, 44, 255, 0.4) 50%, transparent 30%)"
-                    : "transparent",
-                padding: selected === "blog" ? 8 : 0,
-                transition: "0.8s",
-              }}
-              onClick={() => history.push("/blog")}
-            />
-          </motion.div>
-        </Col>
+        <CustomCol
+          span={screens.xl ? 24 : 4}
+          onClick={() => history.push("/about")}
+        >
+          <MotionMenuBox
+            variants={ItemStyle}
+            selected="/about"
+            current={selected}
+          >
+            <MenuButtonBox selected="/about" current={selected}>
+              <MenuItem
+                url="/about"
+                title="About JW"
+                selected={selected}
+                icon="IdcardOutlined"
+                subTitle="About"
+                // isMobile={!screens.md}
+              />
+            </MenuButtonBox>
+          </MotionMenuBox>
+        </CustomCol>
+
+        <CustomCol
+          span={screens.xl ? 24 : 4}
+          onClick={() => history.push("/portfolio")}
+        >
+          <MotionMenuBox
+            variants={ItemStyle}
+            selected="/portfolio"
+            current={selected}
+          >
+            <MenuButtonBox selected="/portfolio" current={selected}>
+              <MenuItem
+                url="/portfolio"
+                title="JW PortFolio"
+                selected={selected}
+                icon="PictureOutlined"
+                subTitle="Folio"
+              />
+            </MenuButtonBox>
+          </MotionMenuBox>
+        </CustomCol>
+        <CustomCol
+          span={screens.xl ? 24 : 4}
+          onClick={() => history.push("/resume")}
+        >
+          <MotionMenuBox
+            variants={ItemStyle}
+            selected="/resume"
+            current={selected}
+          >
+            <MenuButtonBox selected="/resume" current={selected}>
+              <MenuItem
+                url="/resume"
+                title="JW Resume"
+                selected={selected}
+                icon="ReadOutlined"
+                subTitle="Resume"
+              />
+            </MenuButtonBox>
+          </MotionMenuBox>
+        </CustomCol>
+        <CustomCol
+          span={screens.xl ? 24 : 4}
+          onClick={() => history.push("/blog")}
+        >
+          <MotionMenuBox
+            variants={ItemStyle}
+            selected="/blog"
+            current={selected}
+          >
+            <MenuButtonBox selected="/blog" current={selected}>
+              <MenuItem
+                url="/blog"
+                title="Blog"
+                selected={selected}
+                icon="CoffeeOutlined"
+                subTitle="Blog"
+              />
+            </MenuButtonBox>
+          </MotionMenuBox>
+        </CustomCol>
+        {Object.keys(screens).length > 0 && !screens.xl && (
+          <CustomCol
+            span={screens.xl ? 24 : 4}
+            onClick={() => history.push("/contact")}
+          >
+            <MotionMenuBox
+              variants={ItemStyle}
+              selected="/contact"
+              current={selected}
+            >
+              <MenuButtonBox selected="/contact" current={selected}>
+                <MenuItem
+                  url="/contact"
+                  title="Contact"
+                  selected={selected}
+                  icon="SmileOutlined"
+                  subTitle="Contact"
+                />
+              </MenuButtonBox>
+            </MotionMenuBox>
+          </CustomCol>
+        )}
       </Row>
     </motion.div>
   );
 };
 
-export default withRouter(IconMenu);
+export default IconMenu;

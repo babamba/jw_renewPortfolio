@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Row, Col, Typography, Grid } from "antd";
 import { withRouter, RouteComponentProps, Link } from "react-router-dom";
 import {
@@ -80,7 +80,7 @@ const MenuText = styled(Typography.Text)`
 interface Props extends RouteComponentProps<any> {
   useBackground: boolean;
 }
-const IconMobileMenu: FunctionComponent<Props> = (props: Props) => {
+const IconMobileMenu: FC<Props> = (props: Props) => {
   const [selected, setSelected] = useState("/");
   const screens = Grid.useBreakpoint();
   const { history, match, useBackground } = props;

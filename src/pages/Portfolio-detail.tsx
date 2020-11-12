@@ -10,7 +10,7 @@ import {
 import { motion } from "framer-motion";
 import HeadMeta from "../components/Helmet/HeadMeta";
 import ReactGA from "react-ga";
-import PortfolioData from "./PortFolioDeck/PortfolioData";
+import PortfolioData from "../core/folioData";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 
 const ContentBox = styled.div`
@@ -103,7 +103,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({
     height: "40vh",
     borderRadius: 12,
     background: `linear-gradient(45deg,  rgba(18, 40, 76, 0.56), rgba(89, 89, 89, 0.3)) , url(${
-      folio ? folio.pics : "empty"
+      folio ? require("../assets/images/folio/" + folio.pics) : "empty"
     }) no-repeat center center/cover`,
   };
 

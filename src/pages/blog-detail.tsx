@@ -77,9 +77,7 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({
   }, []);
 
   const getPost = async (postId) => {
-    console.log("article : ", article);
     const getArticle: any = await contentfulService.getPostById(postId);
-    // console.log('new article : ', article);
     setArticle(getArticle);
   };
 

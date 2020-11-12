@@ -58,8 +58,7 @@ class CommonStore {
   async checkMode() {
     let currentMode = localStorage.getItem("isDark");
     if (currentMode === null) {
-      console.log("not setting");
-      this.setUseDark(false);
+      this.setUseDark(true);
     } else if (currentMode === "true") {
       this.setUseDark(true);
     } else {

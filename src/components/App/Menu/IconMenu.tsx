@@ -20,7 +20,6 @@ const IconMenu: FunctionComponent<Props> = (props: Props) => {
   const { history, match } = props;
 
   useEffect(() => {
-    console.log("test : ", location.pathname);
     const pathname = location.pathname.split("/");
     setSelected(pathname[1]);
   }, [match]);

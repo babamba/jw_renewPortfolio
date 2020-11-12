@@ -6,7 +6,7 @@ import {
   pageOpacityVariants,
   pageOpacityTransition,
 } from "../interfaces/Motion";
-import PortfolioData from "./PortFolioDeck/PortfolioData";
+import PortfolioData from "../core/folioData";
 import DetailInfo from "./PortFolioDeck/FolioInfo";
 import { ForwardOutlined, RetweetOutlined } from "@ant-design/icons";
 import { Grid, Progress, Row, Col, Tooltip } from "antd";

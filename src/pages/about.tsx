@@ -12,14 +12,21 @@ import {
 } from "antd";
 import styled from "styled-components";
 import { useRouter } from "../hooks/useRouter";
-
+import {
+  RemoteStack,
+  InfraStack,
+  BackEndStack,
+  CiStack,
+  FrontEndStack,
+  InterestStack,
+} from "../core/Stack";
+import StackCard from "components/Card/StackCard";
 import { motion } from "framer-motion";
 import {
   pageTransition,
   pageVariants,
   ContainerStyle,
   FastContainerStyle,
-  ItemStyle,
 } from "interfaces/Motion";
 import { useStore } from "hooks/useStore";
 import HeadMeta from "../components/Helmet/HeadMeta";
@@ -77,10 +84,6 @@ const About: FC<Props> = (props: Props) => {
       ReactGA.pageview(router.location.pathname + router.location.search);
     }
   }, []);
-
-  const RenderTooltip = (text) => {
-    return <Typography.Text>{text}</Typography.Text>;
-  };
 
   return (
     <motion.div
@@ -161,307 +164,15 @@ const About: FC<Props> = (props: Props) => {
           <Row gutter={16}>
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
               <Row gutter={[0, 16]}>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <FrontStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Tooltip
-                        placement="topLeft"
-                        title={RenderTooltip(
-                          "프론트엔드 개발자로써 Dom 컨트롤 및 데이터 컨트롤을 위한 필수 요소"
-                        )}
-                      >
-                        <Avatar
-                          shape="square"
-                          size={screens.xs ? 80 : 60}
-                          src={require("../assets/images/stack/js.png")}
-                        />
-                      </Tooltip>
-                      <TitleBox>
-                        <StackText>
-                          <Badge status="processing" color="green" />
-                          Javascript
-                        </StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </FrontStackBox>
-                </Col>
-
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <FrontStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Tooltip
-                        placement="topLeft"
-                        title={RenderTooltip(
-                          "모던 자바스크립트 사용을 위한 필수요소"
-                        )}
-                      >
-                        <Avatar
-                          shape="square"
-                          size={screens.xs ? 80 : 60}
-                          src={require("../assets/images/stack/jses6.png")}
-                        />
-                      </Tooltip>
-                      <TitleBox>
-                        <StackText>
-                          <Badge status="processing" color="green" />
-                          ES 6
-                        </StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </FrontStackBox>
-                </Col>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <FrontStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Tooltip
-                        placement="topLeft"
-                        title={RenderTooltip(
-                          "런타임에러 방지 및 신용 할 수 있는 코드를 위한 필수 요소"
-                        )}
-                      >
-                        <Avatar
-                          shape="square"
-                          size={screens.xs ? 80 : 60}
-                          src={require("../assets/images/stack/typescript.png")}
-                        />
-                      </Tooltip>
-                      <TitleBox>
-                        <StackText>
-                          <Badge status="processing" color="green" />
-                          TypeScript
-                        </StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </FrontStackBox>
-                </Col>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <FrontStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Tooltip
-                        placement="topLeft"
-                        title={RenderTooltip(
-                          "크로스브라우징을 위해 es6문법으로 작성된 js파일을 es5문법으로 작성된 js파일로 만들어 주기 위한 필수요소"
-                        )}
-                      >
-                        <Avatar
-                          shape="square"
-                          size={screens.xs ? 80 : 60}
-                          src={require("../assets/images/stack/babel.png")}
-                        />
-                      </Tooltip>
-                      <TitleBox>
-                        <StackText>
-                          <Badge status="processing" color="green" />
-                          Babel
-                        </StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </FrontStackBox>
-                </Col>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <FrontStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Tooltip
-                        placement="topLeft"
-                        title={RenderTooltip(
-                          "각 파일로 나뉘어있는 소스들을 하나로묶어(번들링)서 네트워크 비용을 최소화 하는 필수 요소"
-                        )}
-                      >
-                        <Avatar
-                          shape="square"
-                          size={screens.xs ? 80 : 60}
-                          src={require("../assets/images/stack/webpack.png")}
-                        />
-                      </Tooltip>
-                      <TitleBox>
-                        <StackText>
-                          <Badge status="processing" color="green" />
-                          Webpack
-                        </StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </FrontStackBox>
-                </Col>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <FrontStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/jquery.png")}
-                      />
-                      <TitleBox>
-                        <Typography.Text>Jquery</Typography.Text>
-                      </TitleBox>
-                    </motion.div>
-                  </FrontStackBox>
-                </Col>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <FrontStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/react.png")}
-                      />
-                      <TitleBox>
-                        <StackText>
-                          <Badge status="processing" color="green" />
-                          React
-                        </StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </FrontStackBox>
-                </Col>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <FrontStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/nextjs.png")}
-                      />
-                      <TitleBox>
-                        <StackText>Next.js</StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </FrontStackBox>
-                </Col>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <FrontStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/RN.png")}
-                      />
-                      <TitleBox>
-                        <StackText>
-                          <Badge status="processing" color="green" />
-                          React
-                          <br />
-                          Native
-                        </StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </FrontStackBox>
-                </Col>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <FrontStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/redux.png")}
-                      />
-                      <TitleBox>
-                        <StackText>Redux</StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </FrontStackBox>
-                </Col>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <FrontStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/mobx.png")}
-                      />
-                      <TitleBox>
-                        <StackText>
-                          <Badge status="processing" color="green" />
-                          Mobx
-                        </StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </FrontStackBox>
-                </Col>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <FrontStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/styled-component.png")}
-                      />
-                      <TitleBox>
-                        <StackText>
-                          <Badge status="processing" color="green" />
-                          Styled
-                          <br />
-                          Component
-                        </StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </FrontStackBox>
-                </Col>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <FrontStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/ant.png")}
-                      />
-                      <TitleBox>
-                        <StackText>
-                          <Badge status="processing" color="green" />
-                          AntDesign
-                        </StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </FrontStackBox>
-                </Col>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <FrontStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/chartjs.png")}
-                      />
-                      <TitleBox>
-                        <StackText>
-                          <Badge status="processing" color="green" />
-                          Chart.js
-                        </StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </FrontStackBox>
-                </Col>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <FrontStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/lottie.png")}
-                      />
-                      <TitleBox>
-                        <StackText>
-                          <Badge status="processing" color="green" />
-                          Lottie
-                        </StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </FrontStackBox>
-                </Col>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <FrontStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/apollo.png")}
-                      />
-                      <TitleBox>
-                        <Badge status="processing" color="green" />
-                        <StackText>Apollo</StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </FrontStackBox>
-                </Col>
+                {FrontEndStack.map((item, i) => (
+                  <StackCard
+                    key={i}
+                    stackTitle={item.stackTitle}
+                    imgUrl={item.imgUrl}
+                    tooltipTitle={item.tooltipTitle}
+                    isUsed={item.isUsed}
+                  />
+                ))}
               </Row>
             </Col>
           </Row>
@@ -477,97 +188,15 @@ const About: FC<Props> = (props: Props) => {
           <Row gutter={16}>
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
               <Row>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <BackStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/spring.png")}
-                      />
-                      <TitleBox>
-                        <StackText>SpringBoot</StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </BackStackBox>
-                </Col>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <BackStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/node.png")}
-                      />
-                      <TitleBox>
-                        <StackText style={{ fontWeight: 100 }}>
-                          Node.js
-                        </StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </BackStackBox>
-                </Col>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <BackStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/express.png")}
-                      />
-                      <TitleBox>
-                        <StackText>Express</StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </BackStackBox>
-                </Col>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <BackStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/graphql.png")}
-                      />
-                      <TitleBox>
-                        <StackText>GraphQL</StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </BackStackBox>
-                </Col>
-
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <BackStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/prisma.png")}
-                      />
-                      <TitleBox>
-                        <StackText>Prisma.V2</StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </BackStackBox>
-                </Col>
-
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <BackStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/Appsync.png")}
-                      />
-                      <TitleBox>
-                        <StackText>
-                          <Badge status="processing" color="green" />
-                          AWS.AppSync
-                        </StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </BackStackBox>
-                </Col>
+                {BackEndStack.map((item, i) => (
+                  <StackCard
+                    key={i}
+                    stackTitle={item.stackTitle}
+                    imgUrl={item.imgUrl}
+                    tooltipTitle={item.tooltipTitle}
+                    isUsed={item.isUsed}
+                  />
+                ))}
               </Row>
             </Col>
           </Row>
@@ -584,37 +213,15 @@ const About: FC<Props> = (props: Props) => {
           <Row gutter={16}>
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
               <Row>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <BackStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/aws.png")}
-                      />
-                      <TitleBox>
-                        <StackText>
-                          <Badge status="processing" color="green" />
-                          AWS
-                        </StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </BackStackBox>
-                </Col>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <BackStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/docker.png")}
-                      />
-                      <TitleBox>
-                        <StackText>Docker</StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </BackStackBox>
-                </Col>
+                {InfraStack.map((item, i) => (
+                  <StackCard
+                    key={i}
+                    stackTitle={item.stackTitle}
+                    imgUrl={item.imgUrl}
+                    tooltipTitle={item.tooltipTitle}
+                    isUsed={item.isUsed}
+                  />
+                ))}
               </Row>
             </Col>
           </Row>
@@ -623,23 +230,15 @@ const About: FC<Props> = (props: Props) => {
           <Row gutter={16}>
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
               <Row>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <BackStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/gitlab-runner.png")}
-                      />
-                      <TitleBox>
-                        <StackText>
-                          <Badge status="processing" color="green" />
-                          GitLab-Runner
-                        </StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </BackStackBox>
-                </Col>
+                {CiStack.map((item, i) => (
+                  <StackCard
+                    key={i}
+                    stackTitle={item.stackTitle}
+                    imgUrl={item.imgUrl}
+                    tooltipTitle={item.tooltipTitle}
+                    isUsed={item.isUsed}
+                  />
+                ))}
               </Row>
             </Col>
           </Row>
@@ -656,44 +255,21 @@ const About: FC<Props> = (props: Props) => {
           <Row gutter={16}>
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
               <Row>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <BackStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/github.png")}
-                      />
-                      <TitleBox>
-                        <StackText>Github</StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </BackStackBox>
-                </Col>
-
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <BackStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/gitlab.png")}
-                      />
-                      <TitleBox>
-                        <StackText>
-                          <Badge status="processing" color="green" />
-                          GitLab
-                        </StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </BackStackBox>
-                </Col>
+                {RemoteStack.map((item, i) => (
+                  <StackCard
+                    key={i}
+                    stackTitle={item.stackTitle}
+                    imgUrl={item.imgUrl}
+                    tooltipTitle={item.tooltipTitle}
+                    isUsed={item.isUsed}
+                  />
+                ))}
               </Row>
             </Col>
           </Row>
         </motion.div>
         {/* 관심스택 */}
-        <Divider orientation="left">Interest Tech</Divider>
+        <Divider orientation="left">Interest</Divider>
         <motion.div
           className="container"
           variants={ContainerStyle}
@@ -704,34 +280,15 @@ const About: FC<Props> = (props: Props) => {
           <Row gutter={16}>
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
               <Row>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <BackStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/k8s.png")}
-                      />
-                      <TitleBox>
-                        <StackText>K8s</StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </BackStackBox>
-                </Col>
-                <Col xs={8} sm={8} md={6} lg={4} xl={4}>
-                  <BackStackBox>
-                    <motion.div variants={ItemStyle}>
-                      <Avatar
-                        shape="square"
-                        size={screens.xs ? 80 : 60}
-                        src={require("../assets/images/stack/elk.png")}
-                      />
-                      <TitleBox>
-                        <StackText>ELK Stack</StackText>
-                      </TitleBox>
-                    </motion.div>
-                  </BackStackBox>
-                </Col>
+                {InterestStack.map((item, i) => (
+                  <StackCard
+                    key={i}
+                    stackTitle={item.stackTitle}
+                    imgUrl={item.imgUrl}
+                    tooltipTitle={item.tooltipTitle}
+                    isUsed={item.isUsed}
+                  />
+                ))}
               </Row>
             </Col>
           </Row>

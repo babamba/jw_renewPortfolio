@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Grid } from "antd";
 import { string, number } from "prop-types";
 import { animated, to } from "react-spring";
-import CardData from "./PortfolioData";
+import CardData from "../../core/folioData";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 
@@ -38,7 +38,8 @@ const Card = (props) => {
         style={{
           cursor: "pointer",
           transform: to([rot, scale], trans),
-          backgroundImage: `linear-gradient(45deg, rgba(18, 40, 76, 0.56), rgba(89, 89, 89, 0.3)), url(${pics})`,
+          backgroundImage: `linear-gradient(45deg, rgba(18, 40, 76, 0.56), rgba(89, 89, 89, 0.3)), url(${require(`../../assets/images/folio/` +
+            pics)})`,
         }}
       >
         <Title

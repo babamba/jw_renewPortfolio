@@ -2,7 +2,7 @@ export default [
   {
     // 경기도시공사 프로젝트
     id: "gicoapart",
-    pics: require("../../assets/images/folio/mock_gico.png"),
+    pics: "mock_gico.png",
     name: "GICO Housing Subscription Center",
     age: `2017.12 ~ 2018.04`,
     distance: "Complete",
@@ -22,7 +22,7 @@ export default [
   {
     // 오산백년대학 프로젝트
     id: "osan",
-    pics: require("../../assets/images/folio/mock_osan.png"),
+    pics: "mock_osan.png",
     name: "Osan Citizen Univ Web",
     age: "2017.04 ~ 2018.04",
     distance: "Complete",
@@ -51,7 +51,7 @@ export default [
   {
     // 키즈랜드
     id: "kidsland",
-    pics: require("../../assets/images/folio/mock_kids.png"),
+    pics: "mock_kids.png",
     name: "KT IPTV Middle Ware KidsLand Service v2",
     age: "2018.05 ~ 2019.09",
     distance: "Complete",
@@ -69,7 +69,7 @@ export default [
   },
   {
     id: "beeapp",
-    pics: require("../../assets/images/folio/mock_bee_app.png"),
+    pics: "mock_bee_app.png",
     name: "National Institute of Agricultural Sciences App",
     age: "2020.03 ~ 2020.06",
     distance: "Complete",
@@ -85,7 +85,7 @@ export default [
   },
   {
     id: "beeweb",
-    pics: require("../../assets/images/folio/mock_bee_web.png"),
+    pics: "mock_bee_web.png",
     name: "National Institute of Agricultural Sciences Web",
     age: "2020.01 ~ Now",
     distance: "Progress",
@@ -102,7 +102,7 @@ export default [
   },
   {
     id: "telematices",
-    pics: require("../../assets/images/folio/mock_tele.png"),
+    pics: "mock_tele.png",
     name: "Telematics Web App Service Project",
     age: `2019.12 ~ Now`,
     distance: "Progress",

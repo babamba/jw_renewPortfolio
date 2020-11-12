@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useLayoutEffect, useState, useEffect, useRef } from "react";
 import FolioRoutes from "../../route/FolioRoutes";
 import LabsRoutes from "../../route/LabsRoute";
 import { observer } from "mobx-react-lite";
@@ -20,13 +20,17 @@ const App = () => {
   const onlyHeight = useWindowHeight();
   const controls = useAnimation();
   const screens = Grid.useBreakpoint();
-  const { useLabPage, useDark } = useStore("common");
+  const { useLabPage, useDark, checkMode } = useStore("common");
   const [affixed, setAffixed] = useState(false);
   const router = useRouter();
   const initialTheme = {
     name: "default",
     variables: {},
   };
+
+  useLayoutEffect(() => {
+    checkMode();
+  }, []);
 
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
@@ -35,7 +39,6 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    console.log("router.location.pathname : ", router.location.pathname);
     window.scrollTo({
       behavior: "smooth",
       top: 0,

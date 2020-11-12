@@ -113,7 +113,7 @@ const IconMenu: FC<Props> = (props: Props) => {
             ? {
                 paddingTop: 30,
                 paddingLeft: 8,
-                marginTop: screens.xxl ? "-180px" : "-28px",
+                marginTop: "-28px",
               }
             : {
                 padding: "6px 8px",

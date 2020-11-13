@@ -16,9 +16,6 @@ import "./assets/css/custom.less";
 import ReactGA from "react-ga";
 
 configure({
-  // default: "always"
-  // use "ifavailable" to use Proxy in modern envs only,
-  // and get DEV warnings about things that won't work in IE!
   useProxies: "never",
   enforceActions: "observed",
 });

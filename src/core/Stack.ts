@@ -78,7 +78,7 @@ const BackEndStack = [
     isUsed: false,
   },
   {
-    stackTitle: "AWS.Appsync",
+    stackTitle: "AppSync",
     imgUrl: "Appsync.png",
     tooltipTitle: "",
     isUsed: true,

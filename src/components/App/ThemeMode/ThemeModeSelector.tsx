@@ -3,7 +3,15 @@ import { observer } from "mobx-react-lite";
 import { useStore } from "hooks/useStore";
 import { useTheme } from "antd-theme";
 import { motion } from "framer-motion";
+import styled from "styled-components";
 import CustomIcon from "../../Common/CustomIcon";
+
+const MotionBox = styled(motion.div)`
+  display: flex;
+  flex: initial;
+  justify-content: center;
+  align-items: center;
+`;
 
 interface Props {
   size: number;
@@ -73,7 +81,7 @@ const ThemeModeSelector: FC<Props> = (props: Props) => {
   };
 
   return (
-    <motion.div animate={useDark ? "open" : "closed"} variants={RotateVariants}>
+    <MotionBox animate={useDark ? "open" : "closed"} variants={RotateVariants}>
       <CustomIcon
         onClick={handleChange}
         style={{
@@ -84,7 +92,7 @@ const ThemeModeSelector: FC<Props> = (props: Props) => {
         }}
         type={useDark ? "icon-night" : "icon-brightness"}
       />
-    </motion.div>
+    </MotionBox>
   );
 };
 

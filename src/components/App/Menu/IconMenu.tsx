@@ -19,15 +19,6 @@ const CustomCol = styled(Col)`
     transition: 0.2s;
     padding: 4;
   }
-
-  &:hover {
-    background: "linear-gradient(to top, rgba(152, 44, 255, 0.4) 40%, transparent 30%)";
-  }
-
-  /* text-align: center;
-    transform: scale(1.1);
-    text-decoration: underline;
-    transition: all 0.2s ease 0s; */
 `;
 
 const MotionMenuBox = styled(motion.div)`
@@ -39,21 +30,20 @@ const MotionMenuBox = styled(motion.div)`
         ? "rgba(152, 44, 255, 0.3)"
         : "transparent"};
     border-radius: 12px;
-    margin: 0px 12px;
+    padding: 0px 8px;
+    margin: 0px 4px;
     transition: background 0.6s;
   }
 
   @media only screen and (min-width: 768px) and (max-width: 1199px) {
-    border-radius: 12px;
-    margin: 0px 12px;
     transition: background 0.6s;
   }
 `;
 
 const MenuButtonBox = styled.div`
-  /* @media only screen and (min-width: 200px) and (max-width: 773px) {
+  @media only screen and (min-width: 200px) and (max-width: 773px) {
     padding: 4px;
-  } */
+  }
 
   @media only screen and (min-width: 767px) and (max-width: 1199px) {
     display: inline-block;
@@ -64,13 +54,21 @@ const MenuButtonBox = styled.div`
         ? "linear-gradient(to top, rgba(152, 44, 255, 0.4) 40%, transparent 30%)"
         : "transparent"};
     transition: all 0.5s ease-out;
+
+    &:hover {
+      transition: all 0.5s ease;
+      background: linear-gradient(
+        to top,
+        rgba(152, 44, 255, 0.4) 40%,
+        transparent 30%
+      );
+    }
   }
 
   /* mobile */
   @media only screen and (min-width: 100px) and (max-width: 767px) {
     display: inline-block;
-    padding: ${(props) =>
-      props.selected === props.current ? "4px 8px" : "4px 0px"};
+    padding: 4px;
   }
 `;
 
@@ -80,12 +78,11 @@ interface Props {
 const IconMenu: FC<Props> = (props: Props) => {
   const { useDark } = useStore("common");
   const { useBackground } = props;
+
   const match = useRouteMatch();
   const history = useHistory();
   const screens = Grid.useBreakpoint();
   const [selected, setSelected] = useState("/");
-
-  console.log("screens: ", screens);
   useEffect(() => setSelected(location.pathname), [match]);
 
   return (
@@ -121,10 +118,7 @@ const IconMenu: FC<Props> = (props: Props) => {
               }
         }
       >
-        <Col
-          span={screens.xl ? 24 : 4}
-          style={{ textAlign: "center", marginTop: 6 }}
-        >
+        <Col span={screens.xl ? 24 : 4} style={{ textAlign: "center" }}>
           <motion.div variants={ItemStyle}>
             <ThemeModeSelector size={screens.xl ? 2.3 : 1.6} />
           </motion.div>
@@ -212,28 +206,27 @@ const IconMenu: FC<Props> = (props: Props) => {
             </MenuButtonBox>
           </MotionMenuBox>
         </CustomCol>
-        {Object.keys(screens).length > 0 && !screens.xl && (
-          <CustomCol
-            span={screens.xl ? 24 : 4}
-            onClick={() => history.push("/contact")}
+        <CustomCol
+          span={screens.xl ? 24 : 4}
+          onClick={() => history.push("/contact")}
+          style={{ display: screens.xl ? "none" : "block" }}
+        >
+          <MotionMenuBox
+            variants={ItemStyle}
+            selected="/contact"
+            current={selected}
           >
-            <MotionMenuBox
-              variants={ItemStyle}
-              selected="/contact"
-              current={selected}
-            >
-              <MenuButtonBox selected="/contact" current={selected}>
-                <MenuItem
-                  url="/contact"
-                  title="Contact"
-                  selected={selected}
-                  icon="SmileOutlined"
-                  subTitle="Contact"
-                />
-              </MenuButtonBox>
-            </MotionMenuBox>
-          </CustomCol>
-        )}
+            <MenuButtonBox selected="/contact" current={selected}>
+              <MenuItem
+                url="/contact"
+                title="Contact"
+                selected={selected}
+                icon="SmileOutlined"
+                subTitle="Contact"
+              />
+            </MenuButtonBox>
+          </MotionMenuBox>
+        </CustomCol>
       </Row>
     </motion.div>
   );

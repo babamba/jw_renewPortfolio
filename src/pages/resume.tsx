@@ -133,7 +133,7 @@ const History: FunctionComponent<Props> = ({}) => {
           // marginBottom: isDeviceSize === 'desktop' ? 0 : 30
         }}
         bodyStyle={{
-          padding: screens.md ? "24px 24px 0px" : "14px 14px 0px",
+          padding: screens.md ? "24px" : "12px",
         }}
       >
         <Row>

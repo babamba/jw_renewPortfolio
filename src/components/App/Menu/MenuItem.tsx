@@ -1,5 +1,5 @@
-import React, { FC } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { FC, useEffect } from "react";
+import { Link, useHistory, useRouteMatch } from "react-router-dom";
 import {
   ReadOutlined,
   PictureOutlined,
@@ -11,6 +11,7 @@ import { Tooltip, Typography, Grid } from "antd";
 import { observer } from "mobx-react-lite";
 import { useStore } from "hooks/useStore";
 import styled from "styled-components";
+import { useRouter } from "hooks/useRouter";
 
 interface Props {
   url: string;
@@ -23,6 +24,7 @@ interface Props {
 const MenuText = styled(Typography.Text)`
   padding-left: 4px;
   font-size: 16px;
+  transition: all 0.5s ease;
   color: ${(props) =>
     props.selected === props.current &&
     (props.usedark === "true"
@@ -45,10 +47,13 @@ const MenuItem: FC<Props> = (props: Props) => {
   const screens = Grid.useBreakpoint();
   const { selected, url, title, icon, subTitle } = props;
   const history = useHistory();
-  const click = () => history.push(url);
-
-  console.log("url : ", url);
-  console.log("selected : ", selected);
+  const match = useRouteMatch();
+  const router = useRouter();
+  useEffect(() => {
+    console.log("history : ", router);
+    console.log("selected : ", selected);
+    console.log("include", router.location.pathname.includes(selected));
+  }, [router]);
 
   const style = {
     color:
@@ -91,9 +96,13 @@ const MenuItem: FC<Props> = (props: Props) => {
   };
 
   return (
-    <Box onClick={click}>
+    <Box>
       <Link to={url} />
-      <Tooltip placement="topLeft" title={title}>
+      <Tooltip
+        placement="topLeft"
+        title={title}
+        trigger={screens.xl ? "hover" : "click"}
+      >
         {findIcon()}
         {screens.xl === false && screens.md === true && (
           <MenuText

@@ -34,7 +34,7 @@ import ReactGA from "react-ga";
 
 const IntroText = styled.h2`
   font-weight: 300;
-  padding: 0px 32px;
+  padding: 0px 24px;
   color: ${(props: any) =>
     props.theme === "true"
       ? "rgba(255, 255, 255, 0.65)"
@@ -54,7 +54,7 @@ const StackText = styled.span`
 
 const HashTag = styled.p`
   font-weight: 300;
-  padding: 0px 32px;
+  padding: 0px 24px;
 `;
 
 const TitleBox = styled.div`
@@ -144,7 +144,7 @@ const About: FC<Props> = (props: Props) => {
             </HashTag>
           </Col>
         </Row>
-        <Divider orientation="left">
+        <Divider orientation="left" style={{ marginBottom: 28 }}>
           FrontEnd Stack
           <StackText style={{ paddingLeft: 12, fontSize: 12, fontWeight: 100 }}>
             <Badge status="processing" color="green" />
@@ -184,7 +184,9 @@ const About: FC<Props> = (props: Props) => {
           animate="visible"
           exit="hidden"
         >
-          <Divider orientation="left">BackEnd Stack</Divider>
+          <Divider orientation="left" style={{ marginBottom: 28 }}>
+            BackEnd Stack
+          </Divider>
           <Row gutter={16}>
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
               <Row>
@@ -202,7 +204,9 @@ const About: FC<Props> = (props: Props) => {
           </Row>
         </motion.div>
         {/* 인프라 */}
-        <Divider orientation="left">Infra Stack</Divider>
+        <Divider orientation="left" style={{ marginBottom: 28 }}>
+          Infra Stack
+        </Divider>
         <motion.div
           className="container"
           variants={ContainerStyle}
@@ -226,7 +230,9 @@ const About: FC<Props> = (props: Props) => {
             </Col>
           </Row>
 
-          <Divider orientation="left">CI & CD</Divider>
+          <Divider orientation="left" style={{ marginBottom: 28 }}>
+            CI & CD
+          </Divider>
           <Row gutter={16}>
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
               <Row>
@@ -244,7 +250,9 @@ const About: FC<Props> = (props: Props) => {
           </Row>
         </motion.div>
         {/* 형상관리 */}
-        <Divider orientation="left">Remote Repository</Divider>
+        <Divider orientation="left" style={{ marginBottom: 28 }}>
+          Remote Repository
+        </Divider>
         <motion.div
           className="container"
           variants={ContainerStyle}
@@ -269,7 +277,9 @@ const About: FC<Props> = (props: Props) => {
           </Row>
         </motion.div>
         {/* 관심스택 */}
-        <Divider orientation="left">Interest</Divider>
+        <Divider orientation="left" style={{ marginBottom: 28 }}>
+          Interest
+        </Divider>
         <motion.div
           className="container"
           variants={ContainerStyle}

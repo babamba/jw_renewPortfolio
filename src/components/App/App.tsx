@@ -95,7 +95,8 @@ const App = () => {
                       }}
                     >
                       <MyProfile />
-                      {screens.xl && <DeskTopContact />}
+                      <DeskTopContact />
+                      {/* {screens.xl && <DeskTopContact />} */}
                     </Col>
                     <Col
                       xs={24}

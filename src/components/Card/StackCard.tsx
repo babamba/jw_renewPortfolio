@@ -40,14 +40,16 @@ const StackCard: FC<Props> = (props: Props) => {
           <Tooltip placement="topLeft" title={RenderTooltip(tooltipTitle)}>
             <Avatar
               shape="square"
-              size={screens.xs ? 80 : 60}
+              size={screens.xs ? 70 : 80}
               src={require("../../assets/images/stack/" + imgUrl)}
             />
           </Tooltip>
           <TitleBox>
             <StackText>
-              {isUsed && <Badge status="processing" color="green" />}
-              {stackTitle}
+              <Typography.Paragraph ellipsis>
+                {isUsed && <Badge status="processing" color="green" />}
+                {stackTitle}
+              </Typography.Paragraph>
             </StackText>
           </TitleBox>
         </motion.div>

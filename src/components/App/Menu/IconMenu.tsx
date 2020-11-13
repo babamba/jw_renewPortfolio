@@ -108,9 +108,9 @@ const IconMenu: FC<Props> = (props: Props) => {
         style={
           screens.xl
             ? {
-                paddingTop: 30,
-                paddingLeft: 8,
-                marginTop: "-28px",
+                // paddingTop: 30,
+                // paddingLeft: 8,
+                // marginTop: "-28px",
               }
             : {
                 padding: "6px 8px",
@@ -118,7 +118,14 @@ const IconMenu: FC<Props> = (props: Props) => {
               }
         }
       >
-        <Col span={screens.xl ? 24 : 4} style={{ textAlign: "center" }}>
+        <Col
+          span={screens.xl ? 24 : 4}
+          style={{
+            textAlign: "center",
+            paddingTop: screens.xl ? 0 : 6,
+            paddingBottom: screens.xl ? 12 : 0,
+          }}
+        >
           <motion.div variants={ItemStyle}>
             <ThemeModeSelector size={screens.xl ? 2.3 : 1.6} />
           </motion.div>

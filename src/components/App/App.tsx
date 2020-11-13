@@ -96,7 +96,6 @@ const App = () => {
                     >
                       <MyProfile />
                       <DeskTopContact />
-                      {/* {screens.xl && <DeskTopContact />} */}
                     </Col>
                     <Col
                       xs={24}
@@ -112,23 +111,12 @@ const App = () => {
                           if (affixed !== undefined) setAffixed(affixed);
                         }}
                         ref={menuSticky}
-                        offsetTop={screens.xxl ? 160 : screens.xl ? 20 : 0}
-                        style={{
-                          transition: "background 0.5s ease",
-                        }}
+                        offsetTop={screens.xl ? 60 : 0}
+                        style={{ transition: "background 0.5s ease" }}
                       >
                         <IconMenu
                           useBackground={affixed && screens.xl === false}
                         />
-                        {/* {screens.xl ? (
-                          <IconMenu
-                            useBackground={affixed && screens.xl === false}
-                          />
-                        ) : (
-                          <IconMobileMenu
-                            useBackground={affixed && screens.xl === false}
-                          />
-                        )} */}
                       </Affix>
                     </Col>
                     <Col xs={24} sm={24} md={24} lg={24} xl={15} xxl={15}>

@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useImperativeHandle } from "react";
+import React, { useState, useImperativeHandle, forwardRef } from "react";
 import { useSprings } from "react-spring";
 import { useDrag } from "react-use-gesture";
-import Card from "./Card";
-import PortfolioData from "../../core/folioData";
+import DeckCard from "./DeckCard";
+import PortfolioData from "core/folioData";
 
 // These two are just helpers, they curate spring data, values that are later being interpolated into css
 const to = (i) => ({
@@ -20,20 +20,16 @@ const trans = (r, s) =>
     r / 500
   }deg) rotateZ(${r}deg) scale(${s})`;
 
-const Deck = React.forwardRef((Parent, ref) => {
-  const { callback, currentIdx } = Parent;
+const DeckList = (parent, ref) => {
+  const { callbackRef, currentIdx } = parent;
 
   useImperativeHandle(ref, () => ({
-    getNext() {
-      next();
-    },
-    getRedeck() {
-      reDeck();
-    },
+    getNext: () => next(),
+    getRedeck: () => reDeck(),
   }));
 
   const reDeck = () => {
-    callback(PortfolioData.length);
+    callbackRef(PortfolioData.length);
     gone.clear();
     set((i) => to(i));
   };
@@ -47,7 +43,7 @@ const Deck = React.forwardRef((Parent, ref) => {
 
         // Set에 해당 번호가 있으면
         // 부모에게 해당 인덱스를 콜백함수로 주입.
-        if (gone.has(currentIdx)) callback(i);
+        if (gone.has(currentIdx)) callbackRef(i);
 
         return {
           x: 300 + window.innerWidth,
@@ -61,10 +57,6 @@ const Deck = React.forwardRef((Parent, ref) => {
       }
     });
   };
-
-  useEffect(() => {
-    console.log("changed : ", currentIdx);
-  }, [currentIdx]);
 
   const [gone] = useState(() => new Set()); // The set flags all the cards that are flicked out
   const [props, set] = useSprings(PortfolioData.length, (i) => ({
@@ -85,11 +77,9 @@ const Deck = React.forwardRef((Parent, ref) => {
       const dir = xDir < 0 ? -1 : 1; // Direction should either point left or right
 
       // 카드 넘기는 트리거
-      if (!down && trigger) {
-        gone.add(index);
+      // If button/finger's up and trigger velocity is reached, we flag the card ready to fly out
+      if (!down && trigger) gone.add(index);
 
-        // If button/finger's up and trigger velocity is reached, we flag the card ready to fly out
-      }
       set((i) => {
         if (index !== i) return; // We're only interested in changing spring-data for the current spring
         const isGone = gone.has(index);
@@ -97,10 +87,7 @@ const Deck = React.forwardRef((Parent, ref) => {
         const rot = mx / 100 + (isGone ? dir * 10 * velocity : 0); // How much the card tilts, flicking it harder makes it rotate faster
         const scale = down ? 1.03 : 1; // Active cards lift up a bit
 
-        if (isGone) {
-          console.log("callback");
-          callback(index);
-        }
+        if (isGone) callbackRef(index);
 
         return {
           x,
@@ -117,9 +104,9 @@ const Deck = React.forwardRef((Parent, ref) => {
   );
 
   // Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
-  const DeckList = props.map(({ x, y, rot, scale }, i) => {
+  const Deck = props.map(({ x, y, rot, scale }, i) => {
     return (
-      <Card
+      <DeckCard
         key={i}
         i={i}
         x={x}
@@ -133,7 +120,7 @@ const Deck = React.forwardRef((Parent, ref) => {
     );
   });
 
-  return DeckList;
-});
+  return Deck;
+};
 
-export default Deck;
+export default forwardRef(DeckList);

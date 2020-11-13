@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import { Grid, Row, Col } from "antd";
 import { useHistory, useRouteMatch } from "react-router-dom";
-import { ContainerStyle, ItemStyle } from "../../../interfaces/Motion";
+import { ContainerStyle, ItemStyle } from "interfaces/Motion";
 import { motion } from "framer-motion";
 import ThemeModeSelector from "../ThemeMode/ThemeModeSelector";
 import MenuItem from "./MenuItem";

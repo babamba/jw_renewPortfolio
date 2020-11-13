@@ -1,9 +1,9 @@
-import React, { FC, useState, useEffect } from "react";
-import { Typography } from "antd";
+import React, { FC } from "react";
+import { Empty, Typography } from "antd";
 import { motion } from "framer-motion";
 import { ItemStyle, FastContainerStyle } from "interfaces/Motion";
 import styled from "styled-components";
-import { withRouter, RouteComponentProps, Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 import { useStore } from "hooks/useStore";
 
 const InfoContainer = styled(motion.div)`
@@ -12,28 +12,31 @@ const InfoContainer = styled(motion.div)`
   }
 `;
 
-interface Props extends RouteComponentProps {
+interface Props {
   animating: Boolean;
-  data: {
-    id: string;
-    name: string;
-    age: string;
-    distance: string;
-    position: string;
-    titleDetail: string;
-    subDescriptions: any;
-    pics: string;
-  };
+  data:
+    | {
+        id: string;
+        name: string;
+        age: string;
+        distance: string;
+        position: string;
+        titleDetail: string;
+        subDescriptions: any;
+        pics: string;
+      }
+    | undefined;
 }
 
 const Card: FC<Props> = (props: Props) => {
   const { useDark } = useStore("common");
-  const { history, match, animating } = props;
-  const { id, name, age, distance, position } = props.data;
+  const match = useRouteMatch();
+  const { animating } = props;
+  const { data } = props;
 
-  return (
+  return data ? (
     <Link
-      to={`${match.url}/${id}`}
+      to={`${match.url}/${data.id}`}
       style={{
         color: useDark ? "rgba(255, 255, 255, 0.65)" : "rgba(0, 0, 0, 0.65)",
       }}
@@ -53,27 +56,29 @@ const Card: FC<Props> = (props: Props) => {
               letterSpacing: -2,
             }}
           >
-            {name}
+            {data.name}
           </Typography.Text>
         </motion.div>
         <motion.div variants={ItemStyle}>
           <Typography.Text style={{ margin: 0, fontWeight: 300, fontSize: 20 }}>
-            {age}
+            {data.age}
           </Typography.Text>
         </motion.div>
         <motion.div variants={ItemStyle}>
           <Typography.Text style={{ margin: 0, fontWeight: 300, fontSize: 18 }}>
-            {distance}
+            {data.distance}
           </Typography.Text>
         </motion.div>
         <motion.div variants={ItemStyle}>
           <Typography.Text style={{ margin: 0, fontWeight: 300, fontSize: 14 }}>
-            {position}
+            {data.position}
           </Typography.Text>
         </motion.div>
       </InfoContainer>
     </Link>
+  ) : (
+    <Empty />
   );
 };
 
-export default withRouter(Card);
+export default Card;

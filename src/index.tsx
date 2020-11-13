@@ -3,7 +3,7 @@ import "regenerator-runtime/runtime";
 import "react-app-polyfill/ie11";
 import "react-app-polyfill/stable";
 import React from "react";
-import App from "./components/App/App";
+import App from "components/App/App";
 import { render } from "react-dom";
 import * as serviceWorker from "./serviceWorker";
 import { StoreProvider } from "hooks/useStore";

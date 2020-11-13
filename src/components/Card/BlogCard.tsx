@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { useRouteMatch, Link } from "react-router-dom";
-import { Card, Grid } from "antd";
 import { motion } from "framer-motion";
+import { Card, Grid } from "antd";
 
 interface Props {
   info: {

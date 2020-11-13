@@ -9,8 +9,8 @@ import {
   ItemLeftStyle,
 } from "../interfaces/Motion";
 import { motion } from "framer-motion";
-import HeadMeta from "../components/Helmet/HeadMeta";
-import { useRouter } from "../hooks/useRouter";
+import HeadMeta from "components/Helmet/HeadMeta";
+import { useRouter } from "hooks/useRouter";
 import ReactGA from "react-ga";
 
 const StatusBadge = styled(Badge)`

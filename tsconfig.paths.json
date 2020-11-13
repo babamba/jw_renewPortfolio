@@ -8,6 +8,8 @@
       "images/*": ["src/assets/images/*"],
       "pages/*": ["src/pages/*"],
       "store/*": ["src/store/*"],
+      "core/*": ["src/core/*"],
+      "routes/*": ["src/route/*"],
       "interfaces/*": ["src/interfaces/*"]
     }
   }

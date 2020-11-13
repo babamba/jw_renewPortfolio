@@ -1,5 +1,6 @@
 import React, { FC, useEffect } from "react";
 import { Link, useHistory, useRouteMatch } from "react-router-dom";
+import { Tooltip, Typography, Grid } from "antd";
 import {
   ReadOutlined,
   PictureOutlined,
@@ -7,10 +8,11 @@ import {
   CoffeeOutlined,
   SmileOutlined,
 } from "@ant-design/icons";
-import { Tooltip, Typography, Grid } from "antd";
+
 import { observer } from "mobx-react-lite";
-import { useStore } from "hooks/useStore";
 import styled from "styled-components";
+
+import { useStore } from "hooks/useStore";
 import { useRouter } from "hooks/useRouter";
 
 interface Props {

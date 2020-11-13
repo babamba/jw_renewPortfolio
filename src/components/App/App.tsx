@@ -1,18 +1,19 @@
 import React, { useLayoutEffect, useState, useEffect, useRef } from "react";
-import FolioRoutes from "../../route/FolioRoutes";
-import LabsRoutes from "../../route/LabsRoute";
 import { observer } from "mobx-react-lite";
 import { ThemeProvider } from "antd-theme";
-import { useStore } from "hooks/useStore";
 import { Layout, Row, Col, Affix, Grid } from "antd";
+import { useWindowHeight } from "@react-hook/window-size";
+import ReactGA from "react-ga";
+
+import FolioRoutes from "routes/FolioRoutes";
+import LabsRoutes from "routes/LabsRoute";
+
 import IconMenu from "../App/Menu/IconMenu";
-import IconMobileMenu from "../App/Menu/IconMobileMenu";
 import MyProfile from "./Profile/MyProfile";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
-import { useRouter } from "../../hooks/useRouter";
-import ReactGA from "react-ga";
-import DeskTopContact from "../../pages/DeskTopContact";
-import { useWindowHeight } from "@react-hook/window-size";
+import { useStore } from "hooks/useStore";
+import { useRouter } from "hooks/useRouter";
+import ContactCard from "components/Card/ContactCard";
 
 const App = () => {
   const menuSticky = useRef(null);
@@ -95,7 +96,7 @@ const App = () => {
                       }}
                     >
                       <MyProfile />
-                      <DeskTopContact />
+                      <ContactCard />
                     </Col>
                     <Col
                       xs={24}

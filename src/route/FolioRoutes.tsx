@@ -3,16 +3,16 @@ import { Route, Switch, Redirect, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import LazyLoader from "components/Loader/LazyLoader";
 import lazy from "react-lazy-with-preload";
-import About from "pages/about";
+import About from "pages/About";
 
 // 전역에서 사용되는 브라우저 라우터
 
-const BlogComponent = lazy(() => import("pages/blog"));
-const BlogDetailComponent = lazy(() => import("pages/blog-detail"));
+const BlogComponent = lazy(() => import("pages/Blog"));
+const BlogDetailComponent = lazy(() => import("pages/BlogDetail"));
 const PortfolioComponent = lazy(() => import("pages/DeckFolio"));
-const ResumeComponent = lazy(() => import("pages/resume"));
-const FolioDetailComponent = lazy(() => import("pages/Portfolio-detail"));
-const ContactComponent = lazy(() => import("pages/contact"));
+const ResumeComponent = lazy(() => import("pages/Resume"));
+const FolioDetailComponent = lazy(() => import("pages/PortfolioDetail"));
+const ContactComponent = lazy(() => import("pages/Contact"));
 const NoMatchComponent = lazy(() => import("pages/404"));
 
 const FolioRoutes = () => {

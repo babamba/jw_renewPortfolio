@@ -51,6 +51,8 @@ module.exports = override(
     ["pages"]: path.resolve(__dirname, "./src/pages"),
     ["images"]: path.resolve(__dirname, "./src/assets/images"),
     ["store"]: path.resolve(__dirname, "./src/store"),
+    ["core"]: path.resolve(__dirname, "./src/core"),
+    ["routes"]: path.resolve(__dirname, "./src/route"),
     ["interfaces"]: path.resolve(__dirname, "./src/interfaces"),
   }),
   addWebpackPlugin(

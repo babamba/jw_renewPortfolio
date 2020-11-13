@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useState, useEffect } from "react";
-import { Typography, Badge, Affix, Grid } from "antd";
+import React, { FC } from "react";
+import { Typography, Affix, Grid } from "antd";
 import { MailOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 
@@ -8,13 +8,8 @@ import {
   pageVariants,
   ContainerStyle,
   ItemLeftStyle,
-} from "../interfaces/Motion";
+} from "interfaces/Motion";
 import { motion } from "framer-motion";
-
-const StatusBadge = styled(Badge)`
-  position: relative;
-  top: -1px;
-`;
 
 const ContentBox = styled.div`
   padding: 12px;
@@ -24,8 +19,7 @@ const Container = styled.div`
   padding: 1.5rem 2rem;
 `;
 
-type Props = {};
-const Contact: FunctionComponent<Props> = ({}) => {
+const Contact: FC = () => {
   const screens = Grid.useBreakpoint();
 
   return (

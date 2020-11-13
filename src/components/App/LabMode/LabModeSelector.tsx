@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import { useStore } from "hooks/useStore";
 import { motion } from "framer-motion";
 import { ExperimentOutlined, LinkedinOutlined } from "@ant-design/icons";
-import { useRouter } from "../../../hooks/useRouter";
+import { useRouter } from "hooks/useRouter";
 const Container = styled.div`
   position: relative;
   z-index: 999;

@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
-import { Helmet } from 'react-helmet-async';
-import favicon from '../../assets/images/jw.png';
+import React, { FC } from "react";
+import { Helmet } from "react-helmet-async";
+import favicon from "images/jw.png";
 
 interface MetaProps {
   text: string;
@@ -9,7 +9,12 @@ interface MetaProps {
   title: string;
 }
 
-const HeadMeta: FC<MetaProps> = ({ text, keywords = '', description = '', title = '' }) => {
+const HeadMeta: FC<MetaProps> = ({
+  text,
+  keywords = "",
+  description = "",
+  title = "",
+}) => {
   return (
     <Helmet>
       <title>{text} | I'm FrontEnd Developer</title>

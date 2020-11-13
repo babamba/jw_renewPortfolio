@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Result, Button } from "antd";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import HeadMeta from "../components/Helmet/HeadMeta";
+import HeadMeta from "components/Helmet/HeadMeta";
 
 const Page_404: FC<RouteComponentProps> = ({ history }) => {
   const HandleGoBack = () => history.goBack();

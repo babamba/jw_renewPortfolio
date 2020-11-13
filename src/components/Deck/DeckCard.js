@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Grid } from "antd";
 import { string, number } from "prop-types";
 import { animated, to } from "react-spring";
-import CardData from "../../core/folioData";
+import CardData from "core/folioData";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 

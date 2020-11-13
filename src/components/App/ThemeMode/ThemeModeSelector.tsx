@@ -4,7 +4,7 @@ import { useStore } from "hooks/useStore";
 import { useTheme } from "antd-theme";
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import CustomIcon from "../../Common/CustomIcon";
+import CustomIcon from "components/Common/CustomIcon";
 
 const MotionBox = styled(motion.div)`
   display: flex;

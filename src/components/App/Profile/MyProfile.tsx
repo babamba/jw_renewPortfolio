@@ -1,10 +1,10 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { FC } from "react";
 import { Row, Col, Typography, Avatar, Affix, Grid } from "antd";
 import ReactRotatingText from "react-rotating-text";
 import { GithubOutlined } from "@ant-design/icons";
 import styled from "styled-components";
-import { useStore } from "hooks/useStore";
 import { motion } from "framer-motion";
+import { useStore } from "hooks/useStore";
 import { pageDetailVariants, pageDetailTransition } from "interfaces/Motion";
 
 const MainIntroText = styled.h1`
@@ -53,8 +53,7 @@ const SubIntroText = styled.h2`
   }
 `;
 
-type Props = {};
-const MyProfile: FunctionComponent<Props> = (props: Props) => {
+const MyProfile: FC = () => {
   const { useDark } = useStore("common");
   const screens = Grid.useBreakpoint();
   const textVariants = {

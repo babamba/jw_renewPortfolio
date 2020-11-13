@@ -1,45 +1,55 @@
 import React, { useEffect, useState, useRef } from "react";
-import { withRouter, BrowserRouter as Router } from "react-router-dom";
-import Deck from "./PortFolioDeck/Deck";
-import { motion, useAnimation } from "framer-motion";
-import {
-  pageOpacityVariants,
-  pageOpacityTransition,
-} from "../interfaces/Motion";
-import PortfolioData from "../core/folioData";
-import DetailInfo from "./PortFolioDeck/FolioInfo";
+import ReactGA from "react-ga";
+
 import { ForwardOutlined, RetweetOutlined } from "@ant-design/icons";
 import { Grid, Progress, Row, Col, Tooltip } from "antd";
-import ReactGA from "react-ga";
-import { useStore } from "hooks/useStore";
-import useMount from "../hooks/useMount";
-import HeadMeta from "../components/Helmet/HeadMeta";
-import { useRouter } from "../hooks/useRouter";
+import { motion, useAnimation } from "framer-motion";
 
-const DeckFolio = (props) => {
+import { pageOpacityVariants, pageOpacityTransition } from "interfaces/Motion";
+import PortfolioData from "core/folioData";
+import { useRouter } from "hooks/useRouter";
+import { useStore } from "hooks/useStore";
+import useMount from "hooks/useMount";
+
+import DeckList from "components/Deck/DeckList";
+import HeadMeta from "components/Helmet/HeadMeta";
+import DetailInfo from "components/Deck/FolioInfo";
+
+interface DeckRefObject {
+  getNext: () => void;
+  getRedeck: () => void;
+}
+
+interface InfoData {
+  id: string;
+  name: string;
+  age: string;
+  distance: string;
+  position: string;
+  titleDetail: string;
+  subDescriptions: any;
+  pics: string;
+}
+
+const DeckFolio = () => {
   const { useDark } = useStore("common");
   const screens = Grid.useBreakpoint();
   const isMount = useMount();
   const router = useRouter();
-  const DeckRef = useRef();
+  const deckRef = useRef<DeckRefObject>(null);
   const controls = useAnimation();
   const [animating, setAnimating] = useState(false);
   const [currentIdx, SetCurrentIdx] = useState(PortfolioData.length - 1);
   const [prevIdx, setPrevIdx] = useState(0);
-
   const [progressBar, setProgressBar] = useState(0);
   const [percentage, setPercentage] = useState(100);
-  const [InfoData, setInfoData] = useState({});
+  const [InfoData, setInfoData] = useState<InfoData | undefined>(undefined);
 
   const updatePercentage = () => {
     setTimeout(() => {
       if (isMount.current) setProgressBar(progressBar + 1);
     }, 80);
   };
-
-  useEffect(() => {
-    window.dispatchEvent(new Event("scroll"));
-  }, []);
 
   useEffect(() => {
     if (percentage > 0) updatePercentage();
@@ -50,25 +60,14 @@ const DeckFolio = (props) => {
       updatePercentage();
     } else if (progressBar >= 100) {
       gestureTrigger();
-      setTimeout(() => {
-        setProgressBar(0);
-      }, 0);
+      setTimeout(() => setProgressBar(0), 0);
     }
   }, [progressBar]);
 
-  const callback = (idx) => {
+  const callbackRef = (idx: number) => {
     setPrevIdx(currentIdx);
-    if (idx > 0) {
-      SetCurrentIdx(idx - 1);
-    } else SetCurrentIdx(PortfolioData.length - 1);
-  };
-
-  const gestureTrigger = () => {
-    DeckRef.current.getNext();
-  };
-
-  const ReDeckTrigger = () => {
-    DeckRef.current.getRedeck();
+    if (idx > 0) SetCurrentIdx(idx - 1);
+    else SetCurrentIdx(PortfolioData.length - 1);
   };
 
   useEffect(() => {
@@ -100,13 +99,10 @@ const DeckFolio = (props) => {
     }
   }, [currentIdx]);
 
-  const closeAction = () => {
-    setAnimating(false);
-  };
-
-  const openAction = () => {
-    setAnimating(true);
-  };
+  const closeAction = () => setAnimating(false);
+  const openAction = () => setAnimating(true);
+  const gestureTrigger = () => deckRef.current?.getNext();
+  const ReDeckTrigger = () => deckRef.current?.getRedeck();
 
   return (
     <motion.div
@@ -116,7 +112,6 @@ const DeckFolio = (props) => {
       variants={pageOpacityVariants}
       transition={pageOpacityTransition}
       style={{ position: "absolute", width: "100%", height: "100%" }}
-      // style={pageStyle}
     >
       <HeadMeta
         title="JW Project PortFolio"
@@ -143,7 +138,11 @@ const DeckFolio = (props) => {
               height: screens.xl ? "75vh" : "60vh",
             }}
           >
-            <Deck ref={DeckRef} callback={callback} currentIdx={currentIdx} />
+            <DeckList
+              ref={deckRef}
+              callbackRef={callbackRef}
+              currentIdx={currentIdx}
+            />
           </div>
         </Col>
         <Col
@@ -214,4 +213,4 @@ const DeckFolio = (props) => {
   );
 };
 
-export default withRouter(DeckFolio);
+export default DeckFolio;

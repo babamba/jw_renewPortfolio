@@ -1,17 +1,7 @@
 import React, { FC, useEffect, useRef } from "react";
-import {
-  Row,
-  Col,
-  Divider,
-  Card,
-  Typography,
-  Avatar,
-  Badge,
-  Tooltip,
-  Grid,
-} from "antd";
+import { Row, Col, Divider, Card, Typography, Badge, Grid } from "antd";
 import styled from "styled-components";
-import { useRouter } from "../hooks/useRouter";
+import ReactGA from "react-ga";
 import {
   RemoteStack,
   InfraStack,
@@ -19,8 +9,8 @@ import {
   CiStack,
   FrontEndStack,
   InterestStack,
-} from "../core/Stack";
-import StackCard from "components/Card/StackCard";
+} from "core/Stack";
+
 import { motion } from "framer-motion";
 import {
   pageTransition,
@@ -28,9 +18,12 @@ import {
   ContainerStyle,
   FastContainerStyle,
 } from "interfaces/Motion";
+
+import HeadMeta from "components/Helmet/HeadMeta";
+import StackCard from "components/Card/StackCard";
+
 import { useStore } from "hooks/useStore";
-import HeadMeta from "../components/Helmet/HeadMeta";
-import ReactGA from "react-ga";
+import { useRouter } from "hooks/useRouter";
 
 const IntroText = styled.h2`
   font-weight: 300;

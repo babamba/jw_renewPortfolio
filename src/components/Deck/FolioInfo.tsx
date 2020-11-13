@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Empty, Typography } from "antd";
+import { Skeleton, Typography } from "antd";
 import { motion } from "framer-motion";
 import { ItemStyle, FastContainerStyle } from "interfaces/Motion";
 import styled from "styled-components";
@@ -77,7 +77,7 @@ const Card: FC<Props> = (props: Props) => {
       </InfoContainer>
     </Link>
   ) : (
-    <Empty />
+    <Skeleton active paragraph={{ rows: 2 }} />
   );
 };
 

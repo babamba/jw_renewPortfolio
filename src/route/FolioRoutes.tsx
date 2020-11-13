@@ -12,7 +12,7 @@ const BlogDetailComponent = lazy(() => import("pages/BlogDetail"));
 const PortfolioComponent = lazy(() => import("pages/DeckFolio"));
 const ResumeComponent = lazy(() => import("pages/Resume"));
 const FolioDetailComponent = lazy(() => import("pages/PortfolioDetail"));
-const ContactComponent = lazy(() => import("pages/Contact"));
+const ContactComponent = lazy(() => import("../pages/Contact"));
 const NoMatchComponent = lazy(() => import("pages/404"));
 
 const FolioRoutes = () => {

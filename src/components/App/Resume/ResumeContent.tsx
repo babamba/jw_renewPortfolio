@@ -65,7 +65,7 @@ const ResumeContent: FC<Props> = (props: Props) => {
         <Card
           style={{ borderRadius: 12 }}
           bodyStyle={{
-            padding: screens.md ? 24 : 18,
+            padding: screens.md ? "14px 24px" : 18,
           }}
         >
           <TimeText>{resumeData.period}</TimeText>

@@ -3,29 +3,35 @@ import { Route, Switch, Redirect, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import LazyLoader from "components/Loader/LazyLoader";
 import lazy from "react-lazy-with-preload";
-import About from "pages/About";
 
 // 전역에서 사용되는 브라우저 라우터
 
+const AboutComponent = lazy(() => import("pages/About"));
 const BlogComponent = lazy(() => import("pages/Blog"));
 const BlogDetailComponent = lazy(() => import("pages/BlogDetail"));
 const PortfolioComponent = lazy(() => import("pages/DeckFolio"));
 const ResumeComponent = lazy(() => import("pages/Resume"));
 const FolioDetailComponent = lazy(() => import("pages/PortfolioDetail"));
-const ContactComponent = lazy(() => import("../pages/Contact"));
+const ContactComponent = lazy(() => import("pages/Contact"));
 const NoMatchComponent = lazy(() => import("pages/404"));
 
 const FolioRoutes = () => {
   const location = useLocation();
 
+  const onInit = () => {
+    Promise.all([
+      BlogComponent.preload(),
+      BlogDetailComponent.preload(),
+      PortfolioComponent.preload(),
+      ResumeComponent.preload(),
+      FolioDetailComponent.preload(),
+      ContactComponent.preload(),
+      NoMatchComponent.preload(),
+    ]);
+  };
+
   useEffect(() => {
-    BlogComponent.preload();
-    BlogDetailComponent.preload();
-    PortfolioComponent.preload();
-    ResumeComponent.preload();
-    FolioDetailComponent.preload();
-    ContactComponent.preload();
-    NoMatchComponent.preload();
+    onInit();
   }, []);
 
   return (
@@ -38,7 +44,7 @@ const FolioRoutes = () => {
            *  상세화면이 라우팅 되지 않는다.
            */}
           {/* <Route path={['/', '/about']} exact={true} component={About} /> */}
-          <Route path="/about" exact={true} component={About} />
+          <Route path="/about" exact={true} component={AboutComponent} />
           <Route
             path="/portfolio"
             exact={true}
@@ -59,7 +65,7 @@ const FolioRoutes = () => {
           <Route path="/contact" exact={true} component={ContactComponent} />
 
           <Redirect path="/" to="/about" />
-          <Route exact path="/" component={About} />
+          <Route exact path="/" component={AboutComponent} />
           <Route component={NoMatchComponent} />
         </Switch>
       </AnimatePresence>

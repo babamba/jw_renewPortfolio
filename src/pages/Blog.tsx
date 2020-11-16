@@ -1,9 +1,6 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
-import { ContentfulService } from "../core/contentful";
-import { BlogPost } from "../interfaces/post";
+import ReactGA from "react-ga";
 import { observer } from "mobx-react-lite";
-import { useStore } from "hooks/useStore";
-import BlogCard from "../components/Card/BlogCard";
 import {
   Row,
   Col,
@@ -16,16 +13,24 @@ import {
   Grid,
   Spin,
 } from "antd";
-import HeadMeta from "../components/Helmet/HeadMeta";
+
+import { motion } from "framer-motion";
+
+import { useRouter } from "hooks/useRouter";
+import { useStore } from "hooks/useStore";
+
+import { ContentfulService } from "core/contentful";
+
 import {
   pageTransition,
   pageVariants,
   FastContainerStyle,
   ItemStyle,
-} from "../interfaces/Motion";
-import { motion } from "framer-motion";
-import { useRouter } from "../hooks/useRouter";
-import ReactGA from "react-ga";
+} from "interfaces/Motion";
+import { BlogPost } from "interfaces/post";
+
+import BlogCard from "components/Card/BlogCard";
+import HeadMeta from "components/Helmet/HeadMeta";
 import LottieLoader from "components/Loader/LottieLoader";
 
 interface PostPageProps {

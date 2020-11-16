@@ -5,7 +5,6 @@ import {
   Grid,
   Divider,
   PageHeader,
-  Button,
   Space,
   Col,
   Row,
@@ -17,11 +16,11 @@ import {
   folioVariants,
   ContainerStyle,
   ItemLeftStyle,
-} from "../interfaces/Motion";
+} from "interfaces/Motion";
 import { motion } from "framer-motion";
-import HeadMeta from "../components/Helmet/HeadMeta";
+import HeadMeta from "components/Helmet/HeadMeta";
 import ReactGA from "react-ga";
-import PortfolioData from "../core/folioData";
+import PortfolioData from "core/folioData";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 
 const ContentBox = styled.div`

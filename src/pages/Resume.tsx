@@ -1,16 +1,17 @@
-import React, { FunctionComponent, useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { Timeline, Row, Col, Card, Grid } from "antd";
-import { pageTransition, pageVariants } from "interfaces/Motion";
 import { motion } from "framer-motion";
-import HeadMeta from "components/Helmet/HeadMeta";
-import { useRouter } from "hooks/useRouter";
 import ReactGA from "react-ga";
-import resumeData from "core/resumeData";
-import ResumeContent from "components/App/Resume/ResumeContent";
-import { Resume } from "interfaces/resume";
 
-type Props = {};
-const History: FunctionComponent<Props> = ({}) => {
+import { useRouter } from "hooks/useRouter";
+import resumeData from "core/resumeData";
+import { Resume } from "interfaces/resume";
+import { pageTransition, pageVariants } from "interfaces/Motion";
+
+import HeadMeta from "components/Helmet/HeadMeta";
+import ResumeContent from "components/App/Resume/ResumeContent";
+
+const History: FC = () => {
   const router = useRouter();
   const screens = Grid.useBreakpoint();
 

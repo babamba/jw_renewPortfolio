@@ -92,6 +92,7 @@
     "babel-register": "^6.26.0",
     "core-decorators": "^0.20.0",
     "customize-cra": "^1.0.0",
+    "mobx-color-logger": "^0.7.1",
     "react-app-rewired": "^2.1.6",
     "ts-figlet-type-custom": "^1.2.0"
   }

@@ -14,6 +14,7 @@ import figlet from "figlet";
 import { configure } from "mobx";
 import "./assets/css/custom.less";
 import ReactGA from "react-ga";
+import { enableLogging } from "mobx-color-logger";
 
 configure({
   useProxies: "never",
@@ -37,6 +38,13 @@ if (process.env.NODE_ENV === "production") {
   ReactGA.initialize(`${process.env.REACT_APP_GA_TRACKING_ID}`);
 } else if (process.env.NODE_ENV === "development") {
   console.log("Development Mode");
+  enableLogging({
+    predicate: () => true,
+    action: true,
+    reaction: false,
+    transaction: true,
+    compute: true,
+  });
 }
 
 const rootElement = document.getElementById("root");

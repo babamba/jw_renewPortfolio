@@ -1,5 +1,5 @@
-import React, { FC, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { FC } from "react";
+import { Link } from "react-router-dom";
 import { Tooltip, Typography, Grid } from "antd";
 import {
   ReadOutlined,
@@ -11,9 +11,7 @@ import {
 
 import { observer } from "mobx-react-lite";
 import styled from "styled-components";
-
 import { useStore } from "hooks/useStore";
-import { useRouter } from "hooks/useRouter";
 
 interface Props {
   url: string;
@@ -48,13 +46,6 @@ const MenuItem: FC<Props> = (props: Props) => {
   const { useDark } = useStore("common");
   const screens = Grid.useBreakpoint();
   const { selected, url, title, icon, subTitle } = props;
-  const location = useLocation();
-
-  useEffect(() => {
-    console.log("history : ", location);
-    console.log("selected : ", selected);
-    console.log("include", location.pathname.includes(selected));
-  }, [selected]);
 
   const style = {
     color:

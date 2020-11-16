@@ -7,7 +7,7 @@ import {
   pageVariants,
   ContainerStyle,
   ItemLeftStyle,
-} from "../interfaces/Motion";
+} from "interfaces/Motion";
 import { motion } from "framer-motion";
 import HeadMeta from "components/Helmet/HeadMeta";
 import { useRouter } from "hooks/useRouter";

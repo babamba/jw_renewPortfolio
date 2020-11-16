@@ -1,19 +1,21 @@
 import React, { FC, useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
-import { ContentfulService } from "../core/contentful";
-import { withRouter, RouteComponentProps } from "react-router-dom";
-import { BlogPost } from "../interfaces/post";
 import { motion } from "framer-motion";
-import { Typography, PageHeader, Layout, Skeleton, Grid } from "antd";
 import styled from "styled-components";
+import ReactGA from "react-ga";
+import { withRouter, RouteComponentProps } from "react-router-dom";
+
+import { Typography, PageHeader, Layout, Skeleton, Grid } from "antd";
+
 import {
   pageDetailVariants,
   pageDetailTransition,
   ContainerStyle,
-} from "../interfaces/Motion";
-import HeadMeta from "../components/Helmet/HeadMeta";
-import { useRouter } from "../hooks/useRouter";
-import ReactGA from "react-ga";
+} from "interfaces/Motion";
+import { BlogPost } from "interfaces/post";
+import { ContentfulService } from "core/contentful";
+import HeadMeta from "components/Helmet/HeadMeta";
+import { useRouter } from "hooks/useRouter";
 
 const PostContainer = styled.div`
   margin: 40px;

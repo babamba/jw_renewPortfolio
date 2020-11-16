@@ -216,9 +216,8 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({
                 <PageHeader
                   onBack={() => history.push("/portfolio")}
                   className="site-page-header"
-                  title="이전 페이지"
+                  title="메인 화면"
                   style={{ background: "transparent", padding: "12px 0px" }}
-                  // subTitle="이전 페이지"
                 />
               </motion.button>
             </Col>

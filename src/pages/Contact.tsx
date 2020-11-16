@@ -114,7 +114,8 @@ const Contact: FunctionComponent<Props> = ({}) => {
               </motion.div>
               <br />
               <motion.div variants={ItemLeftStyle}>
-                저의 포트폴리오를 시간내어 봐주셔서 감사합니다 :D <br />
+                저의 포트폴리오를 시간내어 {screens.xs && <br />} 봐주셔서
+                감사합니다 :D <br />
               </motion.div>
 
               <motion.div variants={ItemLeftStyle}>김진원 올림.</motion.div>

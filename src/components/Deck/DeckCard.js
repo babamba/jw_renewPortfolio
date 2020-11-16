@@ -1,10 +1,10 @@
 import React from "react";
-import { Grid } from "antd";
+import { Grid, Tooltip } from "antd";
 import { string, number } from "prop-types";
 import { animated, to } from "react-spring";
 import CardData from "core/folioData";
 import styled from "styled-components";
-import { withRouter } from "react-router-dom";
+import { useHistory, useRouteMatch } from "react-router-dom";
 
 const Title = styled.span`
   color: rgba(255, 255, 255, 0.85);
@@ -15,13 +15,15 @@ const Title = styled.span`
   line-height: 36px;
   font-size: 1.2rem;
   &:hover {
-    text-decoration: ${(props) => (props.isMobile ? "underline" : "none")};
+    text-decoration: underline;
   }
 `;
 
 const Card = (props) => {
+  const history = useHistory();
+  const match = useRouteMatch();
   const screens = Grid.useBreakpoint();
-  const { i, x, y, rot, scale, trans, bind, data, history, match } = props;
+  const { i, x, y, rot, scale, trans, bind, data } = props;
   const { pics, name, age, distance, position, id } = data;
 
   return (
@@ -42,14 +44,11 @@ const Card = (props) => {
             pics)})`,
         }}
       >
-        <Title
-          isMobile={screens.xs ? true : false}
-          onClick={() => {
-            if (screens.xs) history.push(`${match.url}/${id}`);
-          }}
-        >
-          {CardData[i].name}
-        </Title>
+        <Tooltip placement="bottom" title="자세히">
+          <Title onClick={() => history.push(`${match.url}/${id}`)}>
+            {CardData[i].name}
+          </Title>
+        </Tooltip>
       </animated.div>
     </animated.div>
   );
@@ -63,4 +62,4 @@ Card.propTypes = {
   pics: string,
 };
 
-export default withRouter(Card);
+export default Card;

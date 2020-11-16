@@ -117,9 +117,19 @@ const App = () => {
                         offsetTop={screens.xl ? 60 : 0}
                         style={{ transition: "background 0.5s ease" }}
                       >
-                        <IconMenu
-                          useBackground={affixed && screens.xl === false}
-                        />
+                        <div
+                          style={{
+                            transition: "background 0.5s ease",
+                            background:
+                              affixed && screens.xl === false
+                                ? useDark
+                                  ? "rgba(255, 255, 255, 0.15)"
+                                  : "rgba(0, 0, 0, 0.15)"
+                                : "transparent",
+                          }}
+                        >
+                          <IconMenu />
+                        </div>
                       </Affix>
                     </Col>
                     <Col xs={24} sm={24} md={24} lg={24} xl={15} xxl={15}>

@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import ThemeModeSelector from "../ThemeMode/ThemeModeSelector";
 import MenuItem from "./MenuItem";
 import styled from "styled-components";
-import { useStore } from "hooks/useStore";
 
 const CustomCol = styled(Col)`
   text-align: center;
@@ -72,13 +71,7 @@ const MenuButtonBox = styled.div`
   }
 `;
 
-interface Props {
-  useBackground: boolean;
-}
-const IconMenu: FC<Props> = (props: Props) => {
-  const { useDark } = useStore("common");
-  const { useBackground } = props;
-
+const IconMenu: FC = () => {
   const match = useRouteMatch();
   const history = useHistory();
   const screens = Grid.useBreakpoint();
@@ -92,14 +85,6 @@ const IconMenu: FC<Props> = (props: Props) => {
       initial="hidden"
       animate="visible"
       exit="hidden"
-      style={{
-        transition: "background 0.5s ease",
-        backgroundColor: useBackground
-          ? useDark
-            ? "rgba(255, 255, 255, 0.15)"
-            : "rgba(0, 0, 0, 0.15)"
-          : "transparent",
-      }}
     >
       <Row
         justify="center"

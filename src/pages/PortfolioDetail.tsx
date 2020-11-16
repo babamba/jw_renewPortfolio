@@ -178,6 +178,9 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({
             borderRadius: 12,
             border: 0,
           }}
+          bodyStyle={{
+            padding: screens.xl ? 24 : 0,
+          }}
         >
           <motion.div
             className="container"

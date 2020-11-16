@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import { Grid, Row, Col } from "antd";
-import { useHistory, useRouteMatch } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { ContainerStyle, ItemStyle } from "interfaces/Motion";
 import { motion } from "framer-motion";
 import ThemeModeSelector from "../ThemeMode/ThemeModeSelector";
@@ -72,11 +72,15 @@ const MenuButtonBox = styled.div`
 `;
 
 const IconMenu: FC = () => {
-  const match = useRouteMatch();
   const history = useHistory();
+  const location = useLocation();
   const screens = Grid.useBreakpoint();
   const [selected, setSelected] = useState("/");
-  useEffect(() => setSelected(location.pathname), [match]);
+  useEffect(() => {
+    const path = location.pathname.split("/");
+    const temp = `/${path[1]}`;
+    setSelected(temp);
+  }, [location.pathname]);
 
   return (
     <motion.div
@@ -99,7 +103,7 @@ const IconMenu: FC = () => {
               }
             : {
                 padding: "6px 8px",
-                margin: "auto 1.5rem",
+                margin: "auto 1rem",
               }
         }
       >

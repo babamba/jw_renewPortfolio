@@ -1,16 +1,5 @@
 import React, { FC } from "react";
-import {
-  Grid,
-  Timeline,
-  Typography,
-  Badge,
-  Avatar,
-  Card,
-  Row,
-  Col,
-  Tag,
-  Divider,
-} from "antd";
+import { Grid, Timeline, Typography, Avatar, Card, Divider, Badge } from "antd";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { FastContainerStyle, ItemStyle } from "interfaces/Motion";
@@ -41,10 +30,7 @@ const TimeText = styled.p`
 `;
 
 const ContentBox = styled.div`
-  padding: 8px 8px 0px;
-  @media only screen and (min-width: 100px) and (max-width: 1199px) {
-    padding: 8px 0px;
-  }
+  padding: 8px 0px;
 `;
 const DescBox = styled.div`
   padding-left: 12px;
@@ -65,106 +51,86 @@ const ResumeContent: FC<Props> = (props: Props) => {
 
   return (
     <Timeline.Item color="green">
-      <Card
-        style={{ borderRadius: 12 }}
-        bodyStyle={{
-          padding: screens.md ? 24 : 18,
-        }}
+      <Badge.Ribbon
+        style={{ lineHeight: "20px", marginTop: 8 }}
+        text={
+          <Typography.Text
+            style={{ fontSize: 12, color: "rgba(255, 255, 255, 0.85)" }}
+          >
+            {resumeData.tag.text}
+          </Typography.Text>
+        }
+        color={resumeData.tag.type === "process" ? "processing" : "magenta"}
       >
-        <Row>
-          <Col xs={12} sm={12} md={12} lg={12} xl={12}>
-            <TimeText>{resumeData.period}</TimeText>
-          </Col>
-          <Col
-            xs={12}
-            sm={12}
-            md={12}
-            lg={12}
-            xl={12}
-            style={{ textAlign: "right" }}
-          >
-            <Tag
-              color={
-                resumeData.tag.type === "process" ? "processing" : "magenta"
-              }
-              style={{
-                margin: 0,
-                fontWeight: 300,
-                borderRadius: 8,
-                padding: "2px 6px",
-                background: "transparent",
-              }}
+        <Card
+          style={{ borderRadius: 12 }}
+          bodyStyle={{
+            padding: screens.md ? 24 : 18,
+          }}
+        >
+          <TimeText>{resumeData.period}</TimeText>
+          <ContentBox>
+            <motion.div
+              className="container"
+              variants={FastContainerStyle}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
             >
-              {resumeData.tag.text}
-            </Tag>
-          </Col>
-        </Row>
-
-        <ContentBox>
-          <motion.div
-            className="container"
-            variants={FastContainerStyle}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-          >
-            <HeadDiv>
-              <motion.div variants={ItemStyle}>
-                <Avatar
-                  shape="circle"
-                  size={50}
-                  src={require("../../../assets/images/company/" +
-                    resumeData.companyImg)}
-                />
-              </motion.div>
-
-              <DescBox>
+              <HeadDiv>
                 <motion.div variants={ItemStyle}>
-                  <CompanyText>{resumeData.companyName}</CompanyText>
+                  <Avatar
+                    shape="circle"
+                    size={50}
+                    src={require("../../../assets/images/company/" +
+                      resumeData.companyImg)}
+                  />
                 </motion.div>
-                <motion.div variants={ItemStyle}>
-                  {resumeData.usedRank && (
-                    <>
-                      <Text strong>직책 :</Text>
-                      <PositionText>{resumeData.rank}</PositionText>
-                    </>
-                  )}
 
-                  {screens.xl == false && <br />}
-                  {resumeData.usedRank &&
-                    resumeData.usedPosition &&
-                    screens.xl && (
-                      <Divider style={{ borderWidth: 3 }} type="vertical" />
+                <DescBox>
+                  <motion.div variants={ItemStyle}>
+                    <CompanyText>{resumeData.companyName}</CompanyText>
+                  </motion.div>
+                  <motion.div variants={ItemStyle}>
+                    {resumeData.usedRank && (
+                      <>
+                        <Text strong>직책 :</Text>
+                        <PositionText>{resumeData.rank}</PositionText>
+                      </>
                     )}
 
-                  {resumeData.usedPosition && (
-                    <>
-                      <Text strong>포지션 :</Text>
-                      <PositionText>{resumeData.position}</PositionText>
-                    </>
-                  )}
-                </motion.div>
-              </DescBox>
-            </HeadDiv>
-            <Row>
-              <Col span={24}>
-                <ProjectBox>
-                  {resumeData.resumeStory.map((item, idx) => {
-                    return (
-                      <React.Fragment key={idx}>
-                        <ResumeStory story={item} />
-                        {resumeData.resumeStory.length - 1 !== idx && (
-                          <CustomDivider />
-                        )}
-                      </React.Fragment>
-                    );
-                  })}
-                </ProjectBox>
-              </Col>
-            </Row>
-          </motion.div>
-        </ContentBox>
-      </Card>
+                    {screens.md == false && <br />}
+                    {resumeData.usedRank &&
+                      resumeData.usedPosition &&
+                      screens.md && (
+                        <Divider style={{ borderWidth: 3 }} type="vertical" />
+                      )}
+
+                    {resumeData.usedPosition && (
+                      <>
+                        <Text strong>포지션 :</Text>
+                        <PositionText>{resumeData.position}</PositionText>
+                      </>
+                    )}
+                  </motion.div>
+                </DescBox>
+              </HeadDiv>
+              <ProjectBox>
+                {resumeData.resumeStory.map((item, idx) => {
+                  return (
+                    <React.Fragment key={idx}>
+                      <ResumeStory story={item} />
+                      {resumeData.resumeStory.length - 1 !== idx && (
+                        <CustomDivider />
+                      )}
+                    </React.Fragment>
+                  );
+                })}
+              </ProjectBox>
+            </motion.div>
+          </ContentBox>
+        </Card>
+      </Badge.Ribbon>
     </Timeline.Item>
   );
 };

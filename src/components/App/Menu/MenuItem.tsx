@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from "react";
-import { Link, useHistory, useRouteMatch } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Tooltip, Typography, Grid } from "antd";
 import {
   ReadOutlined,
@@ -48,35 +48,27 @@ const MenuItem: FC<Props> = (props: Props) => {
   const { useDark } = useStore("common");
   const screens = Grid.useBreakpoint();
   const { selected, url, title, icon, subTitle } = props;
-  const history = useHistory();
-  const match = useRouteMatch();
-  const router = useRouter();
+  const location = useLocation();
+
   useEffect(() => {
-    console.log("history : ", router);
+    console.log("history : ", location);
     console.log("selected : ", selected);
-    console.log("include", router.location.pathname.includes(selected));
-  }, [router]);
+    console.log("include", location.pathname.includes(selected));
+  }, [selected]);
 
   const style = {
     color:
-      (selected === url || selected === "") && useDark
+      selected === url && useDark
         ? "rgba(255, 255, 255, 0.95) !important"
         : "rgba(0, 0, 0, 0.95) !important",
-    fontSize:
-      selected === url || selected === ""
-        ? screens.xl
-          ? 24
-          : 14
-        : screens.xl
-        ? 20
-        : 14,
+    fontSize: selected === url ? (screens.xl ? 24 : 14) : screens.xl ? 20 : 14,
     background:
-      selected === url || selected === ""
+      selected === url
         ? screens.xl
           ? "linear-gradient(to top, rgba(152, 44, 255, 0.4) 50%, transparent 30%)"
           : "transparent"
         : "transparent",
-    padding: selected === url || selected === "" ? (screens.xl ? 8 : 0) : 0,
+    padding: selected === url ? (screens.xl ? 8 : 0) : 0,
     transition: "0.8s",
   };
 

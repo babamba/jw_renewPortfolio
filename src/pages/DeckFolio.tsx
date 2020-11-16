@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import ReactGA from "react-ga";
 
 import { ForwardOutlined, RetweetOutlined } from "@ant-design/icons";
-import { Grid, Progress, Row, Col, Tooltip } from "antd";
+import { Grid, Progress, Row, Col, Tooltip, Space } from "antd";
 import { motion, useAnimation } from "framer-motion";
 
 import { pageOpacityVariants, pageOpacityTransition } from "interfaces/Motion";
@@ -121,10 +121,10 @@ const DeckFolio = () => {
       />
       <Row
         align="middle"
-        justify={screens.xl ? "start" : "center"}
+        justify="start"
         style={{
           overflowX: screens.xl ? "inherit" : "hidden",
-          padding: screens.md ? "20px 80px" : "20px 20px 0px",
+          padding: screens.sm ? "20px 10%" : "20px 20px 0px",
         }}
       >
         <Col span={24}>
@@ -151,34 +151,83 @@ const DeckFolio = () => {
             padding: screens.xxl ? "10px 12%" : "10px",
           }}
         >
-          <Row
-            justify={screens.xl ? "start" : "center"}
-            style={{ paddingBottom: 10 }}
-          >
-            <Col span={screens.xl ? 1 : 2} onClick={() => gestureTrigger()}>
+          <Space align="center">
+            <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.95 }}>
+              <ForwardOutlined
+                style={{ fontSize: 14 }}
+                onClick={() => gestureTrigger()}
+              />
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.95 }}>
+              <RetweetOutlined
+                style={{ fontSize: 14 }}
+                onClick={() => ReDeckTrigger()}
+              />
+            </motion.div>
+
+            <span>0{PortfolioData.length - currentIdx}</span>
+
+            <Progress
+              style={{
+                borderRadius: 0,
+              }}
+              percent={progressBar}
+              showInfo={false}
+              steps={30}
+              size="small"
+              strokeWidth={10}
+              strokeLinecap="square"
+              strokeColor={
+                useDark ? "rgba(255, 255, 255, 0.65)" : "rgba(0, 0, 0, 0.65)"
+              }
+            />
+
+            <span>0{PortfolioData.length}</span>
+
+            {/* {screens.xl && (
+              <span style={{ paddingRight: 12 }}>Swipe Left and Right</span>
+            )}
+
+            <div>
+              <Tooltip placement="topLeft" title={"You Can Try Swipe To Card"}>
+                <img
+                  style={{
+                    width: screens.xl ? 18 : 12,
+                    height: screens.xl ? 18 : 12,
+                  }}
+                  src={require("../assets/images/swipe-light.png")}
+                />
+              </Tooltip>
+            </div> */}
+          </Space>
+          {/* <Row justify="start" style={{ paddingBottom: 10 }}>
+            <Col span={1} onClick={() => gestureTrigger()}>
               <ForwardOutlined style={{ fontSize: 18 }} />
             </Col>
-            <Col span={screens.xl ? 1 : 2} onClick={() => ReDeckTrigger()}>
+            <Col span={1} onClick={() => ReDeckTrigger()}>
               <RetweetOutlined style={{ fontSize: 18 }} />
             </Col>
 
-            <Col span={screens.xl ? 1 : 2} style={{ textAlign: "center" }}>
+            <Col span={1} style={{ textAlign: "center" }}>
               <span>0{PortfolioData.length - currentIdx}</span>
             </Col>
-            <Col span={screens.xl ? 2 : 6}>
+            <Col span={4} style={{ textAlign: "center" }}>
               <Progress
                 style={{
                   borderRadius: 0,
                 }}
                 percent={progressBar}
                 showInfo={false}
+                steps={20}
+                size="small"
+                strokeWidth={10}
                 strokeLinecap="square"
                 strokeColor={
                   useDark ? "rgba(255, 255, 255, 0.65)" : "rgba(0, 0, 0, 0.65)"
                 }
               />
             </Col>
-            <Col span={screens.xl ? 1 : 2} style={{ textAlign: "center" }}>
+            <Col span={1} style={{ textAlign: "center" }}>
               <span>0{PortfolioData.length}</span>
             </Col>
 
@@ -190,15 +239,15 @@ const DeckFolio = () => {
               <Tooltip placement="topLeft" title={"You Can Try Swipe To Card"}>
                 <img
                   style={{
-                    width: 18,
-                    height: 18,
+                    width: screens.xl ? 18 : 12,
+                    height: screens.xl ? 18 : 12,
                   }}
                   src={require("../assets/images/swipe-light.png")}
                 />
               </Tooltip>
             </Col>
-          </Row>
-          <Row justify={screens.xl ? "center" : "start"}>
+          </Row> */}
+          <Row justify="start">
             <Col span={24}>
               <motion.div animate={controls}>
                 <DetailInfo data={InfoData} animating={animating} />

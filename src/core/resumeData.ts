@@ -16,10 +16,15 @@ const resumeData: Resume[] = [
     resumeStory: [
       {
         type: "process",
-        title: "Gint Connect Telematics 플랫폼 개발 (2019.12 ~ 현재)",
+        title: "Gint Connect Telematics 플랫폼 개발 (19.12 ~ 현재)",
+        isDeveloperPosition: true,
         programLanguage:
           "React(TypeScript) / Mobx / AntDesign / Appsync(Apollo)",
         subDescriptions: [
+          {
+            title: "https://daedong-connect.gintlab.com/",
+            type: "link",
+          },
           {
             title:
               "Gint-Connect 단말기로 쌓여진 트랙터 데이터를 이용한 Web Admin 어플리케이션 개발",
@@ -87,7 +92,8 @@ const resumeData: Resume[] = [
       },
       {
         type: "process",
-        title: "국립농원과학원 봉군형성실 Web Console 개발( 2020.01 ~ 현재 )",
+        title: "국립농원과학원 봉군형성실 Web Console 개발(20.01 ~ 현재)",
+        isDeveloperPosition: true,
         programLanguage: "React / Material UI",
         subDescriptions: [
           {
@@ -108,7 +114,8 @@ const resumeData: Resume[] = [
       },
       {
         type: "complete",
-        title: "국립농원과학원 봉군형성실 Mobile App 개발(2020.03 ~ 2020.06)",
+        title: "국립농원과학원 봉군형성실 Mobile App 개발(20.03 ~ 20.06)",
+        isDeveloperPosition: true,
         programLanguage: "React Native / NativeBase / Victory Chart",
         subDescriptions: [
           {
@@ -128,7 +135,8 @@ const resumeData: Resume[] = [
       },
       {
         type: "complete",
-        title: "충남대학교 농업동력 테스트 프로젝트(2020.02 ~ 2020.03)",
+        title: "충남대학교 농업동력 테스트 프로젝트(20.02 ~ 20.03)",
+        isDeveloperPosition: true,
         programLanguage: "React / AntDesign",
         subDescriptions: [
           {
@@ -150,7 +158,7 @@ const resumeData: Resume[] = [
     ],
   },
   {
-    period: "2019.12 ~ 현재",
+    period: "2018.05 ~ 2019.09",
     tag: {
       type: "complete",
       text: "계약만료",
@@ -164,7 +172,8 @@ const resumeData: Resume[] = [
     resumeStory: [
       {
         type: "complete",
-        title: "알티캐스트 & KT 셋탑 키즈랜드 2.0 프로젝트 (2018.05~2018.10)",
+        title: "알티캐스트 & KT 셋탑 키즈랜드 2.0 프로젝트(18.05 ~ 18.10)",
+        isDeveloperPosition: true,
         programLanguage: "Javascript(es5)",
         subDescriptions: [
           {
@@ -180,6 +189,10 @@ const resumeData: Resume[] = [
             type: "normal",
           },
           {
+            title: "Zira 를 이용한 이슈트래커 및 이슈사항 관리",
+            type: "normal",
+          },
+          {
             title:
               "관련 기사 https://www.mk.co.kr/news/special-edition/view/2018/12/777042/",
             type: "normal",
@@ -188,7 +201,8 @@ const resumeData: Resume[] = [
       },
       {
         type: "complete",
-        title: "KT 기가지니 '미봇' POC 프로젝트 (2018.05 ~ 2018.10)",
+        title: "KT 기가지니 '미봇' POC 프로젝트 (18.05 ~ 18.10)",
+        isDeveloperPosition: true,
         programLanguage: "Javascript(es5)",
         subDescriptions: [
           {
@@ -209,7 +223,8 @@ const resumeData: Resume[] = [
 
       {
         type: "complete",
-        title: "알티캐스트 & KT 셋탑 Voice UI 프로젝트(2019.05~2019.09)",
+        title: "알티캐스트 & KT 셋탑 Voice UI 프로젝트(19.05 ~ 19.09)",
+        isDeveloperPosition: true,
         programLanguage: "Javascript(es5)",
         subDescriptions: [
           {
@@ -230,7 +245,8 @@ const resumeData: Resume[] = [
       {
         type: "complete",
         title:
-          "알티캐스트 & KT 셋탑 키즈랜드 2.0 고도화 프로젝트(2018.12 ~ 2019.04)",
+          "알티캐스트 & KT 셋탑 키즈랜드 2.0 고도화 프로젝트(18.12 ~ 19.04)",
+        isDeveloperPosition: true,
         programLanguage: "Javascript(es5)",
         subDescriptions: [
           {
@@ -262,7 +278,8 @@ const resumeData: Resume[] = [
       {
         type: "complete",
         title:
-          "오산시 공공기관 오산백년 시민대학 시스템 구축 프로젝트(2017.04 ~ 2018.01)",
+          "오산시 공공기관 오산백년 시민대학 시스템 구축 프로젝트(17.04 ~ 18.01)",
+        isDeveloperPosition: true,
         programLanguage: "Spring MVC / Ibatis / HTML & CSS & JQuery",
         subDescriptions: [
           {
@@ -308,7 +325,8 @@ const resumeData: Resume[] = [
       {
         type: "complete",
         title:
-          "오산시 공공기관 오산백년 시민대학 시스템 구축 프로젝트(2017.04 ~ 2018.01)",
+          "오산시 공공기관 오산백년 시민대학 시스템 구축 프로젝트(17.04 ~ 18.01)",
+        isDeveloperPosition: true,
         programLanguage: "Spring MVC / Ibatis / HTML & CSS & JQuery",
         subDescriptions: [
           {
@@ -362,7 +380,8 @@ const resumeData: Resume[] = [
     resumeStory: [
       {
         type: "complete",
-        title: "웹 서버 & 클라이언트 프로그래밍 과정 수료(2016.09 ~ 2017.03)",
+        title: "웹 서버 & 클라이언트 프로그래밍 과정 수료",
+        isDeveloperPosition: true,
         programLanguage: "Spring / MyBatis / Maria DB / HTML & CSS & JQuery",
         subDescriptions: [
           {
@@ -394,7 +413,8 @@ const resumeData: Resume[] = [
     resumeStory: [
       {
         type: "complete",
-        title: "사내 홈페이지 고도화 (2015.08 ~2016.06)",
+        title: "사내 홈페이지 고도화 (15.08 ~ 16.06)",
+        isDeveloperPosition: true,
         programLanguage: "Spring / JSP / Servlet / HTML",
         subDescriptions: [
           {
@@ -410,7 +430,8 @@ const resumeData: Resume[] = [
       },
       {
         type: "complete",
-        title: "홍보실 사무 (2014.06 ~2015.08)",
+        title: "홍보실 사무 (14.06 ~ 15.08)",
+        isDeveloperPosition: false,
         programLanguage: "",
         subDescriptions: [
           {

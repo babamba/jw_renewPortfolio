@@ -1,7 +1,7 @@
 /* noto-sans-regular - latin */
 // @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
 @import (css)
-  url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+  url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
 // @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 // * {
 //   font-family: "Noto Sans KR";
@@ -9,12 +9,12 @@
 
 * {
   // font-family: 'Spoqa Han Sans', sans-serif;
-  font-family: 'Noto Sans KR', -apple-system, system-ui, sans-serif;
+  font-family: "Noto Sans KR", -apple-system, system-ui, sans-serif;
   // font-family: 'Noto Sans KR', 'Spoqa Han Sans', sans-serif;
 }
 
 .ant-card-hoverable:hover {
-  box-shadow: '0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0), 0 5px 12px 4px rgba(0, 0, 0, 0.09)' !important;
+  box-shadow: "0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0), 0 5px 12px 4px rgba(0, 0, 0, 0.09)" !important;
 }
 
 .ant-list-pagination {
@@ -137,6 +137,9 @@ body.light {
       width: 0;
       height: 0;
     }
+  }
+  .ant-progress-steps-item {
+    background: rgba(0, 0, 0, 0.08);
   }
 }
 
@@ -300,7 +303,15 @@ li {
   height: 90vh;
   opacity: 0.8;
   color: #fff;
-  background: linear-gradient(-70deg, #22c1c3, #ebe650, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(
+    -70deg,
+    #22c1c3,
+    #ebe650,
+    #ee7752,
+    #e73c7e,
+    #23a6d5,
+    #23d5ab
+  );
   background-size: 300% 300%;
   -webkit-animation: Gradient 15s ease infinite;
   -moz-animation: Gradient 15s ease infinite;
@@ -366,8 +377,8 @@ li {
   height: 100%;
   width: 100%;
   user-select: none;
-  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica,
-    ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+    helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
   position: fixed;
   overflow: hidden;
 }
@@ -424,7 +435,8 @@ li {
   max-height: 700px;
   will-change: transform;
   border-radius: 10px;
-  box-shadow: 0 12.5px 30px -10px rgba(50, 50, 73, 0.4), 0 10px 10px -10px rgba(50, 50, 73, 0.3);
+  box-shadow: 0 12.5px 30px -10px rgba(50, 50, 73, 0.4),
+    0 10px 10px -10px rgba(50, 50, 73, 0.3);
 
   @media screen and (max-width: 473px) {
     width: 30vh;
@@ -445,7 +457,8 @@ li {
   max-height: 700px;
   will-change: transform;
   border-radius: 10px;
-  box-shadow: 0 12.5px 30px -10px rgba(50, 50, 73, 0.4), 0 10px 10px -10px rgba(50, 50, 73, 0.3);
+  box-shadow: 0 12.5px 30px -10px rgba(50, 50, 73, 0.4),
+    0 10px 10px -10px rgba(50, 50, 73, 0.3);
 }
 
 .navigation-menu-ul {

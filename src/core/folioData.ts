@@ -9,7 +9,7 @@ export default [
     position: "Backend & FrontEnd Spring & Jquery",
     titleDetail: "경기도시공사 인터넷청약시스템 구축 프로젝트",
     stack: "주 사용 기술 : Spring, Tibero, ibatis, JavaScript(Jquery)",
-    link: "https://apply.gico.or.kr/index.do",
+    link: "https://apply.gh.or.kr/index.do",
     subDescriptions: [
       "경기도 및 경기도시공사에서 성공적으로 진행중인 따복하우스 사업을 인터넷시스템으로 구축",
       "12월 중순 1차 인터넷 청약신청시스템 선 구축 후 운영 및 실시간 데이터를 통한",
@@ -110,8 +110,7 @@ export default [
     titleDetail: "Gint Connect Telematics 플랫폼 개발",
     stack:
       "주 사용 기술 : React(TypeScript) / Mobx / AntDesign / Appsync(Apollo)",
-    link:
-      "http://gint-telematics-console.s3-website.ap-northeast-2.amazonaws.com/",
+    link: "https://daedong-connect.gintlab.com/",
     subDescriptions: [
       "Gint-Connect 단말기로 쌓여진 트랙터 데이터를 이용한 Web Admin 어플리케이션 개발",
       "AWS lambda / Aws DynamoDB를 이용해 개발된 API 기준",

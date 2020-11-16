@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import { ItemStyle } from "interfaces/Motion";
 import { Badge, Typography, Divider, Grid } from "antd";
+import { ToolOutlined } from "@ant-design/icons";
 import { Story } from "interfaces/resume";
 
 const { Text, Link } = Typography;
@@ -94,10 +95,19 @@ const ResumeStory: FC<Props> = (props: Props) => {
           {story.title}
         </JobMainText>
         <JobText>
-          <Text underline strong>
-            개발언어 : {story.programLanguage}
-          </Text>
-          <br />
+          {story.isDeveloperPosition && (
+            <>
+              - <ToolOutlined style={{ paddingRight: 8, fontSize: 14 }} />
+              <Text strong>
+                개발언어 :{" "}
+                <Text underline strong code>
+                  {story.programLanguage}
+                </Text>
+              </Text>
+              <br />
+            </>
+          )}
+
           {story.subDescriptions.map((item, idx) =>
             generateText(idx, item.type, item.title)
           )}

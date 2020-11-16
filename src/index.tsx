@@ -22,7 +22,7 @@ configure({
 
 figlet.parseFont("Standard", font);
 figlet.text(
-  "Hello, I'm JW",
+  "Hello. JW",
   {
     font: "Standard",
   },

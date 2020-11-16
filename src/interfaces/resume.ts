@@ -16,6 +16,7 @@ export interface Resume {
 export interface Story {
   type: "process" | "complete";
   title: string;
+  isDeveloperPosition: boolean;
   programLanguage: string;
   subDescriptions: SubDescription[];
 }

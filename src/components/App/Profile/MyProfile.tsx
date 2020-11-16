@@ -176,7 +176,35 @@ const MyProfile: FC = () => {
                 <MainIntroSmallText>안녕하세요.</MainIntroSmallText>
               </motion.div>
               <motion.div variants={textVariants}>
-                <SubIntroSmallText>개발자 김진원입니다.</SubIntroSmallText>
+                {/* {screens.lg && (
+                  <SubIntroText>
+                    <ReactRotatingText
+                      items={[
+                        "Front",
+                        "React",
+                        "UI ",
+                        "BackEnd",
+                        "진지한",
+                        "배고픈",
+                      ]}
+                    />
+                  </SubIntroText>
+                )} */}
+                <SubIntroSmallText>
+                  {screens.sm && (
+                    <ReactRotatingText
+                      items={[
+                        "Front",
+                        "React",
+                        "UI ",
+                        "BackEnd",
+                        "진지한",
+                        "배고픈",
+                      ]}
+                    />
+                  )}
+                  개발자 김진원입니다.
+                </SubIntroSmallText>
               </motion.div>
             </Col>
           )}

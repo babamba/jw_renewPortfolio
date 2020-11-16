@@ -1,7 +1,8 @@
 import React, { useLayoutEffect, useState, useEffect, useRef } from "react";
 import { observer } from "mobx-react-lite";
 import { ThemeProvider } from "antd-theme";
-import { Layout, Row, Col, Affix, Grid } from "antd";
+import { Layout, Row, Col, Affix, Grid, BackTop } from "antd";
+import { ArrowUpOutlined } from "@ant-design/icons";
 import { useWindowHeight } from "@react-hook/window-size";
 import ReactGA from "react-ga";
 
@@ -14,6 +15,7 @@ import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { useStore } from "hooks/useStore";
 import { useRouter } from "hooks/useRouter";
 import ContactCard from "components/Card/ContactCard";
+import { ContentType } from "contentful";
 
 const App = () => {
   const menuSticky = useRef(null);
@@ -126,6 +128,27 @@ const App = () => {
                       </div>
                     </Col>
                   </Row>
+                  <BackTop
+                    visibilityHeight={400}
+                    style={{ bottom: 30, right: 30 }}
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      style={{
+                        height: 40,
+                        width: 40,
+                        lineHeight: "40px",
+                        borderRadius: 4,
+                        backgroundColor: "rgba(152, 44, 255, 0.4)",
+                        color: "#fff",
+                        textAlign: "center",
+                        fontSize: 14,
+                      }}
+                    >
+                      <ArrowUpOutlined />
+                    </motion.div>
+                  </BackTop>
                 </Layout.Content>
               )}
             </motion.div>

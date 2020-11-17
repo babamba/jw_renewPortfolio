@@ -8,7 +8,7 @@ import {
   BackEndStack,
   CiStack,
   FrontEndStack,
-  InterestStack,
+  InterestStack
 } from "core/Stack";
 
 import { motion } from "framer-motion";
@@ -16,7 +16,7 @@ import {
   pageTransition,
   pageVariants,
   ContainerStyle,
-  FastContainerStyle,
+  FastContainerStyle
 } from "interfaces/Motion";
 
 import HeadMeta from "components/Helmet/HeadMeta";
@@ -29,9 +29,7 @@ const IntroText = styled.h2`
   font-weight: 300;
   padding: 0px 24px;
   color: ${(props: any) =>
-    props.theme === "true"
-      ? "rgba(255, 255, 255, 0.65)"
-      : "rgba(0, 0, 0, 0.65)"};
+    props.theme === "true" ? "rgba(255, 255, 255, 0.65)" : "rgba(0, 0, 0, 0.65)"};
   @media only screen and (min-width: 200px) and (max-width: 767px) {
     font-size: 14px;
   }
@@ -48,21 +46,6 @@ const StackText = styled.span`
 const HashTag = styled.p`
   font-weight: 300;
   padding: 0px 24px;
-`;
-
-const TitleBox = styled.div`
-  display: block;
-  padding-top: 16px;
-`;
-
-const FrontStackBox = styled.div`
-  text-align: center;
-  height: 140px;
-`;
-
-const BackStackBox = styled.div`
-  text-align: center;
-  height: 140px;
 `;
 
 type Props = {};
@@ -90,7 +73,7 @@ const About: FC<Props> = (props: Props) => {
         position: "absolute",
         width: "100%",
         height: "100%",
-        padding: screens.xl ? "0px" : "20px",
+        padding: screens.xl ? "0px" : "20px"
       }}
       // style={pageStyle}
     >
@@ -104,10 +87,10 @@ const About: FC<Props> = (props: Props) => {
       <Card
         style={{
           borderRadius: 12,
-          margin: screens.xs ? 0 : 20,
+          margin: screens.xs ? 0 : 20
         }}
         bodyStyle={{
-          padding: "18px 24px",
+          padding: "18px 24px"
         }}
       >
         <Row gutter={24}>
@@ -115,8 +98,7 @@ const About: FC<Props> = (props: Props) => {
           <Col xs={24} sm={24} md={24} lg={18} xl={18}>
             <Divider orientation="left">INTRODUCE</Divider>
             <IntroText theme={useDark ? "true" : "false"}>
-              안녕하세요. 저는 현재{" "}
-              <Typography.Text underline>FrontEnd</Typography.Text> 직군에서
+              안녕하세요. 저는 현재 <Typography.Text underline>FrontEnd</Typography.Text> 직군에서
               프로젝트를 진행하고있습니다. <br />
               Javascript 언어를 가장 좋아합니다. <br />
               FrontEnd 및 BackEnd 직군으로 프로젝트를 진행한 경력이 있습니다.
@@ -132,8 +114,8 @@ const About: FC<Props> = (props: Props) => {
           <Col xs={24} sm={24} md={24} lg={6} xl={6}>
             <Divider orientation="left">TAGS</Divider>
             <HashTag>
-              #React #NextJS #Javascript #Typescript #Node.JS #jQuery #Express
-              #GraphQL #MySQL #AWS #Cognito #MySQL #SpringBoot
+              #React #NextJS #Javascript #Typescript #Node.JS #jQuery #Express #GraphQL #MySQL #AWS
+              #Cognito #MySQL #SpringBoot
             </HashTag>
           </Col>
         </Row>
@@ -141,9 +123,7 @@ const About: FC<Props> = (props: Props) => {
           FrontEnd Stack
           <StackText style={{ paddingLeft: 12, fontSize: 12, fontWeight: 100 }}>
             <Badge status="processing" color="green" />
-            {screens.md
-              ? ": 현재 진행 중인 프로젝트에서 사용중"
-              : ": 현재 프로젝트에서 사용중"}
+            {screens.md ? ": 현재 진행 중인 프로젝트에서 사용중" : ": 현재 프로젝트에서 사용중"}
           </StackText>
         </Divider>
 

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useEffect } from "react";
+import React, { FC, useState, useEffect } from "react";
 import ReactGA from "react-ga";
 import { observer } from "mobx-react-lite";
 import {
@@ -11,7 +11,7 @@ import {
   Skeleton,
   Empty,
   Grid,
-  Spin,
+  Spin
 } from "antd";
 
 import { motion } from "framer-motion";
@@ -21,30 +21,14 @@ import { useStore } from "hooks/useStore";
 
 import { ContentfulService } from "core/contentful";
 
-import {
-  pageTransition,
-  pageVariants,
-  FastContainerStyle,
-  ItemStyle,
-} from "interfaces/Motion";
+import { pageTransition, pageVariants, FastContainerStyle, ItemStyle } from "interfaces/Motion";
 import { BlogPost } from "interfaces/post";
 
 import BlogCard from "components/Card/BlogCard";
 import HeadMeta from "components/Helmet/HeadMeta";
 import LottieLoader from "components/Loader/LottieLoader";
 
-interface PostPageProps {
-  entries: BlogPost[];
-  tags: { id: string; name: string }[];
-  url: any;
-  total: number;
-  skip: number;
-  limit: number;
-  page?: number;
-  totalCount: number;
-}
-
-const Post: FunctionComponent<any> = () => {
+const Post: FC = () => {
   const period = 8;
   const router = useRouter();
   const { currentPage, setCurrentPage } = useStore("common");
@@ -54,7 +38,7 @@ const Post: FunctionComponent<any> = () => {
   const [pagination, setPagination] = useState({
     total: 1,
     page: currentPage,
-    pageSize: period,
+    pageSize: period
   });
 
   const [content, setContent] = useState({
@@ -62,13 +46,13 @@ const Post: FunctionComponent<any> = () => {
     tags: [
       {
         id: "",
-        name: "",
-      },
+        name: ""
+      }
     ],
     entries: [],
     total: 0,
     skip: 0,
-    limit: 0,
+    limit: 0
   });
 
   useEffect(() => {
@@ -84,11 +68,11 @@ const Post: FunctionComponent<any> = () => {
     fetch(currentPage, "");
   }, []);
 
-  const setPage = async (param) => {
+  const setPage = async param => {
     setPagination({
       total: param.totalCount,
       page: param.selectPage,
-      pageSize: param.period,
+      pageSize: param.period
     });
   };
 
@@ -97,31 +81,28 @@ const Post: FunctionComponent<any> = () => {
     const contentfulService = new ContentfulService();
     // const { tags } = await contentfulService.getAllTags();
     const totalCount = await contentfulService.getAllEntriesCount({
-      tag: selectTag ? selectTag.toString() : "",
+      tag: selectTag ? selectTag.toString() : ""
     });
 
     await setPage({
       totalCount,
       selectPage,
-      period,
+      period
     });
 
     const result: any = await contentfulService.getBlogPostEntries({
       tag: selectTag ? selectTag.toString() : "",
       skip: (selectPage - 1) * period,
-      limit: period,
+      limit: period
     });
 
-    if (result) {
-      setContent(result);
-    }
-
+    if (result) setContent(result);
     setLoading(false);
   };
 
   const Loader = {
     spinning: loading,
-    indicator: <LottieLoader text="loading" />,
+    indicator: <LottieLoader text="loading" />
     // tip: '조회 중입니다'
   };
 
@@ -130,7 +111,7 @@ const Post: FunctionComponent<any> = () => {
     // updatePage(page);
     fetch(page, selectTag);
   };
-  const handleTagChosen = (tag) => {
+  const handleTagChosen = tag => {
     updateTag(tag.id);
     fetch(1, tag.id);
   };
@@ -145,23 +126,18 @@ const Post: FunctionComponent<any> = () => {
       style={{
         position: "absolute",
         width: "100%",
-        padding: screens.xl ? "0px" : "20px",
+        padding: screens.xl ? "0px" : "20px"
       }}
       // style={pageStyle}
     >
-      <HeadMeta
-        title="JW BLOG"
-        text="JW BLOG"
-        keywords="JW BLOG"
-        description="JW BLOG"
-      />
+      <HeadMeta title="JW BLOG" text="JW BLOG" keywords="JW BLOG" description="JW BLOG" />
       <CardView
         style={{
           borderRadius: 12,
-          margin: screens.xs ? 0 : 20,
+          margin: screens.xs ? 0 : 20
         }}
         bodyStyle={{
-          padding: "18px",
+          padding: "18px"
         }}
       >
         <Divider orientation="left" style={{ marginTop: 0 }}>
@@ -177,10 +153,7 @@ const Post: FunctionComponent<any> = () => {
                   selectedTagId={selectTag}
                 />
               </Col> */}
-              <Col
-                span={24}
-                style={{ textAlign: "right", alignSelf: "center" }}
-              >
+              <Col span={24} style={{ textAlign: "right", alignSelf: "center" }}>
                 <Pagination
                   {...pagination}
                   onChange={onHandlePaging}
@@ -208,7 +181,7 @@ const Post: FunctionComponent<any> = () => {
                     md: 2,
                     lg: 4,
                     xl: 4,
-                    xxl: 4,
+                    xxl: 4
                   }}
                   dataSource={content.entries}
                   renderItem={(item: any) => {
@@ -231,7 +204,7 @@ const Post: FunctionComponent<any> = () => {
                       md: 2,
                       lg: 4,
                       xl: 4,
-                      xxl: 4,
+                      xxl: 4
                     }}
                   >
                     <List.Item>

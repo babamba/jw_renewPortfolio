@@ -2,12 +2,7 @@ import React, { FunctionComponent, useEffect } from "react";
 import { Card, Grid, Badge } from "antd";
 import { MailOutlined } from "@ant-design/icons";
 import styled from "styled-components";
-import {
-  pageTransition,
-  pageVariants,
-  ContainerStyle,
-  ItemLeftStyle,
-} from "interfaces/Motion";
+import { pageTransition, pageVariants, ContainerStyle, ItemLeftStyle } from "interfaces/Motion";
 import { motion } from "framer-motion";
 import HeadMeta from "components/Helmet/HeadMeta";
 import { useRouter } from "hooks/useRouter";
@@ -53,7 +48,7 @@ const Contact: FunctionComponent<Props> = ({}) => {
       style={{
         position: "absolute",
         width: "100%",
-        padding: screens.xl ? "0px" : "20px",
+        padding: screens.xl ? "0px" : "20px"
       }}
       // style={pageStyle}
     >
@@ -67,7 +62,7 @@ const Contact: FunctionComponent<Props> = ({}) => {
         style={{
           borderRadius: 12,
           marginBottom: screens.xl ? 0 : 30,
-          margin: screens.xl ? "40px" : 0,
+          margin: screens.xl ? "40px" : 0
         }}
       >
         <motion.div
@@ -80,8 +75,8 @@ const Contact: FunctionComponent<Props> = ({}) => {
           <ContentBox>
             <motion.div variants={ItemLeftStyle}>
               <GuideText>
-                <StatusBadge status="success" /> 현재 사이트는 React / AntDesign
-                / ContentFul 으로 만들어졌습니다.
+                <StatusBadge status="success" /> 현재 사이트는 React / AntDesign / ContentFul 으로
+                만들어졌습니다.
               </GuideText>
             </motion.div>
           </ContentBox>
@@ -95,11 +90,7 @@ const Contact: FunctionComponent<Props> = ({}) => {
             <motion.div variants={ItemLeftStyle}>
               <GuideText>
                 <MailOutlined />
-                <a
-                  style={{ paddingLeft: 8 }}
-                  className="email"
-                  href="mailto:orochi13@naver.com"
-                >
+                <a style={{ paddingLeft: 8 }} className="email" href="mailto:orochi13@naver.com">
                   orochi13@naver.com
                 </a>
               </GuideText>
@@ -114,8 +105,7 @@ const Contact: FunctionComponent<Props> = ({}) => {
               </motion.div>
               <br />
               <motion.div variants={ItemLeftStyle}>
-                저의 포트폴리오를 시간내어 {screens.xs && <br />} 봐주셔서
-                감사합니다 :D <br />
+                봐주셔서 감사합니다 :D <br />
               </motion.div>
 
               <motion.div variants={ItemLeftStyle}>김진원 올림.</motion.div>

@@ -18,14 +18,14 @@ import { enableLogging } from "mobx-color-logger";
 
 configure({
   useProxies: "never",
-  enforceActions: "observed",
+  enforceActions: "observed"
 });
 
 figlet.parseFont("Standard", font);
 figlet.text(
   "Hello. JW",
   {
-    font: "Standard",
+    font: "Standard"
   },
   function (err, data) {
     console.log(data);
@@ -38,12 +38,13 @@ if (process.env.NODE_ENV === "production") {
   ReactGA.initialize(`${process.env.REACT_APP_GA_TRACKING_ID}`);
 } else if (process.env.NODE_ENV === "development") {
   console.log("Development Mode");
+
   enableLogging({
     predicate: () => true,
     action: true,
     reaction: false,
     transaction: true,
-    compute: true,
+    compute: true
   });
 }
 

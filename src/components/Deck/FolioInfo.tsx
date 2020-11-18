@@ -38,7 +38,7 @@ const Card: FC<Props> = (props: Props) => {
     <Link
       to={`${match.url}/${data.id}`}
       style={{
-        color: useDark ? "rgba(255, 255, 255, 0.65)" : "rgba(0, 0, 0, 0.65)",
+        color: useDark ? "rgba(255, 255, 255, 0.65)" : "rgba(0, 0, 0, 0.65)"
       }}
     >
       <InfoContainer
@@ -50,10 +50,10 @@ const Card: FC<Props> = (props: Props) => {
         <motion.div variants={ItemStyle}>
           <Typography.Text
             style={{
-              fontSize: 28,
+              fontSize: 32,
               marginBottom: 14,
-              fontWeight: 600,
-              letterSpacing: -2,
+              fontWeight: 800,
+              letterSpacing: -2.5
             }}
           >
             {data.name}

@@ -29,7 +29,7 @@ interface Props {
 const StackCard: FC<Props> = (props: Props) => {
   const { stackTitle, imgUrl, tooltipTitle, isUsed } = props;
   const screens = Grid.useBreakpoint();
-  const RenderTooltip = (text) => {
+  const RenderTooltip = text => {
     return <Typography.Text>{text}</Typography.Text>;
   };
 
@@ -46,7 +46,13 @@ const StackCard: FC<Props> = (props: Props) => {
           </Tooltip>
           <TitleBox>
             <StackText>
-              <Typography.Paragraph ellipsis>
+              <Typography.Paragraph
+                ellipsis
+                style={{
+                  fontWeight: 400,
+                  letterSpacing: -0.2
+                }}
+              >
                 {isUsed && <Badge status="processing" color="green" />}
                 {stackTitle}
               </Typography.Paragraph>

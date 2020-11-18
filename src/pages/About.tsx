@@ -94,7 +94,7 @@ const About: FC<Props> = (props: Props) => {
           boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(206, 203, 226, 1)"
         }}
         bodyStyle={{
-          padding: "18px 24px"
+          padding: "18px"
         }}
       >
         <Row gutter={24}>

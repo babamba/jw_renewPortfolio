@@ -3,7 +3,7 @@ export default [
     // 경기도시공사 프로젝트
     id: "gicoapart",
     pics: "mock_gico.png",
-    name: "GICO Housing Subscription Center",
+    name: "GICO Housing Center",
     age: `2017.12 ~ 2018.04`,
     distance: "Complete",
     position: "Backend & FrontEnd Spring & Jquery",
@@ -16,8 +16,8 @@ export default [
       "경쟁률 및 현황 분석을 제공 및 민원사항 수렴 후 빠른 조치 제공",
       "분석단계 SH/LH 컨설팅 및 선진사례도출 > RFP, 제안서 기반 요구사항 / 추적표 / 과업대비표 / 도메인정의 도출 > 설계단계",
       "유즈케이스 / 화면UI설계서 자료 도출",
-      "UI설계서를 위한 Nexacro를 사용한 화면 설계",
-    ],
+      "UI설계서를 위한 Nexacro를 사용한 화면 설계"
+    ]
   },
   {
     // 오산백년대학 프로젝트
@@ -28,8 +28,7 @@ export default [
     distance: "Complete",
     position: "Backend & FrontEnd Spring & Jquery",
     titleDetail: "오산시 공공기관 오산백년 시민대학 시스템 구축 프로젝트",
-    stack:
-      "주 사용 기술 : Spring, Oracle, ibatis, JavaScript(Jquery), HTML, CSS(UI-KIT)",
+    stack: "주 사용 기술 : Spring, Oracle, ibatis, JavaScript(Jquery), HTML, CSS(UI-KIT)",
     link: "https://www.osan.go.kr/osanedu/portal/main/univ.do",
     subDescriptions: [
       "분석 단계 - 요구사항 도출 및 화면 설계",
@@ -45,14 +44,14 @@ export default [
       "플랫폼 중심의 강사, 활동가, 수강생 간의 연계 네트워크 구성)",
       "형상 관리(SVN), 젠킨스(Maven빌드 tomcat war redeploy)",
       "리포팅 툴을 통한 관리자 통합 분석 및 보고서 제공(ClipReport)",
-      "웹표준/웹접근성 관리",
-    ],
+      "웹표준/웹접근성 관리"
+    ]
   },
   {
     // 키즈랜드
     id: "kidsland",
     pics: "mock_kids.png",
-    name: "KT IPTV Middle Ware KidsLand Service v2",
+    name: "KT IPTV MiddleWare KidsLand Service v2",
     age: "2018.05 ~ 2019.09",
     distance: "Complete",
     position: "FrontEnd Javascript",
@@ -64,8 +63,8 @@ export default [
       "셋탑 어플리케이션 모듈 키즈랜드2.0 프로젝트",
       "전체적인 UI 변경 및 voiceable 로직 추가",
       "QA테스트를 통한 이슈사항 관리 및 송출 전 안정화",
-      "Zira 를 이용한 이슈트래커 및 이슈사항 관리",
-    ],
+      "Zira 를 이용한 이슈트래커 및 이슈사항 관리"
+    ]
   },
   {
     id: "beeapp",
@@ -80,8 +79,8 @@ export default [
     subDescriptions: [
       "국립 농과원 web project 기반 React Native로 App 개발 진행",
       "Flask / mysql 로 개발된 서버의 API Data를 기반으로 ",
-      " ReactNative / NativeBase / Victory Chart 로 개발",
-    ],
+      " ReactNative / NativeBase / Victory Chart 로 개발"
+    ]
   },
   {
     id: "beeweb",
@@ -97,8 +96,8 @@ export default [
       "국립농업과학원 봉군형성실 iot Project의 web console 개발진행",
       "Flask / mysql 로 개발된 서버의 API Data를 기반으로 ",
       "React / Material-UI로 개발.",
-      "실시간 데이터 fetching 처리 및 Data Visualization 개발",
-    ],
+      "실시간 데이터 fetching 처리 및 Data Visualization 개발"
+    ]
   },
   {
     id: "telematices",
@@ -108,8 +107,7 @@ export default [
     distance: "Progress",
     position: "FrontEnd React",
     titleDetail: "Gint Connect Telematics 플랫폼 개발",
-    stack:
-      "주 사용 기술 : React(TypeScript) / Mobx / AntDesign / Appsync(Apollo)",
+    stack: "주 사용 기술 : React(TypeScript) / Mobx / AntDesign / Appsync(Apollo)",
     link: "https://daedong-connect.gintlab.com/",
     subDescriptions: [
       "Gint-Connect 단말기로 쌓여진 트랙터 데이터를 이용한 Web Admin 어플리케이션 개발",
@@ -126,7 +124,7 @@ export default [
       "AWS S3 / CloudFront를 이용한 프로덕션 빌드 결과물 배포",
       "Cypress를 이용한 e2e test code 작성 및 테스트 자동화",
       "디자이너의 와이어프레임을 참고하여 StoryBook 으로 UX / UI 문서화 진행.",
-      "서비스 기획 회의 및 요구사항도출 문서화",
-    ],
-  },
+      "서비스 기획 회의 및 요구사항도출 문서화"
+    ]
+  }
 ];

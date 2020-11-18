@@ -87,7 +87,7 @@ const App = () => {
           // set({ x: 200 });
           break;
         case "portfolio":
-          body.style.backgroundColor = "rgba(249, 251, 236, 1)";
+          body.style.backgroundColor = "rgba(232, 255, 244, 1)";
           setBackColor("rgba(232, 255, 244, 1)");
           // set({ x: 100 });
           break;

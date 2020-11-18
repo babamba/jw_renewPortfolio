@@ -37,7 +37,7 @@ const DescBox = styled.div`
 `;
 const CompanyText = styled.span`
   padding-right: 4px;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 1.3em;
 `;
 
@@ -54,9 +54,7 @@ const ResumeContent: FC<Props> = (props: Props) => {
       <Badge.Ribbon
         style={{ lineHeight: "20px", marginTop: 8 }}
         text={
-          <Typography.Text
-            style={{ fontSize: 12, color: "rgba(255, 255, 255, 0.85)" }}
-          >
+          <Typography.Text style={{ fontSize: 12, color: "rgba(255, 255, 255, 0.85)" }}>
             {resumeData.tag.text}
           </Typography.Text>
         }
@@ -65,7 +63,7 @@ const ResumeContent: FC<Props> = (props: Props) => {
         <Card
           style={{ borderRadius: 12 }}
           bodyStyle={{
-            padding: screens.md ? "14px 24px" : 18,
+            padding: screens.md ? "14px 24px" : 18
           }}
         >
           <TimeText>{resumeData.period}</TimeText>
@@ -81,9 +79,8 @@ const ResumeContent: FC<Props> = (props: Props) => {
                 <motion.div variants={ItemStyle}>
                   <Avatar
                     shape="circle"
-                    size={50}
-                    src={require("../../../assets/images/company/" +
-                      resumeData.companyImg)}
+                    size={44}
+                    src={require("../../../assets/images/company/" + resumeData.companyImg)}
                   />
                 </motion.div>
 
@@ -94,21 +91,19 @@ const ResumeContent: FC<Props> = (props: Props) => {
                   <motion.div variants={ItemStyle}>
                     {resumeData.usedRank && (
                       <>
-                        <Text strong>직책 :</Text>
+                        <Text strong>직책 : </Text>
                         <PositionText>{resumeData.rank}</PositionText>
                       </>
                     )}
 
                     {screens.md == false && <br />}
-                    {resumeData.usedRank &&
-                      resumeData.usedPosition &&
-                      screens.md && (
-                        <Divider style={{ borderWidth: 3 }} type="vertical" />
-                      )}
+                    {resumeData.usedRank && resumeData.usedPosition && screens.md && (
+                      <Divider style={{ borderWidth: 3 }} type="vertical" />
+                    )}
 
                     {resumeData.usedPosition && (
                       <>
-                        <Text strong>포지션 :</Text>
+                        <Text strong>포지션 : </Text>
                         <PositionText>{resumeData.position}</PositionText>
                       </>
                     )}
@@ -120,9 +115,7 @@ const ResumeContent: FC<Props> = (props: Props) => {
                   return (
                     <React.Fragment key={idx}>
                       <ResumeStory story={item} />
-                      {resumeData.resumeStory.length - 1 !== idx && (
-                        <CustomDivider />
-                      )}
+                      {resumeData.resumeStory.length - 1 !== idx && <CustomDivider />}
                     </React.Fragment>
                   );
                 })}

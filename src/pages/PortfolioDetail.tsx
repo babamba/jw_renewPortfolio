@@ -11,10 +11,7 @@ import ReactGA from "react-ga";
 import PortfolioData from "core/folioData";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 
-const ContentBox = styled.div`
-  padding: 12px;
-`;
-
+const ContentBox = styled.div``;
 const FolioContainer = styled.div`
   margin: 40px;
   padding: 0px 20px;
@@ -29,13 +26,16 @@ const FolioInTitleContainer = styled.div`
   bottom: 10px;
   width: 100%;
   padding: 16px;
+  margin-left: 10px;
 `;
 
 const FolioTitle = styled.span`
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 1);
   letter-spacing: -1.2px;
   font-weight: 600;
   font-size: 1.6rem;
+  text-decoration: underline;
+  text-underline-position: under;
 `;
 
 const FolioImageBox = styled.div`
@@ -50,8 +50,8 @@ const FolioDate = styled.span`
 `;
 
 const StackText = styled.h4`
-  font-weight: 600;
-  font-size: 22px;
+  font-weight: 800;
+  font-size: 18px;
   @media only screen and (min-width: 200px) and (max-width: 767px) {
     font-size: 18px;
   }
@@ -66,7 +66,7 @@ const SubscriptionText = styled(Typography.Text)`
   }
 `;
 const TextContentBox = styled.div`
-  padding: 0px 12px;
+  padding: 0px 18px;
 `;
 
 const ProductLink = styled.a`
@@ -237,10 +237,10 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
               borderRadius: 12,
               border: 0,
               transition: "box-shadow .3s",
-              boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(223, 228, 190 , 1)"
+              boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(192, 216, 204 , 1)"
             }}
             bodyStyle={{
-              padding: screens.xl ? 24 : 0
+              padding: 12
             }}
           >
             <motion.div

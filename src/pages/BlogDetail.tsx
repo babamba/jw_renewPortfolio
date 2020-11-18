@@ -26,7 +26,7 @@ const PostContainer = styled.div`
 let easing = [0.175, 0.85, 0.42, 0.96];
 
 const textVariants = {
-  out: { y: 100, opacity: 0, transition: { duration: 0.5, ease: easing } },
+  out: { y: 20, opacity: 0, transition: { duration: 0.6, ease: easing } },
   in: {
     y: 0,
     opacity: 1,
@@ -36,7 +36,7 @@ const textVariants = {
 
 const backVariants = {
   out: {
-    x: -10,
+    x: -5,
     opacity: 0,
     transition: {
       duration: 0.5,
@@ -166,8 +166,8 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
                     borderRadius: 12,
                     border: 0,
                     transition: "box-shadow .3s",
-                    backgroundColor: useDark ? "#1f1f1f" : "rgba(255, 255, 255, 0.4)"
-                    // boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(223, 228, 190 , 1)"
+                    backgroundColor: useDark ? "#1f1f1f" : "rgba(255, 255, 255, 0.4)",
+                    boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(232, 196, 130 , 1)"
                   }}
                   bodyStyle={{
                     padding: 24

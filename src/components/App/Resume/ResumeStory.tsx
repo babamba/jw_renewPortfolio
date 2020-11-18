@@ -9,7 +9,7 @@ import { Story } from "interfaces/resume";
 const { Text, Link } = Typography;
 const JobMainText = styled.h4`
   font-weight: 800;
-
+  letter-spacing: -0.4px;
   @media only screen and (min-width: 200px) and (max-width: 767px) {
     font-size: 1em;
   }
@@ -47,11 +47,7 @@ interface Props {
 const ResumeStory: FC<Props> = (props: Props) => {
   const { story } = props;
   const screens = Grid.useBreakpoint();
-  const generateText = (
-    idx: number,
-    type: "normal" | "strong" | "link",
-    title: string
-  ) => {
+  const generateText = (idx: number, type: "normal" | "strong" | "link", title: string) => {
     switch (type) {
       case "normal":
         return (
@@ -89,9 +85,7 @@ const ResumeStory: FC<Props> = (props: Props) => {
     <>
       <motion.div variants={ItemStyle}>
         <JobMainText>
-          <StatusBadge
-            status={story.type === "process" ? "processing" : "success"}
-          />
+          <StatusBadge status={story.type === "process" ? "processing" : "success"} />
           {story.title}
         </JobMainText>
         <JobText>
@@ -108,9 +102,7 @@ const ResumeStory: FC<Props> = (props: Props) => {
             </>
           )}
 
-          {story.subDescriptions.map((item, idx) =>
-            generateText(idx, item.type, item.title)
-          )}
+          {story.subDescriptions.map((item, idx) => generateText(idx, item.type, item.title))}
         </JobText>
       </motion.div>
     </>

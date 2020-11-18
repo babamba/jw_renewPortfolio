@@ -15,6 +15,7 @@ const MainIntroText = styled.h1`
   margin: 0;
   line-height: 1.5;
   letter-spacing: -3px;
+  text-shadow: 0px 2px 6px rgba(0,0,0, 0.2);
 `;
 
 const MainIntroSmallText = styled.h1`
@@ -111,7 +112,7 @@ const MyProfile: FC = () => {
                 }}
               >
                 <Typography.Link
-                  style={{ color: useDark ? "white" : "black" }}
+                  style={{ color: useDark ? "white" : "black",  textShadow: "0px 2px 6px rgba(0,0,0, 0.2)" }}
                   href="https://github.com/babamba"
                   target="_blank"
                 >

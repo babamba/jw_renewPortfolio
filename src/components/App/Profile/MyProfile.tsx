@@ -102,7 +102,7 @@ const MyProfile: FC = () => {
                   display: screens.xl ? "block" : "inline",
                   margin: ".5em 0",
                   padding: 0,
-                  fontWeight: 800,
+                  fontWeight: 550,
                   fontSize: "1em",
                   lineHeight: 1.4,
                   textAlign: "center",
@@ -110,13 +110,12 @@ const MyProfile: FC = () => {
                   letterSpacing: -0.8
                 }}
               >
-                JW{" "}
                 <Typography.Link
                   style={{ color: useDark ? "white" : "black" }}
                   href="https://github.com/babamba"
                   target="_blank"
                 >
-                  <GithubOutlined />
+                  JW <GithubOutlined />
                 </Typography.Link>
               </Typography.Title>
             </div>

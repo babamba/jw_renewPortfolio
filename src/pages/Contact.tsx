@@ -17,7 +17,7 @@ const ContentBox = styled.div`
   padding: 12px;
 `;
 
-const GuideText = styled.h4`
+const GuideText = styled.span`
   font-weight: 300;
 
   @media only screen and (min-width: 200px) and (max-width: 767px) {

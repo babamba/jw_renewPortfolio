@@ -1,23 +1,11 @@
 import React, { FC, useEffect, useState } from "react";
-import {
-  Card,
-  Typography,
-  Grid,
-  Divider,
-  PageHeader,
-  Space,
-  Col,
-  Row,
-} from "antd";
+import { Card, Typography, Grid, Divider, PageHeader, Space, Col, Row } from "antd";
 import { ForwardOutlined, BackwardOutlined } from "@ant-design/icons";
 import styled from "styled-components";
-import {
-  pageTransition,
-  folioVariants,
-  ContainerStyle,
-  ItemLeftStyle,
-} from "interfaces/Motion";
+import { pageTransition, folioVariants, ContainerStyle, ItemLeftStyle } from "interfaces/Motion";
 import { motion } from "framer-motion";
+import { observer } from "mobx-react-lite";
+import { useStore } from "hooks/useStore";
 import HeadMeta from "components/Helmet/HeadMeta";
 import ReactGA from "react-ga";
 import PortfolioData from "core/folioData";
@@ -103,18 +91,16 @@ type State = {
   link: string;
 };
 
-const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({
-  history,
-  match,
-}) => {
+const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match }) => {
   const [folio, setFolio] = useState<State | undefined>(undefined);
+  const { useDark } = useStore("common");
   const screens = Grid.useBreakpoint();
   const cardBGStyles = {
     height: "40vh",
     borderRadius: 12,
     background: `linear-gradient(45deg,  rgba(18, 40, 76, 0.56), rgba(89, 89, 89, 0.3)) , url(${
       folio ? require("../assets/images/folio/" + folio.pics) : "empty"
-    }) no-repeat center center/cover`,
+    }) no-repeat center center/cover`
   };
 
   useEffect(() => {
@@ -125,7 +111,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({
   }, []);
 
   const findPortFolio = () => {
-    const find: any = PortfolioData.find((item) => item.id === match.params.id);
+    const find: any = PortfolioData.find(item => item.id === match.params.id);
     setFolio(find);
   };
 
@@ -133,14 +119,12 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({
     console.log("next!");
 
     if (folio) {
-      const findIdx = PortfolioData.findIndex((item) => item.id === folio.id);
+      const findIdx = PortfolioData.findIndex(item => item.id === folio.id);
 
       if (findIdx !== -1 && findIdx > 0) {
         history.push(`/portfolio/${PortfolioData[findIdx - 1].id}`);
       } else {
-        history.push(
-          `/portfolio/${PortfolioData[PortfolioData.length - 1].id}`
-        );
+        history.push(`/portfolio/${PortfolioData[PortfolioData.length - 1].id}`);
       }
       console.log("findIdx : ", findIdx);
     }
@@ -149,7 +133,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({
   const goPrevFolio = () => {
     console.log("prev!");
     if (folio) {
-      const findIdx = PortfolioData.findIndex((item) => item.id === folio.id);
+      const findIdx = PortfolioData.findIndex(item => item.id === folio.id);
       console.log("findIdx: ", findIdx);
       console.log("PortfolioData.length : ", PortfolioData.length);
       if (findIdx !== -1 && findIdx < PortfolioData.length - 1) {
@@ -169,7 +153,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({
 
   const transition = { duration: 0.2 };
   const hoverframeVariants = {
-    hover: { scale: 1.3 },
+    hover: { scale: 1.3 }
   };
 
   return (
@@ -183,7 +167,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({
         style={{
           position: "absolute",
           width: "100%",
-          padding: screens.xl ? "0px" : "20px",
+          padding: screens.xl ? "0px" : "20px"
         }}
       >
         <FolioContainer>
@@ -198,10 +182,10 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({
               <motion.button
                 whileHover={{
                   scale: 1.02,
-                  transition: { duration: 0.5 },
+                  transition: { duration: 0.5 }
                 }}
                 whileTap={{ scale: 0.99 }}
-                onClick={(e) => {
+                onClick={e => {
                   e.preventDefault();
                   history.push("/portfolio");
                 }}
@@ -209,7 +193,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({
                   background: "transparent",
                   border: "none",
                   outline: "none",
-                  cursor: "pointer",
+                  cursor: "pointer"
                 }}
               >
                 <PageHeader
@@ -252,9 +236,11 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({
               textAlign: "center",
               borderRadius: 12,
               border: 0,
+              transition: "box-shadow .3s",
+              boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(223, 228, 190 , 1)"
             }}
             bodyStyle={{
-              padding: screens.xl ? 24 : 0,
+              padding: screens.xl ? 24 : 0
             }}
           >
             <motion.div
@@ -311,4 +297,4 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({
   );
 };
 
-export default withRouter(PortfolioDetail);
+export default withRouter(observer(PortfolioDetail));

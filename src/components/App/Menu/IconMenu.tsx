@@ -6,15 +6,15 @@ import { motion } from "framer-motion";
 import ThemeModeSelector from "../ThemeMode/ThemeModeSelector";
 import MenuItem from "./MenuItem";
 import styled from "styled-components";
+import { useStore } from "hooks/useStore";
+import { observer } from "mobx-react-lite";
 
 const CustomCol = styled(Col)`
   text-align: center;
   @media only screen and (min-width: 100px) and (max-width: 1199px) {
     text-align: center;
-    transform: ${(props) =>
-      props.selected === props.current ? "scale( 1.1 )" : "scale( 1 )"};
-    text-decoration: ${(props) =>
-      props.selected === props.current ? "underline" : "unset"};
+    transform: ${props => (props.selected === props.current ? "scale( 1.1 )" : "scale( 1 )")};
+    text-decoration: ${props => (props.selected === props.current ? "underline" : "unset")};
     transition: 0.2s;
     padding: 4;
   }
@@ -24,10 +24,14 @@ const MotionMenuBox = styled(motion.div)`
   cursor: pointer;
 
   @media only screen and (min-width: 100px) and (max-width: 767px) {
-    background-color: ${(props) =>
+    background-color: ${props =>
       props.selected === props.current
-        ? "rgba(152, 44, 255, 0.3)"
+        ? props.isDark
+          ? "rgba(152, 44, 255, 0.3)"
+          : "white"
         : "transparent"};
+    /* background-color: ${props =>
+      props.selected === props.current ? "rgba(152, 44, 255, 0.3)" : "transparent"}; */
     border-radius: 12px;
     padding: 0px 8px;
     margin: 0px 4px;
@@ -46,9 +50,8 @@ const MenuButtonBox = styled.div`
 
   @media only screen and (min-width: 767px) and (max-width: 1199px) {
     display: inline-block;
-    padding: ${(props) =>
-      props.selected === props.current ? "4px 8px" : "4px 0px"};
-    background: ${(props) =>
+    padding: ${props => (props.selected === props.current ? "4px 8px" : "4px 0px")};
+    background: ${props =>
       props.selected === props.current
         ? "linear-gradient(to top, rgba(152, 44, 255, 0.4) 40%, transparent 30%)"
         : "transparent"};
@@ -56,11 +59,7 @@ const MenuButtonBox = styled.div`
 
     &:hover {
       transition: all 0.5s ease;
-      background: linear-gradient(
-        to top,
-        rgba(152, 44, 255, 0.4) 40%,
-        transparent 30%
-      );
+      background: linear-gradient(to top, rgba(152, 44, 255, 0.4) 40%, transparent 30%);
     }
   }
 
@@ -72,6 +71,7 @@ const MenuButtonBox = styled.div`
 `;
 
 const IconMenu: FC = () => {
+  const { useDark } = useStore("common");
   const history = useHistory();
   const location = useLocation();
   const screens = Grid.useBreakpoint();
@@ -103,7 +103,7 @@ const IconMenu: FC = () => {
               }
             : {
                 padding: "6px 8px",
-                margin: "auto 1rem",
+                margin: "auto 1rem"
               }
         }
       >
@@ -111,8 +111,8 @@ const IconMenu: FC = () => {
           span={screens.xl ? 24 : 4}
           style={{
             textAlign: "center",
-            paddingTop: screens.xl ? 0 : 6,
-            paddingBottom: screens.xl ? 12 : 0,
+            paddingTop: screens.xs ? 0 : 6,
+            paddingBottom: screens.xl ? 12 : 0
           }}
         >
           <motion.div variants={ItemStyle}>
@@ -120,15 +120,8 @@ const IconMenu: FC = () => {
           </motion.div>
         </Col>
 
-        <CustomCol
-          span={screens.xl ? 24 : 4}
-          onClick={() => history.push("/about")}
-        >
-          <MotionMenuBox
-            variants={ItemStyle}
-            selected="/about"
-            current={selected}
-          >
+        <CustomCol span={screens.xl ? 24 : 4} onClick={() => history.push("/about")}>
+          <MotionMenuBox variants={ItemStyle} selected="/about" current={selected} isDark={useDark}>
             <MenuButtonBox selected="/about" current={selected}>
               <MenuItem
                 url="/about"
@@ -142,14 +135,12 @@ const IconMenu: FC = () => {
           </MotionMenuBox>
         </CustomCol>
 
-        <CustomCol
-          span={screens.xl ? 24 : 4}
-          onClick={() => history.push("/portfolio")}
-        >
+        <CustomCol span={screens.xl ? 24 : 4} onClick={() => history.push("/portfolio")}>
           <MotionMenuBox
             variants={ItemStyle}
             selected="/portfolio"
             current={selected}
+            isDark={useDark}
           >
             <MenuButtonBox selected="/portfolio" current={selected}>
               <MenuItem
@@ -162,14 +153,12 @@ const IconMenu: FC = () => {
             </MenuButtonBox>
           </MotionMenuBox>
         </CustomCol>
-        <CustomCol
-          span={screens.xl ? 24 : 4}
-          onClick={() => history.push("/resume")}
-        >
+        <CustomCol span={screens.xl ? 24 : 4} onClick={() => history.push("/resume")}>
           <MotionMenuBox
             variants={ItemStyle}
             selected="/resume"
             current={selected}
+            isDark={useDark}
           >
             <MenuButtonBox selected="/resume" current={selected}>
               <MenuItem
@@ -182,15 +171,8 @@ const IconMenu: FC = () => {
             </MenuButtonBox>
           </MotionMenuBox>
         </CustomCol>
-        <CustomCol
-          span={screens.xl ? 24 : 4}
-          onClick={() => history.push("/blog")}
-        >
-          <MotionMenuBox
-            variants={ItemStyle}
-            selected="/blog"
-            current={selected}
-          >
+        <CustomCol span={screens.xl ? 24 : 4} onClick={() => history.push("/blog")}>
+          <MotionMenuBox variants={ItemStyle} selected="/blog" current={selected} isDark={useDark}>
             <MenuButtonBox selected="/blog" current={selected}>
               <MenuItem
                 url="/blog"
@@ -211,6 +193,7 @@ const IconMenu: FC = () => {
             variants={ItemStyle}
             selected="/contact"
             current={selected}
+            isDark={useDark}
           >
             <MenuButtonBox selected="/contact" current={selected}>
               <MenuItem
@@ -228,4 +211,4 @@ const IconMenu: FC = () => {
   );
 };
 
-export default IconMenu;
+export default observer(IconMenu);

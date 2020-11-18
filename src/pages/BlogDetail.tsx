@@ -4,22 +4,18 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import ReactGA from "react-ga";
 import { withRouter, RouteComponentProps } from "react-router-dom";
+import { observer } from "mobx-react-lite";
+import { Typography, PageHeader, Layout, Skeleton, Grid, Card } from "antd";
 
-import { Typography, PageHeader, Layout, Skeleton, Grid } from "antd";
-
-import {
-  pageDetailVariants,
-  pageDetailTransition,
-  ContainerStyle,
-} from "interfaces/Motion";
+import { pageDetailVariants, pageDetailTransition, ContainerStyle } from "interfaces/Motion";
 import { BlogPost } from "interfaces/post";
 import { ContentfulService } from "core/contentful";
 import HeadMeta from "components/Helmet/HeadMeta";
 import { useRouter } from "hooks/useRouter";
+import { useStore } from "hooks/useStore";
 
 const PostContainer = styled.div`
-  margin: 40px;
-  padding: 0px 20px;
+  padding: 18px;
 
   @media only screen and (min-width: 200px) and (max-width: 992px) {
     padding: 0px 20px;
@@ -34,8 +30,8 @@ const textVariants = {
   in: {
     y: 0,
     opacity: 1,
-    transition: { delay: 0.1, duration: 0.5, ease: easing },
-  },
+    transition: { delay: 0.1, duration: 0.5, ease: easing }
+  }
 };
 
 const backVariants = {
@@ -44,8 +40,8 @@ const backVariants = {
     opacity: 0,
     transition: {
       duration: 0.5,
-      ease: easing,
-    },
+      ease: easing
+    }
   },
   in: {
     x: 0,
@@ -53,19 +49,16 @@ const backVariants = {
     transition: {
       delay: 0.5,
       duration: 0.5,
-      ease: easing,
-    },
-  },
+      ease: easing
+    }
+  }
 };
 interface MatchParams {
   id: string;
 }
 
-const PostPage: FC<RouteComponentProps<MatchParams>> = ({
-  history,
-  match,
-  location,
-}) => {
+const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, location }) => {
+  const { useDark } = useStore("common");
   const router = useRouter();
   const screens = Grid.useBreakpoint();
   const contentfulService = new ContentfulService();
@@ -78,7 +71,7 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({
     }
   }, []);
 
-  const getPost = async (postId) => {
+  const getPost = async postId => {
     const getArticle: any = await contentfulService.getPostById(postId);
     setArticle(getArticle);
   };
@@ -108,7 +101,7 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({
           style={{
             position: "absolute",
             width: "100%",
-            padding: screens.xl ? "0px" : "20px",
+            padding: screens.xl ? "0px" : "20px"
           }}
         >
           <PostContainer className="post">
@@ -118,7 +111,7 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({
                   variants={backVariants}
                   whileHover={{
                     scale: 1.02,
-                    transition: { duration: 0.5 },
+                    transition: { duration: 0.5 }
                   }}
                   whileTap={{ scale: 0.99 }}
                   onClick={() => history.push("/blog")}
@@ -126,7 +119,7 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({
                     background: "transparent",
                     border: "none",
                     outline: "none",
-                    cursor: "pointer",
+                    cursor: "pointer"
                   }}
                 >
                   <PageHeader
@@ -147,7 +140,7 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({
                   variants={backVariants}
                   whileHover={{
                     scale: 1.02,
-                    transition: { duration: 0.5 },
+                    transition: { duration: 0.5 }
                   }}
                   whileTap={{ scale: 0.99 }}
                   onClick={() => history.push("/blog")}
@@ -155,7 +148,7 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({
                     background: "transparent",
                     border: "none",
                     outline: "none",
-                    cursor: "pointer",
+                    cursor: "pointer"
                   }}
                 >
                   <PageHeader
@@ -167,17 +160,30 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({
                   />
                 </motion.button>
                 {/* </motion.div> */}
-                <motion.div variants={textVariants}>
-                  <Typography.Title level={1}>
-                    {article?.title}
-                  </Typography.Title>
-                  <div className="author">
-                    <p>Written by {article?.author.name}</p>
-                  </div>
-                </motion.div>
-                <motion.div variants={textVariants}>
-                  <ReactMarkdown className="markdown" source={article?.body} />
-                </motion.div>
+                <Card
+                  style={{
+                    textAlign: "center",
+                    borderRadius: 12,
+                    border: 0,
+                    transition: "box-shadow .3s",
+                    backgroundColor: useDark ? "#1f1f1f" : "rgba(255, 255, 255, 0.4)"
+                    // boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(223, 228, 190 , 1)"
+                  }}
+                  bodyStyle={{
+                    padding: 24
+                  }}
+                >
+                  <motion.div variants={textVariants} style={{ textAlign: "left" }}>
+                    <Typography.Title level={1}>{article?.title}</Typography.Title>
+                    <div className="author">
+                      <p>Written by {article?.author.name}</p>
+                    </div>
+                  </motion.div>
+
+                  <motion.div variants={textVariants}>
+                    <ReactMarkdown className="markdown" source={article?.body} />
+                  </motion.div>
+                </Card>
               </>
             )}
           </PostContainer>
@@ -187,4 +193,4 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({
   );
 };
 
-export default withRouter(PostPage);
+export default withRouter(observer(PostPage));

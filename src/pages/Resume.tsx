@@ -10,10 +10,13 @@ import { pageTransition, pageVariants } from "interfaces/Motion";
 
 import HeadMeta from "components/Helmet/HeadMeta";
 import ResumeContent from "components/App/Resume/ResumeContent";
+import { useStore } from "hooks/useStore";
+import { observer } from "mobx-react-lite";
 
 const History: FC = () => {
   const router = useRouter();
   const screens = Grid.useBreakpoint();
+  const { useDark } = useStore("common");
 
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
@@ -31,7 +34,7 @@ const History: FC = () => {
       style={{
         position: "absolute",
         width: "100%",
-        padding: screens.xl ? "0px" : "20px",
+        padding: screens.xl ? "0px" : "20px"
       }}
     >
       <HeadMeta
@@ -45,6 +48,8 @@ const History: FC = () => {
           padding: "6px 0px",
           borderRadius: 12,
           margin: screens.xs ? 0 : 20,
+          transition: "box-shadow .3s",
+          boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(193,222,226,1)"
         }}
         bodyStyle={{ padding: screens.md ? "24px" : "12px" }}
       >
@@ -62,4 +67,4 @@ const History: FC = () => {
   );
 };
 
-export default History;
+export default observer(History);

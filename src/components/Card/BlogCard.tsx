@@ -12,10 +12,11 @@ interface Props {
     publishedAt: Date;
     slug: string;
   };
+  isDark: boolean;
 }
 
 const BlogCard: FC<Props> = (props: Props) => {
-  const { info } = props;
+  const { info, isDark } = props;
   const match = useRouteMatch();
   const screens = Grid.useBreakpoint();
   const cardBGStyles = {
@@ -23,12 +24,12 @@ const BlogCard: FC<Props> = (props: Props) => {
     height: screens.xl ? 150 : 100,
     borderTopRightRadius: 12,
     borderTopLeftRadius: 12,
-    background: `linear-gradient(45deg,  rgba(18, 40, 76, 0.56), rgba(89, 89, 89, 0.3)) , url(https:${info.heroImage}) no-repeat`,
+    background: `linear-gradient(45deg,  rgba(18, 40, 76, 0.56), rgba(89, 89, 89, 0.3)) , url(https:${info.heroImage}) no-repeat`
   };
 
   const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] };
   const hoverframeVariants = {
-    hover: { scale: 0.98 },
+    hover: { scale: 0.98 }
   };
 
   return (
@@ -42,7 +43,10 @@ const BlogCard: FC<Props> = (props: Props) => {
         <Card
           hoverable={true}
           cover={<div style={cardBGStyles} />}
-          style={{ borderRadius: 12 }}
+          style={{
+            borderRadius: 12,
+            backgroundColor: isDark ? "#1f1f1f" : "rgba(255, 255, 255, 0.7)"
+          }}
         >
           <Card.Meta
             title={info.title}
@@ -55,7 +59,7 @@ const BlogCard: FC<Props> = (props: Props) => {
                   display: "-webkit-box",
                   WebkitLineClamp: screens.xl ? 5 : 3,
                   WebkitBoxOrient: "vertical",
-                  minHeight: screens.xl ? 114 : 70,
+                  minHeight: screens.xl ? 114 : 70
                 }}
               >
                 {info.description}

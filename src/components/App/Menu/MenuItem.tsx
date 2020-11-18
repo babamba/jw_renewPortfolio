@@ -6,7 +6,7 @@ import {
   PictureOutlined,
   IdcardOutlined,
   CoffeeOutlined,
-  SmileOutlined,
+  SmileOutlined
 } from "@ant-design/icons";
 
 import { observer } from "mobx-react-lite";
@@ -25,13 +25,13 @@ const MenuText = styled(Typography.Text)`
   padding-left: 4px;
   font-size: 16px;
   transition: all 0.5s ease;
-  color: ${(props) =>
+  color: ${props =>
     props.selected === props.current &&
     (props.usedark === "true"
       ? "rgba(255, 255, 255, 0.95) !important"
       : "rgba(0, 0, 0, 0.95) !important")};
   @media only screen and (min-width: 200px) and (max-width: 1199px) {
-    font-weight: ${(props) => (props.selected === props.current ? 600 : 300)};
+    font-weight: ${props => (props.selected === props.current ? 600 : 400)};
     padding-left: 4px;
     font-size: 14px;
     letter-spacing: -0.3px;
@@ -60,7 +60,7 @@ const MenuItem: FC<Props> = (props: Props) => {
           : "transparent"
         : "transparent",
     padding: selected === url ? (screens.xl ? 8 : 0) : 0,
-    transition: "0.8s",
+    transition: "0.8s"
   };
 
   const findIcon = () => {
@@ -84,17 +84,13 @@ const MenuItem: FC<Props> = (props: Props) => {
     <Box>
       <Link to={url} />
       <Tooltip
-        placement="topLeft"
+        placement={screens.xl ? "left" : "topLeft"}
         title={title}
         trigger={screens.xl ? "hover" : "click"}
       >
         {findIcon()}
         {screens.xl === false && screens.md === true && (
-          <MenuText
-            selected={url}
-            current={selected}
-            usedark={useDark ? "true" : "false"}
-          >
+          <MenuText selected={url} current={selected} usedark={useDark ? "true" : "false"}>
             {subTitle}
           </MenuText>
         )}

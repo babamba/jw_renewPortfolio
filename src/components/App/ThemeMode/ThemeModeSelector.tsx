@@ -27,8 +27,7 @@ const ThemeModeSelector: FC<Props> = (props: Props) => {
 
   useEffect(() => {
     const body = document.body.classList;
-    const mainLayout = document.getElementsByClassName("main-layout")[0]
-      .classList;
+    const mainLayout = document.getElementsByClassName("main-layout")[0].classList;
     if (useDark) {
       mainLayout.remove("light");
       body.remove("light");
@@ -46,11 +45,11 @@ const ThemeModeSelector: FC<Props> = (props: Props) => {
   const init = async () => {
     if (useDark) {
       setTheme({
-        name: "dark",
+        name: "dark"
       });
     } else {
       setTheme({
-        name: "default",
+        name: "default"
       });
     }
   };
@@ -59,12 +58,12 @@ const ThemeModeSelector: FC<Props> = (props: Props) => {
     if (useDark) {
       await setUseDark(false);
       setTheme({
-        name: "default",
+        name: "default"
       });
     } else {
       await setUseDark(true);
       setTheme({
-        name: "dark",
+        name: "dark"
       });
     }
   };
@@ -72,12 +71,12 @@ const ThemeModeSelector: FC<Props> = (props: Props) => {
   const spring = {
     type: "spring",
     bounceDamping: 0,
-    bounceStiffness: 0,
+    bounceStiffness: 0
   };
 
   const RotateVariants = {
     open: { rotateZ: [90, 0], transition: { spring } },
-    closed: { rotateZ: [0, 90], transition: { spring } },
+    closed: { rotateZ: [0, 90], transition: { spring } }
   };
 
   return (
@@ -86,9 +85,9 @@ const ThemeModeSelector: FC<Props> = (props: Props) => {
         onClick={handleChange}
         style={{
           margin: 0,
-          color: useDark ? "#f0d74a" : "#6b6b6b",
+          color: useDark ? "#f0d74a" : "#000000",
           fontSize: `${size}rem`,
-          cursor: "pointer",
+          cursor: "pointer"
         }}
         type={useDark ? "icon-night" : "icon-brightness"}
       />

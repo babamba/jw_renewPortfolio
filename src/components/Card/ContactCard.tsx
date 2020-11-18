@@ -14,6 +14,12 @@ const Container = styled.div`
   padding: 1.5rem 2rem;
 `;
 
+const GuideText = styled.span`
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: -0.4px;
+`;
+
 const Contact: FC = () => {
   const screens = Grid.useBreakpoint();
 
@@ -37,26 +43,22 @@ const Contact: FC = () => {
             <Container>
               <ContentBox>
                 <motion.div variants={ItemLeftStyle}>
-                  <Typography.Text style={{ fontWeight: 300, fontSize: 16 }}>
+                  <GuideText>
                     현재 사이트는 React / AntDesign / ContentFul
                     <br /> 등을 사용하여 제작되었습니다.
-                  </Typography.Text>
+                  </GuideText>
                 </motion.div>
               </ContentBox>
               <ContentBox>
                 <motion.div variants={ItemLeftStyle}>
-                  <Typography.Text style={{ fontWeight: 300, fontSize: 16 }}>
-                    저에게 관심이 있으시거나,
-                  </Typography.Text>
+                  <GuideText>저에게 관심이 있으시거나,</GuideText>
                 </motion.div>
                 <motion.div variants={ItemLeftStyle}>
-                  <Typography.Text style={{ fontWeight: 300, fontSize: 16 }}>
-                    관심사에 대해 궁금한 점이 있다면,
-                  </Typography.Text>
+                  <GuideText>관심사에 대해 궁금한 점이 있다면,</GuideText>
                 </motion.div>
                 <br />
                 <motion.div variants={ItemLeftStyle}>
-                  <Typography.Text style={{ fontWeight: 300, fontSize: 16 }}>
+                  <GuideText>
                     <MailOutlined />
                     <a
                       style={{ paddingLeft: 8 }}
@@ -65,19 +67,25 @@ const Contact: FC = () => {
                     >
                       orochi13@naver.com
                     </a>
-                  </Typography.Text>
+                  </GuideText>
                 </motion.div>
                 <Typography.Text style={{ fontWeight: 300, fontSize: 16 }}>
                   <motion.div variants={ItemLeftStyle}>
-                    위의 이메일로 언제든 연락주세요. <br />
+                    <GuideText> 위의 이메일로 언제든 연락주세요. </GuideText>
+                    <br />
                   </motion.div>
                   <motion.div variants={ItemLeftStyle}>
-                    당신과 함께 성장하고 싶습니다. <br />
+                    <GuideText>당신과 함께 성장하고 싶습니다. </GuideText>
+                    <br />
                   </motion.div>
                   <br />
-                  <motion.div variants={ItemLeftStyle}>봐주셔서 감사합니다 :D</motion.div>
+                  <motion.div variants={ItemLeftStyle}>
+                    <GuideText>봐주셔서 감사합니다 :D</GuideText>
+                  </motion.div>
 
-                  <motion.div variants={ItemLeftStyle}>김진원 올림.</motion.div>
+                  <motion.div variants={ItemLeftStyle}>
+                    <GuideText>김진원 올림.</GuideText>
+                  </motion.div>
                 </Typography.Text>
               </ContentBox>
             </Container>

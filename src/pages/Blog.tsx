@@ -29,16 +29,17 @@ import HeadMeta from "components/Helmet/HeadMeta";
 import LottieLoader from "components/Loader/LottieLoader";
 
 const Post: FC = () => {
-  const period = 8;
+  // const period = 12;
   const router = useRouter();
-  const { currentPage, setCurrentPage } = useStore("common");
+  // const [period, setPeriod] = useState(12);
+  const { currentPage, setCurrentPage, useDark } = useStore("common");
   const screens = Grid.useBreakpoint();
   const [selectTag, updateTag] = useState("");
   const [loading, setLoading] = useState(false);
   const [pagination, setPagination] = useState({
     total: 1,
     page: currentPage,
-    pageSize: period
+    pageSize: 12
   });
 
   const [content, setContent] = useState({
@@ -65,8 +66,19 @@ const Post: FC = () => {
   }, []);
 
   useEffect(() => {
-    fetch(currentPage, "");
+    fetch(currentPage, "", screens.lg ? 12 : 6);
   }, []);
+
+  useEffect(() => {
+    console.log("screens: ", screens);
+    if (Object.keys(screens).length > 0) {
+      if (screens.lg === false) {
+        fetch(1, "", 6);
+      } else {
+        fetch(1, "", 12);
+      }
+    }
+  }, [screens]);
 
   const setPage = async param => {
     setPagination({
@@ -76,7 +88,7 @@ const Post: FC = () => {
     });
   };
 
-  const fetch = async (selectPage: number, selectTag: string = "") => {
+  const fetch = async (selectPage: number, selectTag: string = "", period: number) => {
     setLoading(true);
     const contentfulService = new ContentfulService();
     // const { tags } = await contentfulService.getAllTags();
@@ -109,11 +121,11 @@ const Post: FC = () => {
   const onHandlePaging = (page: number) => {
     setCurrentPage(page);
     // updatePage(page);
-    fetch(page, selectTag);
+    fetch(page, selectTag, screens.lg ? 12 : 6);
   };
   const handleTagChosen = tag => {
     updateTag(tag.id);
-    fetch(1, tag.id);
+    fetch(1, tag.id, screens.lg ? 12 : 6);
   };
 
   return (
@@ -134,7 +146,11 @@ const Post: FC = () => {
       <CardView
         style={{
           borderRadius: 12,
-          margin: screens.xs ? 0 : 20
+          margin: screens.xs ? 0 : 20,
+          transition: "box-shadow .3s",
+          boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(241, 208, 148, 1)",
+          backgroundColor: useDark ? "#1f1f1f" : "rgba(255, 255, 255, 0.4)",
+          border: useDark ? "1px solid #303030" : "none"
         }}
         bodyStyle={{
           padding: "18px"
@@ -188,7 +204,7 @@ const Post: FC = () => {
                     return (
                       <List.Item>
                         <motion.div variants={ItemStyle}>
-                          <BlogCard info={item} />
+                          <BlogCard info={item} isDark={useDark} />
                         </motion.div>
                       </List.Item>
                     );

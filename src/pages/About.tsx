@@ -21,15 +21,17 @@ import {
 
 import HeadMeta from "components/Helmet/HeadMeta";
 import StackCard from "components/Card/StackCard";
+import LargeTitle from "components/Common/LargeTitle";
 
 import { useStore } from "hooks/useStore";
 import { useRouter } from "hooks/useRouter";
 
 const IntroText = styled.h2`
-  font-weight: 300;
+  font-weight: 200;
   padding: 0px 24px;
+  letter-spacing: -0.4px;
   color: ${(props: any) =>
-    props.theme === "true" ? "rgba(255, 255, 255, 0.65)" : "rgba(0, 0, 0, 0.65)"};
+    props.theme === "true" ? "rgba(255, 255, 255, 0.85)" : "rgba(0, 0, 0, 0.85)"};
   @media only screen and (min-width: 200px) and (max-width: 767px) {
     font-size: 14px;
   }
@@ -87,7 +89,9 @@ const About: FC<Props> = (props: Props) => {
       <Card
         style={{
           borderRadius: 12,
-          margin: screens.xs ? 0 : 20
+          margin: screens.xs ? 0 : 20,
+          transition: "box-shadow .3s",
+          boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(206, 203, 226, 1)"
         }}
         bodyStyle={{
           padding: "18px 24px"
@@ -98,8 +102,9 @@ const About: FC<Props> = (props: Props) => {
           <Col xs={24} sm={24} md={24} lg={18} xl={18}>
             <Divider orientation="left">INTRODUCE</Divider>
             <IntroText theme={useDark ? "true" : "false"}>
-              안녕하세요. 저는 현재 <Typography.Text underline>FrontEnd</Typography.Text> 직군에서
-              프로젝트를 진행하고있습니다. <br />
+              안녕하세요. <br />
+              저는 현재 <Typography.Text underline>FrontEnd</Typography.Text> 직군에서 프로젝트를
+              진행하고있습니다. <br />
               Javascript 언어를 가장 좋아합니다. <br />
               FrontEnd 및 BackEnd 직군으로 프로젝트를 진행한 경력이 있습니다.
               <br />

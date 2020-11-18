@@ -166,7 +166,7 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
                     borderRadius: 12,
                     border: 0,
                     transition: "box-shadow .3s",
-                    backgroundColor: useDark ? "#1f1f1f" : "rgba(255, 255, 255, 0.4)",
+                    // backgroundColor: useDark ? "#1f1f1f" : "rgba(255, 255, 255, 0.4)",
                     boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(232, 196, 130 , 1)"
                   }}
                   bodyStyle={{

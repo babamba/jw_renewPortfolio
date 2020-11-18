@@ -237,7 +237,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
               borderRadius: 12,
               border: 0,
               transition: "box-shadow .3s",
-              boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(192, 216, 204 , 1)"
+              boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(206, 210, 156 , 1)"
             }}
             bodyStyle={{
               padding: 12

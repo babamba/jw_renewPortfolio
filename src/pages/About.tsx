@@ -21,19 +21,19 @@ import {
 
 import HeadMeta from "components/Helmet/HeadMeta";
 import StackCard from "components/Card/StackCard";
-import LargeTitle from "components/Common/LargeTitle";
 
 import { useStore } from "hooks/useStore";
 import { useRouter } from "hooks/useRouter";
 
 const IntroText = styled.h2`
-  font-weight: 200;
+  font-weight: 300;
   padding: 0px 24px;
   letter-spacing: -0.4px;
   color: ${(props: any) =>
     props.theme === "true" ? "rgba(255, 255, 255, 0.85)" : "rgba(0, 0, 0, 0.85)"};
   @media only screen and (min-width: 200px) and (max-width: 767px) {
     font-size: 14px;
+    font-weight: 350;
   }
   @media only screen and (min-width: 768px) and (max-width: 4000px) {
     font-size: 24px;

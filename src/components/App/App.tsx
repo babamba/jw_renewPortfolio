@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useState, useEffect, useRef } from "react";
 import { observer } from "mobx-react-lite";
 import { ThemeProvider } from "antd-theme";
-import { Layout, Row, Col, Affix, Grid, BackTop } from "antd";
+import { Layout, Row, Col, Affix, Grid, BackTop, Divider } from "antd";
 import { ArrowUpOutlined } from "@ant-design/icons";
 import { useWindowHeight } from "@react-hook/window-size";
 import ReactGA from "react-ga";
@@ -84,30 +84,26 @@ const App = () => {
         case "about":
           body.style.backgroundColor = "rgba(245, 240, 255, 1)";
           setBackColor("rgba(245, 240, 255, 1)");
-          // set({ x: 200 });
           break;
         case "portfolio":
-          body.style.backgroundColor = "rgba(232, 255, 244, 1)";
-          setBackColor("rgba(232, 255, 244, 1)");
-          // set({ x: 100 });
+          body.style.backgroundColor = "rgba(251, 253, 223, 1)";
+          setBackColor("rgba(251, 253, 223, 1)");
           break;
         case "resume":
-          body.style.backgroundColor = "rgba(229, 241, 243, 1)";
-          setBackColor("rgba(229, 241, 243, 1)");
-          // set({ x: 300 });
+          body.style.backgroundColor = "rgba(208, 234, 255, 1)";
+          setBackColor("rgba(208, 234, 255, 1)");
           break;
         case "blog":
           body.style.backgroundColor = "rgba(255, 234, 196, 1)";
           setBackColor("rgba(255, 234, 196, 1)");
-          // set({ x: 400 });
           break;
         case "contact":
           body.style.backgroundColor = "rgba(245, 227, 229, 1)";
           setBackColor("rgba(245, 227, 229, 1)");
-          // set({ x: 400 });
           break;
         default:
-          // set({ x: 0 });
+          body.style.backgroundColor = "rgba(245, 227, 229, 1)";
+          setBackColor("rgba(245, 227, 229, 1)");
           break;
       }
     }

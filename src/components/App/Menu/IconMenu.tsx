@@ -35,7 +35,9 @@ const MotionMenuBox = styled(motion.div)`
     border-radius: 12px;
     padding: 0px 8px;
     margin: 0px 4px;
-    transition: background 0.6s;
+    transition: background 0.6s box-shadow 0.3s ease-in-out;
+    box-shadow: ${props =>
+      props.selected === props.current ? "0 1px 13px 4px rgba(0, 0, 0, 0.04)" : "none"};
   }
 
   @media only screen and (min-width: 768px) and (max-width: 1199px) {

@@ -49,7 +49,7 @@ const History: FC = () => {
           borderRadius: 12,
           margin: screens.xs ? 0 : 20,
           transition: "box-shadow .3s",
-          boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(193,222,226,1)"
+          boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(155,184,208,1)"
         }}
         bodyStyle={{ padding: screens.md ? "24px" : "12px" }}
       >

@@ -44,8 +44,10 @@ const BlogCard: FC<Props> = (props: Props) => {
           hoverable={true}
           cover={<div style={cardBGStyles} />}
           style={{
-            borderRadius: 12,
-            backgroundColor: isDark ? "#1f1f1f" : "rgba(255, 255, 255, 0.7)"
+            borderRadius: 8,
+            boxShadow: "0 1px 12px 4px rgba(0,0,0, 0.1)"
+            // backgroundColor: isDark ? "#1f1f1f" : "rgba(255, 255, 255, 0.7)",
+            // border: "none"
           }}
         >
           <Card.Meta

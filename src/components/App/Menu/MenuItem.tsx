@@ -24,7 +24,7 @@ interface Props {
 const MenuText = styled(Typography.Text)`
   padding-left: 4px;
   font-size: 16px;
-  transition: all 0.5s ease;
+  /* transition: all 0.3s; */
   color: ${props =>
     props.selected === props.current &&
     (props.usedark === "true"
@@ -60,7 +60,7 @@ const MenuItem: FC<Props> = (props: Props) => {
           : "transparent"
         : "transparent",
     padding: selected === url ? (screens.xl ? 8 : 0) : 0,
-    transition: "0.8s"
+    transition: screens.xl ? " 0.3s" : "0s"
   };
 
   const findIcon = () => {

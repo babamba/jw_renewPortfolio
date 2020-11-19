@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
-import { useSpring, animated } from "react-spring";
+import { useSpring, animated, config } from "react-spring";
 import { useStore } from "hooks/useStore";
 import { observer } from "mobx-react-lite";
 
@@ -48,6 +48,7 @@ const HeroBackground = () => {
 
   const routePathProps = useSpring({
     native: true,
+    delay: 300,
     from: {
       d:
         "M -30 32 C -38 39 -42 68 -43 71 C -37 78 -42 86 -48 93 C -40 98 -50 102 -44 111 C -41 131 -27 127 -22 141 C -8 152 -5 143 -5 124 C -5 117 -6 113 -2 102 C -1 85 0 56 -2 47 C -1 21 -4 30 -12 8 C -15 1 -25 8 -24 19 Z"

@@ -33,11 +33,11 @@ class CommonStore {
     localStorage.setItem("isDark", value ? "true" : "false");
     this._useDark = value;
   }
-  @action.bound async setCurrentPage(value) {
+  @action.bound async setCurrentPage(value: number) {
     this._currentPage = value;
   }
 
-  @action.bound async setUseLabpage(value) {
+  @action.bound async setUseLabpage(value: boolean) {
     this._useLabPage = value;
   }
 

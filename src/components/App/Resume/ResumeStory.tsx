@@ -94,7 +94,7 @@ const ResumeStory: FC<Props> = (props: Props) => {
               - <ToolOutlined style={{ paddingRight: 8, fontSize: 14 }} />
               <Text strong>
                 개발언어 :{" "}
-                <Text underline strong code>
+                <Text strong code>
                   {story.programLanguage}
                 </Text>
               </Text>

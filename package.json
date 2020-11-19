@@ -67,6 +67,26 @@
       "last 1 safari version"
     ]
   },
+  "babel": {
+    "presets": [
+      "react-app",
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ],
+      [
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": true
+        }
+      ]
+    ]
+  },
   "keywords": [
     "프론트엔드",
     "frontend",
@@ -85,7 +105,9 @@
     "react"
   ],
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/plugin-proposal-decorators": "^7.10.4",
+    "@babel/preset-env": "^7.12.1",
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",

@@ -10,6 +10,7 @@ import { Typography, PageHeader, Layout, Skeleton, Grid, Card } from "antd";
 import { pageDetailVariants, pageDetailTransition, ContainerStyle } from "interfaces/Motion";
 import { BlogPost } from "interfaces/post";
 import { ContentfulService } from "core/contentful";
+import COLOR from "core/colors";
 import HeadMeta from "components/Helmet/HeadMeta";
 import { useRouter } from "hooks/useRouter";
 import { useStore } from "hooks/useStore";
@@ -167,7 +168,7 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
                     borderRadius: 12,
                     border: 0,
                     transition: "box-shadow .3s",
-                    boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(206, 210, 156, 1)"
+                    boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.BLOG_CARD_SHADOW}`
                   }}
                   bodyStyle={{
                     padding: 24

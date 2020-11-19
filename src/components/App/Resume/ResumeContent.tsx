@@ -3,6 +3,7 @@ import { Grid, Timeline, Typography, Avatar, Card, Divider, Badge } from "antd";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { FastContainerStyle, ItemStyle } from "interfaces/Motion";
+import COLOR from "core/colors";
 import ResumeStory from "./ResumeStory";
 import { Resume } from "interfaces/resume";
 
@@ -55,7 +56,7 @@ const ResumeContent: FC<Props> = (props: Props) => {
       <Badge.Ribbon
         style={{ lineHeight: "20px", marginTop: 8 }}
         text={
-          <Typography.Text style={{ fontSize: 12, color: "rgba(255, 255, 255, 0.85)" }}>
+          <Typography.Text style={{ fontSize: 12, color: COLOR.RIBBON_TEXT_COLOR }}>
             {resumeData.tag.text}
           </Typography.Text>
         }

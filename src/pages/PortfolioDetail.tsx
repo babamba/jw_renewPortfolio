@@ -10,6 +10,7 @@ import HeadMeta from "components/Helmet/HeadMeta";
 import ReactGA from "react-ga";
 import PortfolioData from "core/folioData";
 import { withRouter, RouteComponentProps } from "react-router-dom";
+import COLOR from "core/colors";
 
 const ContentBox = styled.div``;
 const FolioContainer = styled.div`
@@ -100,7 +101,9 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
   const cardBGStyles = {
     height: "40vh",
     borderRadius: 12,
-    background: `linear-gradient(45deg,  rgba(18, 40, 76, 0.56), rgba(89, 89, 89, 0.3)) , url(${
+    background: `linear-gradient(45deg,  ${COLOR.DECKCARD_GRADIENT_START},${
+      COLOR.DECKCARD_GRADIENT_END
+    }) , url(${
       folio ? require("../assets/images/folio/" + folio.pics) : "empty"
     }) no-repeat center center/cover`
   };
@@ -240,7 +243,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
               borderRadius: 12,
               border: 0,
               transition: "box-shadow .3s",
-              boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(241, 208, 148, 1)"
+              boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.FOLIO_CARD_SHADOW}`
             }}
             bodyStyle={{
               padding: 12

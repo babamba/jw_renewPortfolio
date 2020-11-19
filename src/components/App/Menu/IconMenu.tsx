@@ -27,7 +27,7 @@ const MotionMenuBox = styled(motion.div)`
     background-color: ${props =>
       props.selected === props.current
         ? props.isDark
-          ? "rgba(152, 44, 255, 0.65)"
+          ? "rgba(152, 44, 255, 1)"
           : "white"
         : "transparent"};
     border-radius: 12px;

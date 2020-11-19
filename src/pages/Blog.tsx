@@ -20,9 +20,9 @@ import { useRouter } from "hooks/useRouter";
 import { useStore } from "hooks/useStore";
 
 import { ContentfulService } from "core/contentful";
+import COLOR from "core/colors";
 
 import { pageTransition, pageVariants, FastContainerStyle, ItemStyle } from "interfaces/Motion";
-import { BlogPost } from "interfaces/post";
 
 import BlogCard from "components/Card/BlogCard";
 import HeadMeta from "components/Helmet/HeadMeta";
@@ -154,7 +154,7 @@ const Post: FC = () => {
           borderRadius: 12,
           margin: screens.xs ? 0 : 20,
           transition: "box-shadow .3s",
-          boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(206, 210, 156, 1)",
+          boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.BLOG_CARD_SHADOW}`,
           border: useDark ? "1px solid #303030" : "none"
         }}
         bodyStyle={{

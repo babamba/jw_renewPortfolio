@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { useRouteMatch, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Card, Grid } from "antd";
-
+import COLOR from "core/colors";
 interface Props {
   info: {
     id: string;
@@ -24,7 +24,7 @@ const BlogCard: FC<Props> = (props: Props) => {
     height: screens.xl ? 150 : 100,
     borderTopRightRadius: 12,
     borderTopLeftRadius: 12,
-    background: `linear-gradient(45deg,  rgba(18, 40, 76, 0.56), rgba(89, 89, 89, 0.3)) , url(https:${info.heroImage}) no-repeat`
+    background: `linear-gradient(45deg,  ${COLOR.DECKCARD_GRADIENT_START}, ${COLOR.DECKCARD_GRADIENT_END}) , url(https:${info.heroImage}) no-repeat`
   };
 
   const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] };
@@ -45,9 +45,7 @@ const BlogCard: FC<Props> = (props: Props) => {
           cover={<div style={cardBGStyles} />}
           style={{
             borderRadius: 8,
-            boxShadow: "0 1px 12px 4px rgba(0,0,0, 0.1)"
-            // backgroundColor: isDark ? "#1f1f1f" : "rgba(255, 255, 255, 0.7)",
-            // border: "none"
+            boxShadow: `0 1px 12px 4px ${COLOR.BTN_LESS_SHADOW}`
           }}
         >
           <Card.Meta

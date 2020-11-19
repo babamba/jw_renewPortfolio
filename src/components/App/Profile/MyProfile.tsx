@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { useStore } from "hooks/useStore";
 import { pageDetailVariants, pageDetailTransition } from "interfaces/Motion";
 import { observer } from "mobx-react-lite";
+import COLOR from "core/colors";
 
 const MainIntroText = styled.h1`
   font-weight: 800;
@@ -141,17 +142,15 @@ const MyProfile: FC = () => {
                 display: "inline-block",
                 fontStyle: "italic",
                 padding: "6px 10px",
-                background: "rgba(255,248,24, 1)",
-                color: "rgba(51, 68, 85,.8)",
-                // background: '#faf46a',
-                // color: 'rgba(51, 68, 85,.7)',
+                background: COLOR.JS_TAG_BACK_COLOR,
+                color: COLOR.JS_TAG_TEXT_COLOR,
                 borderRadius: 4,
                 lineHeight: 1,
                 width: "100%",
                 textAlign: "center",
                 marginTop: screens.xl ? 0 : 10,
                 marginBottom: 0,
-                boxShadow: "0 4px 15px 1px rgba(0,0,0,0.1)"
+                boxShadow: `0 4px 15px 1px ${COLOR.BTN_LESS_SHADOW}`
               }}
             >
               Js Developer

@@ -10,6 +10,7 @@ import {
   FrontEndStack,
   InterestStack
 } from "core/Stack";
+import COLOR from "core/colors";
 
 import { motion } from "framer-motion";
 import {
@@ -92,7 +93,7 @@ const About: FC<Props> = (props: Props) => {
           borderRadius: 12,
           margin: screens.xs ? 0 : 20,
           transition: "box-shadow .3s",
-          boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(206, 203, 226, 1)"
+          boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.ABOUT_CARD_SHADOW}`
         }}
         bodyStyle={{
           padding: "18px"

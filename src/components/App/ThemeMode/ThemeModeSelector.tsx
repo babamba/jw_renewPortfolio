@@ -5,6 +5,7 @@ import { useTheme } from "antd-theme";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import CustomIcon from "components/Common/CustomIcon";
+import COLOR from "core/colors";
 
 const MotionBox = styled(motion.div)`
   display: flex;
@@ -85,7 +86,7 @@ const ThemeModeSelector: FC<Props> = (props: Props) => {
         onClick={handleChange}
         style={{
           margin: 0,
-          color: useDark ? "rgba(246, 229, 3, 1)" : "#000000",
+          color: useDark ? COLOR.BTN_THEME_DARK : COLOR.BTN_THEME_LIGTH,
           fontSize: `${size}rem`,
           cursor: "pointer"
         }}

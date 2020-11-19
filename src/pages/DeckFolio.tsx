@@ -14,6 +14,7 @@ import useMount from "hooks/useMount";
 import DeckList from "components/Deck/DeckList";
 import HeadMeta from "components/Helmet/HeadMeta";
 import DetailInfo from "components/Deck/FolioInfo";
+import COLOR from "core/colors";
 
 interface DeckRefObject {
   getNext: () => void;
@@ -189,7 +190,7 @@ const DeckFolio = () => {
               size="small"
               strokeWidth={10}
               strokeLinecap="square"
-              strokeColor={useDark ? "rgba(255, 255, 255, 0.65)" : "rgba(0, 0, 0, 0.65)"}
+              strokeColor={useDark ? COLOR.DECK_PROGRESS_DARK : COLOR.DECK_PROGRESS_LIGHT}
             />
 
             <span>0{PortfolioData.length}</span>

@@ -5,6 +5,7 @@ import { animated, to } from "react-spring";
 import CardData from "core/folioData";
 import styled from "styled-components";
 import { useHistory, useRouteMatch } from "react-router-dom";
+import COLOR from "core/colors";
 
 const Title = styled.span`
   color: rgba(255, 255, 255, 0.85);
@@ -39,8 +40,9 @@ const Card = props => {
         style={{
           cursor: "pointer",
           transform: to([rot, scale], trans),
-          backgroundImage: `linear-gradient(45deg, rgba(18, 40, 76, 0.56), rgba(89, 89, 89, 0.3)), url(${require(`../../assets/images/folio/` +
-            pics)})`
+          backgroundImage: `linear-gradient(45deg, ${COLOR.DECKCARD_GRADIENT_START}, ${
+            COLOR.DECKCARD_GRADIENT_END
+          }), url(${require(`../../assets/images/folio/` + pics)})`
         }}
       >
         <Title onClick={() => history.push(`${match.url}/${id}`)}>{CardData[i].name}</Title>

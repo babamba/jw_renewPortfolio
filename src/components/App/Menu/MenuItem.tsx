@@ -8,7 +8,7 @@ import {
   CoffeeOutlined,
   SmileOutlined
 } from "@ant-design/icons";
-
+import COLOR from "core/colors";
 import { observer } from "mobx-react-lite";
 import styled from "styled-components";
 import { useStore } from "hooks/useStore";
@@ -50,13 +50,13 @@ const MenuItem: FC<Props> = (props: Props) => {
   const style = {
     color:
       selected === url && useDark
-        ? "rgba(255, 255, 255, 0.95) !important"
-        : "rgba(0, 0, 0, 0.95) !important",
+        ? `${COLOR.MENU_SELECT_TEXT_DARK} !important`
+        : `${COLOR.MENU_SELECT_TEXT_LIGHT} !important`,
     fontSize: selected === url ? (screens.xl ? 24 : 14) : screens.xl ? 20 : 14,
     background:
       selected === url
         ? screens.xl
-          ? "linear-gradient(to top, rgba(152, 44, 255, 0.4) 50%, transparent 30%)"
+          ? `linear-gradient(to top, ${COLOR.MENU_SELECT_BACK_COLOR} 50%, transparent 30%)`
           : "transparent"
         : "transparent",
     padding: selected === url ? (screens.xl ? 8 : 0) : 0,

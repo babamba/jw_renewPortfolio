@@ -12,7 +12,7 @@ import HeadMeta from "components/Helmet/HeadMeta";
 import ResumeContent from "components/App/Resume/ResumeContent";
 import { useStore } from "hooks/useStore";
 import { observer } from "mobx-react-lite";
-
+import COLOR from "core/colors";
 const History: FC = () => {
   const router = useRouter();
   const screens = Grid.useBreakpoint();
@@ -50,7 +50,7 @@ const History: FC = () => {
           borderRadius: 12,
           margin: screens.xs ? 0 : 20,
           transition: "box-shadow .3s",
-          boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(155,184,208,1)"
+          boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.RESUME_CARD_SHADOW}`
         }}
         bodyStyle={{ padding: screens.md ? "24px" : "12px" }}
       >

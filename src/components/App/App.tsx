@@ -16,6 +16,7 @@ import { useStore } from "hooks/useStore";
 import { useRouter } from "hooks/useRouter";
 import ContactCard from "components/Card/ContactCard";
 import HeroBackground from "components/Common/InkBackground";
+import COLOR from "core/colors";
 
 const App = () => {
   const menuSticky = useRef(null);
@@ -77,33 +78,33 @@ const App = () => {
     console.log('location.pathname.split("/")[0] : ', location.pathname.split("/")[1]);
     const body = document.body;
     if (useDark) {
-      setBackColor("#24272b");
-      body.style.backgroundColor = "#24272b";
+      setBackColor(COLOR.DARK_BACK_COLOR);
+      body.style.backgroundColor = COLOR.DARK_BACK_COLOR;
     } else {
       switch (location.pathname.split("/")[1]) {
         case "about":
-          body.style.backgroundColor = "rgba(245, 240, 255, 1)";
-          setBackColor("rgba(245, 240, 255, 1)");
+          body.style.backgroundColor = COLOR.ABOUT_BACK_COLOR;
+          setBackColor(COLOR.ABOUT_BACK_COLOR);
           break;
         case "portfolio":
-          body.style.backgroundColor = "rgba(255, 234, 196, 1)";
-          setBackColor("rgba(255, 234, 196, 1)");
+          body.style.backgroundColor = COLOR.FOLIO_BACK_COLOR;
+          setBackColor(COLOR.FOLIO_BACK_COLOR);
           break;
         case "resume":
-          body.style.backgroundColor = "rgba(208, 234, 255, 1)";
-          setBackColor("rgba(208, 234, 255, 1)");
+          body.style.backgroundColor = COLOR.RESUME_BACK_COLOR;
+          setBackColor(COLOR.RESUME_BACK_COLOR);
           break;
         case "blog":
-          body.style.backgroundColor = "rgba(251, 253, 223, 1)";
-          setBackColor("rgba(251, 253, 223, 1)");
+          body.style.backgroundColor = COLOR.BLOG_BACK_COLOR;
+          setBackColor(COLOR.BLOG_BACK_COLOR);
           break;
         case "contact":
-          body.style.backgroundColor = "rgba(245, 227, 229, 1)";
-          setBackColor("rgba(245, 227, 229, 1)");
+          body.style.backgroundColor = COLOR.CONTACT_BACK_COLOR;
+          setBackColor(COLOR.CONTACT_BACK_COLOR);
           break;
         default:
-          body.style.backgroundColor = "rgba(245, 227, 229, 1)";
-          setBackColor("rgba(245, 227, 229, 1)");
+          body.style.backgroundColor = COLOR.DEFAULT_BACK_COLOR;
+          setBackColor(COLOR.DEFAULT_BACK_COLOR);
           break;
       }
     }
@@ -164,8 +165,8 @@ const App = () => {
                             background:
                               affixed && screens.xl === false
                                 ? useDark
-                                  ? "rgba(255, 255, 255, 0.15)"
-                                  : "rgba(0, 0, 0, 0.15)"
+                                  ? COLOR.AFFIX_BACK_COLOR_DARK
+                                  : COLOR.AFFIX_BACK_COLOR_LIGHT
                                 : "transparent"
                           }}
                         >
@@ -189,8 +190,8 @@ const App = () => {
                         width: 40,
                         lineHeight: "40px",
                         borderRadius: 4,
-                        backgroundColor: "rgba(152, 44, 255, 0.8)",
-                        boxShadow: "0px 1px 10px 3px rgba(0,0,0, 0.2)",
+                        backgroundColor: COLOR.PURPLE_POINT_BG,
+                        boxShadow: `0px 1px 10px 3px ${COLOR.BTN_LESS_SHADOW}`,
                         color: "#fff",
                         textAlign: "center",
                         fontSize: 14

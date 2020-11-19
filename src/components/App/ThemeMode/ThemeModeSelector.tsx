@@ -85,7 +85,7 @@ const ThemeModeSelector: FC<Props> = (props: Props) => {
         onClick={handleChange}
         style={{
           margin: 0,
-          color: useDark ? "#f0d74a" : "#000000",
+          color: useDark ? "rgba(246, 229, 3, 1)" : "#000000",
           fontSize: `${size}rem`,
           cursor: "pointer"
         }}

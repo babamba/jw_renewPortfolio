@@ -1,71 +1,71 @@
 const pageVariants = {
   initial: {
     opacity: 0,
-    y: "2vw",
+    y: "2vw"
   },
   in: {
     opacity: 1,
-    y: 0,
+    y: 0
   },
   out: {
     opacity: 0,
-    y: "2vw",
-  },
+    y: "2vw"
+  }
 };
 
 const folioVariants = {
   initial: {
-    opacity: 0,
+    opacity: 0
   },
   in: {
-    opacity: 1,
+    opacity: 1
   },
   out: {
-    opacity: 0,
-  },
+    opacity: 0
+  }
 };
 
 const pageOpacityVariants = {
   initial: {
-    opacity: 0,
+    opacity: 0
   },
   in: {
-    opacity: 1,
+    opacity: 1
   },
   out: {
-    opacity: 0,
-  },
+    opacity: 0
+  }
 };
 
 const pageOpacityTransition = {
   type: "tween",
   duration: 1,
-  ease: "anticipate",
+  ease: "anticipate"
 };
 
 const pageTransition = {
   type: "tween",
   duration: 1,
-  ease: "anticipate",
+  ease: "anticipate"
   // type: 'spring',
   // stiffness: 100
 };
 
 const pageDetailVariants = {
   initial: {
-    opacity: 0,
+    opacity: 0
   },
   in: {
-    opacity: 1,
+    opacity: 1
   },
   out: {
-    opacity: 0,
-  },
+    opacity: 0
+  }
 };
 const pageDetailTransition = {
   type: "tween",
   duration: 1,
-  ease: "anticipate",
+  ease: "anticipate"
 };
 
 const DetailContainerStyle = {
@@ -74,8 +74,8 @@ const DetailContainerStyle = {
     transition: {
       staggerChildren: 0.5,
       delayChildren: 0.5,
-      when: "beforeChildren",
-    },
+      when: "beforeChildren"
+    }
   },
   visible: {
     opacity: 1,
@@ -83,15 +83,15 @@ const DetailContainerStyle = {
       // delay: 0.5,
       staggerChildren: 0.5,
       delayChildren: 0.5,
-      when: "beforeChildren",
+      when: "afterChildren"
       // staggerChildren: 1,
       // staggerDirection: 1
-    },
-  },
+    }
+  }
 };
 
 const pageStyle = {
-  position: "absolute",
+  position: "absolute"
 };
 
 const ContainerStyle = {
@@ -100,8 +100,8 @@ const ContainerStyle = {
     transition: {
       staggerChildren: 0.1,
       delayChildren: 0.2,
-      when: "afterChildren",
-    },
+      when: "afterChildren"
+    }
   },
   visible: {
     opacity: 1,
@@ -109,9 +109,9 @@ const ContainerStyle = {
       delay: 0.3,
       when: "beforeChildren",
       staggerChildren: 0.15,
-      staggerDirection: 1,
-    },
-  },
+      staggerDirection: 1
+    }
+  }
 };
 
 const FastContainerStyle = {
@@ -120,8 +120,8 @@ const FastContainerStyle = {
     transition: {
       staggerChildren: 0.1,
       delayChildren: 0.1,
-      when: "afterChildren",
-    },
+      when: "afterChildren"
+    }
   },
   visible: {
     opacity: 1,
@@ -129,9 +129,9 @@ const FastContainerStyle = {
       delay: 0.1,
       when: "beforeChildren",
       staggerChildren: 0.1,
-      staggerDirection: 1,
-    },
-  },
+      staggerDirection: 1
+    }
+  }
 };
 
 const ItemStyle = {
@@ -139,16 +139,16 @@ const ItemStyle = {
     y: -10,
     opacity: 0,
     transition: {
-      y: { stiffness: 1000, velocity: -100 },
-    },
+      y: { stiffness: 1000, velocity: -100 }
+    }
   },
   visible: {
     y: 0,
     opacity: 1,
     transition: {
-      y: { stiffness: 1000 },
-    },
-  },
+      y: { stiffness: 1000 }
+    }
+  }
 };
 
 const ItemLeftStyle = {
@@ -156,16 +156,16 @@ const ItemLeftStyle = {
     x: -4,
     opacity: 0,
     transition: {
-      y: { stiffness: 1000, velocity: -100 },
-    },
+      y: { stiffness: 1000, velocity: -100 }
+    }
   },
   visible: {
     x: 0,
     opacity: 1,
     transition: {
-      y: { stiffness: 1000 },
-    },
-  },
+      y: { stiffness: 1000 }
+    }
+  }
 };
 
 const openSpring = { type: "spring", stiffness: 200, damping: 30 };
@@ -186,5 +186,5 @@ export {
   pageDetailVariants,
   pageDetailTransition,
   pageOpacityVariants,
-  pageOpacityTransition,
+  pageOpacityTransition
 };

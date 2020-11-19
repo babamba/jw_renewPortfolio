@@ -17,6 +17,7 @@ const MainIntroText = styled.h1`
   letter-spacing: -2.4px;
   text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   font-family: "NEXON Lv2 Gothic Bold";
+  color: ${props => (props.useDark ? "rgba(255, 255, 255, 0.9)" : "rgba(0, 0, 0, 0.85)")};
 `;
 
 const MainIntroSmallText = styled.h1`
@@ -25,6 +26,10 @@ const MainIntroSmallText = styled.h1`
   opacity: 0.9;
   margin: 0;
   line-height: 1.5;
+  text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  letter-spacing: -2.4px;
+  font-family: "NEXON Lv2 Gothic Bold";
+  color: ${props => (props.useDark ? "rgba(255, 255, 255, 0.9)" : "rgba(0, 0, 0, 0.85)")};
 `;
 const SubIntroSmallText = styled.h1`
   font-weight: 300;
@@ -35,6 +40,8 @@ const SubIntroSmallText = styled.h1`
   line-height: 1.5;
   overflow: visible;
   white-space: nowrap;
+  text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  color: ${props => (props.useDark ? "rgba(255, 255, 255, 0.9)" : "rgba(0, 0, 0, 0.85)")};
 `;
 
 const SubIntroText = styled.h2`
@@ -46,6 +53,8 @@ const SubIntroText = styled.h2`
   overflow: visible;
   white-space: nowrap;
   padding-left: 6px;
+  text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  color: ${props => (props.useDark ? "rgba(255, 255, 255, 0.9)" : "rgba(0, 0, 0, 0.85)")};
   @media only screen and (min-width: 400px) and (max-width: 799px) {
     font-size: 1rem;
   }
@@ -109,7 +118,8 @@ const MyProfile: FC = () => {
                   lineHeight: 1.4,
                   textAlign: "center",
                   marginLeft: screens.xl ? 0 : 15,
-                  letterSpacing: -0.8
+                  letterSpacing: -0.8,
+                  color: useDark ? "rgba(255, 255, 255, 0.9)" : "rgba(0, 0, 0, 0.85)"
                 }}
               >
                 <Typography.Link
@@ -141,7 +151,7 @@ const MyProfile: FC = () => {
                 textAlign: "center",
                 marginTop: screens.xl ? 0 : 10,
                 marginBottom: 0,
-                boxShadow: "0 4px 15px 1px rgba(0,0,0,0.2)"
+                boxShadow: "0 4px 15px 1px rgba(0,0,0,0.1)"
               }}
             >
               Js Developer
@@ -157,10 +167,10 @@ const MyProfile: FC = () => {
               span={screens.xxl ? 17 : 24}
             >
               <motion.div variants={textVariants}>
-                <MainIntroText>안녕하세요.</MainIntroText>
+                <MainIntroText useDark={useDark}>안녕하세요.</MainIntroText>
               </motion.div>
               <motion.div variants={textVariants}>
-                <SubIntroText>
+                <SubIntroText useDark={useDark}>
                   <ReactRotatingText
                     items={["Front", "React", "UI ", "BackEnd", "진지한", "배고픈"]}
                   />
@@ -171,7 +181,7 @@ const MyProfile: FC = () => {
           ) : (
             <Col style={{ flexDirection: "column", paddingLeft: "1em" }}>
               <motion.div variants={textVariants}>
-                <MainIntroSmallText>안녕하세요.</MainIntroSmallText>
+                <MainIntroSmallText useDark={useDark}>안녕하세요.</MainIntroSmallText>
               </motion.div>
               <motion.div variants={textVariants}>
                 {/* {screens.lg && (
@@ -188,7 +198,7 @@ const MyProfile: FC = () => {
                     />
                   </SubIntroText>
                 )} */}
-                <SubIntroSmallText>
+                <SubIntroSmallText useDark={useDark}>
                   {screens.sm && (
                     <ReactRotatingText
                       items={["Front", "React", "UI ", "BackEnd", "진지한", "배고픈"]}

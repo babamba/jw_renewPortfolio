@@ -27,11 +27,9 @@ const MotionMenuBox = styled(motion.div)`
     background-color: ${props =>
       props.selected === props.current
         ? props.isDark
-          ? "rgba(152, 44, 255, 0.3)"
+          ? "rgba(152, 44, 255, 0.65)"
           : "white"
         : "transparent"};
-    /* background-color: ${props =>
-      props.selected === props.current ? "rgba(152, 44, 255, 0.3)" : "transparent"}; */
     border-radius: 12px;
     padding: 0px 8px;
     margin: 0px 4px;
@@ -113,12 +111,11 @@ const IconMenu: FC = () => {
           span={screens.xl ? 24 : 4}
           style={{
             textAlign: "center",
-            paddingTop: screens.xs ? 0 : 6,
             paddingBottom: screens.xl ? 12 : 0
           }}
         >
           <motion.div variants={ItemStyle}>
-            <ThemeModeSelector size={screens.xl ? 2.3 : 1.6} />
+            <ThemeModeSelector size={screens.xl ? 2.3 : 1.7} />
           </motion.div>
         </Col>
 

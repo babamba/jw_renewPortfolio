@@ -15,7 +15,7 @@ import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { useStore } from "hooks/useStore";
 import { useRouter } from "hooks/useRouter";
 import ContactCard from "components/Card/ContactCard";
-import HeroBackground from "components/Common/HeroBackground";
+import HeroBackground from "components/Common/ InkBackground";
 
 const App = () => {
   const menuSticky = useRef(null);

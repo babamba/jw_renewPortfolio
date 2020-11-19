@@ -30,6 +30,7 @@ const FolioInTitleContainer = styled.div`
 `;
 
 const FolioTitle = styled.span`
+  font-family: "NEXON Lv2 Gothic Bold";
   color: rgba(255, 255, 255, 1);
   letter-spacing: -1.2px;
   font-weight: 600;
@@ -58,7 +59,8 @@ const StackText = styled.h4`
 `;
 
 const SubscriptionText = styled(Typography.Text)`
-  line-height: 32px;
+  /* line-height: 32px; */
+  line-height: 2.2;
   font-weight: 300;
   font-size: 16px;
   @media only screen and (min-width: 200px) and (max-width: 767px) {
@@ -237,7 +239,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
               borderRadius: 12,
               border: 0,
               transition: "box-shadow .3s",
-              boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(206, 210, 156 , 1)"
+              boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(241, 208, 148, 1)"
             }}
             bodyStyle={{
               padding: 12

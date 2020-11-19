@@ -22,7 +22,7 @@ const JobText = styled.p`
   padding-left: 12px;
   font-weight: 300;
   font-size: 15px;
-  line-height: 2.5;
+  line-height: 2.2;
   @media only screen and (min-width: 200px) and (max-width: 767px) {
     line-height: 2;
   }

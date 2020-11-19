@@ -66,9 +66,9 @@ const HeroBackground = () => {
               output: [
                 "#fdeae7",
                 useDark ? "rgba(128, 119, 185, 1)" : "rgba(178, 166, 255, 1)",
-                useDark ? "rgba(108, 179, 123, 1)" : "rgba(146, 228, 162, 1)",
+                useDark ? "rgba(255, 208, 213, 1)" : "rgba(251, 126, 168, 1)",
                 useDark ? "rgba(252, 255, 199, 1)" : "rgba(247, 255, 92, 1)",
-                useDark ? "rgba(255, 208, 213, 1)" : "rgba(251, 126, 168, 1)"
+                useDark ? "rgba(108, 179, 123, 1)" : "rgba(146, 228, 162, 1)"
               ]
             })
           }}

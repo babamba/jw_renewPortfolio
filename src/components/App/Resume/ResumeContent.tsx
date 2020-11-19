@@ -39,6 +39,7 @@ const CompanyText = styled.span`
   padding-right: 4px;
   font-weight: 600;
   font-size: 1.3em;
+  font-family: "NEXON Lv2 Gothic Bold";
 `;
 
 interface Props {

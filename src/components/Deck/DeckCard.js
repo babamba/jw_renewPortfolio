@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Tooltip } from "antd";
+import { Grid } from "antd";
 import { string, number } from "prop-types";
 import { animated, to } from "react-spring";
 import CardData from "core/folioData";
@@ -16,10 +16,11 @@ const Title = styled.span`
   font-size: 1.2rem;
   &:hover {
     text-decoration: underline;
+    text-underline-position: under;
   }
 `;
 
-const Card = (props) => {
+const Card = props => {
   const history = useHistory();
   const match = useRouteMatch();
   const screens = Grid.useBreakpoint();
@@ -28,9 +29,7 @@ const Card = (props) => {
 
   return (
     <animated.div
-      className={
-        screens.xl ? "card-container-desktop" : "card-container-mobile"
-      }
+      className={screens.xl ? "card-container-desktop" : "card-container-mobile"}
       key={i}
       style={{ x, y }}
     >
@@ -41,14 +40,10 @@ const Card = (props) => {
           cursor: "pointer",
           transform: to([rot, scale], trans),
           backgroundImage: `linear-gradient(45deg, rgba(18, 40, 76, 0.56), rgba(89, 89, 89, 0.3)), url(${require(`../../assets/images/folio/` +
-            pics)})`,
+            pics)})`
         }}
       >
-        <Tooltip placement="bottom" title="자세히">
-          <Title onClick={() => history.push(`${match.url}/${id}`)}>
-            {CardData[i].name}
-          </Title>
-        </Tooltip>
+        <Title onClick={() => history.push(`${match.url}/${id}`)}>{CardData[i].name}</Title>
       </animated.div>
     </animated.div>
   );
@@ -59,7 +54,7 @@ Card.propTypes = {
   age: number,
   distance: string,
   position: string,
-  pics: string,
+  pics: string
 };
 
 export default Card;

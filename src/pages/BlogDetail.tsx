@@ -166,15 +166,18 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
                     borderRadius: 12,
                     border: 0,
                     transition: "box-shadow .3s",
-                    // backgroundColor: useDark ? "#1f1f1f" : "rgba(255, 255, 255, 0.4)",
-                    boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(232, 196, 130 , 1)"
+                    boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(206, 210, 156, 1)"
                   }}
                   bodyStyle={{
                     padding: 24
                   }}
                 >
                   <motion.div variants={textVariants} style={{ textAlign: "left" }}>
-                    <Typography.Title level={1}>{article?.title}</Typography.Title>
+                    <Typography.Title
+                      style={{ fontFamily: "NEXON Lv2 Gothic Bold", letterSpacing: -1.8 }}
+                    >
+                      {article?.title}
+                    </Typography.Title>
                     <div className="author">
                       <p>Written by {article?.author.name}</p>
                     </div>

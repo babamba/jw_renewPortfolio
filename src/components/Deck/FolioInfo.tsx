@@ -9,6 +9,7 @@ import { useStore } from "hooks/useStore";
 const InfoContainer = styled(motion.div)`
   &:hover {
     text-decoration: underline;
+    text-underline-position: under;
   }
 `;
 
@@ -52,8 +53,8 @@ const Card: FC<Props> = (props: Props) => {
             style={{
               fontSize: 32,
               marginBottom: 14,
-              fontWeight: 800,
-              letterSpacing: -2.5
+              fontFamily: "NEXON Lv2 Gothic Bold",
+              letterSpacing: -2.4
             }}
           >
             {data.name}

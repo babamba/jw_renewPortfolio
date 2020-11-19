@@ -37,13 +37,13 @@ const StackCard: FC<Props> = (props: Props) => {
     <Col xs={8} sm={8} md={6} lg={4} xl={4}>
       <StackBox>
         <motion.div variants={ItemStyle}>
-          <Tooltip placement="topLeft" title={RenderTooltip(tooltipTitle)}>
-            <Avatar
-              shape="square"
-              size={screens.xs ? 70 : 80}
-              src={require("../../assets/images/stack/" + imgUrl)}
-            />
-          </Tooltip>
+          {/* <Tooltip placement="topLeft" title={RenderTooltip(tooltipTitle)}> */}
+          <Avatar
+            shape="square"
+            size={screens.xs ? 70 : 80}
+            src={require("../../assets/images/stack/" + imgUrl)}
+          />
+          {/* </Tooltip> */}
           <TitleBox>
             <StackText>
               <Typography.Paragraph

@@ -86,16 +86,16 @@ const App = () => {
           setBackColor("rgba(245, 240, 255, 1)");
           break;
         case "portfolio":
-          body.style.backgroundColor = "rgba(251, 253, 223, 1)";
-          setBackColor("rgba(251, 253, 223, 1)");
+          body.style.backgroundColor = "rgba(255, 234, 196, 1)";
+          setBackColor("rgba(255, 234, 196, 1)");
           break;
         case "resume":
           body.style.backgroundColor = "rgba(208, 234, 255, 1)";
           setBackColor("rgba(208, 234, 255, 1)");
           break;
         case "blog":
-          body.style.backgroundColor = "rgba(255, 234, 196, 1)";
-          setBackColor("rgba(255, 234, 196, 1)");
+          body.style.backgroundColor = "rgba(251, 253, 223, 1)";
+          setBackColor("rgba(251, 253, 223, 1)");
           break;
         case "contact":
           body.style.backgroundColor = "rgba(245, 227, 229, 1)";
@@ -189,7 +189,8 @@ const App = () => {
                         width: 40,
                         lineHeight: "40px",
                         borderRadius: 4,
-                        backgroundColor: "rgba(152, 44, 255, 0.4)",
+                        backgroundColor: "rgba(152, 44, 255, 0.8)",
+                        boxShadow: "0px 1px 10px 3px rgba(0,0,0, 0.2)",
                         color: "#fff",
                         textAlign: "center",
                         fontSize: 14

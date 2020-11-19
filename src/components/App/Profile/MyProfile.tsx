@@ -14,8 +14,9 @@ const MainIntroText = styled.h1`
   opacity: 1;
   margin: 0;
   line-height: 1.5;
-  letter-spacing: -3px;
-  text-shadow: 0px 2px 6px rgba(0,0,0, 0.2);
+  letter-spacing: -2.4px;
+  text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  font-family: "NEXON Lv2 Gothic Bold";
 `;
 
 const MainIntroSmallText = styled.h1`
@@ -112,7 +113,10 @@ const MyProfile: FC = () => {
                 }}
               >
                 <Typography.Link
-                  style={{ color: useDark ? "white" : "black",  textShadow: "0px 2px 6px rgba(0,0,0, 0.2)" }}
+                  style={{
+                    color: useDark ? "white" : "black",
+                    textShadow: "rgba(0, 0, 0, 0.2) 0px 2px 8px"
+                  }}
                   href="https://github.com/babamba"
                   target="_blank"
                 >
@@ -127,8 +131,8 @@ const MyProfile: FC = () => {
                 display: "inline-block",
                 fontStyle: "italic",
                 padding: "6px 10px",
-                background: "rgba(152,44,255, .8)",
-                color: "#d9d9d9",
+                background: "rgba(255,248,24, 1)",
+                color: "rgba(51, 68, 85,.8)",
                 // background: '#faf46a',
                 // color: 'rgba(51, 68, 85,.7)',
                 borderRadius: 4,
@@ -136,7 +140,8 @@ const MyProfile: FC = () => {
                 width: "100%",
                 textAlign: "center",
                 marginTop: screens.xl ? 0 : 10,
-                marginBottom: 0
+                marginBottom: 0,
+                boxShadow: "0 4px 15px 1px rgba(0,0,0,0.2)"
               }}
             >
               Js Developer

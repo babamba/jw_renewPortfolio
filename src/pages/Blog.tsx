@@ -148,8 +148,7 @@ const Post: FC = () => {
           borderRadius: 12,
           margin: screens.xs ? 0 : 20,
           transition: "box-shadow .3s",
-          boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(241, 208, 148, 1)",
-          // backgroundColor: useDark ? "#1f1f1f" : "rgba(255, 255, 255, 1)",
+          boxShadow: useDark ? "none" : "0px 0px 20px 1px rgba(206, 210, 156, 1)",
           border: useDark ? "1px solid #303030" : "none"
         }}
         bodyStyle={{

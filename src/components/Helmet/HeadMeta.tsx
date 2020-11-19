@@ -22,6 +22,7 @@ const HeadMeta: FC<MetaProps> = ({
   return (
     <Helmet>
       <title>김진원 | {text} | I'm FrontEnd Developer</title>
+      <link rel="canonical" href={`https://www.glance-jw.com/${url}`} />
       <meta name={text} content={`${text} content`} />
       <meta name="author" content="Jinwon Kim" />
       <meta name="description" content={`김진원 | ${description}`} />

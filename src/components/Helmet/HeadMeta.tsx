@@ -7,9 +7,16 @@ interface MetaProps {
   keywords: string;
   description: string;
   title: string;
+  url: string;
 }
 
-const HeadMeta: FC<MetaProps> = ({ text, keywords = "", description = "", title = "" }) => {
+const HeadMeta: FC<MetaProps> = ({
+  text,
+  keywords = "",
+  description = "",
+  title = "",
+  url = ""
+}) => {
   const defaultKeyword =
     " javascript, react, antd, nodejs, typescript, frontend, front-end, backend, back-end, Fullstack, developer, 웹개발자, 프론트엔드, 백엔드, 코딩, 프로그래밍, 소프트웨어, 개발자포트폴리오, 프로그래머, 웹개발자포트폴리오, 스타트업개발자";
   return (
@@ -17,10 +24,11 @@ const HeadMeta: FC<MetaProps> = ({ text, keywords = "", description = "", title 
       <title>김진원 | {text} | I'm FrontEnd Developer</title>
       <meta name={text} content={`${text} content`} />
       <meta name="author" content="Jinwon Kim" />
-      <meta property="og:title" content={`김진원 | ${text}`} />
-
       <meta name="description" content={`김진원 | ${description}`} />
       <meta name="keywords" content={keywords + defaultKeyword} />
+
+      <meta property="og:title" content={`김진원 | ${text}`} />
+      <meta property="og:url" content={`https://www.glance-jw.com/${url}`} />
       <meta property="og:image" content={favicon} />
       <meta property="og:site_name" content="김진원 | JW PortFolio" />
       <meta property="og:description" content={`김진원 | ${description}`} />

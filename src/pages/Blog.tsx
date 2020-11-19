@@ -142,7 +142,13 @@ const Post: FC = () => {
       }}
       // style={pageStyle}
     >
-      <HeadMeta title="JW BLOG" text="JW BLOG" keywords="JW BLOG" description="JW BLOG" />
+      <HeadMeta
+        title="JW BLOG"
+        text="JW BLOG"
+        keywords="JW BLOG"
+        description="JW BLOG"
+        url="blog"
+      />
       <CardView
         style={{
           borderRadius: 12,

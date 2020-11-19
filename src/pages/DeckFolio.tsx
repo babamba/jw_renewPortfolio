@@ -108,7 +108,7 @@ const DeckFolio = () => {
 
   const transition = { duration: 0.2 };
   const hoverframeVariants = {
-    hover: { scale: 1.2 },
+    hover: { scale: 1.2 }
   };
 
   return (
@@ -125,13 +125,14 @@ const DeckFolio = () => {
         text="JW Project PortFolio"
         keywords="FrontEnd Developer React Project"
         description="Project PortFolio"
+        url="portfolio"
       />
       <Row
         align="middle"
         justify="start"
         style={{
           overflowX: screens.xl ? "inherit" : "hidden",
-          padding: screens.sm ? "20px 10%" : "20px 20px 0px",
+          padding: screens.sm ? "20px 10%" : "20px 20px 0px"
         }}
       >
         <Col span={24}>
@@ -142,20 +143,16 @@ const DeckFolio = () => {
               display: "flex",
               flex: 1,
               justifyContent: "center",
-              height: screens.xl ? "75vh" : "60vh",
+              height: screens.xl ? "75vh" : "60vh"
             }}
           >
-            <DeckList
-              ref={deckRef}
-              callbackRef={callbackRef}
-              currentIdx={currentIdx}
-            />
+            <DeckList ref={deckRef} callbackRef={callbackRef} currentIdx={currentIdx} />
           </div>
         </Col>
         <Col
           span={24}
           style={{
-            padding: screens.xxl ? "10px 12%" : "10px",
+            padding: screens.xxl ? "10px 12%" : "10px"
           }}
         >
           <Space align="center" style={{ paddingBottom: 12 }}>
@@ -184,7 +181,7 @@ const DeckFolio = () => {
 
             <Progress
               style={{
-                borderRadius: 0,
+                borderRadius: 0
               }}
               percent={progressBar}
               showInfo={false}
@@ -192,9 +189,7 @@ const DeckFolio = () => {
               size="small"
               strokeWidth={10}
               strokeLinecap="square"
-              strokeColor={
-                useDark ? "rgba(255, 255, 255, 0.65)" : "rgba(0, 0, 0, 0.65)"
-              }
+              strokeColor={useDark ? "rgba(255, 255, 255, 0.65)" : "rgba(0, 0, 0, 0.65)"}
             />
 
             <span>0{PortfolioData.length}</span>

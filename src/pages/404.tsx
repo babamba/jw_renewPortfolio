@@ -13,6 +13,7 @@ const Page_404: FC<RouteComponentProps> = ({ history }) => {
         text="404"
         keywords="404 Page"
         description="404 Page"
+        url="error"
       />
       <Result
         status="404"

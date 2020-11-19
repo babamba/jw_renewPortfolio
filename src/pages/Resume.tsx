@@ -42,6 +42,7 @@ const History: FC = () => {
         text="JW Resume"
         keywords="FrontEnd Developer React"
         description="JW Resume"
+        url="resume"
       />
       <Card
         style={{

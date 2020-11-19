@@ -84,6 +84,7 @@ const About: FC<Props> = (props: Props) => {
         text="About Me"
         keywords="FrontEnd Developer"
         description="About JW"
+        url="about"
       />
 
       <Card

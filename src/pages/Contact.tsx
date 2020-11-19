@@ -57,6 +57,7 @@ const Contact: FunctionComponent<Props> = ({}) => {
         text="Contact Me"
         keywords="Contact Me"
         description="Contact Me"
+        url="contact"
       />
       <Card
         style={{

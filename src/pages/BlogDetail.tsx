@@ -83,6 +83,7 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
         text={`${article?.title}`}
         keywords={`${article?.title}`}
         description="JW BLOG"
+        url={`blog/${article?.title}`}
       />
 
       <motion.div

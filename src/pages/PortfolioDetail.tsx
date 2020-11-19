@@ -178,6 +178,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
             text={`Portfolio | ${folio ? folio.id : "empty"}`}
             keywords={`Portfolio | ${folio ? folio.id : "empty"}`}
             description={`Portfolio | ${folio ? folio.id : "empty"}`}
+            url={`portfolio/${folio ? folio.id : ""}`}
           />
           <Row align="middle">
             <Col span={12} style={{ textAlign: "left" }}>

@@ -37,6 +37,7 @@
     "react-router-dom": "^5.2.0",
     "react-router-sitemap": "^1.2.0",
     "react-scripts": "3.4.1",
+    "react-slick": "^0.27.13",
     "react-spring": "9.0.0-rc.3",
     "react-use-gesture": "^7.0.15",
     "react-with-gesture": "^4.0.8",

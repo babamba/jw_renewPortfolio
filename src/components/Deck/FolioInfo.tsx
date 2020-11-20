@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Skeleton, Typography } from "antd";
 import { motion } from "framer-motion";
-import { ItemStyle, FastContainerStyle } from "interfaces/Motion";
+import { ItemStyle, ContainerStyle } from "interfaces/Motion";
 import styled from "styled-components";
 import { Link, useRouteMatch } from "react-router-dom";
 import { useStore } from "hooks/useStore";
@@ -44,7 +44,7 @@ const Card: FC<Props> = (props: Props) => {
     >
       <InfoContainer
         className="container"
-        variants={FastContainerStyle}
+        variants={ContainerStyle}
         initial="hidden"
         animate={animating ? "visible" : "hidden"}
       >

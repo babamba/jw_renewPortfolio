@@ -7,7 +7,7 @@ import { withRouter, RouteComponentProps } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import { Typography, PageHeader, Layout, Skeleton, Grid, Card } from "antd";
 
-import { pageDetailVariants, pageDetailTransition, ContainerStyle } from "interfaces/Motion";
+import { pageVariants, pageTransition, ContainerStyle } from "interfaces/Motion";
 import { BlogPost } from "interfaces/post";
 import { ContentfulService } from "core/contentful";
 import COLOR from "core/colors";
@@ -98,8 +98,8 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
           initial="initial"
           animate="in"
           exit="out"
-          variants={pageDetailVariants}
-          transition={pageDetailTransition}
+          variants={pageVariants}
+          transition={pageTransition}
           style={{
             position: "absolute",
             width: "100%",

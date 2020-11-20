@@ -22,7 +22,7 @@ import { useStore } from "hooks/useStore";
 import { ContentfulService } from "core/contentful";
 import COLOR from "core/colors";
 
-import { pageTransition, pageVariants, FastContainerStyle, ItemStyle } from "interfaces/Motion";
+import { pageTransition, pageVariants, ItemStyle, ContainerStyle } from "interfaces/Motion";
 
 import BlogCard from "components/Card/BlogCard";
 import HeadMeta from "components/Helmet/HeadMeta";
@@ -70,8 +70,8 @@ const Post: FC = () => {
   }, []);
 
   useEffect(() => {
-    console.log("screens: ", screens);
     if (Object.keys(screens).length > 0) {
+      console.log("screens: ", screens);
       if (screens.lg === false) {
         fetch(1, "", 6);
       } else {
@@ -185,7 +185,7 @@ const Post: FC = () => {
             </Row>
             <motion.div
               className="container"
-              variants={FastContainerStyle}
+              variants={ContainerStyle}
               initial="hidden"
               animate="visible"
               exit="hidden"

@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Grid, Timeline, Typography, Avatar, Card, Divider, Badge } from "antd";
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { FastContainerStyle, ItemStyle } from "interfaces/Motion";
+import { ContainerStyle, ItemStyle } from "interfaces/Motion";
 import COLOR from "core/colors";
 import ResumeStory from "./ResumeStory";
 import { Resume } from "interfaces/resume";
@@ -72,7 +72,7 @@ const ResumeContent: FC<Props> = (props: Props) => {
           <ContentBox>
             <motion.div
               className="container"
-              variants={FastContainerStyle}
+              variants={ContainerStyle}
               initial="hidden"
               animate="visible"
               exit="hidden"

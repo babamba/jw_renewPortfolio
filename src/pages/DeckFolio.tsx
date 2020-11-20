@@ -5,7 +5,7 @@ import { ForwardOutlined, RetweetOutlined } from "@ant-design/icons";
 import { Grid, Progress, Row, Col, Tooltip, Space } from "antd";
 import { motion, useAnimation } from "framer-motion";
 
-import { pageOpacityVariants, pageOpacityTransition } from "interfaces/Motion";
+import { pageVariants, pageTransition } from "interfaces/Motion";
 import PortfolioData from "core/folioData";
 import { useRouter } from "hooks/useRouter";
 import { useStore } from "hooks/useStore";
@@ -117,8 +117,8 @@ const DeckFolio = () => {
       initial="initial"
       animate="in"
       exit="out"
-      variants={pageOpacityVariants}
-      transition={pageOpacityTransition}
+      variants={pageVariants}
+      transition={pageTransition}
       style={{ position: "absolute", width: "100%", height: "100%" }}
     >
       <HeadMeta

@@ -5,7 +5,7 @@ import { GithubOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useStore } from "hooks/useStore";
-import { pageDetailVariants, pageDetailTransition } from "interfaces/Motion";
+import { pageVariants, pageTransition } from "interfaces/Motion";
 import { observer } from "mobx-react-lite";
 import COLOR from "core/colors";
 
@@ -85,8 +85,8 @@ const MyProfile: FC = () => {
         initial="out"
         animate="in"
         exit="out"
-        variants={pageDetailVariants}
-        transition={pageDetailTransition}
+        variants={pageVariants}
+        transition={pageTransition}
         style={{
           width: "100%"
         }}

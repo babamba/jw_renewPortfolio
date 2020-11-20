@@ -13,12 +13,7 @@ import {
 import COLOR from "core/colors";
 
 import { motion } from "framer-motion";
-import {
-  pageTransition,
-  pageVariants,
-  ContainerStyle,
-  FastContainerStyle
-} from "interfaces/Motion";
+import { pageTransition, pageVariants, ContainerStyle } from "interfaces/Motion";
 
 import HeadMeta from "components/Helmet/HeadMeta";
 import StackCard from "components/Card/StackCard";
@@ -136,7 +131,7 @@ const About: FC<Props> = (props: Props) => {
 
         <motion.div
           className="container"
-          variants={FastContainerStyle}
+          variants={ContainerStyle}
           initial="hidden"
           animate="visible"
           exit="hidden"

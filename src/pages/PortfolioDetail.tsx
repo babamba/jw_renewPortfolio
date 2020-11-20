@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from "react";
 import { Card, Typography, Grid, Divider, PageHeader, Space, Col, Row } from "antd";
 import { ForwardOutlined, BackwardOutlined } from "@ant-design/icons";
 import styled from "styled-components";
-import { pageTransition, folioVariants, ContainerStyle, ItemLeftStyle } from "interfaces/Motion";
+import { pageTransition, pageVariants, ContainerStyle, ItemLeftStyle } from "interfaces/Motion";
 import { motion } from "framer-motion";
 import { observer } from "mobx-react-lite";
 import { useStore } from "hooks/useStore";
@@ -167,7 +167,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
         initial="initial"
         animate="in"
         exit="out"
-        variants={folioVariants}
+        variants={pageVariants}
         transition={pageTransition}
         style={{
           position: "absolute",

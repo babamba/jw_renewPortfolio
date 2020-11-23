@@ -1,37 +1,36 @@
 import React from "react";
-import styled from "styled-components";
-import { Col, Row, Skeleton } from "antd";
-
-const LoadingContainer = styled.div`
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  height: inherit;
-  flex-direction: column;
-`;
+import { Grid, Col, Row, Skeleton } from "antd";
 
 const LazyIconLoader = () => {
+  const screens = Grid.useBreakpoint();
+
   return (
-    <LoadingContainer>
-      <Row gutter={[8, 24]}>
-        <Col>
+    <Row gutter={[8, 24]} justify="center">
+      {/* {screens.xl === false && (
+        <Col xs={4} sm={4} md={4} lg={6} style={{ textAlign: "center" }}>
           <Skeleton.Avatar />
         </Col>
-        <Col>
-          <Skeleton.Avatar />
-        </Col>
-        <Col>
-          <Skeleton.Avatar />
-        </Col>
-        <Col>
-          <Skeleton.Avatar />
-        </Col>
-        <Col>
-          <Skeleton.Avatar />
-        </Col>
-      </Row>
-    </LoadingContainer>
+      )} */}
+      {screens.xl && (
+        <>
+          <Col xs={4} sm={4} md={4} lg={4} xl={24} xxl={24} style={{ textAlign: "center" }}>
+            <Skeleton.Avatar />
+          </Col>
+          <Col xs={4} sm={4} md={4} lg={4} xl={24} xxl={24} style={{ textAlign: "center" }}>
+            <Skeleton.Avatar />
+          </Col>
+          <Col xs={4} sm={4} md={4} lg={4} xl={24} xxl={24} style={{ textAlign: "center" }}>
+            <Skeleton.Avatar />
+          </Col>
+          <Col xs={4} sm={4} md={4} lg={4} xl={24} xxl={24} style={{ textAlign: "center" }}>
+            <Skeleton.Avatar />
+          </Col>
+          <Col xs={4} sm={4} md={4} lg={4} xl={24} xxl={24} style={{ textAlign: "center" }}>
+            <Skeleton.Avatar />
+          </Col>
+        </>
+      )}
+    </Row>
   );
 };
 

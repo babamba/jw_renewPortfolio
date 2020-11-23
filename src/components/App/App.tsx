@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState, useEffect, useRef } from "react";
+import React, { useLayoutEffect, useState, useEffect, useRef, Suspense, lazy } from "react";
 import { observer } from "mobx-react-lite";
 import { ThemeProvider } from "antd-theme";
 import { Layout, Row, Col, Affix, Grid, BackTop, Divider } from "antd";
@@ -9,15 +9,21 @@ import ReactGA from "react-ga";
 import FolioRoutes from "routes/FolioRoutes";
 import LabsRoutes from "routes/LabsRoute";
 
-import IconMenu from "../App/Menu/IconMenu";
-import MyProfile from "./Profile/MyProfile";
+// import IconMenu from "../App/Menu/IconMenu";
+// import MyProfile from "./Profile/MyProfile";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { useStore } from "hooks/useStore";
 import { useRouter } from "hooks/useRouter";
-import ContactCard from "components/Card/ContactCard";
+// import ContactCard from "components/Card/ContactCard";
 import HeroBackground from "components/Common/InkBackground";
 import COLOR from "core/colors";
-import TextSwipeMenu from "./Menu/TextSwipeMenu";
+import LazyLoader from "components/Loader/LazyLoader";
+import LazySkeletonLoader from "components/Loader/LazySkeletonLoader";
+import LazyIconLoader from "components/Loader/LazyIconLoader";
+// import TextSwipeMenu from "./Menu/TextSwipeMenu";
+const MyProfile = lazy(() => import("components/App/Profile/MyProfile"));
+const IconMenu = lazy(() => import("components/App/Menu/IconMenu"));
+const ContactCard = lazy(() => import("components/Card/ContactCard"));
 
 const App = () => {
   const menuSticky = useRef(null);
@@ -140,8 +146,12 @@ const App = () => {
                         paddingLeft: screens.xl ? 12 : 0
                       }}
                     >
-                      <MyProfile />
-                      <ContactCard />
+                      <Suspense fallback={<LazySkeletonLoader type="profile" row={2} />}>
+                        <MyProfile />
+                      </Suspense>
+                      <Suspense fallback={<LazySkeletonLoader type="contact" row={10} />}>
+                        <ContactCard />
+                      </Suspense>
                     </Col>
                     <Col
                       xs={24}
@@ -171,7 +181,9 @@ const App = () => {
                                 : "transparent"
                           }}
                         >
-                          <IconMenu />
+                          <Suspense fallback={<LazyIconLoader />}>
+                            <IconMenu />
+                          </Suspense>
                         </div>
                       </Affix>
                     </Col>

@@ -21,7 +21,7 @@ const BlogCard: FC<Props> = (props: Props) => {
   const screens = Grid.useBreakpoint();
   const cardBGStyles = {
     backgroundSize: "cover",
-    height: screens.xl ? 150 : 100,
+    height: screens.lg ? 150 : 100,
     borderTopRightRadius: 12,
     borderTopLeftRadius: 12,
     background: `linear-gradient(45deg,  ${COLOR.DECKCARD_GRADIENT_START}, ${COLOR.DECKCARD_GRADIENT_END}) , url(https:${info.heroImage}) no-repeat`
@@ -57,9 +57,9 @@ const BlogCard: FC<Props> = (props: Props) => {
                   textOverflow: "ellipsis",
                   wordWrap: "break-word",
                   display: "-webkit-box",
-                  WebkitLineClamp: screens.xl ? 5 : 3,
+                  WebkitLineClamp: screens.lg ? 5 : 3,
                   WebkitBoxOrient: "vertical",
-                  minHeight: screens.xl ? 114 : 70
+                  minHeight: screens.lg ? 114 : 70
                 }}
               >
                 {info.description}

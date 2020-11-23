@@ -11,7 +11,7 @@ import { observer } from "mobx-react-lite";
 
 const CustomCol = styled(Col)`
   text-align: center;
-  @media only screen and (min-width: 100px) and (max-width: 1199px) {
+  @media only screen and (min-width: 100px) and (max-width: 991px) {
     text-align: center;
     transform: ${props => (props.selected === props.current ? "scale( 1.1 )" : "scale( 1 )")};
     text-decoration: ${props => (props.selected === props.current ? "underline" : "unset")};
@@ -38,7 +38,7 @@ const MotionMenuBox = styled(motion.div)`
       props.selected === props.current ? "0 1px 13px 4px rgba(0, 0, 0, 0.04)" : "none"};
   }
 
-  @media only screen and (min-width: 768px) and (max-width: 1199px) {
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
     transition: background 0.6s;
   }
 `;
@@ -48,7 +48,7 @@ const MenuButtonBox = styled.div`
     padding: 4px;
   }
 
-  @media only screen and (min-width: 767px) and (max-width: 1199px) {
+  @media only screen and (min-width: 767px) and (max-width: 991px) {
     display: inline-block;
     padding: ${props => (props.selected === props.current ? "4px 8px" : "4px 0px")};
     background: ${props =>
@@ -93,9 +93,9 @@ const IconMenu: FC = () => {
       <Row
         justify="center"
         align="middle"
-        gutter={screens.xl ? [0, 32] : [0, 0]}
+        gutter={screens.lg ? [0, 32] : [0, 0]}
         style={
-          screens.xl
+          screens.lg
             ? {
                 // paddingTop: 30,
                 // paddingLeft: 8,
@@ -108,18 +108,18 @@ const IconMenu: FC = () => {
         }
       >
         <Col
-          span={screens.xl ? 24 : 4}
+          span={screens.lg ? 24 : 4}
           style={{
             textAlign: "center",
-            paddingBottom: screens.xl ? 12 : 0
+            paddingBottom: screens.lg ? 12 : 0
           }}
         >
           <motion.div variants={ItemStyle}>
-            <ThemeModeSelector size={screens.xl ? 2.3 : 1.7} />
+            <ThemeModeSelector size={screens.lg ? 2.3 : 1.7} />
           </motion.div>
         </Col>
 
-        <CustomCol span={screens.xl ? 24 : 4} onClick={() => history.push("/about")}>
+        <CustomCol span={screens.lg ? 24 : 4} onClick={() => history.push("/about")}>
           <MotionMenuBox variants={ItemStyle} selected="/about" current={selected} isDark={useDark}>
             <MenuButtonBox selected="/about" current={selected}>
               <MenuItem
@@ -134,7 +134,7 @@ const IconMenu: FC = () => {
           </MotionMenuBox>
         </CustomCol>
 
-        <CustomCol span={screens.xl ? 24 : 4} onClick={() => history.push("/portfolio")}>
+        <CustomCol span={screens.lg ? 24 : 4} onClick={() => history.push("/portfolio")}>
           <MotionMenuBox
             variants={ItemStyle}
             selected="/portfolio"
@@ -152,7 +152,7 @@ const IconMenu: FC = () => {
             </MenuButtonBox>
           </MotionMenuBox>
         </CustomCol>
-        <CustomCol span={screens.xl ? 24 : 4} onClick={() => history.push("/resume")}>
+        <CustomCol span={screens.lg ? 24 : 4} onClick={() => history.push("/resume")}>
           <MotionMenuBox
             variants={ItemStyle}
             selected="/resume"
@@ -170,7 +170,7 @@ const IconMenu: FC = () => {
             </MenuButtonBox>
           </MotionMenuBox>
         </CustomCol>
-        <CustomCol span={screens.xl ? 24 : 4} onClick={() => history.push("/blog")}>
+        <CustomCol span={screens.lg ? 24 : 4} onClick={() => history.push("/blog")}>
           <MotionMenuBox variants={ItemStyle} selected="/blog" current={selected} isDark={useDark}>
             <MenuButtonBox selected="/blog" current={selected}>
               <MenuItem
@@ -184,9 +184,9 @@ const IconMenu: FC = () => {
           </MotionMenuBox>
         </CustomCol>
         <CustomCol
-          span={screens.xl ? 24 : 4}
+          span={screens.lg ? 24 : 4}
           onClick={() => history.push("/contact")}
-          style={{ display: screens.xl ? "none" : "block" }}
+          style={{ display: screens.lg ? "none" : "block" }}
         >
           <MotionMenuBox
             variants={ItemStyle}

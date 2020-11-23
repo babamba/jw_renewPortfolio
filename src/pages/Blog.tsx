@@ -66,13 +66,13 @@ const Post: FC = () => {
   }, []);
 
   useEffect(() => {
-    fetch(currentPage, "", screens.lg ? 12 : 6);
+    fetch(currentPage, "", screens.xl ? 12 : 6);
   }, []);
 
   useEffect(() => {
     if (Object.keys(screens).length > 0) {
       console.log("screens: ", screens);
-      if (screens.lg === false) {
+      if (screens.xl === false) {
         fetch(1, "", 6);
       } else {
         fetch(1, "", 12);
@@ -121,11 +121,11 @@ const Post: FC = () => {
   const onHandlePaging = (page: number) => {
     setCurrentPage(page);
     // updatePage(page);
-    fetch(page, selectTag, screens.lg ? 12 : 6);
+    fetch(page, selectTag, screens.xl ? 12 : 6);
   };
   const handleTagChosen = tag => {
     updateTag(tag.id);
-    fetch(1, tag.id, screens.lg ? 12 : 6);
+    fetch(1, tag.id, screens.xl ? 12 : 6);
   };
 
   return (
@@ -138,7 +138,7 @@ const Post: FC = () => {
       style={{
         position: "absolute",
         width: "100%",
-        padding: screens.xl ? "0px" : "20px",
+        padding: screens.lg ? "0px" : "20px",
         zIndex: 2
       }}
       // style={pageStyle}
@@ -201,7 +201,7 @@ const Post: FC = () => {
                     xs: 2,
                     sm: 2,
                     md: 2,
-                    lg: 4,
+                    lg: 2,
                     xl: 4,
                     xxl: 4
                   }}
@@ -224,7 +224,7 @@ const Post: FC = () => {
                       xs: 2,
                       sm: 2,
                       md: 2,
-                      lg: 4,
+                      lg: 2,
                       xl: 4,
                       xxl: 4
                     }}

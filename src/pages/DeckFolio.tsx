@@ -132,7 +132,7 @@ const DeckFolio = () => {
         align="middle"
         justify="start"
         style={{
-          overflowX: screens.xl ? "inherit" : "hidden",
+          overflowX: screens.lg ? "inherit" : "hidden",
           padding: screens.sm ? "20px 10%" : "20px 20px 0px"
         }}
       >
@@ -144,7 +144,7 @@ const DeckFolio = () => {
               display: "flex",
               flex: 1,
               justifyContent: "center",
-              height: screens.xl ? "75vh" : "60vh"
+              height: screens.lg ? "75vh" : "60vh"
             }}
           >
             <DeckList ref={deckRef} callbackRef={callbackRef} currentIdx={currentIdx} />

@@ -34,7 +34,7 @@ const History: FC = () => {
       style={{
         position: "absolute",
         width: "100%",
-        padding: screens.xl ? "0px" : "20px"
+        padding: screens.lg ? "0px" : "20px"
       }}
     >
       <HeadMeta

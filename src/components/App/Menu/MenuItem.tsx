@@ -30,7 +30,7 @@ const MenuText = styled(Typography.Text)`
     (props.usedark === "true"
       ? "rgba(255, 255, 255, 0.95) !important"
       : "rgba(0, 0, 0, 0.95) !important")};
-  @media only screen and (min-width: 200px) and (max-width: 1199px) {
+  @media only screen and (min-width: 200px) and (max-width: 991px) {
     font-weight: ${props => (props.selected === props.current ? 600 : 400)};
     padding-left: 4px;
     font-size: 14px;
@@ -52,15 +52,15 @@ const MenuItem: FC<Props> = (props: Props) => {
       selected === url && useDark
         ? `${COLOR.MENU_SELECT_TEXT_DARK} !important`
         : `${COLOR.MENU_SELECT_TEXT_LIGHT} !important`,
-    fontSize: selected === url ? (screens.xl ? 24 : 14) : screens.xl ? 20 : 14,
+    fontSize: selected === url ? (screens.lg ? 24 : 14) : screens.lg ? 20 : 14,
     background:
       selected === url
-        ? screens.xl
+        ? screens.lg
           ? `linear-gradient(to top, ${COLOR.MENU_SELECT_BACK_COLOR} 50%, transparent 30%)`
           : "transparent"
         : "transparent",
-    padding: selected === url ? (screens.xl ? 8 : 0) : 0,
-    transition: screens.xl ? " 0.3s" : "0s"
+    padding: selected === url ? (screens.lg ? 8 : 0) : 0,
+    transition: screens.lg ? " 0.3s" : "0s"
   };
 
   const findIcon = () => {
@@ -84,12 +84,12 @@ const MenuItem: FC<Props> = (props: Props) => {
     <Box>
       <Link to={url} />
       <Tooltip
-        placement={screens.xl ? "left" : "topLeft"}
+        placement={screens.lg ? "left" : "topLeft"}
         title={title}
-        trigger={screens.xl ? "hover" : "click"}
+        trigger={screens.lg ? "hover" : "click"}
       >
         {findIcon()}
-        {screens.xl === false && screens.md === true && (
+        {screens.lg === false && screens.md === true && (
           <MenuText selected={url} current={selected} usedark={useDark ? "true" : "false"}>
             {subTitle}
           </MenuText>

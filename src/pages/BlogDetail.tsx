@@ -16,7 +16,7 @@ import { useRouter } from "hooks/useRouter";
 import { useStore } from "hooks/useStore";
 
 const PostContainer = styled.div`
-  padding: 18px;
+  padding: 20px;
 
   @media only screen and (min-width: 200px) and (max-width: 992px) {
     padding: 0px 20px;
@@ -103,7 +103,7 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
           style={{
             position: "absolute",
             width: "100%",
-            padding: screens.xl ? "0px" : "20px"
+            padding: screens.lg ? "0px" : "20px"
           }}
         >
           <PostContainer className="post">

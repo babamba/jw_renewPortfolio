@@ -19,12 +19,15 @@ const MainIntroText = styled.h1`
   text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   font-family: "NEXON Lv2 Gothic Bold";
   color: ${props => (props.useDark ? "rgba(255, 255, 255, 0.9)" : "rgba(0, 0, 0, 0.85)")};
+  @media only screen and (min-width: 992px) and (max-width: 1024px) {
+    font-size: 3.3rem;
+  }
 `;
 
 const MainIntroSmallText = styled.h1`
   font-weight: 800;
   font-size: 2rem;
-  opacity: 0.9;
+  opacity: 1;
   margin: 0;
   line-height: 1.5;
   text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
@@ -56,7 +59,8 @@ const SubIntroText = styled.h2`
   padding-left: 6px;
   text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   color: ${props => (props.useDark ? "rgba(255, 255, 255, 0.9)" : "rgba(0, 0, 0, 0.85)")};
-  @media only screen and (min-width: 400px) and (max-width: 799px) {
+
+  /* @media only screen and (min-width: 400px) and (max-width: 799px) {
     font-size: 1rem;
   }
   @media only screen and (min-width: 800px) and (max-width: 924px) {
@@ -64,7 +68,7 @@ const SubIntroText = styled.h2`
   }
   @media only screen and (min-width: 925px) and (max-width: 1037px) {
     font-size: 2rem;
-  }
+  } */
 `;
 
 const MyProfile: FC = () => {
@@ -78,9 +82,9 @@ const MyProfile: FC = () => {
       transition: { delay: 0.1 }
     }
   };
-  // return screens.xl ? (
+
   return (
-    <Affix offsetTop={screens.xl ? 10 : -120} style={{ position: "relative" }}>
+    <Affix offsetTop={screens.lg ? 10 : -120} style={{ position: "relative" }}>
       <motion.div
         initial="out"
         animate="in"
@@ -95,30 +99,30 @@ const MyProfile: FC = () => {
           style={{
             alignItems: "center",
             padding: "1.5rem 2.5rem",
-            paddingBottom: screens.xl ? "0" : "1rem"
+            paddingBottom: screens.lg ? "0" : "1rem"
           }}
           align="middle"
           justify="start"
         >
           <Col
             style={{
-              flexDirection: screens.xl ? "column" : "row",
+              flexDirection: screens.lg ? "column" : "row",
               padding: 8
             }}
           >
             <div>
-              <Avatar size={screens.xl ? 100 : 50} src={require("../../../assets/images/me.png")} />
+              <Avatar size={screens.lg ? 100 : 50} src={require("../../../assets/images/me.png")} />
 
               <Typography.Title
                 style={{
-                  display: screens.xl ? "block" : "inline",
+                  display: screens.lg ? "block" : "inline",
                   margin: ".5em 0",
                   padding: 0,
                   fontWeight: 550,
                   fontSize: "1em",
                   lineHeight: 1.4,
                   textAlign: "center",
-                  marginLeft: screens.xl ? 0 : 15,
+                  marginLeft: screens.lg ? 0 : 15,
                   letterSpacing: -0.8,
                   color: useDark ? "rgba(255, 255, 255, 0.9)" : "rgba(0, 0, 0, 0.85)"
                 }}
@@ -148,7 +152,7 @@ const MyProfile: FC = () => {
                 lineHeight: 1,
                 width: "100%",
                 textAlign: "center",
-                marginTop: screens.xl ? 0 : 10,
+                marginTop: screens.lg ? 0 : 10,
                 marginBottom: 0,
                 boxShadow: `0 4px 15px 1px ${COLOR.BTN_LESS_SHADOW}`
               }}
@@ -157,7 +161,7 @@ const MyProfile: FC = () => {
             </Typography.Paragraph>
           </Col>
 
-          {screens.xl ? (
+          {screens.lg ? (
             <Col
               style={{
                 flexDirection: "column",
@@ -170,9 +174,11 @@ const MyProfile: FC = () => {
               </motion.div>
               <motion.div variants={textVariants}>
                 <SubIntroText useDark={useDark}>
-                  <ReactRotatingText
-                    items={["Front", "React", "UI ", "BackEnd", "진지한", "배고픈"]}
-                  />
+                  {screens.xl && (
+                    <ReactRotatingText
+                      items={["Front", "React", "UI ", "BackEnd", "진지한", "배고픈"]}
+                    />
+                  )}
                   개발자 김진원입니다.
                 </SubIntroText>
               </motion.div>

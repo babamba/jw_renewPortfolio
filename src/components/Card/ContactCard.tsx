@@ -24,7 +24,7 @@ const Contact: FC = () => {
   const screens = Grid.useBreakpoint();
 
   return (
-    <div style={{ display: screens.xl ? "block" : "none" }}>
+    <div style={{ display: screens.lg ? "block" : "none" }}>
       <Affix offsetTop={screens.xxl ? 212 : 328}>
         <motion.div
           initial="initial"

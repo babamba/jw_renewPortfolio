@@ -58,7 +58,7 @@ const App = () => {
   }, [router.location.pathname]);
 
   useEffect(() => {
-    if (screens.xl) {
+    if (screens.lg) {
       if (router.location.pathname === "/contact") {
         router.history.push("/about");
       }
@@ -133,17 +133,17 @@ const App = () => {
               ) : (
                 <Layout.Content>
                   <HeroBackground />
-                  <Row style={{ height: screens.xl ? "100vh" : "auto" }}>
+                  <Row style={{ height: screens.lg ? "100vh" : "auto" }}>
                     <Col
                       xs={24}
                       sm={24}
                       md={24}
-                      lg={24}
+                      lg={8}
                       xl={8}
                       xxl={8}
                       style={{
                         alignSelf: "center",
-                        paddingLeft: screens.xl ? 12 : 0
+                        paddingLeft: screens.lg ? 12 : 0
                       }}
                     >
                       <Suspense fallback={<LazySkeletonLoader type="profile" row={2} />}>
@@ -157,7 +157,7 @@ const App = () => {
                       xs={24}
                       sm={24}
                       md={24}
-                      lg={24}
+                      lg={1}
                       xl={1}
                       xxl={1}
                       style={{ alignSelf: "center" }}
@@ -167,14 +167,14 @@ const App = () => {
                           if (affixed !== undefined) setAffixed(affixed);
                         }}
                         ref={menuSticky}
-                        offsetTop={screens.xl ? 60 : 0}
+                        offsetTop={screens.lg ? 60 : 0}
                         style={{ transition: "background 0.5s ease" }}
                       >
                         <div
                           style={{
                             transition: "background 0.5s ease",
                             background:
-                              affixed && screens.xl === false
+                              affixed && screens.lg === false
                                 ? useDark
                                   ? COLOR.AFFIX_BACK_COLOR_DARK
                                   : COLOR.AFFIX_BACK_COLOR_LIGHT
@@ -187,7 +187,7 @@ const App = () => {
                         </div>
                       </Affix>
                     </Col>
-                    <Col xs={24} sm={24} md={24} lg={24} xl={15} xxl={15}>
+                    <Col xs={24} sm={24} md={24} lg={15} xl={15} xxl={15}>
                       {/* <Row>
                         <Col span={24}>
                           <TextSwipeMenu />

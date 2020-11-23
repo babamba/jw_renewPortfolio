@@ -30,12 +30,12 @@ const Card = props => {
 
   return (
     <animated.div
-      className={screens.xl ? "card-container-desktop" : "card-container-mobile"}
+      className={screens.lg ? "card-container-desktop" : "card-container-mobile"}
       key={i}
       style={{ x, y }}
     >
       <animated.div
-        className={screens.xl ? "card-deck-desktop" : "card-deck-mobile"}
+        className={screens.lg ? "card-deck-desktop" : "card-deck-mobile"}
         {...bind(i)}
         style={{
           cursor: "pointer",

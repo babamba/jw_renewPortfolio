@@ -6,26 +6,21 @@ const LazyIconLoader = () => {
 
   return (
     <Row gutter={[8, 24]} justify="center">
-      {/* {screens.xl === false && (
-        <Col xs={4} sm={4} md={4} lg={6} style={{ textAlign: "center" }}>
-          <Skeleton.Avatar />
-        </Col>
-      )} */}
-      {screens.xl && (
+      {screens.lg && (
         <>
-          <Col xs={4} sm={4} md={4} lg={4} xl={24} xxl={24} style={{ textAlign: "center" }}>
+          <Col xs={4} sm={4} md={4} lg={24} xl={24} xxl={24} style={{ textAlign: "center" }}>
             <Skeleton.Avatar />
           </Col>
-          <Col xs={4} sm={4} md={4} lg={4} xl={24} xxl={24} style={{ textAlign: "center" }}>
+          <Col xs={4} sm={4} md={4} lg={24} xl={24} xxl={24} style={{ textAlign: "center" }}>
             <Skeleton.Avatar />
           </Col>
-          <Col xs={4} sm={4} md={4} lg={4} xl={24} xxl={24} style={{ textAlign: "center" }}>
+          <Col xs={4} sm={4} md={4} lg={24} xl={24} xxl={24} style={{ textAlign: "center" }}>
             <Skeleton.Avatar />
           </Col>
-          <Col xs={4} sm={4} md={4} lg={4} xl={24} xxl={24} style={{ textAlign: "center" }}>
+          <Col xs={4} sm={4} md={4} lg={24} xl={24} xxl={24} style={{ textAlign: "center" }}>
             <Skeleton.Avatar />
           </Col>
-          <Col xs={4} sm={4} md={4} lg={4} xl={24} xxl={24} style={{ textAlign: "center" }}>
+          <Col xs={4} sm={4} md={4} lg={24} xl={24} xxl={24} style={{ textAlign: "center" }}>
             <Skeleton.Avatar />
           </Col>
         </>

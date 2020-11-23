@@ -14,8 +14,7 @@ import COLOR from "core/colors";
 
 const ContentBox = styled.div``;
 const FolioContainer = styled.div`
-  margin: 40px;
-  padding: 0px 20px;
+  padding: 20px;
 
   @media only screen and (min-width: 200px) and (max-width: 992px) {
     margin: 0px;
@@ -172,7 +171,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
         style={{
           position: "absolute",
           width: "100%",
-          padding: screens.xl ? "0px" : "20px"
+          padding: screens.lg ? "0px" : "20px"
         }}
       >
         <FolioContainer>

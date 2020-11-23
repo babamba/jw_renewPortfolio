@@ -71,7 +71,7 @@ const About: FC<Props> = (props: Props) => {
         position: "absolute",
         width: "100%",
         height: "100%",
-        padding: screens.xl ? "0px" : "20px"
+        padding: screens.lg ? "0px" : "20px"
       }}
       // style={pageStyle}
     >

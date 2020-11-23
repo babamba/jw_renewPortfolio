@@ -48,7 +48,7 @@ const Contact: FunctionComponent<Props> = ({}) => {
       style={{
         position: "absolute",
         width: "100%",
-        padding: screens.xl ? "0px" : "20px"
+        padding: screens.lg ? "0px" : "20px"
       }}
       // style={pageStyle}
     >
@@ -62,8 +62,8 @@ const Contact: FunctionComponent<Props> = ({}) => {
       <Card
         style={{
           borderRadius: 12,
-          marginBottom: screens.xl ? 0 : 30,
-          margin: screens.xl ? "40px" : 0
+          marginBottom: screens.lg ? 0 : 30,
+          margin: screens.lg ? "40px" : 0
         }}
       >
         <motion.div

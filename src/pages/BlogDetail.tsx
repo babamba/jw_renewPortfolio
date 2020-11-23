@@ -19,7 +19,7 @@ const PostContainer = styled.div`
   padding: 20px;
 
   @media only screen and (min-width: 200px) and (max-width: 992px) {
-    padding: 0px 20px;
+    padding: 0px;
     margin: 0px;
   }
 `;
@@ -78,7 +78,7 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
   };
 
   return (
-    <Layout.Content>
+    <>
       <HeadMeta
         title={`${article?.title}`}
         text={`${article?.title}`}
@@ -88,113 +88,105 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
       />
 
       <motion.div
-        className="container"
-        variants={ContainerStyle}
-        initial="hidden"
-        animate="visible"
-        exit="hidden"
+        initial="initial"
+        animate="in"
+        exit="out"
+        variants={pageVariants}
+        transition={pageTransition}
+        style={{
+          position: "absolute",
+          width: "100%",
+          padding: screens.lg ? "0px" : "20px"
+        }}
       >
-        <motion.div
-          initial="initial"
-          animate="in"
-          exit="out"
-          variants={pageVariants}
-          transition={pageTransition}
-          style={{
-            position: "absolute",
-            width: "100%",
-            padding: screens.lg ? "0px" : "20px"
-          }}
-        >
-          <PostContainer className="post">
-            {article === undefined ? (
-              <>
-                <motion.button
-                  variants={backVariants}
-                  whileHover={{
-                    scale: 1.02,
-                    transition: { duration: 0.5 }
-                  }}
-                  whileTap={{ scale: 0.99 }}
-                  onClick={() => history.push("/blog")}
-                  style={{
-                    background: "transparent",
-                    border: "none",
-                    outline: "none",
-                    cursor: "pointer"
-                  }}
-                >
-                  <PageHeader
-                    onBack={() => history.push("/blog")}
-                    className="site-page-header"
-                    title="이전 페이지"
-                    style={{ background: "transparent", padding: "12px 0px" }}
-                    // subTitle="이전 페이지"
-                  />
-                </motion.button>
-                <Skeleton active paragraph={{ rows: 1 }} />
-                <Skeleton.Avatar active size={24} shape="square" />
-                <Skeleton active paragraph={{ rows: 10 }} />
-              </>
-            ) : (
-              <>
-                <motion.button
-                  variants={backVariants}
-                  whileHover={{
-                    scale: 1.02,
-                    transition: { duration: 0.5 }
-                  }}
-                  whileTap={{ scale: 0.99 }}
-                  onClick={() => history.push("/blog")}
-                  style={{
-                    background: "transparent",
-                    border: "none",
-                    outline: "none",
-                    cursor: "pointer"
-                  }}
-                >
-                  <PageHeader
-                    onBack={() => history.push("/blog")}
-                    className="site-page-header"
-                    title="이전 페이지"
-                    style={{ background: "transparent", padding: "12px 0px" }}
-                    // subTitle="이전 페이지"
-                  />
-                </motion.button>
-                {/* </motion.div> */}
-                <Card
-                  style={{
-                    textAlign: "center",
-                    borderRadius: 12,
-                    border: 0,
-                    transition: "box-shadow .3s",
-                    boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.BLOG_CARD_SHADOW}`
-                  }}
-                  bodyStyle={{
-                    padding: 24
-                  }}
-                >
-                  <motion.div variants={textVariants} style={{ textAlign: "left" }}>
-                    <Typography.Title
-                      style={{ fontFamily: "NEXON Lv2 Gothic Bold", letterSpacing: -1.8 }}
-                    >
-                      {article?.title}
-                    </Typography.Title>
-                    <div className="author">
-                      <p>Written by {article?.author.name}</p>
-                    </div>
-                  </motion.div>
+        <PostContainer className="post">
+          {article === undefined ? (
+            <>
+              <motion.button
+                variants={backVariants}
+                whileHover={{
+                  scale: 1.02,
+                  transition: { duration: 0.5 }
+                }}
+                whileTap={{ scale: 0.99 }}
+                onClick={() => history.push("/blog")}
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  outline: "none",
+                  cursor: "pointer"
+                }}
+              >
+                <PageHeader
+                  onBack={() => history.push("/blog")}
+                  className="site-page-header"
+                  title="이전 페이지"
+                  style={{ background: "transparent", padding: "12px 0px" }}
+                  // subTitle="이전 페이지"
+                />
+              </motion.button>
+              <Skeleton active paragraph={{ rows: 1 }} />
+              <Skeleton.Avatar active size={24} shape="square" />
+              <Skeleton active paragraph={{ rows: 10 }} />
+            </>
+          ) : (
+            <>
+              <motion.button
+                variants={backVariants}
+                whileHover={{
+                  scale: 1.02,
+                  transition: { duration: 0.5 }
+                }}
+                whileTap={{ scale: 0.99 }}
+                onClick={() => history.push("/blog")}
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  outline: "none",
+                  cursor: "pointer"
+                }}
+              >
+                <PageHeader
+                  onBack={() => history.push("/blog")}
+                  className="site-page-header"
+                  title="이전 페이지"
+                  style={{ background: "transparent", padding: "12px 0px" }}
+                  // subTitle="이전 페이지"
+                />
+              </motion.button>
+              {/* </motion.div> */}
+              <Card
+                style={{
+                  textAlign: "center",
+                  borderRadius: 12,
+                  border: 0,
+                  transition: "box-shadow .3s",
+                  boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.BLOG_CARD_SHADOW}`
+                }}
+                bodyStyle={{
+                  padding: 24
+                }}
+              >
+                <motion.div variants={textVariants} style={{ textAlign: "left" }}>
+                  <Typography.Title
+                    style={{ fontFamily: "NEXON Lv2 Gothic Bold", letterSpacing: -1.8 }}
+                  >
+                    {article?.title}
+                  </Typography.Title>
+                  <div className="author">
+                    <p>Written by {article?.author.name}</p>
+                  </div>
+                </motion.div>
 
-                  <motion.div variants={textVariants}>
-                    <ReactMarkdown className="markdown" source={article?.body} />
-                  </motion.div>
-                </Card>
-              </>
-            )}
-          </PostContainer>
-        </motion.div>
+                <motion.div variants={textVariants}>
+                  <ReactMarkdown className="markdown" source={article?.body} />
+                </motion.div>
+              </Card>
+            </>
+          )}
+        </PostContainer>
       </motion.div>
-    </Layout.Content>
+    </>
   );
 };
 

@@ -144,7 +144,7 @@ const DeckFolio = () => {
               display: "flex",
               flex: 1,
               justifyContent: "center",
-              height: screens.lg ? "75vh" : "60vh"
+              height: screens.xl ? "75vh" : screens.lg ? "65vh" : "55vh"
             }}
           >
             <DeckList ref={deckRef} callbackRef={callbackRef} currentIdx={currentIdx} />

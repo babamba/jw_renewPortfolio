@@ -34,7 +34,7 @@ const StackCard: FC<Props> = (props: Props) => {
   };
 
   return (
-    <Col xs={8} sm={8} md={6} lg={4} xl={4}>
+    <Col xs={8} sm={8} md={6} lg={6} xl={4} xxl={3}>
       <StackBox>
         <motion.div variants={ItemStyle}>
           {/* <Tooltip placement="topLeft" title={RenderTooltip(tooltipTitle)}> */}

@@ -21,10 +21,18 @@ const LazySkeletonLoader: FC<Props> = (props: Props) => {
       <Row>
         {type === "profile" ? (
           <>
-            <Col xs={2} sm={2} md={2} lg={24} xl={24} xxl={24}>
+            <Col
+              xs={6}
+              sm={6}
+              md={4}
+              lg={24}
+              xl={24}
+              xxl={24}
+              style={{ padding: screens.lg ? 0 : 20 }}
+            >
               <Avatar style={{ width: screens.lg ? 100 : 50, height: screens.lg ? 100 : 50 }} />
             </Col>
-            <Col xs={8} sm={8} md={8} lg={24} xl={24} xxl={24}>
+            <Col xs={12} sm={8} md={8} lg={24} xl={24} xxl={24}>
               <Skeleton paragraph={{ rows: row }} />
             </Col>
           </>

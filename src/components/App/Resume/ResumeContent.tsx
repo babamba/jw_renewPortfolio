@@ -15,7 +15,7 @@ const CustomDivider = styled(Divider)`
   margin: 12px 0px;
 `;
 const ProjectBox = styled.div`
-  padding: 2em 0.5em;
+  padding: 2em 0em;
   padding-bottom: 0px;
 `;
 const HeadDiv = styled.div`

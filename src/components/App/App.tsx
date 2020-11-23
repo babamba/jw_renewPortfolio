@@ -1,26 +1,19 @@
 import React, { useLayoutEffect, useState, useEffect, useRef, Suspense, lazy } from "react";
 import { observer } from "mobx-react-lite";
 import { ThemeProvider } from "antd-theme";
-import { Layout, Row, Col, Affix, Grid, BackTop, Divider } from "antd";
+import { Layout, Row, Col, Affix, Grid, BackTop } from "antd";
 import { ArrowUpOutlined } from "@ant-design/icons";
 import { useWindowHeight } from "@react-hook/window-size";
 import ReactGA from "react-ga";
-
 import FolioRoutes from "routes/FolioRoutes";
 import LabsRoutes from "routes/LabsRoute";
-
-// import IconMenu from "../App/Menu/IconMenu";
-// import MyProfile from "./Profile/MyProfile";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { useStore } from "hooks/useStore";
 import { useRouter } from "hooks/useRouter";
-// import ContactCard from "components/Card/ContactCard";
 import HeroBackground from "components/Common/InkBackground";
 import COLOR from "core/colors";
-import LazyLoader from "components/Loader/LazyLoader";
 import LazySkeletonLoader from "components/Loader/LazySkeletonLoader";
 import LazyIconLoader from "components/Loader/LazyIconLoader";
-// import TextSwipeMenu from "./Menu/TextSwipeMenu";
 const MyProfile = lazy(() => import("components/App/Profile/MyProfile"));
 const IconMenu = lazy(() => import("components/App/Menu/IconMenu"));
 const ContactCard = lazy(() => import("components/Card/ContactCard"));

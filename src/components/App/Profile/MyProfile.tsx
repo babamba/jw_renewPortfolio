@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Row, Col, Typography, Avatar, Affix, Grid, Divider } from "antd";
+import { Row, Col, Typography, Avatar, Affix, Grid } from "antd";
 import ReactRotatingText from "react-rotating-text";
 import { GithubOutlined } from "@ant-design/icons";
 import styled from "styled-components";

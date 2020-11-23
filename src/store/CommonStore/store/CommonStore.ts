@@ -1,11 +1,6 @@
 import { observable, action, makeObservable, computed } from "mobx";
 import { autobind } from "core-decorators";
 import RootStoreModel from "store/index";
-/**
- * 텔레매틱스 서버가 아닌 외부 API 서비스 혹은 내부 시스템 서비스를 가지는 Store
- * 테마 지정
- * 카카오 도로명 주소 검색 서비스
- */
 
 class CommonStore {
   rootStore: RootStoreModel;
@@ -36,7 +31,6 @@ class CommonStore {
   @action.bound async setCurrentPage(value: number) {
     this._currentPage = value;
   }
-
   @action.bound async setUseLabpage(value: boolean) {
     this._useLabPage = value;
   }

@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Col, Typography, Avatar, Badge, Tooltip, Grid } from "antd";
+import { Col, Typography, Avatar, Badge, Grid } from "antd";
 import { ItemStyle } from "interfaces/Motion";
 import styled from "styled-components";
 import { motion } from "framer-motion";

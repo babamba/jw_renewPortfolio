@@ -138,7 +138,8 @@ const Post: FC = () => {
       style={{
         position: "absolute",
         width: "100%",
-        padding: screens.xl ? "0px" : "20px"
+        padding: screens.xl ? "0px" : "20px",
+        zIndex: 2
       }}
       // style={pageStyle}
     >

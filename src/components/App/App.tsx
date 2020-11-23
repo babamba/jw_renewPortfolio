@@ -17,6 +17,7 @@ import { useRouter } from "hooks/useRouter";
 import ContactCard from "components/Card/ContactCard";
 import HeroBackground from "components/Common/InkBackground";
 import COLOR from "core/colors";
+import TextSwipeMenu from "./Menu/TextSwipeMenu";
 
 const App = () => {
   const menuSticky = useRef(null);
@@ -175,9 +176,16 @@ const App = () => {
                       </Affix>
                     </Col>
                     <Col xs={24} sm={24} md={24} lg={24} xl={15} xxl={15}>
+                      {/* <Row>
+                        <Col span={24}>
+                          <TextSwipeMenu />
+                        </Col>
+                        <Col span={24}> */}
                       <div style={{ position: "relative" }}>
                         <FolioRoutes />
                       </div>
+                      {/* </Col>
+                      </Row> */}
                     </Col>
                   </Row>
 

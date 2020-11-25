@@ -1,8 +1,6 @@
 import { observable, action, makeObservable, computed } from "mobx";
 import { autobind } from "core-decorators";
 import RootStoreModel from "store/index";
-import CommonService from "./commonService";
-import { StackOutput } from "interfaces/output";
 
 class CommonStore {
   rootStore: RootStoreModel;
@@ -59,31 +57,6 @@ class CommonStore {
       this.setUseDark(true);
     } else {
       this.setUseDark(false);
-    }
-  }
-
-  @autobind
-  async findStack(
-    type: "remote" | "front" | "backend" | "ci" | "infra" | "interest"
-  ): Promise<StackOutput> {
-    try {
-      const { data, status } = await CommonService.findStack(type);
-
-      if (status === 200) {
-        return {
-          ok: true,
-          response: data
-        };
-      } else {
-        return {
-          ok: false
-        };
-      }
-    } catch (error) {
-      console.log("error : ", error);
-      return {
-        ok: false
-      };
     }
   }
 }

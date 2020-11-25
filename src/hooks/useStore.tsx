@@ -1,6 +1,6 @@
 import { useLocalObservable } from "mobx-react-lite";
 import React, { FC, createContext, useContext } from "react";
-import CommonStore from "store/common/commonStore";
+import CommonStore from "store/CommonStore/store/CommonStore";
 
 export type RootStoreType = {
   common: CommonStore;
@@ -20,13 +20,18 @@ const initRootStore = (): RootStoreType => {
 //contextAPI Provider
 export const StoreProvider: FC = ({ children }) => {
   const store = useLocalObservable(initRootStore);
-  return <storeContext.Provider value={store}>{children}</storeContext.Provider>;
+  return (
+    <storeContext.Provider value={store}>{children}</storeContext.Provider>
+  );
 };
 
 //
 export function useStore<K extends StoreKeys>(storeName: K): RootStoreType[K] {
   const store = useContext(storeContext);
-  if (!store) throw new Error("해당 useStore 훅은 StoreProvider 안에서 사용되어야 합니다! ");
+  if (!store)
+    throw new Error(
+      "해당 useStore 훅은 StoreProvider 안에서 사용되어야 합니다! "
+    );
 
   return store[storeName];
 }

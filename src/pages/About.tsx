@@ -1,19 +1,11 @@
 import React, { FC, useEffect, useRef } from "react";
-import { Row, Col, Divider, Card, Typography, Badge, Grid } from "antd";
+import { Row, Col, Divider, Card, Typography, Badge, Grid, Empty } from "antd";
 import styled from "styled-components";
 import ReactGA from "react-ga";
-import {
-  RemoteStack,
-  InfraStack,
-  BackEndStack,
-  CiStack,
-  FrontEndStack,
-  InterestStack
-} from "core/Stack";
 import COLOR from "core/colors";
 
 import { motion } from "framer-motion";
-import { pageTransition, pageVariants, ContainerStyle } from "interfaces/Motion";
+import { pageTransition, pageVariants } from "interfaces/Motion";
 
 import HeadMeta from "components/Helmet/HeadMeta";
 import StackCard from "components/Card/StackCard";
@@ -46,9 +38,7 @@ const HashTag = styled.p`
   padding: 0px 24px;
 `;
 
-type Props = {};
-
-const About: FC<Props> = (props: Props) => {
+const About: FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const { useDark } = useStore("common");
   const screens = Grid.useBreakpoint();
@@ -129,155 +119,64 @@ const About: FC<Props> = (props: Props) => {
           </StackText>
         </Divider>
 
-        <motion.div
-          className="container"
-          variants={ContainerStyle}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-        >
-          <Row gutter={16}>
-            <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-              <Row gutter={[0, 16]}>
-                {FrontEndStack.map((item, i) => (
-                  <StackCard
-                    key={i}
-                    stackTitle={item.stackTitle}
-                    imgUrl={item.imgUrl}
-                    tooltipTitle={item.tooltipTitle}
-                    isUsed={item.isUsed}
-                  />
-                ))}
-              </Row>
-            </Col>
-          </Row>
-        </motion.div>
-        <motion.div
-          className="container"
-          variants={ContainerStyle}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-        >
-          <Divider orientation="left" style={{ marginBottom: 28 }}>
-            BackEnd Stack
-          </Divider>
-          <Row gutter={16}>
-            <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-              <Row>
-                {BackEndStack.map((item, i) => (
-                  <StackCard
-                    key={i}
-                    stackTitle={item.stackTitle}
-                    imgUrl={item.imgUrl}
-                    tooltipTitle={item.tooltipTitle}
-                    isUsed={item.isUsed}
-                  />
-                ))}
-              </Row>
-            </Col>
-          </Row>
-        </motion.div>
+        <Row gutter={16}>
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+            <Row gutter={[0, 16]}>
+              <StackCard type="front" />
+            </Row>
+          </Col>
+        </Row>
+
+        <Divider orientation="left" style={{ marginBottom: 28 }}>
+          BackEnd Stack
+        </Divider>
+        <Row gutter={16}>
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+            <StackCard type="backend" />
+          </Col>
+        </Row>
+
         {/* 인프라 */}
         <Divider orientation="left" style={{ marginBottom: 28 }}>
           Infra Stack
         </Divider>
-        <motion.div
-          className="container"
-          variants={ContainerStyle}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-        >
-          <Row gutter={16}>
-            <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-              <Row>
-                {InfraStack.map((item, i) => (
-                  <StackCard
-                    key={i}
-                    stackTitle={item.stackTitle}
-                    imgUrl={item.imgUrl}
-                    tooltipTitle={item.tooltipTitle}
-                    isUsed={item.isUsed}
-                  />
-                ))}
-              </Row>
-            </Col>
-          </Row>
 
-          <Divider orientation="left" style={{ marginBottom: 28 }}>
-            CI & CD
-          </Divider>
-          <Row gutter={16}>
-            <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-              <Row>
-                {CiStack.map((item, i) => (
-                  <StackCard
-                    key={i}
-                    stackTitle={item.stackTitle}
-                    imgUrl={item.imgUrl}
-                    tooltipTitle={item.tooltipTitle}
-                    isUsed={item.isUsed}
-                  />
-                ))}
-              </Row>
-            </Col>
-          </Row>
-        </motion.div>
+        <Row gutter={16}>
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+            <StackCard type="infra" />
+          </Col>
+        </Row>
+
+        <Divider orientation="left" style={{ marginBottom: 28 }}>
+          CI & CD
+        </Divider>
+        <Row gutter={16}>
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+            <StackCard type="ci" />
+          </Col>
+        </Row>
+
         {/* 형상관리 */}
         <Divider orientation="left" style={{ marginBottom: 28 }}>
           Remote Repository
         </Divider>
-        <motion.div
-          className="container"
-          variants={ContainerStyle}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-        >
-          <Row gutter={16}>
-            <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-              <Row>
-                {RemoteStack.map((item, i) => (
-                  <StackCard
-                    key={i}
-                    stackTitle={item.stackTitle}
-                    imgUrl={item.imgUrl}
-                    tooltipTitle={item.tooltipTitle}
-                    isUsed={item.isUsed}
-                  />
-                ))}
-              </Row>
-            </Col>
-          </Row>
-        </motion.div>
+
+        <Row gutter={16}>
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+            <StackCard type="remote" />
+          </Col>
+        </Row>
+
         {/* 관심스택 */}
         <Divider orientation="left" style={{ marginBottom: 28 }}>
           Interest
         </Divider>
-        <motion.div
-          className="container"
-          variants={ContainerStyle}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-        >
-          <Row gutter={16}>
-            <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-              <Row>
-                {InterestStack.map((item, i) => (
-                  <StackCard
-                    key={i}
-                    stackTitle={item.stackTitle}
-                    imgUrl={item.imgUrl}
-                    tooltipTitle={item.tooltipTitle}
-                    isUsed={item.isUsed}
-                  />
-                ))}
-              </Row>
-            </Col>
-          </Row>
-        </motion.div>
+
+        <Row gutter={16}>
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+            <StackCard type="interest" />
+          </Col>
+        </Row>
       </Card>
     </motion.div>
   );

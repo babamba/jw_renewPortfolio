@@ -1,66 +1,58 @@
-import React, { FC } from "react";
-import { Col, Typography, Avatar, Badge, Grid } from "antd";
-import { ItemStyle } from "interfaces/Motion";
-import styled from "styled-components";
+import React, { FC, useState, useLayoutEffect } from "react";
+import { Col, Empty, Row } from "antd";
+import { useStore } from "hooks/useStore";
+import Loader from "components/Loader/LazyLoader";
+import StackAvatar from "./StackAvatar";
 import { motion } from "framer-motion";
-
-const TitleBox = styled.div`
-  display: block;
-  padding-top: 16px;
-`;
-
-const StackBox = styled.div`
-  text-align: center;
-  height: 140px;
-`;
-
-const StackText = styled.span`
-  font-weight: 300;
-  font-size: 15px;
-`;
-
+import { ContainerStyle, ItemStyle } from "interfaces/Motion";
+import { Stack } from "interfaces/stack";
 interface Props {
-  stackTitle: string;
-  imgUrl: string;
-  tooltipTitle?: string;
-  isUsed: boolean;
+  type: "remote" | "front" | "backend" | "ci" | "infra" | "interest";
 }
 
 const StackCard: FC<Props> = (props: Props) => {
-  const { stackTitle, imgUrl, tooltipTitle, isUsed } = props;
-  const screens = Grid.useBreakpoint();
-  const RenderTooltip = text => {
-    return <Typography.Text>{text}</Typography.Text>;
+  const [list, setList] = useState<Stack[]>([]);
+  const [loading, setLoading] = useState(true);
+  const { type } = props;
+
+  const { findStack } = useStore("common");
+
+  useLayoutEffect(() => {
+    init();
+  }, []);
+
+  const init = async () => {
+    const result = await findStack(type);
+    if (result.ok && result.response !== undefined) setList(result.response);
+    setLoading(false);
   };
 
   return (
-    <Col xs={8} sm={8} md={6} lg={6} xl={4} xxl={3}>
-      <StackBox>
-        <motion.div variants={ItemStyle}>
-          {/* <Tooltip placement="topLeft" title={RenderTooltip(tooltipTitle)}> */}
-          <Avatar
-            shape="square"
-            size={screens.xs ? 70 : 80}
-            src={require("../../assets/images/stack/" + imgUrl)}
-          />
-          {/* </Tooltip> */}
-          <TitleBox>
-            <StackText>
-              <Typography.Paragraph
-                ellipsis
-                style={{
-                  fontWeight: 400,
-                  letterSpacing: -0.2
-                }}
-              >
-                {isUsed && <Badge status="processing" color="green" />}
-                {stackTitle}
-              </Typography.Paragraph>
-            </StackText>
-          </TitleBox>
+    <>
+      {loading ? (
+        <Loader />
+      ) : list.length > 0 ? (
+        <motion.div
+          className="container"
+          variants={ContainerStyle}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+        >
+          <Row>
+            {list.map((item, idx) => (
+              <Col xs={8} sm={8} md={6} lg={6} xl={4} xxl={3} key={idx}>
+                <motion.div variants={ItemStyle} key={idx}>
+                  <StackAvatar stack={item} />
+                </motion.div>
+              </Col>
+            ))}
+          </Row>
         </motion.div>
-      </StackBox>
-    </Col>
+      ) : (
+        <Empty />
+      )}
+    </>
   );
 };
 

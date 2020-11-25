@@ -161,143 +161,144 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
   };
 
   return (
-    <motion.div
-      initial="initial"
-      animate="in"
-      exit="out"
-      variants={pageVariants}
-      transition={pageTransition}
-      style={{
-        position: "absolute",
-        width: "100%",
-        height: "100%",
-        padding: screens.lg ? "0px" : "20px"
-      }}
-    >
-      <FolioContainer>
-        <HeadMeta
-          title={`Portfolio | ${folio ? folio.id : "empty"}`}
-          text={`Portfolio | ${folio ? folio.id : "empty"}`}
-          keywords={`Portfolio | ${folio ? folio.id : "empty"}`}
-          description={`Portfolio | ${folio ? folio.id : "empty"}`}
-          url={`portfolio/${folio ? folio.id : ""}`}
-        />
-        <Row align="middle">
-          <Col span={12} style={{ textAlign: "left" }}>
-            <motion.button
-              whileHover={{
-                scale: 1.02,
-                transition: { duration: 0.5 }
-              }}
-              whileTap={{ scale: 0.99 }}
-              onClick={e => {
-                e.preventDefault();
-                history.push("/portfolio");
-              }}
-              style={{
-                background: "transparent",
-                border: "none",
-                outline: "none",
-                cursor: "pointer"
-              }}
-            >
-              <PageHeader
-                onBack={() => history.push("/portfolio")}
-                className="site-page-header"
-                title="메인 화면"
-                style={{ background: "transparent", padding: "12px 0px" }}
-              />
-            </motion.button>
-          </Col>
-          <Col span={12} style={{ textAlign: "right" }}>
-            <Space align="center">
-              <motion.div
-                className="frame"
-                whileHover="hover"
-                variants={hoverframeVariants}
-                transition={transition}
-                style={{ padding: 8, cursor: "pointer" }}
-                onClick={() => goPrevFolio()}
+    <>
+      <motion.div
+        initial="initial"
+        animate="in"
+        exit="out"
+        variants={pageVariants}
+        transition={pageTransition}
+        style={{
+          position: "absolute",
+          width: "100%",
+          padding: screens.lg ? "0px" : "20px"
+        }}
+      >
+        <FolioContainer>
+          <HeadMeta
+            title={`Portfolio | ${folio ? folio.id : "empty"}`}
+            text={`Portfolio | ${folio ? folio.id : "empty"}`}
+            keywords={`Portfolio | ${folio ? folio.id : "empty"}`}
+            description={`Portfolio | ${folio ? folio.id : "empty"}`}
+            url={`portfolio/${folio ? folio.id : ""}`}
+          />
+          <Row align="middle">
+            <Col span={12} style={{ textAlign: "left" }}>
+              <motion.button
+                whileHover={{
+                  scale: 1.02,
+                  transition: { duration: 0.5 }
+                }}
+                whileTap={{ scale: 0.99 }}
+                onClick={e => {
+                  e.preventDefault();
+                  history.push("/portfolio");
+                }}
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  outline: "none",
+                  cursor: "pointer"
+                }}
               >
-                <BackwardOutlined />
-              </motion.div>
-              <Divider type="vertical" />
-              <motion.div
-                className="frame"
-                whileHover="hover"
-                variants={hoverframeVariants}
-                transition={transition}
-                style={{ padding: 8, cursor: "pointer" }}
-                onClick={() => goNextFolio()}
-              >
-                <ForwardOutlined />
-              </motion.div>
-            </Space>
-          </Col>
-        </Row>
+                <PageHeader
+                  onBack={() => history.push("/portfolio")}
+                  className="site-page-header"
+                  title="메인 화면"
+                  style={{ background: "transparent", padding: "12px 0px" }}
+                />
+              </motion.button>
+            </Col>
+            <Col span={12} style={{ textAlign: "right" }}>
+              <Space align="center">
+                <motion.div
+                  className="frame"
+                  whileHover="hover"
+                  variants={hoverframeVariants}
+                  transition={transition}
+                  style={{ padding: 8, cursor: "pointer" }}
+                  onClick={() => goPrevFolio()}
+                >
+                  <BackwardOutlined />
+                </motion.div>
+                <Divider type="vertical" />
+                <motion.div
+                  className="frame"
+                  whileHover="hover"
+                  variants={hoverframeVariants}
+                  transition={transition}
+                  style={{ padding: 8, cursor: "pointer" }}
+                  onClick={() => goNextFolio()}
+                >
+                  <ForwardOutlined />
+                </motion.div>
+              </Space>
+            </Col>
+          </Row>
 
-        <Card
-          style={{
-            textAlign: "center",
-            borderRadius: 12,
-            border: 0,
-            transition: "box-shadow .3s",
-            boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.FOLIO_CARD_SHADOW}`
-          }}
-          bodyStyle={{
-            padding: 12
-          }}
-        >
-          <motion.div
-            className="container"
-            variants={ContainerStyle}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            style={{ textAlign: "left", marginBottom: 20, borderRadius: 12 }}
+          <Card
+            style={{
+              textAlign: "center",
+              borderRadius: 12,
+              border: 0,
+              transition: "box-shadow .3s",
+              boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.FOLIO_CARD_SHADOW}`
+            }}
+            bodyStyle={{
+              padding: 12
+            }}
           >
-            <ContentBox>
-              <FolioImageBox>
-                <div style={cardBGStyles}>
-                  <FolioInTitleContainer>
-                    <motion.div variants={ItemLeftStyle}>
-                      <FolioTitle>{folio && folio.titleDetail}</FolioTitle>
-                    </motion.div>
-                    <motion.div variants={ItemLeftStyle}>
-                      <FolioDate>{folio && folio.age}</FolioDate>
-                    </motion.div>
-                  </FolioInTitleContainer>
-                </div>
-              </FolioImageBox>
-              <Divider />
-              {/* <img src={folio && folio.pics} /> */}
-              <TextContentBox>
-                <motion.div variants={ItemLeftStyle}>
-                  <StackText>{folio && folio.stack}</StackText>
-                </motion.div>
+            <motion.div
+              className="container"
+              variants={ContainerStyle}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              style={{ textAlign: "left", marginBottom: 20, borderRadius: 12 }}
+            >
+              <ContentBox>
+                <FolioImageBox>
+                  <div style={cardBGStyles}>
+                    <FolioInTitleContainer>
+                      <motion.div variants={ItemLeftStyle}>
+                        <FolioTitle>{folio && folio.titleDetail}</FolioTitle>
+                      </motion.div>
+                      <motion.div variants={ItemLeftStyle}>
+                        <FolioDate>{folio && folio.age}</FolioDate>
+                      </motion.div>
+                    </FolioInTitleContainer>
+                  </div>
+                </FolioImageBox>
+                <Divider />
+                {/* <img src={folio && folio.pics} /> */}
+                <TextContentBox>
+                  <motion.div variants={ItemLeftStyle}>
+                    <StackText>{folio && folio.stack}</StackText>
+                  </motion.div>
 
-                <br />
-                <motion.div variants={ItemLeftStyle}>
-                  {folio !== undefined && folio.link !== "" && (
-                    <ProductLink href={folio.link} target="_blank">
-                      실제서비스 URL{" "}
-                    </ProductLink>
-                  )}
-                </motion.div>
+                  <br />
+                  <motion.div variants={ItemLeftStyle}>
+                    {folio !== undefined && folio.link !== "" && (
+                      <ProductLink href={folio.link} target="_blank">
+                        실제서비스 URL{" "}
+                      </ProductLink>
+                    )}
+                  </motion.div>
 
-                <motion.div variants={ItemLeftStyle}>
-                  {folio !== undefined &&
-                    folio.subDescriptions.map((item, index) => {
-                      return renderDescText(item, index);
-                    })}
-                </motion.div>
-                {/* {renderDescText(folio !== undefined && folio.subDescriptions)} */}
-              </TextContentBox>
-            </ContentBox>
-          </motion.div>
-        </Card>
-      </FolioContainer>
-    </motion.div>
+                  <motion.div variants={ItemLeftStyle}>
+                    {folio !== undefined &&
+                      folio.subDescriptions.map((item, index) => {
+                        return renderDescText(item, index);
+                      })}
+                  </motion.div>
+                  {/* {renderDescText(folio !== undefined && folio.subDescriptions)} */}
+                </TextContentBox>
+              </ContentBox>
+            </motion.div>
+          </Card>
+        </FolioContainer>
+      </motion.div>
+    </>
   );
 };
 

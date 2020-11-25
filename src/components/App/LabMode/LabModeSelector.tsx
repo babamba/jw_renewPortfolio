@@ -26,22 +26,19 @@ const LabModeSelector: FC = observer(() => {
 
   const rotateVariants = {
     open: { opacity: 1, scale: [1, 1.2, 1.2, 1] },
-    closed: { pacity: 1, scale: [1, 1.2, 1.2, 1] },
+    closed: { pacity: 1, scale: [1, 1.2, 1.2, 1] }
   };
 
   return (
     <Container>
-      <motion.div
-        animate={useLabPage ? "open" : "closed"}
-        variants={rotateVariants}
-      >
+      <motion.div animate={useLabPage ? "open" : "closed"} variants={rotateVariants}>
         {useLabPage ? (
           <LinkedinOutlined
             onClick={handleChange}
             style={{
               color: useDark ? "#FFFF" : "#6b6b6b",
               fontSize: 24,
-              cursor: "pointer",
+              cursor: "pointer"
             }}
           />
         ) : (
@@ -50,7 +47,7 @@ const LabModeSelector: FC = observer(() => {
             style={{
               color: useDark ? "#FFFF" : "#6b6b6b",
               fontSize: 24,
-              cursor: "pointer",
+              cursor: "pointer"
             }}
           />
         )}

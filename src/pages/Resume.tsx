@@ -34,6 +34,7 @@ const History: FC = () => {
       style={{
         position: "absolute",
         width: "100%",
+        height: "100%",
         padding: screens.lg ? "0px" : "20px"
       }}
     >

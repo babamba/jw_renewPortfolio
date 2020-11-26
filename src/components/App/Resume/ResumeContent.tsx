@@ -1,4 +1,4 @@
-import React, { FC, useState, useLayoutEffect } from "react";
+import React, { FC, useState, useEffect } from "react";
 import { Empty } from "antd";
 import { motion } from "framer-motion";
 import { ContainerStyle, ItemStyle } from "interfaces/Motion";
@@ -15,7 +15,7 @@ const ResumeContent: FC = () => {
 
   const { findResume } = useStore("common");
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     init();
   }, []);
 
@@ -26,25 +26,15 @@ const ResumeContent: FC = () => {
   };
 
   return (
-    <motion.div
-      className="container"
-      variants={ContainerStyle}
-      initial="hidden"
-      animate="visible"
-      exit="hidden"
-    >
+    <>
       {loading ? (
         <Loader />
       ) : list.length > 0 ? (
-        list.map((item, idx) => (
-          <motion.div variants={ItemStyle} key={idx}>
-            <ResumeCard resumeData={item} key={idx} />
-          </motion.div>
-        ))
+        list.map((item, idx) => <ResumeCard resumeData={item} key={idx} />)
       ) : (
         <Empty />
       )}
-    </motion.div>
+    </>
   );
 };
 

@@ -103,7 +103,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
     background: `linear-gradient(45deg,  ${COLOR.DECKCARD_GRADIENT_START},${
       COLOR.DECKCARD_GRADIENT_END
     }) , url(${
-      folio ? require("../assets/images/folio/" + folio.pics) : "empty"
+      folio ? `${process.env.REACT_APP_STRAPI_URL}/uploads/${folio.pics}` : "empty"
     }) no-repeat center center/cover`
   };
 

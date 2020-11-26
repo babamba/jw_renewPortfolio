@@ -132,9 +132,7 @@ const About: FC = () => {
         </Divider>
         <Row gutter={16}>
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-            <Row>
-              <StackCard type="backend" />
-            </Row>
+            <StackCard type="backend" />
           </Col>
         </Row>
         {/* 인프라 */}

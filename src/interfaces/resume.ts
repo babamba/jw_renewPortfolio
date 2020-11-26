@@ -1,16 +1,20 @@
+import { Image } from "./stack";
+
 export interface Resume {
   period: string;
-  tag: {
-    type: string;
-    text: string;
-  };
+  statusText: string;
+  statusType: string;
+  // tag: {
+  //   type: string;
+  //   text: string;
+  // };
   usedPosition: boolean;
   usedRank: boolean;
   companyName: string;
-  companyImg: string;
+  companyImg: Image;
   rank: string;
   position: string;
-  resumeStory: Story[];
+  resume_stories: Story[];
 }
 
 export interface Story {
@@ -18,10 +22,11 @@ export interface Story {
   title: string;
   isDeveloperPosition: boolean;
   programLanguage: string;
-  subDescriptions: SubDescription[];
+  desc: string[];
+  link?: string;
 }
 
-interface SubDescription {
-  title: string;
-  type: "normal" | "strong" | "link";
-}
+// interface SubDescription {
+//   title: string;
+//   type: "normal" | "strong" | "link";
+// }

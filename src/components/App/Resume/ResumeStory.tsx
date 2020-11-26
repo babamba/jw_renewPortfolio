@@ -47,39 +47,6 @@ interface Props {
 const ResumeStory: FC<Props> = (props: Props) => {
   const { story } = props;
   const screens = Grid.useBreakpoint();
-  const generateText = (idx: number, type: "normal" | "strong" | "link", title: string) => {
-    switch (type) {
-      case "normal":
-        return (
-          <React.Fragment key={idx}>
-            <Text>- {title}</Text> <br />
-            {/* {screens.xs === true && <Divider />} */}
-          </React.Fragment>
-        );
-      case "strong":
-        return (
-          <React.Fragment key={idx}>
-            <Text>- {title}</Text> <br />
-          </React.Fragment>
-        );
-      case "link":
-        return (
-          <React.Fragment key={idx}>
-            -{" "}
-            <Link href={title} target="_blank">
-              실제 서비스
-            </Link>
-            <br />
-          </React.Fragment>
-        );
-      default:
-        return (
-          <React.Fragment key={idx}>
-            <Text>- {title}</Text> <br />
-          </React.Fragment>
-        );
-    }
-  };
 
   return (
     <>
@@ -91,7 +58,16 @@ const ResumeStory: FC<Props> = (props: Props) => {
         <JobText>
           {story.isDeveloperPosition && (
             <>
-              - <ToolOutlined style={{ paddingRight: 8, fontSize: 14 }} />
+              {story.link && (
+                <>
+                  <Link href={story.link} target="_blank">
+                    - 실제 서비스
+                  </Link>
+                  <br />
+                </>
+              )}
+              <ToolOutlined style={{ paddingRight: 8, fontSize: 14 }} />
+
               <Text strong>
                 개발언어 :{" "}
                 <Text strong code>
@@ -101,8 +77,13 @@ const ResumeStory: FC<Props> = (props: Props) => {
               <br />
             </>
           )}
-
-          {story.subDescriptions.map((item, idx) => generateText(idx, item.type, item.title))}
+          {story.desc.map((item, idx) => (
+            <React.Fragment key={idx}>
+              <Text>- {item}</Text> <br />
+              {screens.xs === true && <Divider />}
+            </React.Fragment>
+          ))}
+          {/* {story.desc.map((item, idx) => generateText(idx, item.type, item.title))} */}
         </JobText>
       </motion.div>
     </>

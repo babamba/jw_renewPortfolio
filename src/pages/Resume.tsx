@@ -2,10 +2,7 @@ import React, { FC, useEffect } from "react";
 import { Timeline, Row, Col, Card, Grid } from "antd";
 import { motion } from "framer-motion";
 import ReactGA from "react-ga";
-
 import { useRouter } from "hooks/useRouter";
-import resumeData from "core/resumeData";
-import { Resume } from "interfaces/resume";
 import { pageTransition, pageVariants } from "interfaces/Motion";
 
 import HeadMeta from "components/Helmet/HeadMeta";
@@ -58,9 +55,7 @@ const History: FC = () => {
         <Row>
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
             <Timeline>
-              {resumeData.map((item: Resume, idx: number) => {
-                return <ResumeContent resumeData={item} key={idx} />;
-              })}
+              <ResumeContent />
             </Timeline>
           </Col>
         </Row>

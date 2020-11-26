@@ -2,7 +2,7 @@ import { observable, action, makeObservable, computed } from "mobx";
 import { autobind } from "core-decorators";
 import RootStoreModel from "store/index";
 import commonService from "./commonService";
-import { StackOutput } from "interfaces/output";
+import { FolioOutput, ResumeOutput, StackOutput } from "interfaces/output";
 
 class CommonStore {
   rootStore: RootStoreModel;
@@ -67,8 +67,52 @@ class CommonStore {
     type: "remote" | "front" | "backend" | "ci" | "infra" | "interest"
   ): Promise<StackOutput> {
     try {
-      const { data, status } = await commonService.findStack(type);
+      const { data, status } = await commonService.findStacks(type);
 
+      if (status === 200) {
+        return {
+          ok: true,
+          response: data
+        };
+      } else {
+        return {
+          ok: false
+        };
+      }
+    } catch (error) {
+      console.log("error : ", error);
+      return {
+        ok: false
+      };
+    }
+  }
+
+  @autobind
+  async findFolio(): Promise<FolioOutput> {
+    try {
+      const { data, status } = await commonService.findFolios();
+      if (status === 200) {
+        return {
+          ok: true,
+          response: data
+        };
+      } else {
+        return {
+          ok: false
+        };
+      }
+    } catch (error) {
+      console.log("error : ", error);
+      return {
+        ok: false
+      };
+    }
+  }
+
+  @autobind
+  async findResume(): Promise<ResumeOutput> {
+    try {
+      const { data, status } = await commonService.findResumes();
       if (status === 200) {
         return {
           ok: true,

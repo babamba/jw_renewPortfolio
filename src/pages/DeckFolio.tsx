@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import ReactGA from "react-ga";
 
 import { ForwardOutlined, RetweetOutlined } from "@ant-design/icons";
-import { Grid, Progress, Row, Col, Tooltip, Space } from "antd";
+import { Grid, Progress, Row, Col, Space } from "antd";
 import { motion, useAnimation } from "framer-motion";
 
 import { pageVariants, pageTransition } from "interfaces/Motion";

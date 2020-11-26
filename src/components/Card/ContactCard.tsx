@@ -44,7 +44,9 @@ const Contact: FC = () => {
               <ContentBox>
                 <motion.div variants={ItemLeftStyle}>
                   <GuideText>
-                    현재 사이트는 React / AntDesign / ContentFul
+                    현재 사이트는
+                    <br />
+                    React / AntDesign / ContentFul / Oracle Cloud / Strapi
                     <br /> 등을 사용하여 제작되었습니다.
                   </GuideText>
                 </motion.div>

@@ -77,8 +77,8 @@ const Contact: FunctionComponent<Props> = ({}) => {
           <ContentBox>
             <motion.div variants={ItemLeftStyle}>
               <GuideText>
-                <StatusBadge status="success" /> 현재 사이트는 React / AntDesign / ContentFul 으로
-                만들어졌습니다.
+                <StatusBadge status="success" /> 현재 사이트는 <br />
+                React / AntDesign / ContentFul / Oracle Cloud / Strapi 등을 사용하여 제작되었습니다.
               </GuideText>
             </motion.div>
           </ContentBox>

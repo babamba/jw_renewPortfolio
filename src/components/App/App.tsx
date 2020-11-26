@@ -17,6 +17,7 @@ import LazyIconLoader from "components/Loader/LazyIconLoader";
 const MyProfile = lazy(() => import("components/App/Profile/MyProfile"));
 const IconMenu = lazy(() => import("components/App/Menu/IconMenu"));
 const ContactCard = lazy(() => import("components/Card/ContactCard"));
+const Footer = lazy(() => import("components/Common/Footer"));
 
 const App = () => {
   const menuSticky = useRef(null);
@@ -144,6 +145,9 @@ const App = () => {
                       </Suspense>
                       <Suspense fallback={<LazySkeletonLoader type="contact" row={10} />}>
                         <ContactCard />
+                      </Suspense>
+                      <Suspense fallback={<LazySkeletonLoader type="contact" row={1} />}>
+                        <Footer />
                       </Suspense>
                     </Col>
                     <Col

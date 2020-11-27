@@ -25,8 +25,7 @@ const BlogCard: FC<Props> = (props: Props) => {
   const cardBGStyles = {
     backgroundSize: "cover",
     height: screens.lg ? 150 : 100,
-    borderTopRightRadius: 12,
-    borderTopLeftRadius: 12,
+    borderRadius: 12,
     background: `linear-gradient(45deg,  ${COLOR.DECKCARD_GRADIENT_START}, ${COLOR.DECKCARD_GRADIENT_END}) , url(https:${info.heroImage}) no-repeat`
   };
 
@@ -44,8 +43,12 @@ const BlogCard: FC<Props> = (props: Props) => {
         transition={transition}
       >
         <Card
+          className="blog-card-container"
           hoverable={true}
           cover={<div style={cardBGStyles} />}
+          bodyStyle={{
+            padding: "8px 24px 14px"
+          }}
           style={{
             // borderRadius: 8,
             // boxShadow: `0 1px 12px 4px ${COLOR.BTN_LESS_SHADOW}`
@@ -53,8 +56,8 @@ const BlogCard: FC<Props> = (props: Props) => {
             borderRadius: 12,
             background: useDark ? "rgba(36, 36, 36, 1)" : "rgba(240, 240, 240, 1)",
             boxShadow: useDark
-              ? "rgb(29, 29, 29) 15px 15px 20px, rgb(43, 43, 43) -10px -15px 20px"
-              : "rgb(210, 210, 210) 15px 10px 30px, rgb(255, 255, 255) -15px -10px 30px"
+              ? "rgb(29, 29, 29) 5px 10px 15px, rgb(43, 43, 43) -5px -10px 20px"
+              : "rgb(210, 210, 210) 10px 10px 15px, rgb(255, 255, 255) -5px -10px 15px"
           }}
         >
           <Card.Meta

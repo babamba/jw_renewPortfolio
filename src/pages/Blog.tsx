@@ -201,7 +201,7 @@ const Post: FC = () => {
                 <List
                   loading={Loader}
                   grid={{
-                    gutter: 34,
+                    gutter: 28,
                     xs: 2,
                     sm: 2,
                     md: 2,
@@ -212,7 +212,7 @@ const Post: FC = () => {
                   dataSource={content.entries}
                   renderItem={(item: any) => {
                     return (
-                      <motion.div variants={ItemStyle} style={{ paddingBottom: 24 }}>
+                      <motion.div variants={ItemStyle} style={{ paddingBottom: 18 }}>
                         <List.Item>
                           <BlogCard info={item} isDark={useDark} />
                         </List.Item>

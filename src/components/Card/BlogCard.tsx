@@ -56,8 +56,8 @@ const BlogCard: FC<Props> = (props: Props) => {
             borderRadius: 12,
             background: useDark ? "rgba(36, 36, 36, 1)" : "rgba(240, 240, 240, 1)",
             boxShadow: useDark
-              ? "rgb(29, 29, 29) 5px 10px 15px, rgb(43, 43, 43) -5px -10px 20px"
-              : "rgb(210, 210, 210) 10px 10px 15px, rgb(255, 255, 255) -5px -10px 15px"
+              ? "rgb(29, 29, 29) 5px 10px 10px, rgb(50, 50, 50) -3px -2px 7px"
+              : "rgb(210, 210, 210) 10px 10px 15px, rgb(255, 255, 255) -5px -5px 7px"
           }}
         >
           <Card.Meta

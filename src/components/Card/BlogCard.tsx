@@ -3,6 +3,8 @@ import { useRouteMatch, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Card, Grid } from "antd";
 import COLOR from "core/colors";
+import { useStore } from "hooks/useStore";
+import { observer } from "mobx-react-lite";
 interface Props {
   info: {
     id: string;
@@ -16,8 +18,9 @@ interface Props {
 }
 
 const BlogCard: FC<Props> = (props: Props) => {
-  const { info, isDark } = props;
+  const { info } = props;
   const match = useRouteMatch();
+  const { useDark } = useStore("common");
   const screens = Grid.useBreakpoint();
   const cardBGStyles = {
     backgroundSize: "cover",
@@ -44,8 +47,14 @@ const BlogCard: FC<Props> = (props: Props) => {
           hoverable={true}
           cover={<div style={cardBGStyles} />}
           style={{
-            borderRadius: 8,
-            boxShadow: `0 1px 12px 4px ${COLOR.BTN_LESS_SHADOW}`
+            // borderRadius: 8,
+            // boxShadow: `0 1px 12px 4px ${COLOR.BTN_LESS_SHADOW}`
+            border: "none",
+            borderRadius: 12,
+            background: useDark ? "rgba(36, 36, 36, 1)" : "rgba(240, 240, 240, 1)",
+            boxShadow: useDark
+              ? "rgb(29, 29, 29) 15px 15px 20px, rgb(43, 43, 43) -10px -15px 20px"
+              : "rgb(210, 210, 210) 15px 10px 30px, rgb(255, 255, 255) -15px -10px 30px"
           }}
         >
           <Card.Meta
@@ -72,4 +81,4 @@ const BlogCard: FC<Props> = (props: Props) => {
   );
 };
 
-export default BlogCard;
+export default observer(BlogCard);

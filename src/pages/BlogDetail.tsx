@@ -161,7 +161,8 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
                 borderRadius: 12,
                 border: 0,
                 transition: "box-shadow .3s",
-                boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.BLOG_CARD_SHADOW}`
+                boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.BLOG_CARD_SHADOW}`,
+                background: useDark ? "rgba(36, 36, 36, 1)" : "rgba(240, 240, 240, 1)"
               }}
               bodyStyle={{
                 padding: 24

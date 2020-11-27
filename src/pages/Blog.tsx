@@ -65,9 +65,9 @@ const Post: FC = () => {
     };
   }, []);
 
-  useEffect(() => {
-    fetch(currentPage, "", screens.xl ? 12 : 6);
-  }, []);
+  // useEffect(() => {
+  //   fetch(currentPage, "", screens.xl ? 12 : 6);
+  // }, []);
 
   useEffect(() => {
     if (Object.keys(screens).length > 0) {
@@ -80,7 +80,7 @@ const Post: FC = () => {
     }
   }, [screens]);
 
-  const setPage = async param => {
+  const setPage = async (param: { totalCount: number; selectPage: number; period: number }) => {
     setPagination({
       total: param.totalCount,
       page: param.selectPage,
@@ -96,19 +96,22 @@ const Post: FC = () => {
       tag: selectTag ? selectTag.toString() : ""
     });
 
-    await setPage({
-      totalCount,
-      selectPage,
-      period
-    });
+    if (totalCount && totalCount > 0) {
+      await setPage({
+        totalCount,
+        selectPage,
+        period
+      });
 
-    const result: any = await contentfulService.getBlogPostEntries({
-      tag: selectTag ? selectTag.toString() : "",
-      skip: (selectPage - 1) * period,
-      limit: period
-    });
+      const result: any = await contentfulService.getBlogPostEntries({
+        tag: selectTag ? selectTag.toString() : "",
+        skip: (selectPage - 1) * period,
+        limit: period
+      });
 
-    if (result) setContent(result);
+      if (result) setContent(result);
+    }
+
     setLoading(false);
   };
 
@@ -154,12 +157,13 @@ const Post: FC = () => {
         style={{
           borderRadius: 12,
           margin: screens.xs ? 0 : 20,
-          transition: "box-shadow .3s",
           boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.BLOG_CARD_SHADOW}`,
-          border: useDark ? "1px solid #303030" : "none"
+          border: "none"
         }}
         bodyStyle={{
-          padding: "18px"
+          padding: 28,
+          backgroundColor: useDark ? "rgba(36, 36, 36, 1)" : "rgba(243, 243, 243, 1)",
+          borderRadius: 12
         }}
       >
         <Divider orientation="left" style={{ marginTop: 0 }}>
@@ -197,7 +201,7 @@ const Post: FC = () => {
                 <List
                   loading={Loader}
                   grid={{
-                    gutter: 16,
+                    gutter: 34,
                     xs: 2,
                     sm: 2,
                     md: 2,
@@ -208,11 +212,11 @@ const Post: FC = () => {
                   dataSource={content.entries}
                   renderItem={(item: any) => {
                     return (
-                      <List.Item>
-                        <motion.div variants={ItemStyle}>
+                      <motion.div variants={ItemStyle} style={{ paddingBottom: 24 }}>
+                        <List.Item>
                           <BlogCard info={item} isDark={useDark} />
-                        </motion.div>
-                      </List.Item>
+                        </List.Item>
+                      </motion.div>
                     );
                   }}
                 />
@@ -220,7 +224,7 @@ const Post: FC = () => {
                 <Spin {...Loader}>
                   <List
                     grid={{
-                      gutter: 16,
+                      gutter: 24,
                       xs: 2,
                       sm: 2,
                       md: 2,

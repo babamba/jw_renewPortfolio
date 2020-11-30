@@ -33,11 +33,12 @@ const App = () => {
     variables: {}
   };
 
-  useLayoutEffect(() => {
-    checkMode();
-  }, []);
+  // useLayoutEffect(() => {
+  //   checkMode();
+  // }, []);
 
   useEffect(() => {
+    checkMode();
     if (process.env.NODE_ENV === "production") {
       ReactGA.pageview(router.location.pathname + router.location.search);
     }

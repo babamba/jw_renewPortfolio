@@ -183,7 +183,13 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
           description={`Portfolio | ${folio ? folio.id : "empty"}`}
           url={`portfolio/${folio ? folio.id : ""}`}
         />
-        <Row align="middle">
+        <Row
+          align="middle"
+          style={{
+            padding: "0px 20px",
+            height: 40
+          }}
+        >
           <Col span={12} style={{ textAlign: "left" }}>
             <motion.button
               whileHover={{
@@ -246,7 +252,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
             transition: "box-shadow .3s",
             boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.FOLIO_CARD_SHADOW}`,
             margin: 18,
-            maxHeight: screens.lg ? "85vh" : "70vh",
+            maxHeight: screens.lg ? "85vh" : screens.xs ? "60vh" : "70vh",
             overflowY: "scroll"
           }}
           bodyStyle={{

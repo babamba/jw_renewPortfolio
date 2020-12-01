@@ -80,7 +80,7 @@ const ResumeStory: FC<Props> = (props: Props) => {
           {story.desc.map((item, idx) => (
             <React.Fragment key={idx}>
               <Text>- {item}</Text> <br />
-              {screens.xs === true && <Divider />}
+              {/* {screens.xs === true && <Divider />} */}
             </React.Fragment>
           ))}
           {/* {story.desc.map((item, idx) => generateText(idx, item.type, item.title))} */}

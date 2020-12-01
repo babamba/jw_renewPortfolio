@@ -79,6 +79,7 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
 
   return (
     <motion.div
+      className="scroll-motion-div"
       initial="initial"
       animate="in"
       exit="out"
@@ -100,74 +101,52 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
       />
 
       <PostContainer className="post">
-        {article === undefined ? (
-          <>
-            <motion.button
-              variants={backVariants}
-              whileHover={{
-                scale: 1.02,
-                transition: { duration: 0.5 }
-              }}
-              whileTap={{ scale: 0.99 }}
-              onClick={() => history.push("/blog")}
-              style={{
-                background: "transparent",
-                border: "none",
-                outline: "none",
-                cursor: "pointer"
-              }}
-            >
-              <PageHeader
-                onBack={() => history.push("/blog")}
-                className="site-page-header"
-                title="이전 페이지"
-                style={{ background: "transparent", padding: "12px 0px" }}
-                // subTitle="이전 페이지"
-              />
-            </motion.button>
-            <Skeleton active paragraph={{ rows: 1 }} />
-            <Skeleton.Avatar active size={24} shape="square" />
-            <Skeleton active paragraph={{ rows: 10 }} />
-          </>
-        ) : (
-          <>
-            <motion.button
-              variants={backVariants}
-              whileHover={{
-                scale: 1.02,
-                transition: { duration: 0.5 }
-              }}
-              whileTap={{ scale: 0.99 }}
-              onClick={() => history.push("/blog")}
-              style={{
-                background: "transparent",
-                border: "none",
-                outline: "none",
-                cursor: "pointer"
-              }}
-            >
-              <PageHeader
-                onBack={() => history.push("/blog")}
-                className="site-page-header"
-                title="이전 페이지"
-                style={{ background: "transparent", padding: "12px 0px" }}
-                // subTitle="이전 페이지"
-              />
-            </motion.button>
-            {/* </motion.div> */}
-            <Card
-              style={{
-                textAlign: "center",
-                borderRadius: 12,
-                border: 0,
-                transition: "box-shadow .3s",
-                boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.BLOG_CARD_SHADOW}`,
-                background: useDark ? "rgba(36, 36, 36, 1)" : "rgba(240, 240, 240, 1)"
-              }}
-              bodyStyle={{
-                padding: 24
-              }}
-            >
+        <motion.button
+          variants={backVariants}
+          whileHover={{
+            scale: 1.02,
+            transition: { duration: 0.5 }
+          }}
+          whileTap={{ scale: 0.99 }}
+          onClick={() => history.push("/blog")}
+          style={{
+            background: "transparent",
+            border: "none",
+            outline: "none",
+            cursor: "pointer"
+          }}
+        >
+          <PageHeader
+            onBack={() => history.push("/blog")}
+            className="site-page-header"
+            title="이전 페이지"
+            style={{ background: "transparent", padding: "12px 0px" }}
+          />
+        </motion.button>
+        <Card
+          className="scroll-card"
+          style={{
+            textAlign: "center",
+            borderRadius: 12,
+            border: 0,
+            transition: "box-shadow .3s",
+            boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.BLOG_CARD_SHADOW}`,
+            background: useDark ? "rgba(36, 36, 36, 1)" : "rgba(240, 240, 240, 1)",
+            maxHeight: screens.lg ? "85vh" : "65vh",
+            overflowY: "scroll"
+          }}
+          bodyStyle={{
+            padding: 24
+          }}
+        >
+          {article === undefined ? (
+            <>
+              <Skeleton active paragraph={{ rows: 1 }} />
+              <Skeleton.Avatar active size={24} shape="square" />
+              <Skeleton active paragraph={{ rows: 10 }} />
+            </>
+          ) : (
+            <>
               <motion.div variants={textVariants} style={{ textAlign: "left" }}>
                 <Typography.Title
                   style={{ fontFamily: "NEXON Lv2 Gothic Bold", letterSpacing: -1.8 }}
@@ -182,9 +161,9 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
               <motion.div variants={textVariants}>
                 <ReactMarkdown className="markdown" source={article?.body} />
               </motion.div>
-            </Card>
-          </>
-        )}
+            </>
+          )}
+        </Card>
       </PostContainer>
     </motion.div>
   );

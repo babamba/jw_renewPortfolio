@@ -51,6 +51,7 @@ const About: FC = () => {
 
   return (
     <motion.div
+      className="scroll-motion-div"
       ref={scrollRef}
       initial="initial"
       animate="in"
@@ -74,11 +75,15 @@ const About: FC = () => {
       />
 
       <Card
+        className="scroll-card"
         style={{
           borderRadius: 12,
-          margin: screens.xs ? 0 : 20,
+          margin: screens.xs ? 0 : 18,
           transition: "box-shadow .3s",
-          boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.ABOUT_CARD_SHADOW}`
+          boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.ABOUT_CARD_SHADOW}`,
+          // maxHeight: screens.lg ? "96vh" : "70vh",
+          maxHeight: screens.lg ? "96vh" : screens.xs ? "70vh" : "75vh",
+          overflowY: "scroll"
         }}
         bodyStyle={{
           padding: "18px"

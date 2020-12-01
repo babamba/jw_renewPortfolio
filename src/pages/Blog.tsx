@@ -156,7 +156,7 @@ const Post: FC = () => {
           borderRadius: 12,
           boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.BLOG_CARD_SHADOW}`,
           border: "none",
-          maxHeight: screens.lg ? "96vh" : screens.xs ? "70vh" : "75vh",
+          maxHeight: screens.lg ? "96vh" : screens.xs ? "65vh" : "75vh",
           overflowY: "scroll",
           margin: screens.xs ? 0 : 18
         }}

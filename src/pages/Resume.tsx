@@ -46,7 +46,7 @@ const History: FC = () => {
       <Card
         className="scroll-card"
         style={{
-          maxHeight: screens.lg ? "96vh" : screens.xs ? "70vh" : "75vh",
+          maxHeight: screens.lg ? "96vh" : screens.xs ? "65vh" : "75vh",
           overflowY: "scroll",
           padding: "6px 0px",
           borderRadius: 12,

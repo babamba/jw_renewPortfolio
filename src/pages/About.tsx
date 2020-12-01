@@ -82,7 +82,7 @@ const About: FC = () => {
           transition: "box-shadow .3s",
           boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.ABOUT_CARD_SHADOW}`,
           // maxHeight: screens.lg ? "96vh" : "70vh",
-          maxHeight: screens.lg ? "96vh" : screens.xs ? "70vh" : "75vh",
+          maxHeight: screens.lg ? "96vh" : screens.xs ? "65vh" : "75vh",
           overflowY: "scroll"
         }}
         bodyStyle={{

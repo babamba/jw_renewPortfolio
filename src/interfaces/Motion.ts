@@ -1,12 +1,15 @@
 const pageVariants = {
   initial: {
     opacity: 0
+    // y: "2vw"
   },
   in: {
     opacity: 1
+    // y: 0
   },
   out: {
     opacity: 0
+    // y: "2vw"
   }
 };
 
@@ -26,15 +29,15 @@ const ContainerStyle = {
   hidden: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.05,
-      delayChildren: 0.1,
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
       when: "afterChildren"
     }
   },
   visible: {
     opacity: 1,
     transition: {
-      delay: 0.1,
+      delay: 0.3,
       when: "beforeChildren",
       staggerChildren: 0.15,
       staggerDirection: 1
@@ -44,17 +47,17 @@ const ContainerStyle = {
 
 const ItemStyle = {
   hidden: {
-    y: -5,
+    y: -10,
     opacity: 0,
     transition: {
-      y: { stiffness: 500, velocity: -100 }
+      y: { stiffness: 1000, velocity: -100 }
     }
   },
   visible: {
     y: 0,
     opacity: 1,
     transition: {
-      y: { stiffness: 500 }
+      y: { stiffness: 1000 }
     }
   }
 };

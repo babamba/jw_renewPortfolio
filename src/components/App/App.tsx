@@ -119,7 +119,7 @@ const App = () => {
           style={{ transition: "background 0.5s", backgroundColor: backColor }}
           className={`${useDark ? "dark" : "light"} auth main-layout`}
         >
-          <Layout.Content style={{ minHeight: screens.md ? onlyHeight : "100vh !important" }}>
+          <Layout.Content style={{ minHeight: screens.md ? onlyHeight : "100%" }}>
             <motion.div animate={controls}>
               {useLabPage ? (
                 <div style={{ position: "relative" }}>

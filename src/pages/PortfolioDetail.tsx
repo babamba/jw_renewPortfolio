@@ -162,7 +162,6 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
 
   return (
     <motion.div
-      className="scroll-motion-div"
       initial="initial"
       animate="in"
       exit="out"
@@ -187,7 +186,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
           align="middle"
           style={{
             padding: "0px 20px",
-            height: 40
+            height: 60
           }}
         >
           <Col span={12} style={{ textAlign: "left" }}>
@@ -244,16 +243,12 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
         </Row>
 
         <Card
-          className="scroll-card"
           style={{
             textAlign: "center",
             borderRadius: 12,
             border: 0,
             transition: "box-shadow .3s",
-            boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.FOLIO_CARD_SHADOW}`,
-            margin: 18,
-            maxHeight: screens.lg ? "85vh" : screens.xs ? "60vh" : "70vh",
-            overflowY: "scroll"
+            boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.FOLIO_CARD_SHADOW}`
           }}
           bodyStyle={{
             padding: 12

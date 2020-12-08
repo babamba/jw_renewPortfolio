@@ -23,7 +23,6 @@ const History: FC = () => {
 
   return (
     <motion.div
-      className="scroll-motion-div"
       initial="initial"
       animate="in"
       exit="out"
@@ -44,14 +43,10 @@ const History: FC = () => {
         url="resume"
       />
       <Card
-        className="scroll-card"
         style={{
-          maxHeight: screens.lg ? "96vh" : screens.xs ? "65vh" : "75vh",
-          overflowY: "scroll",
           padding: "6px 0px",
           borderRadius: 12,
-          margin: screens.xs ? 0 : 18,
-          // margin: screens.xs ? 0 : 20,
+          margin: screens.xs ? 0 : 20,
           transition: "box-shadow .3s",
           boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.RESUME_CARD_SHADOW}`
         }}

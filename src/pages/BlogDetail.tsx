@@ -5,9 +5,9 @@ import styled from "styled-components";
 import ReactGA from "react-ga";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { observer } from "mobx-react-lite";
-import { Typography, PageHeader, Layout, Skeleton, Grid, Card } from "antd";
+import { Typography, PageHeader, Skeleton, Grid, Card } from "antd";
 
-import { pageVariants, pageTransition, ContainerStyle } from "interfaces/Motion";
+import { pageVariants, pageTransition } from "interfaces/Motion";
 import { BlogPost } from "interfaces/post";
 import { ContentfulService } from "core/contentful";
 import COLOR from "core/colors";
@@ -79,7 +79,6 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
 
   return (
     <motion.div
-      className="scroll-motion-div"
       initial="initial"
       animate="in"
       exit="out"
@@ -120,20 +119,19 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
             onBack={() => history.push("/blog")}
             className="site-page-header"
             title="이전 페이지"
-            style={{ background: "transparent", padding: "4px 0px" }}
+            style={{ background: "transparent", padding: "12px 0px" }}
+            // subTitle="이전 페이지"
           />
         </motion.button>
+
         <Card
-          className="scroll-card"
           style={{
             textAlign: "center",
             borderRadius: 12,
             border: 0,
             transition: "box-shadow .3s",
             boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.BLOG_CARD_SHADOW}`,
-            background: useDark ? "rgba(36, 36, 36, 1)" : "rgba(240, 240, 240, 1)",
-            maxHeight: screens.lg ? "85vh" : screens.xs ? "60vh" : "70vh",
-            overflowY: "scroll"
+            background: useDark ? "rgba(36, 36, 36, 1)" : "rgba(240, 240, 240, 1)"
           }}
           bodyStyle={{
             padding: 24

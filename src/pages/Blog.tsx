@@ -39,7 +39,7 @@ const Post: FC = () => {
   const [pagination, setPagination] = useState({
     total: 1,
     page: currentPage,
-    pageSize: 8
+    pageSize: 12
   });
 
   const [content, setContent] = useState({
@@ -71,7 +71,7 @@ const Post: FC = () => {
       if (screens.xl === false) {
         fetch(1, "", 6);
       } else {
-        fetch(1, "", 8);
+        fetch(1, "", 12);
       }
     }
   }, [screens]);
@@ -120,16 +120,15 @@ const Post: FC = () => {
   const onHandlePaging = (page: number) => {
     setCurrentPage(page);
     // updatePage(page);
-    fetch(page, selectTag, screens.xl ? 8 : 6);
+    fetch(page, selectTag, screens.xl ? 12 : 6);
   };
   const handleTagChosen = tag => {
     updateTag(tag.id);
-    fetch(1, tag.id, screens.xl ? 8 : 6);
+    fetch(1, tag.id, screens.xl ? 12 : 6);
   };
 
   return (
     <motion.div
-      className="scroll-motion-div"
       initial="initial"
       animate="in"
       exit="out"
@@ -151,13 +150,10 @@ const Post: FC = () => {
         url="blog"
       />
       <CardView
-        className="scroll-card"
         style={{
           borderRadius: 12,
           boxShadow: useDark ? "none" : `0px 0px 20px 1px ${COLOR.BLOG_CARD_SHADOW}`,
           border: "none",
-          maxHeight: screens.lg ? "96vh" : screens.xs ? "65vh" : "75vh",
-          overflowY: "scroll",
           margin: screens.xs ? 0 : 18
         }}
         bodyStyle={{

@@ -31,38 +31,143 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>프론트엔드 개발자 김진원 Kim Jin Won | FrontEnd Developer</title>
     <style>
-      .svgLoader {
-        animation: spin 1s ease-out infinite;
-        margin: 20px auto;
-      }
-      .divLoader {
-        height: 100vh;
-        display: flex;
-        flex: 1;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
+      body {
+        margin: 0;
       }
 
-      .text {
-        margin: 0;
-        padding: 0;
+      h1 {
+        font-family: "Lato", sans-serif;
+        font-weight: 500;
+        letter-spacing: 2px;
+        font-size: 48px;
       }
-      .loading-text-h1 {
-        font-weight: 300;
-        margin: 12px 0px;
-        line-height: 38px;
-        font-family: -apple-system, "Helvetica Neue", sans-serif;
+      p {
+        font-family: "Lato", sans-serif;
+        letter-spacing: 1px;
+        font-size: 14px;
+        color: #333333;
+      }
+      .title {
+        text-shadow: 1px 1px 13px rgb(0 0 0 / 50%);
       }
       .loading-text-paragraph {
-        font-weight: 300;
+        font-weight: 400;
         line-height: 24px;
         margin: 0;
         font-family: -apple-system, "Helvetica Neue", sans-serif;
+        color: white;
+        text-shadow: 1px 1px 13px rgb(0 0 0 / 50%);
       }
-      .welcome {
-        line-height: 42px;
+
+      .header {
+        position: relative;
+        text-align: center;
+        /* background: linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%); */
+        /* background: linear-gradient(
+          -70deg,
+          rgba(34, 193, 195, 0.3),
+          rgba(235, 230, 80, 0.5),
+          rgba(238, 119, 82, 0.5),
+          rgba(231, 60, 126, 0.4),
+          rgba(84, 58, 183, 0.3),
+          rgba(35, 213, 171, 0.3)
+        ); */
+        background-color: #24272b;
+        background-size: 300% 300%;
+        -webkit-animation: Gradient 15s ease infinite;
+        color: white;
       }
+
+      .logo {
+        width: 50px;
+        fill: white;
+        padding-right: 15px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .alignLeft {
+        text-align: right;
+      }
+      .big-margin {
+        margin-top: 400px;
+      }
+
+      .inner-header {
+        height: 65vh;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      .flex {
+        /*Flexbox for containers*/
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .waves {
+        position: relative;
+        width: 100%;
+        height: 15vh;
+        margin-bottom: -7px; /*Fix for safari gap*/
+        min-height: 100px;
+        max-height: 150px;
+      }
+
+      .content {
+        position: relative;
+        height: 20vh;
+        text-align: center;
+        background-color: white;
+        justify-content: center;
+        align-items: flex-end;
+      }
+
+      /* Animation */
+
+      .parallax > use {
+        animation: move-forever 15s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+      }
+      .parallax > use:nth-child(1) {
+        animation-delay: -2s;
+        animation-duration: 5s;
+      }
+      .parallax > use:nth-child(2) {
+        animation-delay: -3s;
+        animation-duration: 8s;
+      }
+      .parallax > use:nth-child(3) {
+        animation-delay: -4s;
+        animation-duration: 10s;
+      }
+      .parallax > use:nth-child(4) {
+        animation-delay: -5s;
+        animation-duration: 15s;
+      }
+      @keyframes move-forever {
+        0% {
+          transform: translate3d(-90px, 0, 0);
+        }
+        100% {
+          transform: translate3d(85px, 0, 0);
+        }
+      }
+      /*Shrinking for mobile*/
+      @media (max-width: 768px) {
+        .waves {
+          height: 40px;
+          min-height: 40px;
+        }
+        .content {
+          height: 30vh;
+        }
+        h1 {
+          font-size: 36px;
+        }
+      }
+
       @keyframes spin {
         0% {
           transform: rotate(0deg);
@@ -71,44 +176,6 @@
           transform: rotate(360deg);
         }
       }
-
-      .gradient-background {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        opacity: 0.2;
-        color: #fff;
-        background: linear-gradient(-70deg, #22c1c3, #ebe650, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-        background-size: 300% 300%;
-        -webkit-animation: Gradient 15s ease infinite;
-        -moz-animation: Gradient 15s ease infinite;
-        animation: Gradient 10s ease infinite;
-      }
-
-      @-webkit-keyframes Gradient {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-
-      @-moz-keyframes Gradient {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-
       @keyframes Gradient {
         0% {
           background-position: 0% 50%;
@@ -120,17 +187,74 @@
           background-position: 0% 50%;
         }
       }
-      body {
-        margin: 0;
+
+      .svgLoader {
+        animation: spin 1s ease-out infinite;
       }
     </style>
   </head>
   <body>
     <noscript>Hello Im JW.</noscript>
     <div id="root">
-      <div class="gradient-background"></div>
+      <div class="header">
+        <div class="inner-header flex">
+          <div class="big-margin">
+            <h1 class="title">
+              <svg
+                class="svgLoader"
+                viewBox="0 0 1024 1024"
+                width="1em"
+                height="1em"
+                aria-hidden="true"
+              >
+                <path
+                  fill="lightblue"
+                  d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"
+                />
+              </svg>
+              Loading
+            </h1>
+            <div class="alignLeft">
+              <p class="loading-text-paragraph">개발자 김진원의</p>
+              <p class="loading-text-paragraph">포트폴리오 사이트입니다</p>
+            </div>
+          </div>
+        </div>
+
+        <!--Waves Container-->
+        <div>
+          <svg
+            class="waves"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 24 150 28"
+            preserveAspectRatio="none"
+            shape-rendering="auto"
+          >
+            <defs>
+              <path
+                id="gentle-wave"
+                d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+              />
+            </defs>
+            <g class="parallax">
+              <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+              <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+              <use xlink:href="#gentle-wave" x="41" y="5" fill="rgba(255,255,255,0.3)" />
+              <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+            </g>
+          </svg>
+        </div>
+        <!--Waves end-->
+      </div>
+      <!--Header ends-->
+
+      <!--Content starts-->
+      <div class="content flex">
+        <p>JW | 2020</p>
+      </div>
+      <!-- <div class="gradient-background"></div>
       <div class="divLoader">
-        <!-- <div className="content">Welcome</div> -->
         <svg class="svgLoader" viewBox="0 0 1024 1024" width="4em" height="4em" aria-hidden="true">
           <path
             fill="lightblue"
@@ -140,7 +264,7 @@
         <h1 class="text loading-text-h1">Loading...</h1>
         <p class="loading-text-paragraph">개발자 김진원입니다.</p>
         <p class="loading-text-paragraph">잘부탁드립니다.</p>
-      </div>
+      </div> -->
     </div>
   </body>
 </html>

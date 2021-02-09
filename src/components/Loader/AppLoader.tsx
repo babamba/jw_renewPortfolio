@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import LoadingLottie from "images/lottie/deep-loading.json";
+import { Grid } from "antd";
 import Lottie from "react-lottie-wrapper";
 import { observer } from "mobx-react-lite";
 import { useStore } from "hooks/useStore";
@@ -38,10 +39,15 @@ const lottieOptions = {
 
 const LottieLoader = ({ text }) => {
   const { useDark } = useStore("common");
-
+  const screens = Grid.useBreakpoint();
   return (
     <LoadingContainer isDark={useDark}>
-      <Lottie width="200px" height="30%" options={lottieOptions} speed={1} />
+      <Lottie
+        width="200px"
+        height={screens.lg ? "30%" : "400px"}
+        options={lottieOptions}
+        speed={1}
+      />
       <LoadingText isDark={useDark}>{text}</LoadingText>
     </LoadingContainer>
   );

@@ -33,7 +33,7 @@ const StackText = styled.span`
   font-size: 15px;
 `;
 
-const HashTag = styled.p`
+const HashTag = styled(Typography.Paragraph)`
   font-weight: 300;
   padding: 0px 24px;
 `;

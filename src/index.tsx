@@ -48,7 +48,7 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-const rootElement = document.getElementById("root");
+// const rootElement = document.getElementById("root");
 
 render(
   <BrowserRouter>
@@ -58,7 +58,7 @@ render(
       </StoreProvider>
     </HelmetProvider>
   </BrowserRouter>,
-  rootElement
+  document.getElementById("root")
 );
 
 // if (rootElement !== null && rootElement.hasChildNodes()) {

@@ -19,11 +19,16 @@ const IconMenu = lazy(() => import("components/App/Menu/IconMenu"));
 const ContactCard = lazy(() => import("components/Card/ContactCard"));
 const Footer = lazy(() => import("components/Common/Footer"));
 
+interface RouteRefObject {
+  onInitPreload: () => Promise<void>;
+}
 const App = () => {
+  const RouteRef = useRef<RouteRefObject>(null);
   const menuSticky = useRef(null);
   const onlyHeight = useWindowHeight();
   const controls = useAnimation();
   const screens = Grid.useBreakpoint();
+  const [loading, setLoading] = useState(true);
   const { useLabPage, useDark, checkMode } = useStore("common");
   const [backColor, setBackColor] = useState("");
   const [affixed, setAffixed] = useState(false);
@@ -38,11 +43,25 @@ const App = () => {
   // }, []);
 
   useEffect(() => {
-    checkMode();
+    checkMode().then(() => {
+      console.log("RouteRef : ", RouteRef);
+      preload();
+    });
+
     if (process.env.NODE_ENV === "production") {
       ReactGA.pageview(router.location.pathname + router.location.search);
     }
   }, []);
+
+  const preload = async () => {
+    if (RouteRef)
+      await RouteRef.current?.onInitPreload().then(() => {
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+      });
+    //
+  };
 
   useEffect(() => {
     window.scrollTo({
@@ -191,9 +210,7 @@ const App = () => {
                           <TextSwipeMenu />
                         </Col>
                         <Col span={24}> */}
-                      <div style={{ position: "relative" }}>
-                        <FolioRoutes />
-                      </div>
+                      <FolioRoutes ref={RouteRef} loading={loading} />
                       {/* </Col>
                       </Row> */}
                     </Col>

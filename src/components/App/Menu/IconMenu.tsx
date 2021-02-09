@@ -102,8 +102,8 @@ const IconMenu: FC = () => {
                 // marginTop: "-28px",
               }
             : {
-                padding: "6px 8px",
-                margin: "auto 1rem"
+                padding: "6px 8px"
+                // margin: "auto 1rem"
               }
         }
       >

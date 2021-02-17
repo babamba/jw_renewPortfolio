@@ -100,7 +100,7 @@ const MyProfile: FC = () => {
         <Row
           style={{
             alignItems: "center",
-            padding: "1.5rem 2.5rem",
+            padding: "1.5rem 2rem",
             paddingBottom: screens.lg ? "0" : "1rem"
           }}
           align="middle"

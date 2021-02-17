@@ -22,6 +22,7 @@
     "mobx-react-lite": "^3.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-fastclick": "^3.0.2",
     "react-ga": "^3.3.0",
     "react-helmet-async": "^1.0.7",
     "react-lazy-with-preload": "^2.0.1",

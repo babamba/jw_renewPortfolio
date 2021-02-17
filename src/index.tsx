@@ -15,7 +15,9 @@ import { configure } from "mobx";
 import "./assets/css/custom.less";
 import ReactGA from "react-ga";
 import { enableLogging } from "mobx-color-logger";
+import initReactFastclick from "react-fastclick";
 
+initReactFastclick();
 configure({
   useProxies: "never",
   enforceActions: "observed"

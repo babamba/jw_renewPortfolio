@@ -113,7 +113,11 @@ const MyProfile: FC = () => {
             }}
           >
             <div>
-              <Avatar size={screens.lg ? 100 : 50} src={require("../../../assets/images/me.png")} />
+              <Avatar
+                alt="jinwon-face"
+                size={screens.lg ? 100 : 50}
+                src={require("../../../assets/images/me.png")}
+              />
 
               <Typography.Title
                 style={{

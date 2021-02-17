@@ -29,6 +29,7 @@ const StackAvatar: FC<Props> = (props: Props) => {
   return (
     <StackBox>
       <Avatar
+        alt={`stack-img-${stack.stackTitle}`}
         shape="square"
         size={screens.xs ? 70 : 80}
         src={process.env.REACT_APP_STRAPI_URL + stack.imgUrl.url}

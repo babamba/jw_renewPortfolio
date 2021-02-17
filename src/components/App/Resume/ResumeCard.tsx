@@ -80,6 +80,7 @@ const ResumeCard: FC<Props> = (props: Props) => {
               <HeadDiv>
                 <motion.div variants={ItemStyle}>
                   <Avatar
+                    alt={`company-img-${resumeData.companyName}`}
                     shape="circle"
                     size={44}
                     src={process.env.REACT_APP_STRAPI_URL + resumeData.companyImg.url}

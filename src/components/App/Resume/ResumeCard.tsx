@@ -24,7 +24,7 @@ const HeadDiv = styled.div`
   align-items: center;
   display: flex;
 `;
-const TimeText = styled.p`
+const TimeText = styled(Typography.Paragraph)`
   font-size: 14px;
   font-weight: 400;
   margin-bottom: 0.5em;

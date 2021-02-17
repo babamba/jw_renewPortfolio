@@ -36,6 +36,7 @@ const MainIntroSmallText = styled.h1`
   color: ${props => (props.useDark ? "rgba(255, 255, 255, 0.9)" : "rgba(0, 0, 0, 0.85)")};
 `;
 const SubIntroSmallText = styled.h1`
+  font-family: "NEXON Lv2 Gothic Bold";
   font-weight: 300;
   font-size: 1.1rem;
   padding-left: 2px;
@@ -49,6 +50,7 @@ const SubIntroSmallText = styled.h1`
 `;
 
 const SubIntroText = styled.h2`
+  font-family: "NEXON Lv2 Gothic Bold";
   font-weight: 800;
   font-size: 1.5rem;
   opacity: 1;

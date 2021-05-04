@@ -10,7 +10,9 @@
       "store/*": ["src/store/*"],
       "core/*": ["src/core/*"],
       "routes/*": ["src/route/*"],
-      "interfaces/*": ["src/interfaces/*"]
+      "interfaces/*": ["src/interfaces/*"],
+      "api/*": ["src/api/*"],
+      "utils/*": ["src/utils/*"]
     }
   }
 }

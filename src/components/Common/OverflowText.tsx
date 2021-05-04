@@ -1,17 +1,20 @@
-import React, { FC, useState, useCallback, useRef, useLayoutEffect } from 'react';
-import { OverflowDetector } from 'react-overflow';
-import { Typography, Divider, Space } from 'antd';
-import { useWindowWidth } from '@react-hook/window-size';
-import styled from 'styled-components';
+import { useState, useCallback, useRef, useLayoutEffect } from "react";
+import { OverflowDetector } from "react-overflow";
+import { Typography, Space } from "antd";
+import { useWindowWidth } from "@react-hook/window-size";
+import styled from "styled-components";
 
 const Container = styled.div`
   overflow-x: hidden;
 `;
 
-const MarqueeBox = styled.div`
+interface MarqueeBoxProps {
+  color?: string;
+}
+const MarqueeBox = styled.div<MarqueeBoxProps>`
   width: 100%;
   white-space: nowrap;
-  color: ${props => (props.color ? props.color : 'inherit')};
+  color: ${props => (props.color ? props.color : "inherit")};
 `;
 
 interface MarqueeTextProps {
@@ -21,16 +24,23 @@ interface MarqueeTextProps {
 const MarqueeText = styled.div<MarqueeTextProps>`
   display: inline-block;
   animation: ${props =>
-    props.delay ? `marquee ${props.delay}s linear infinite` : 'marquee 15s linear infinite'};
+    props.delay ? `marquee ${props.delay}s linear infinite` : "marquee 15s linear infinite"};
 `;
 
 const MarqueeText2 = styled.div<MarqueeTextProps>`
   display: inline-block;
   animation: ${props =>
-    props.delay ? `marquee ${props.delay}s linear infinite` : 'marquee 15s linear infinite'};
+    props.delay ? `marquee ${props.delay}s linear infinite` : "marquee 15s linear infinite"};
 `;
 
-const DefaultText = styled.span``;
+interface DefaultTextProps {
+  size?: number | undefined;
+  weight?: number | undefined;
+}
+const DefaultText = styled.span<DefaultTextProps>`
+  font-size: ${props => (props.size ? `${props.size}px` : `14px`)};
+  font-weight: ${props => (props.weight ? `${props.weight}` : `500`)};
+`;
 
 interface Props {
   content: string;
@@ -38,7 +48,7 @@ interface Props {
   delay?: number | undefined;
 }
 
-const OverFlowTitle: FC<Props> = props => {
+const OverFlowTitle = (props: Props) => {
   const browserWidth = useWindowWidth();
   const marqueeBoxRef = useRef<HTMLDivElement>(null);
   const deafultTextRef = useRef<HTMLDivElement>(null);
@@ -63,7 +73,7 @@ const OverFlowTitle: FC<Props> = props => {
 
   return (
     <Container>
-      <OverflowDetector onOverflowChange={handleOverflowChange} style={{ width: '95%' }}>
+      <OverflowDetector onOverflowChange={handleOverflowChange} style={{ width: "95%" }}>
         <MarqueeBox color={color} ref={marqueeBoxRef}>
           {overFlow ? (
             <Space>

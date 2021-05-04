@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
@@ -14,7 +13,7 @@ const HeroSvg = styled(animated.svg)`
 `;
 
 const HeroBackground = () => {
-  const { useDark } = useStore("common");
+  const { useDark } = useStore("app");
   const location = useLocation();
 
   const getPath = () => {

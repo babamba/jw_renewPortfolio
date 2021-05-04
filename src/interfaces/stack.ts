@@ -28,3 +28,5 @@ export interface Image {
   url: string;
   width: number;
 }
+
+export type STACK = "remote" | "front" | "backend" | "ci" | "infra" | "interest";

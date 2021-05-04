@@ -1,5 +1,4 @@
-import React from "react";
-import { Grid } from "antd";
+import { Grid, Typography } from "antd";
 import { string, number } from "prop-types";
 import { animated, to } from "react-spring";
 import CardData from "core/folioData";
@@ -7,7 +6,7 @@ import styled from "styled-components";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import COLOR from "core/colors";
 
-const Title = styled.span`
+const Title = styled(Typography.Text)`
   color: rgba(255, 255, 255, 0.85);
   position: absolute;
   bottom: 10px;

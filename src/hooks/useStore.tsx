@@ -1,9 +1,9 @@
 import { useLocalObservable } from "mobx-react-lite";
-import React, { FC, createContext, useContext } from "react";
-import CommonStore from "store/common/commonStore";
+import { FC, createContext, useContext } from "react";
+import AppStore from "store/common/appStore";
 
 export type RootStoreType = {
-  common: CommonStore;
+  app: AppStore;
 };
 // key 형식으로 원하는 스토어를 선택해서 사용할 수 있다.
 export type StoreKeys = keyof RootStoreType;
@@ -13,7 +13,7 @@ const storeContext = createContext<RootStoreType | null>(null);
 // 앱에 RootStore가 존재하지 않는다면 초기화시켜준다
 const initRootStore = (): RootStoreType => {
   const rootStore: RootStoreType = {} as RootStoreType;
-  rootStore.common = new CommonStore(rootStore);
+  rootStore.app = new AppStore(rootStore);
   return rootStore;
 };
 

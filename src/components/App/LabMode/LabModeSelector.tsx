@@ -1,4 +1,3 @@
-import React, { FC } from "react";
 import styled from "styled-components";
 import { observer } from "mobx-react-lite";
 import { useStore } from "hooks/useStore";
@@ -10,8 +9,8 @@ const Container = styled.div`
   z-index: 999;
 `;
 
-const LabModeSelector: FC = observer(() => {
-  const { setUseLabpage, useLabPage, useDark } = useStore("common");
+const LabModeSelector = observer(() => {
+  const { setUseLabpage, useLabPage, useDark } = useStore("app");
   const router = useRouter();
 
   const handleChange = async () => {

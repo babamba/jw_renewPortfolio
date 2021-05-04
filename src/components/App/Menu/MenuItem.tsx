@@ -1,4 +1,3 @@
-import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import { Tooltip, Typography, Grid } from "antd";
 import {
@@ -21,7 +20,13 @@ interface Props {
   icon: string;
 }
 
-const MenuText = styled(Typography.Text)`
+interface MenuTextProps {
+  selected?: string;
+  current?: string;
+  usedark: string;
+}
+
+const MenuText = styled(Typography.Text)<MenuTextProps>`
   padding-left: 4px;
   font-size: 16px;
   /* transition: all 0.3s; */
@@ -42,8 +47,8 @@ const Box = styled.div`
   cursor: pointer;
 `;
 
-const MenuItem: FC<Props> = (props: Props) => {
-  const { useDark } = useStore("common");
+const MenuItem = (props: Props) => {
+  const { useDark } = useStore("app");
   const screens = Grid.useBreakpoint();
   const { selected, url, title, icon, subTitle } = props;
 

@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Grid, Row, Col } from "antd";
 import { useHistory, useLocation } from "react-router-dom";
 import { ContainerStyle, ItemStyle } from "interfaces/Motion";
@@ -9,7 +9,12 @@ import styled from "styled-components";
 import { useStore } from "hooks/useStore";
 import { observer } from "mobx-react-lite";
 
-const CustomCol = styled(Col)`
+interface CustomColProps {
+  selected?: string;
+  current?: string;
+}
+
+const CustomCol = styled(Col)<CustomColProps>`
   text-align: center;
   @media only screen and (min-width: 100px) and (max-width: 991px) {
     text-align: center;
@@ -20,7 +25,10 @@ const CustomCol = styled(Col)`
   }
 `;
 
-const MotionMenuBox = styled(motion.div)`
+interface MotionMenuBox extends CustomColProps {
+  isDark: boolean;
+}
+const MotionMenuBox = styled(motion.div)<MotionMenuBox>`
   cursor: pointer;
 
   @media only screen and (min-width: 100px) and (max-width: 767px) {
@@ -43,7 +51,7 @@ const MotionMenuBox = styled(motion.div)`
   }
 `;
 
-const MenuButtonBox = styled.div`
+const MenuButtonBox = styled.div<CustomColProps>`
   @media only screen and (min-width: 200px) and (max-width: 773px) {
     padding: 4px;
   }
@@ -70,8 +78,8 @@ const MenuButtonBox = styled.div`
   }
 `;
 
-const IconMenu: FC = () => {
-  const { useDark } = useStore("common");
+const IconMenu = () => {
+  const { useDark } = useStore("app");
   const history = useHistory();
   const location = useLocation();
   const screens = Grid.useBreakpoint();

@@ -1,9 +1,9 @@
-import React from "react";
 import styled from "styled-components";
 import Lottie from "react-lottie-wrapper";
 
 import { useStore } from "hooks/useStore";
 import LoadingLottie from "images/lottie/deep-loading.json";
+import { Typography } from "antd";
 
 interface LoadingTextProps {
   isDark: boolean;
@@ -18,23 +18,22 @@ const LoadingContainer = styled.div`
   flex-direction: column;
 `;
 
-const LoadingText = styled.span<LoadingTextProps>`
+const LoadingText = styled(Typography.Text)<LoadingTextProps>`
   text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
-  color: ${(props) =>
-    props.isDark ? "rgba(255, 255, 255, 0.8)" : "rgba(0,0,0,0.7)"};
+  color: ${props => (props.isDark ? "rgba(255, 255, 255, 0.8)" : "rgba(0,0,0,0.7)")};
 `;
 
 const lottieOptions = {
   loop: true,
   autoplay: true,
   rendererSettings: {
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid meet"
   },
-  animationData: LoadingLottie,
+  animationData: LoadingLottie
 };
 
 const ChartLoader = ({ text }) => {
-  const { useDark } = useStore("common");
+  const { useDark } = useStore("app");
 
   return (
     <LoadingContainer>

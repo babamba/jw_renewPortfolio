@@ -1,4 +1,3 @@
-import React from "react";
 import { Grid, Col, Row, Skeleton } from "antd";
 
 const LazyIconLoader = () => {

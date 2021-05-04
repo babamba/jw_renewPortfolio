@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import ReactGA from "react-ga";
 import { observer } from "mobx-react-lite";
 import {
@@ -28,11 +28,11 @@ import BlogCard from "components/Card/BlogCard";
 import HeadMeta from "components/Helmet/HeadMeta";
 import LottieLoader from "components/Loader/LottieLoader";
 
-const Post: FC = () => {
+const Post = () => {
   // const period = 12;
   const router = useRouter();
   // const [period, setPeriod] = useState(12);
-  const { currentPage, setCurrentPage, useDark } = useStore("common");
+  const { currentPage, setCurrentPage, useDark } = useStore("app");
   const screens = Grid.useBreakpoint();
   const [selectTag, updateTag] = useState("");
   const [loading, setLoading] = useState(false);

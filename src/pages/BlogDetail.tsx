@@ -59,7 +59,7 @@ interface MatchParams {
 }
 
 const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, location }) => {
-  const { useDark } = useStore("common");
+  const { useDark } = useStore("app");
   const router = useRouter();
   const screens = Grid.useBreakpoint();
   const contentfulService = new ContentfulService();

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 import { Typography } from "antd";
 import Carousel from "react-multi-carousel";
@@ -9,7 +9,13 @@ import { useHistory, useLocation } from "react-router-dom";
 
 const Container = styled.div``;
 
-const RouteText = styled(Typography.Text)`
+interface RouteTextProps {
+  name: string;
+  current: string;
+  isDark: boolean;
+}
+
+const RouteText = styled(Typography.Text)<RouteTextProps>`
   font-size: 80px;
   font-family: "NEXON Lv2 Gothic Bold";
   letter-spacing: -2px;
@@ -21,15 +27,15 @@ const RouteText = styled(Typography.Text)`
 const TextSwipeMenu = () => {
   const history = useHistory();
   const location = useLocation();
-  const { useDark } = useStore("common");
-  const [currentSlide, setCurrentSlider] = useState("");
+  const { useDark } = useStore("app");
+  // const [currentSlide, setCurrentSlider] = useState("");
   const [selected, setSelected] = useState("/");
   useEffect(() => {
     const path = location.pathname.split("/");
     const temp = `${path[1]}`;
     console.log("temp : ", temp);
     setSelected(temp);
-    setCurrentSlider(temp);
+    // setCurrentSlider(temp);
   }, [location.pathname]);
 
   const MenuTrigger = (idx: number) => {

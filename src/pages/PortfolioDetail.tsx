@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Card, Typography, Grid, Divider, PageHeader, Space, Col, Row } from "antd";
 import { ForwardOutlined, BackwardOutlined } from "@ant-design/icons";
 import styled from "styled-components";
@@ -29,7 +29,7 @@ const FolioInTitleContainer = styled.div`
   margin-left: 10px;
 `;
 
-const FolioTitle = styled.span`
+const FolioTitle = styled(Typography.Text)`
   font-family: "NEXON Lv2 Gothic Bold";
   color: rgba(255, 255, 255, 1);
   letter-spacing: -1.2px;
@@ -43,14 +43,14 @@ const FolioImageBox = styled.div`
   position: relative;
 `;
 
-const FolioDate = styled.span`
+const FolioDate = styled(Typography.Text)`
   letter-spacing: -1.2px;
   font-weight: 300;
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.85);
 `;
 
-const StackText = styled.h4`
+const StackText = styled(Typography.Title)`
   font-weight: 800;
   font-size: 18px;
   @media only screen and (min-width: 200px) and (max-width: 767px) {
@@ -95,7 +95,7 @@ type State = {
 
 const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match }) => {
   const [folio, setFolio] = useState<State | undefined>(undefined);
-  const { useDark } = useStore("common");
+  const { useDark } = useStore("app");
   const screens = Grid.useBreakpoint();
   const cardBGStyles = {
     height: "40vh",
@@ -279,7 +279,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
               {/* <img src={folio && folio.pics} /> */}
               <TextContentBox>
                 <motion.div variants={ItemLeftStyle}>
-                  <StackText>{folio && folio.stack}</StackText>
+                  <StackText level={4}>{folio && folio.stack}</StackText>
                 </motion.div>
 
                 <br />

@@ -1,4 +1,4 @@
-import CommonStore from "./common/commonStore";
+import AppStore from "./common/appStore";
 
 /**
  * 여러가지 분류로 나뉘어 있는 Store를 하나로 combine.
@@ -7,9 +7,9 @@ import CommonStore from "./common/commonStore";
  */
 
 class RootStore {
-  common: CommonStore;
+  app: AppStore;
   constructor() {
-    this.common = new CommonStore(this);
+    this.app = new AppStore(this);
   }
 }
 

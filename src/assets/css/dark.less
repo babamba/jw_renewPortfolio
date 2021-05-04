@@ -1,0 +1,77 @@
+body.dark {
+  color: rgba(255, 255, 255, 0.85);
+  & .ant-typography {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  & .site-page-header {
+    & .ant-page-header-heading-title {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    & .ant-page-header-back-button {
+      color: rgba(255, 255, 255, 0.85);
+    }
+  }
+
+  & .ant-divider {
+    border-top-color: rgba(255, 255, 255, 0.12);
+    & .ant-divider-inner-text {
+      color: rgba(255, 255, 255, 0.85);
+    }
+  }
+
+  & .ant-card {
+    &.ant-card-bordered {
+      border: 1px solid #303030;
+    }
+
+    & .ant-card-meta-title {
+      color: rgba(255, 255, 255, 0.85);
+    }
+  }
+
+  & .ant-timeline {
+    & .ant-timeline-item {
+      & .ant-timeline-item-tail {
+        border-left: 2px solid #303030;
+      }
+    }
+  }
+  & .ant-spin-container {
+    &:after {
+      background: rgba(0, 0, 0, 0.55);
+    }
+  }
+
+  & .ant-pagination {
+    & .ant-pagination-item {
+      background: transparent;
+      padding-top: 1px;
+      & a {
+        color: rgba(255, 255, 255, 0.85);
+      }
+
+      &.ant-pagination-item-active {
+        border-radius: 8px;
+        border-color: rgba(178, 98, 252, 0.85);
+        & a {
+          color: rgba(178, 98, 252, 0.85);
+        }
+      }
+    }
+
+    & .ant-pagination-next {
+      color: rgba(255, 255, 255, 0.85);
+      & .ant-pagination-item-link {
+        color: rgba(255, 255, 255, 0.65);
+      }
+    }
+
+    & .ant-pagination-prev {
+      & .ant-pagination-item-link {
+        color: rgba(255, 255, 255, 0.65);
+      }
+    }
+  }
+}

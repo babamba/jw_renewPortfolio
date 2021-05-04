@@ -1,4 +1,3 @@
-import React, { FC } from "react";
 import { Row, Col, Typography, Avatar, Affix, Grid } from "antd";
 import ReactRotatingText from "react-rotating-text";
 import { GithubOutlined } from "@ant-design/icons";
@@ -7,9 +6,14 @@ import { motion } from "framer-motion";
 import { useStore } from "hooks/useStore";
 import { pageVariants, pageTransition } from "interfaces/Motion";
 import { observer } from "mobx-react-lite";
+import MePhoto from "../../../assets/images/me.png";
 import COLOR from "core/colors";
 
-const MainIntroText = styled.h1`
+interface MainIntroTextProps {
+  useDark: boolean;
+}
+
+const MainIntroText = styled.h1<MainIntroTextProps>`
   font-weight: 800;
   font-size: 3.5rem;
   opacity: 1;
@@ -24,7 +28,7 @@ const MainIntroText = styled.h1`
   }
 `;
 
-const MainIntroSmallText = styled.h1`
+const MainIntroSmallText = styled.h1<MainIntroTextProps>`
   font-weight: 800;
   font-size: 2rem;
   opacity: 1;
@@ -35,7 +39,7 @@ const MainIntroSmallText = styled.h1`
   font-family: "NEXON Lv2 Gothic Bold";
   color: ${props => (props.useDark ? "rgba(255, 255, 255, 0.9)" : "rgba(0, 0, 0, 0.85)")};
 `;
-const SubIntroSmallText = styled.h1`
+const SubIntroSmallText = styled.h1<MainIntroTextProps>`
   font-family: "NEXON Lv2 Gothic Bold";
   font-weight: 300;
   font-size: 1.1rem;
@@ -49,7 +53,7 @@ const SubIntroSmallText = styled.h1`
   color: ${props => (props.useDark ? "rgba(255, 255, 255, 0.9)" : "rgba(0, 0, 0, 0.85)")};
 `;
 
-const SubIntroText = styled.h2`
+const SubIntroText = styled.h2<MainIntroTextProps>`
   font-family: "NEXON Lv2 Gothic Bold";
   font-weight: 800;
   font-size: 1.5rem;
@@ -73,8 +77,8 @@ const SubIntroText = styled.h2`
   } */
 `;
 
-const MyProfile: FC = () => {
-  const { useDark } = useStore("common");
+const MyProfile = () => {
+  const { useDark } = useStore("app");
   const screens = Grid.useBreakpoint();
   const textVariants = {
     out: { x: 10, opacity: 0 },
@@ -113,12 +117,7 @@ const MyProfile: FC = () => {
             }}
           >
             <div>
-              <Avatar
-                alt="jinwon-face"
-                size={screens.lg ? 100 : 50}
-                src={require("../../../assets/images/me.png")}
-              />
-
+              <Avatar alt="jinwon-face" size={screens.lg ? 100 : 50} src={MePhoto} />
               <Typography.Title
                 style={{
                   display: screens.lg ? "block" : "inline",

@@ -1,7 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 import LoadingLottie from "images/lottie/deep-loading.json";
-import { Grid } from "antd";
+import { Grid, Typography } from "antd";
 import Lottie from "react-lottie-wrapper";
 import { observer } from "mobx-react-lite";
 import { useStore } from "hooks/useStore";
@@ -9,20 +8,17 @@ import { useStore } from "hooks/useStore";
 interface LoadingTextProps {
   isDark: boolean;
 }
-interface LoadingContainerProps {
-  isDark: boolean;
-}
-const LoadingContainer = styled.div<LoadingContainerProps>`
+
+const LoadingContainer = styled.div`
   display: flex;
   flex: 1;
   height: 100%;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* background-color: ${props => (props.isDark ? "#1f1f1f" : "rgba(255, 255, 255, 1)")}; */
 `;
 
-const LoadingText = styled.span<LoadingTextProps>`
+const LoadingText = styled(Typography.Text)<LoadingTextProps>`
   margin-top: -40px;
   text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
   color: ${props => (props.isDark ? "rgba(255, 255, 255, 0.8)" : "rgba(0,0,0,0.7)")};
@@ -38,10 +34,10 @@ const lottieOptions = {
 };
 
 const LottieLoader = ({ text }) => {
-  const { useDark } = useStore("common");
+  const { useDark } = useStore("app");
   const screens = Grid.useBreakpoint();
   return (
-    <LoadingContainer isDark={useDark}>
+    <LoadingContainer>
       <Lottie
         width="200px"
         height={screens.lg ? "30%" : "400px"}

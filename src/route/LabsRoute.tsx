@@ -1,7 +1,6 @@
-import React from 'react';
-import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
-import LabMain from '../pages/LabMain';
-import { AnimatePresence } from 'framer-motion';
+import { Route, Switch, useLocation } from "react-router-dom";
+import LabMain from "../pages/LabMain";
+import { AnimatePresence } from "framer-motion";
 
 const LabsRoute = () => {
   const location = useLocation();

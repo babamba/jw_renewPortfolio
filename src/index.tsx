@@ -2,10 +2,8 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 import "react-app-polyfill/ie11";
 import "react-app-polyfill/stable";
-import React from "react";
 import App from "components/App/App";
 import { render } from "react-dom";
-import * as serviceWorker from "./serviceWorker";
 import { StoreProvider } from "hooks/useStore";
 import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter } from "react-router-dom";
@@ -13,9 +11,14 @@ import font from "figlet/importable-fonts/Standard.js";
 import figlet from "figlet";
 import { configure } from "mobx";
 import "./assets/css/custom.less";
+import "./assets/css/dark.less";
 import ReactGA from "react-ga";
 import { enableLogging } from "mobx-color-logger";
 import initReactFastclick from "react-fastclick";
+
+import { ReactQueryDevtools } from "react-query/devtools";
+import { QueryClient, QueryClientProvider } from "react-query";
+import reportWebVitals from "./reportWebVitals";
 
 initReactFastclick();
 configure({
@@ -51,12 +54,16 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // const rootElement = document.getElementById("root");
+const queryClient = new QueryClient();
 
 render(
   <BrowserRouter>
     <HelmetProvider>
       <StoreProvider>
-        <App />
+        <QueryClientProvider client={queryClient}>
+          <ReactQueryDevtools initialIsOpen={false} />
+          <App />
+        </QueryClientProvider>
       </StoreProvider>
     </HelmetProvider>
   </BrowserRouter>,
@@ -103,4 +110,4 @@ render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+reportWebVitals();

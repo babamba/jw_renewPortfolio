@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import ReactGA from "react-ga";
 
 import { ForwardOutlined, RetweetOutlined } from "@ant-design/icons";
-import { Grid, Progress, Row, Col, Space } from "antd";
+import { Grid, Progress, Row, Col, Space, Typography } from "antd";
 import { motion, useAnimation } from "framer-motion";
 
 import { pageVariants, pageTransition } from "interfaces/Motion";
@@ -33,7 +33,7 @@ interface InfoData {
 }
 
 const DeckFolio = () => {
-  const { useDark } = useStore("common");
+  const { useDark } = useStore("app");
   const screens = Grid.useBreakpoint();
   const isMount = useMount();
   const router = useRouter();
@@ -193,7 +193,7 @@ const DeckFolio = () => {
               strokeColor={useDark ? COLOR.DECK_PROGRESS_DARK : COLOR.DECK_PROGRESS_LIGHT}
             />
 
-            <span>0{PortfolioData.length}</span>
+            <Typography.Text>0{PortfolioData.length}</Typography.Text>
           </Space>
           <Row justify="start">
             <Col span={24}>

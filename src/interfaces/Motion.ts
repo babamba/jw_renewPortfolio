@@ -29,8 +29,8 @@ const ContainerStyle = {
   hidden: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
+      staggerDirection: -1,
+      staggerChildren: 0.05,
       when: "afterChildren"
     }
   },
@@ -38,26 +38,30 @@ const ContainerStyle = {
     opacity: 1,
     transition: {
       delay: 0.3,
-      when: "beforeChildren",
-      staggerChildren: 0.15,
-      staggerDirection: 1
+      staggerDirection: 1,
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+      when: "beforeChildren"
     }
   }
 };
 
 const ItemStyle = {
   hidden: {
-    y: -10,
+    y: -2,
     opacity: 0,
     transition: {
-      y: { stiffness: 1000, velocity: -100 }
+      y: { velocity: 100 }
     }
   },
   visible: {
     y: 0,
+    innerHeight: "100%",
     opacity: 1,
     transition: {
-      y: { stiffness: 1000 }
+      type: "spring",
+      damping: 10,
+      stiffness: 100
     }
   }
 };

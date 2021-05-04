@@ -1,4 +1,10 @@
-import React, { useEffect, forwardRef, ForwardRefRenderFunction, useImperativeHandle } from "react";
+import {
+  useEffect,
+  forwardRef,
+  ForwardRefRenderFunction,
+  useImperativeHandle,
+  Suspense
+} from "react";
 import { Route, Switch, Redirect, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import LazyLoader from "components/Loader/LazyLoader";
@@ -68,7 +74,7 @@ const FolioRoutes: ForwardRefRenderFunction<Handler, Props> = (props, ref) => {
     <AppLoader text="loading.." />
   ) : (
     <div style={{ position: "relative" }}>
-      <React.Suspense fallback={<LazyLoader />}>
+      <Suspense fallback={<LazyLoader />}>
         <AnimatePresence>
           <Switch location={location} key={location.pathname}>
             {/* exact 대신 매칭되는 첫번째 라우트만 보여주고 나머지는 보여주지 않는다.
@@ -90,7 +96,7 @@ const FolioRoutes: ForwardRefRenderFunction<Handler, Props> = (props, ref) => {
             <Route component={NoMatchComponent} />
           </Switch>
         </AnimatePresence>
-      </React.Suspense>
+      </Suspense>
     </div>
   );
 };

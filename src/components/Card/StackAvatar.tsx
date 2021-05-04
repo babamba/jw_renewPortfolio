@@ -1,4 +1,3 @@
-import React, { FC } from "react";
 import styled from "styled-components";
 import { Typography, Avatar, Badge, Grid } from "antd";
 import { Stack } from "interfaces/stack";
@@ -13,7 +12,7 @@ const StackBox = styled.div`
   height: 140px;
 `;
 
-const StackText = styled.span`
+const StackText = styled(Typography.Text)`
   font-weight: 300;
   font-size: 15px;
 `;
@@ -22,7 +21,7 @@ interface Props {
   stack: Stack;
 }
 
-const StackAvatar: FC<Props> = (props: Props) => {
+const StackAvatar = (props: Props) => {
   const { stack } = props;
   const screens = Grid.useBreakpoint();
 

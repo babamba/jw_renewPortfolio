@@ -1,10 +1,10 @@
-import React, { FC } from "react";
 import { useRouteMatch, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Card, Grid } from "antd";
+import { Card, Grid, Typography } from "antd";
 import COLOR from "core/colors";
 import { useStore } from "hooks/useStore";
 import { observer } from "mobx-react-lite";
+
 interface Props {
   info: {
     id: string;
@@ -17,10 +17,10 @@ interface Props {
   isDark: boolean;
 }
 
-const BlogCard: FC<Props> = (props: Props) => {
+const BlogCard = (props: Props) => {
   const { info } = props;
   const match = useRouteMatch();
-  const { useDark } = useStore("common");
+  const { useDark } = useStore("app");
   const screens = Grid.useBreakpoint();
   const cardBGStyles = {
     backgroundSize: "cover",
@@ -63,7 +63,8 @@ const BlogCard: FC<Props> = (props: Props) => {
           <Card.Meta
             title={info.title}
             description={
-              <span
+              <Typography.Paragraph
+                ellipsis={{ rows: 4, expandable: false }}
                 style={{
                   overflow: "hidden !important",
                   textOverflow: "ellipsis",
@@ -75,7 +76,7 @@ const BlogCard: FC<Props> = (props: Props) => {
                 }}
               >
                 {info.description}
-              </span>
+              </Typography.Paragraph>
             }
           />
         </Card>

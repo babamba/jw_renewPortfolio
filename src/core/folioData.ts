@@ -118,6 +118,7 @@ export default [
       "AppSync(GraphQL) 을 통한 Subscription 기반 소켓통신 및 실시간 알림 및 실시간 데이터 변경 처리",
       "AppSync VTL 코드 작성",
       "Mobx를 이용한 Observer패턴 상태 관리 및 비즈니스 로직 분산 개발.",
+      "React-Query 를 이용한 비동기 데이터 캐싱 관리 및 코드 최적화",
       "Lottie를 이용한 Animate Loading",
       "오픈소스 Chart.js 를 이용한 Canvas 기반 통계 Data Visualization",
       "GitLab CI / CD 를 통한 Docker Container build test / e2e test / Deploy PipeLine 작성 및 자동화 구성",

@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from "react";
+import { FC, useEffect, useRef } from "react";
 import { Row, Col, Divider, Card, Typography, Badge, Grid, Empty } from "antd";
 import styled from "styled-components";
 import ReactGA from "react-ga";
@@ -13,22 +13,20 @@ import StackCard from "components/Card/StackCard";
 import { useStore } from "hooks/useStore";
 import { useRouter } from "hooks/useRouter";
 
-const IntroText = styled.h2`
+const IntroText = styled(Typography.Title)`
   font-family: "NEXON Lv2 Gothic Light";
   font-weight: 300;
   padding: 0px 24px;
-  color: ${(props: any) =>
-    props.theme === "true" ? "rgba(255, 255, 255, 0.85)" : "rgba(0, 0, 0, 0.85)"};
   @media only screen and (min-width: 200px) and (max-width: 767px) {
-    font-size: 14px;
-    font-weight: 350;
+    font-size: 18px !important;
+    font-weight: 350 !important;
   }
   @media only screen and (min-width: 768px) and (max-width: 4000px) {
     font-size: 24px;
   }
 `;
 
-const StackText = styled.span`
+const StackText = styled(Typography.Text)`
   font-weight: 300;
   font-size: 15px;
 `;
@@ -40,7 +38,7 @@ const HashTag = styled(Typography.Paragraph)`
 
 const About: FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const { useDark } = useStore("common");
+  const { useDark } = useStore("app");
   const screens = Grid.useBreakpoint();
   const router = useRouter();
   useEffect(() => {
@@ -89,7 +87,7 @@ const About: FC = () => {
           {/*  INTRODUCE */}
           <Col xs={24} sm={24} md={24} lg={18} xl={18}>
             <Divider orientation="left">INTRODUCE</Divider>
-            <IntroText theme={useDark ? "true" : "false"}>
+            <IntroText level={3}>
               안녕하세요. <br />
               저는 현재 <Typography.Text underline>FrontEnd</Typography.Text> 직군에서 프로젝트를
               진행하고있습니다. <br />

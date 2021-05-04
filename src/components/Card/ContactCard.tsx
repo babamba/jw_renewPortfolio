@@ -1,4 +1,3 @@
-import React, { FC } from "react";
 import { Typography, Affix, Grid } from "antd";
 import { MailOutlined } from "@ant-design/icons";
 import styled from "styled-components";
@@ -14,13 +13,13 @@ const Container = styled.div`
   padding: 1.5rem 2rem;
 `;
 
-const GuideText = styled.span`
+const GuideText = styled(Typography.Text)`
   font-weight: 500;
   font-size: 16px;
   letter-spacing: -0.4px;
 `;
 
-const Contact: FC = () => {
+const Contact = () => {
   const screens = Grid.useBreakpoint();
 
   return (

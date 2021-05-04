@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect } from "react";
-import { Card, Grid, Badge } from "antd";
+import { Card, Grid, Badge, Typography } from "antd";
 import { MailOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 import { pageTransition, pageVariants, ContainerStyle, ItemLeftStyle } from "interfaces/Motion";
@@ -17,7 +17,7 @@ const ContentBox = styled.div`
   padding: 12px;
 `;
 
-const GuideText = styled.span`
+const GuideText = styled(Typography.Text)`
   font-weight: 300;
 
   @media only screen and (min-width: 200px) and (max-width: 767px) {

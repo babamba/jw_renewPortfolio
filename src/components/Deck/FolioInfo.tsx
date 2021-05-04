@@ -30,7 +30,7 @@ interface Props {
 }
 
 const Card: FC<Props> = (props: Props) => {
-  const { useDark } = useStore("common");
+  const { useDark } = useStore("app");
   const match = useRouteMatch();
   const { animating } = props;
   const { data } = props;

@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import { useEffect } from "react";
 import { Timeline, Row, Col, Card, Grid } from "antd";
 import { motion } from "framer-motion";
 import ReactGA from "react-ga";
@@ -10,10 +10,10 @@ import ResumeContent from "components/App/Resume/ResumeContent";
 import { useStore } from "hooks/useStore";
 import { observer } from "mobx-react-lite";
 import COLOR from "core/colors";
-const History: FC = () => {
+const History = () => {
   const router = useRouter();
   const screens = Grid.useBreakpoint();
-  const { useDark } = useStore("common");
+  const { useDark } = useStore("app");
 
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {

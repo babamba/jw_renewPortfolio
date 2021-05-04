@@ -1,13 +1,13 @@
-import React, { FC } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { ItemStyle } from "interfaces/Motion";
 import { Badge, Typography, Divider, Grid } from "antd";
 import { ToolOutlined } from "@ant-design/icons";
 import { Story } from "interfaces/resume";
+import { Fragment } from "react";
 
 const { Text, Link } = Typography;
-const JobMainText = styled.h4`
+const JobMainText = styled(Typography.Title)`
   font-weight: 800;
   letter-spacing: -0.4px;
   @media only screen and (min-width: 200px) and (max-width: 767px) {
@@ -18,7 +18,7 @@ const JobMainText = styled.h4`
   }
 `;
 
-const JobText = styled.p`
+const JobText = styled(Typography.Paragraph)`
   padding-left: 12px;
   font-weight: 300;
   font-size: 15px;
@@ -36,22 +36,18 @@ const StatusBadge = styled(Badge)`
   }
 `;
 
-const CustomDivider = styled(Divider)`
-  margin: 12px 0px;
-`;
-
 interface Props {
   story: Story;
 }
 
-const ResumeStory: FC<Props> = (props: Props) => {
+const ResumeStory = (props: Props) => {
   const { story } = props;
   const screens = Grid.useBreakpoint();
 
   return (
     <>
       <motion.div variants={ItemStyle}>
-        <JobMainText>
+        <JobMainText level={4}>
           <StatusBadge status={story.type === "process" ? "processing" : "success"} />
           {story.title}
         </JobMainText>
@@ -78,10 +74,10 @@ const ResumeStory: FC<Props> = (props: Props) => {
             </>
           )}
           {story.desc.map((item, idx) => (
-            <React.Fragment key={idx}>
+            <Fragment key={idx}>
               <Text>- {item}</Text> <br />
               {screens.xs === true && <Divider />}
-            </React.Fragment>
+            </Fragment>
           ))}
           {/* {story.desc.map((item, idx) => generateText(idx, item.type, item.title))} */}
         </JobText>

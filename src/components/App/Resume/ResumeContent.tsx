@@ -1,38 +1,40 @@
-import React, { FC, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Empty } from "antd";
 import { motion } from "framer-motion";
 import { ContainerStyle, ItemStyle } from "interfaces/Motion";
 import { Resume } from "interfaces/resume";
-import { useStore } from "hooks/useStore";
 import Loader from "components/Loader/LazyLoader";
 import ResumeCard from "./ResumeCard";
-import useIsMounted from "hooks/useMount";
+import { useResumes } from "api/query/common.query";
 
-const ResumeContent: FC = () => {
-  const isMount = useIsMounted();
+const ResumeContent = () => {
   const [list, setList] = useState<Resume[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  const { findResume } = useStore("common");
+  const { isLoading, error: fetchError, data: resumeData } = useResumes();
 
   useEffect(() => {
-    init();
-  }, []);
-
-  const init = async () => {
-    const result = await findResume();
-    if (result.ok && result.response !== undefined && isMount.current) setList(result.response);
-    if (isMount.current) setLoading(false);
-  };
+    if (resumeData) setList(resumeData);
+  }, [resumeData]);
 
   return (
     <>
-      {loading ? (
+      {isLoading ? (
         <Loader />
-      ) : list.length > 0 ? (
-        list.map((item, idx) => <ResumeCard resumeData={item} key={idx} />)
-      ) : (
+      ) : fetchError ? (
         <Empty />
+      ) : (
+        <motion.div
+          className="container"
+          variants={ContainerStyle}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+        >
+          {list.map((item, idx) => (
+            <motion.div variants={ItemStyle} key={idx}>
+              <ResumeCard resumeData={item} key={idx} />
+            </motion.div>
+          ))}
+        </motion.div>
       )}
     </>
   );

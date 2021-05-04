@@ -6,7 +6,6 @@
 // * {
 //   font-family: "Noto Sans KR";
 // }
-
 @font-face {
   font-family: "NEXON Lv2 Gothic";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff")
@@ -36,6 +35,17 @@
   font-family: "NEXON Lv2 Gothic", -apple-system, system-ui, sans-serif;
   // font-family: 'Noto Sans KR', 'Spoqa Han Sans', sans-serif;
 }
+
+// @media (prefers-color-scheme: light) {
+//   @import "antd/dist/antd.less";
+//   @import "antd/lib/style/themes/default.less";
+// }
+
+// /* Dark mode CSS */
+// @media (prefers-color-scheme: dark) {
+//   @import "antd/dist/antd.dark.less";
+//   @import "antd/lib/style/themes/dark.less";
+// }
 
 .ant-card-hoverable:hover {
   box-shadow: "0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0), 0 5px 12px 4px rgba(0, 0, 0, 0.09)" !important;
@@ -582,4 +592,19 @@ li {
 .menu-carousel-item {
   // width: auto !important;
   margin-right: 48px;
+}
+
+& .ant-pagination {
+  & .ant-pagination-item {
+    background: transparent;
+    padding-top: 1px;
+
+    &.ant-pagination-item-active {
+      border-radius: 8px;
+      border-color: rgba(178, 98, 252, 0.85);
+      & a {
+        color: rgba(178, 98, 252, 0.85);
+      }
+    }
+  }
 }

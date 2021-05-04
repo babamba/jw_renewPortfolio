@@ -1,11 +1,11 @@
 import React, { FC, useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { useStore } from "hooks/useStore";
-import { useTheme } from "antd-theme";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import CustomIcon from "components/Common/CustomIcon";
 import COLOR from "core/colors";
+import { setColorTheme } from "utils/common.util";
 
 const MotionBox = styled(motion.div)`
   display: flex;
@@ -19,54 +19,20 @@ interface Props {
 }
 const ThemeModeSelector: FC<Props> = (props: Props) => {
   const { size } = props;
-  const { useDark, setUseDark } = useStore("common");
-  const [{ name, variables }, setTheme] = useTheme();
+  const { useDark, setUseDark } = useStore("app");
 
   useEffect(() => {
-    init();
-  }, []);
-
-  useEffect(() => {
-    const body = document.body.classList;
-    const mainLayout = document.getElementsByClassName("main-layout")[0].classList;
-    if (useDark) {
-      mainLayout.remove("light");
-      body.remove("light");
-      mainLayout.add("dark");
-      body.add("dark");
-    } else {
-      mainLayout.remove("dark");
-      body.remove("dark");
-      mainLayout.add("light");
-      body.add("light");
-    }
-    init();
+    console.log("useDark : ", useDark);
+    setUseDark(useDark);
+    setColorTheme(useDark);
   }, [useDark]);
 
-  const init = async () => {
-    if (useDark) {
-      setTheme({
-        name: "dark"
-      });
-    } else {
-      setTheme({
-        name: "default"
-      });
-    }
-  };
+  const toggleTheme = () => {
+    console.log("onChange : ");
+    console.log("toggleTheme !");
 
-  const handleChange = async () => {
-    if (useDark) {
-      await setUseDark(false);
-      setTheme({
-        name: "default"
-      });
-    } else {
-      await setUseDark(true);
-      setTheme({
-        name: "dark"
-      });
-    }
+    setUseDark(!useDark);
+    setColorTheme(!useDark);
   };
 
   const spring = {
@@ -83,7 +49,7 @@ const ThemeModeSelector: FC<Props> = (props: Props) => {
   return (
     <MotionBox animate={useDark ? "open" : "closed"} variants={RotateVariants}>
       <CustomIcon
-        onClick={handleChange}
+        onClick={() => toggleTheme()}
         style={{
           margin: 0,
           color: useDark ? COLOR.BTN_THEME_DARK : COLOR.BTN_THEME_LIGTH,

@@ -1,4 +1,3 @@
-import React, { FC } from "react";
 import { Grid, Timeline, Typography, Avatar, Card, Divider, Badge } from "antd";
 import { motion } from "framer-motion";
 import styled from "styled-components";
@@ -6,9 +5,10 @@ import { ContainerStyle, ItemStyle } from "interfaces/Motion";
 import COLOR from "core/colors";
 import ResumeStory from "./ResumeStory";
 import { Resume } from "interfaces/resume";
+import { Fragment } from "react";
 
 const { Text } = Typography;
-const PositionText = styled.span`
+const PositionText = styled(Typography.Text)`
   font-weight: 300;
 `;
 const CustomDivider = styled(Divider)`
@@ -36,7 +36,7 @@ const ContentBox = styled.div`
 const DescBox = styled.div`
   padding-left: 12px;
 `;
-const CompanyText = styled.span`
+const CompanyText = styled(Typography.Text)`
   padding-right: 4px;
   font-weight: 600;
   font-size: 1.3em;
@@ -47,7 +47,7 @@ interface Props {
   resumeData: Resume;
 }
 
-const ResumeCard: FC<Props> = (props: Props) => {
+const ResumeCard = (props: Props) => {
   const { resumeData } = props;
   const screens = Grid.useBreakpoint();
 
@@ -116,10 +116,10 @@ const ResumeCard: FC<Props> = (props: Props) => {
               <ProjectBox>
                 {resumeData.resume_stories.map((item, idx) => {
                   return (
-                    <React.Fragment key={idx}>
+                    <Fragment key={idx}>
                       <ResumeStory story={item} />
                       {resumeData.resume_stories.length - 1 !== idx && <CustomDivider />}
-                    </React.Fragment>
+                    </Fragment>
                   );
                 })}
               </ProjectBox>

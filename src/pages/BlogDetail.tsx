@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { motion } from "framer-motion";
 import styled from "styled-components";

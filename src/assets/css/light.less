@@ -1,21 +1,22 @@
 body.light {
   background: #f0f2f5;
-  transition: background 0.5s;
+  transition: background 0.3s ease 0s;
+  color: rgba(0, 0, 0, 0.85);
   //브라우저 스크롤 요소
   &::-webkit-scrollbar {
-    width: 2px;
-    height: 6px;
+    width: 2px !important;
+    height: 6px !important;
   }
   &::-webkit-scrollbar-track {
-    background-color: transparent;
+    background-color: transparent !important;
   }
   &::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    background-color: gray;
+    border-radius: 8px !important;
+    background-color: rgba(0, 0, 0, 0.65) !important;
   }
   &::-webkit-scrollbar-button {
-    width: 0;
-    height: 0;
+    width: 0 !important;
+    height: 0 !important;
   }
   .ant-progress-inner {
     background: rgba(0, 0, 0, 0.1);

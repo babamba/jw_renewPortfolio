@@ -31,7 +31,7 @@ const FolioInTitleContainer = styled.div`
 
 const FolioTitle = styled(Typography.Text)`
   font-family: "NEXON Lv2 Gothic Bold";
-  color: rgba(255, 255, 255, 1);
+  color: rgba(255, 255, 255, 1) !important;
   letter-spacing: -1.2px;
   font-weight: 600;
   font-size: 1.6rem;
@@ -47,7 +47,7 @@ const FolioDate = styled(Typography.Text)`
   letter-spacing: -1.2px;
   font-weight: 300;
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.85) !important;
 `;
 
 const StackText = styled(Typography.Title)`

@@ -7,7 +7,7 @@ import { useHistory, useRouteMatch } from "react-router-dom";
 import COLOR from "core/colors";
 
 const Title = styled(Typography.Text)`
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.85) !important;
   position: absolute;
   bottom: 10px;
   font-weight: 900;

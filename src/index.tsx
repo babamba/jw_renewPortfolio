@@ -11,7 +11,6 @@ import font from "figlet/importable-fonts/Standard.js";
 import figlet from "figlet";
 import { configure } from "mobx";
 import "./assets/css/custom.less";
-import "./assets/css/dark.less";
 import ReactGA from "react-ga";
 import { enableLogging } from "mobx-color-logger";
 import initReactFastclick from "react-fastclick";

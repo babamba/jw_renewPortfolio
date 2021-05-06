@@ -1,4 +1,3 @@
-import React, { FC } from "react";
 import { Helmet } from "react-helmet-async";
 import favicon from "images/jw.png";
 
@@ -10,13 +9,7 @@ interface MetaProps {
   url: string;
 }
 
-const HeadMeta: FC<MetaProps> = ({
-  text,
-  keywords = "",
-  description = "",
-  title = "",
-  url = ""
-}) => {
+const HeadMeta = ({ text, keywords = "", description = "", title = "", url = "" }) => {
   const defaultKeyword =
     " javascript, react, antd, nodejs, typescript, frontend, front-end, backend, back-end, Fullstack, developer, 웹개발자, 프론트엔드, 백엔드, 코딩, 프로그래밍, 소프트웨어, 개발자포트폴리오, 프로그래머, 웹개발자포트폴리오, 스타트업개발자";
   return (

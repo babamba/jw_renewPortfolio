@@ -1,4 +1,3 @@
-import React, { FC } from "react";
 import { Skeleton, Typography } from "antd";
 import { motion } from "framer-motion";
 import { ItemStyle, ContainerStyle } from "interfaces/Motion";
@@ -29,7 +28,7 @@ interface Props {
     | undefined;
 }
 
-const Card: FC<Props> = (props: Props) => {
+const Card = (props: Props) => {
   const { useDark } = useStore("app");
   const match = useRouteMatch();
   const { animating } = props;

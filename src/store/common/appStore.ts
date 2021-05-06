@@ -1,7 +1,7 @@
 import { observable, action, makeObservable, computed } from "mobx";
 import { autobind } from "core-decorators";
 import RootStoreModel from "store/index";
-import { setTheme, getTheme } from "utils/common.util";
+import { setColorTheme } from "utils/common.util";
 
 class CommonStore {
   rootStore: RootStoreModel;
@@ -51,10 +51,10 @@ class CommonStore {
 
   @autobind
   async checkMode() {
-    const current = getTheme();
+    const current = localStorage.getItem("isDark");
     console.log("current : ", current);
-    setTheme(current);
-    this.setUseDark(getTheme() === "dark" ? true : false);
+    this.setUseDark(current ? true : false);
+    setColorTheme(current ? true : false);
   }
 }
 

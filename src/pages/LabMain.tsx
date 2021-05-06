@@ -1,7 +1,6 @@
-import React, { FC } from 'react';
-import { Typography } from 'antd';
+import { Typography } from "antd";
 
-const LabMain: FC = () => {
+const LabMain = () => {
   return (
     <div style={{ padding: 20 }}>
       <Typography.Title level={1}>Test ArtWorks Page CommingSoon..</Typography.Title>

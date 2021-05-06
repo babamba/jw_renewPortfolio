@@ -1,0 +1,44 @@
+body.light {
+  background: #f0f2f5;
+  transition: background 0.5s;
+  //브라우저 스크롤 요소
+  &::-webkit-scrollbar {
+    width: 2px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: gray;
+  }
+  &::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+  }
+  .ant-progress-inner {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 0px !important;
+  }
+  .ant-drawer {
+    ::-webkit-scrollbar {
+      width: 2px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      border-radius: 8px;
+      background-color: gray;
+    }
+    ::-webkit-scrollbar-button {
+      width: 0;
+      height: 0;
+    }
+  }
+  .ant-progress-steps-item {
+    background: rgba(0, 0, 0, 0.08);
+  }
+}

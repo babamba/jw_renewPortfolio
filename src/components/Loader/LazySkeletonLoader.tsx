@@ -1,8 +1,7 @@
-import React, { FC } from "react";
 import styled from "styled-components";
 import { Col, Grid, Row, Skeleton } from "antd";
 
-const { Avatar, Input } = Skeleton;
+const { Avatar } = Skeleton;
 
 const LoadingContainer = styled.div`
   padding: 8px 40px;
@@ -13,7 +12,7 @@ interface Props {
   row: number;
 }
 
-const LazySkeletonLoader: FC<Props> = (props: Props) => {
+const LazySkeletonLoader = (props: Props) => {
   const screens = Grid.useBreakpoint();
   const { type, row } = props;
   return (

@@ -1,9 +1,9 @@
-import React, { FC } from "react";
 import { Result, Button } from "antd";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import HeadMeta from "components/Helmet/HeadMeta";
 
-const Page_404: FC<RouteComponentProps> = ({ history }) => {
+const Page_404 = (props: RouteComponentProps) => {
+  const { history } = props;
   const HandleGoBack = () => history.goBack();
 
   return (

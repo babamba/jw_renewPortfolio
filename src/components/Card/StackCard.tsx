@@ -1,6 +1,5 @@
-import React, { FC, useState, useEffect, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import { Col, Empty, Row } from "antd";
-import { useStore } from "hooks/useStore";
 import Loader from "components/Loader/LazyLoader";
 import StackAvatar from "./StackAvatar";
 import { motion } from "framer-motion";
@@ -12,7 +11,7 @@ interface Props {
   type: "remote" | "front" | "backend" | "ci" | "infra" | "interest";
 }
 
-const StackCard: FC<Props> = (props: Props) => {
+const StackCard = (props: Props) => {
   const { type } = props;
   const [list, setList] = useState<Stack[]>([]);
   const { isLoading, error: fetchError, data: stackData } = useStacks(type);

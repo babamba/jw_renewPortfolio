@@ -1,5 +1,71 @@
 body.dark {
+  background: #24272b;
+  transition: background 0.3s ease 0s;
   color: rgba(255, 255, 255, 0.85);
+
+  //브라우저 스크롤 요소
+  &::-webkit-scrollbar {
+    width: 2px !important;
+    height: 6px !important;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent !important;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 8px !important;
+    background-color: rgba(255, 255, 255, 0.65) !important;
+  }
+  &::-webkit-scrollbar-button {
+    width: 0 !important;
+    height: 0 !important;
+  }
+  .markdown p {
+    color: rgba(255, 255, 255, 0.85);
+    font-family: "NEXON Lv2 Gothic";
+  }
+  .author p {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .ant-progress-inner {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0px !important;
+  }
+  .ant-drawer {
+    ::-webkit-scrollbar {
+      width: 4px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      border-radius: 8px;
+      background-color: gray;
+    }
+    ::-webkit-scrollbar-button {
+      width: 0;
+      height: 0;
+    }
+  }
+
+  .ant-typography mark {
+    background-color: #e4bf44;
+  }
+  .ant-card {
+    background: #1f1f1f;
+  }
+  // .ant-card-bordered {
+  //   border: 1px solid #262626;
+  // }
+
+  .ant-layout.dark.main-layout {
+    background: #24272b;
+  }
+  .ant-layout.dark.bottom-layout {
+    background: #24272b;
+  }
+
   & .ant-typography {
     color: rgba(255, 255, 255, 0.85);
   }

@@ -1,10 +1,8 @@
-import React, { FC } from "react";
 import { Typography } from "antd";
-
 interface Props {
   text: string;
 }
-const LargeTitle: FC<Props> = (props: Props) => {
+const LargeTitle = (props: Props) => {
   const { text } = props;
   return (
     <Typography.Title level={1} style={{ fontSize: 48 }}>

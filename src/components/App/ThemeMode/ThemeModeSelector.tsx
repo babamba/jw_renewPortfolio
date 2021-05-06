@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { useStore } from "hooks/useStore";
 import { motion } from "framer-motion";
@@ -17,7 +17,7 @@ const MotionBox = styled(motion.div)`
 interface Props {
   size: number;
 }
-const ThemeModeSelector: FC<Props> = (props: Props) => {
+const ThemeModeSelector = (props: Props) => {
   const { size } = props;
   const { useDark, setUseDark } = useStore("app");
 

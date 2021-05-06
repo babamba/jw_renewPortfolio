@@ -1,11 +1,6 @@
-/* noto-sans-regular - latin */
-// @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
-// @import (css)
-//   url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
-// @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-// * {
-//   font-family: "Noto Sans KR";
-// }
+@import "dark.less";
+@import "~react-multi-carousel/lib/styles.css";
+
 @font-face {
   font-family: "NEXON Lv2 Gothic";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff")
@@ -35,17 +30,6 @@
   font-family: "NEXON Lv2 Gothic", -apple-system, system-ui, sans-serif;
   // font-family: 'Noto Sans KR', 'Spoqa Han Sans', sans-serif;
 }
-
-// @media (prefers-color-scheme: light) {
-//   @import "antd/dist/antd.less";
-//   @import "antd/lib/style/themes/default.less";
-// }
-
-// /* Dark mode CSS */
-// @media (prefers-color-scheme: dark) {
-//   @import "antd/dist/antd.dark.less";
-//   @import "antd/lib/style/themes/dark.less";
-// }
 
 .ant-card-hoverable:hover {
   box-shadow: "0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0), 0 5px 12px 4px rgba(0, 0, 0, 0.09)" !important;
@@ -130,118 +114,6 @@
 
 body {
   overflow-x: hidden;
-}
-
-body.light {
-  background: #f0f2f5;
-  transition: background 0.5s;
-  //브라우저 스크롤 요소
-  &::-webkit-scrollbar {
-    width: 2px;
-    height: 6px;
-  }
-  &::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    background-color: gray;
-  }
-  &::-webkit-scrollbar-button {
-    width: 0;
-    height: 0;
-  }
-  .ant-progress-inner {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 0px !important;
-  }
-  .ant-drawer {
-    ::-webkit-scrollbar {
-      width: 2px;
-      height: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background-color: transparent;
-    }
-    ::-webkit-scrollbar-thumb {
-      border-radius: 8px;
-      background-color: gray;
-    }
-    ::-webkit-scrollbar-button {
-      width: 0;
-      height: 0;
-    }
-  }
-  .ant-progress-steps-item {
-    background: rgba(0, 0, 0, 0.08);
-  }
-}
-
-body.dark {
-  background: #24272b;
-  transition: background 0.3s ease 0s;
-  //브라우저 스크롤 요소
-  &::-webkit-scrollbar {
-    width: 2px !important;
-    height: 6px !important;
-  }
-  &::-webkit-scrollbar-track {
-    background-color: transparent !important;
-  }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 8px !important;
-    background-color: rgba(255, 255, 255, 0.65) !important;
-  }
-  &::-webkit-scrollbar-button {
-    width: 0 !important;
-    height: 0 !important;
-  }
-  .markdown p {
-    color: rgba(255, 255, 255, 0.85);
-    font-family: "NEXON Lv2 Gothic";
-  }
-  .author p {
-    color: rgba(255, 255, 255, 0.85);
-  }
-
-  .ant-progress-inner {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 0px !important;
-  }
-  .ant-drawer {
-    ::-webkit-scrollbar {
-      width: 4px;
-      height: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background-color: transparent;
-    }
-    ::-webkit-scrollbar-thumb {
-      border-radius: 8px;
-      background-color: gray;
-    }
-    ::-webkit-scrollbar-button {
-      width: 0;
-      height: 0;
-    }
-  }
-
-  .ant-typography mark {
-    background-color: #e4bf44;
-  }
-  .ant-card {
-    background: #1f1f1f;
-  }
-  // .ant-card-bordered {
-  //   border: 1px solid #262626;
-  // }
-
-  .ant-layout.dark.main-layout {
-    background: #24272b;
-  }
-  .ant-layout.dark.bottom-layout {
-    background: #24272b;
-  }
 }
 
 .ant-timeline {

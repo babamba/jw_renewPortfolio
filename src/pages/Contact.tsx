@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from "react";
+import { useEffect } from "react";
 import { Card, Grid, Badge, Typography } from "antd";
 import { MailOutlined } from "@ant-design/icons";
 import styled from "styled-components";
@@ -28,8 +28,7 @@ const GuideText = styled(Typography.Text)`
   }
 `;
 
-type Props = {};
-const Contact: FunctionComponent<Props> = ({}) => {
+const Contact = () => {
   const router = useRouter();
   const screens = Grid.useBreakpoint();
 

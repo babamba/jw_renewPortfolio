@@ -2,12 +2,9 @@ import { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 import { Typography } from "antd";
 import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 import { useStore } from "hooks/useStore";
 import { observer } from "mobx-react-lite";
 import { useHistory, useLocation } from "react-router-dom";
-
-const Container = styled.div``;
 
 interface RouteTextProps {
   name: string;

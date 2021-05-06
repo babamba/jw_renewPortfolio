@@ -1,11 +1,9 @@
-import React, { FC } from "react";
-
-const Loader: FC = () => {
+const Loader = () => {
   return (
     <div
       className="divLoader"
       style={{
-        transition: "background 0.3s ease 0s",
+        transition: "background 0.3s ease 0s"
       }}
     >
       <svg

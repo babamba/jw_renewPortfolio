@@ -14,7 +14,7 @@ const HeadMeta = ({ text, keywords = "", description = "", title = "", url = "" 
     " javascript, react, antd, nodejs, typescript, frontend, front-end, backend, back-end, Fullstack, developer, 웹개발자, 프론트엔드, 백엔드, 코딩, 프로그래밍, 소프트웨어, 개발자포트폴리오, 프로그래머, 웹개발자포트폴리오, 스타트업개발자";
   return (
     <Helmet>
-      <title>김진원 | {text} | I'm FrontEnd Developer</title>
+      <title>김진원 | {text} | FrontEnd Developer</title>
       <link rel="canonical" href={`https://www.glance-jw.com/${url}`} />
       <meta name={text} content={`${text} content`} />
       <meta name="author" content="Jinwon Kim" />

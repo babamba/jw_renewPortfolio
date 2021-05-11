@@ -13,7 +13,6 @@
       name="keywords"
       content="javascript, react, antd, nodejs, typescript, frontend, front-end, backend, back-end, Fullstack, developer, 웹개발자, 프론트엔드, 백엔드, 코딩, 프로그래밍, 소프트웨어, 개발자포트폴리오, 프로그래머, 웹개발자포트폴리오, 스타트업개발자"
     />
-
     <meta property="og:url" content="https://www.glance-jw.com" />
     <meta property="og:image" content="%PUBLIC_URL%/favicon.ico" />
     <meta property="og:site_name" content="김진원 | 프론트엔드 개발자 사이트" />
@@ -29,6 +28,8 @@
     <meta name="naver-site-verification" content="df4d3d767fe8e44e7eae5a5d44cbe58c8429244e" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
     <title>프론트엔드 개발자 김진원 Kim Jin Won | FrontEnd Developer</title>
     <style>
       body {
@@ -47,9 +48,6 @@
         font-size: 14px;
         color: #333333;
       }
-      .title {
-        text-shadow: 1px 1px 13px rgb(0 0 0 / 50%);
-      }
       .loading-text-paragraph {
         font-weight: 400;
         line-height: 24px;
@@ -58,20 +56,21 @@
         color: white;
         text-shadow: 1px 1px 13px rgb(0 0 0 / 50%);
       }
+      .svgLoader {
+        animation: spin 1s ease-out infinite;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
 
       .header {
         position: relative;
         text-align: center;
-        /* background: linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%); */
-        /* background: linear-gradient(
-          -70deg,
-          rgba(34, 193, 195, 0.3),
-          rgba(235, 230, 80, 0.5),
-          rgba(238, 119, 82, 0.5),
-          rgba(231, 60, 126, 0.4),
-          rgba(84, 58, 183, 0.3),
-          rgba(35, 213, 171, 0.3)
-        ); */
         background-color: #24272b;
         background-size: 300% 300%;
         -webkit-animation: Gradient 15s ease infinite;
@@ -92,104 +91,18 @@
         margin-top: 400px;
       }
 
-      .inner-header {
-        height: 65vh;
+      .box-container {
+        height: 100vh;
         width: 100%;
         margin: 0;
         padding: 0;
       }
 
-      .flex {
-        /*Flexbox for containers*/
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-      }
 
-      .waves {
-        position: relative;
-        width: 100%;
-        height: 15vh;
-        margin-bottom: -7px; /*Fix for safari gap*/
-        min-height: 100px;
-        max-height: 150px;
-      }
-
-      .content {
-        position: relative;
-        height: 20vh;
-        text-align: center;
-        background-color: white;
-        justify-content: center;
-        align-items: flex-end;
-      }
-
-      /* Animation */
-
-      .parallax > use {
-        animation: move-forever 15s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
-      }
-      .parallax > use:nth-child(1) {
-        animation-delay: -2s;
-        animation-duration: 5s;
-      }
-      .parallax > use:nth-child(2) {
-        animation-delay: -3s;
-        animation-duration: 8s;
-      }
-      .parallax > use:nth-child(3) {
-        animation-delay: -4s;
-        animation-duration: 10s;
-      }
-      .parallax > use:nth-child(4) {
-        animation-delay: -5s;
-        animation-duration: 15s;
-      }
-      @keyframes move-forever {
-        0% {
-          transform: translate3d(-90px, 0, 0);
-        }
-        100% {
-          transform: translate3d(85px, 0, 0);
-        }
-      }
-      /*Shrinking for mobile*/
-      @media (max-width: 768px) {
-        .waves {
-          height: 40px;
-          min-height: 40px;
-        }
-        .content {
-          height: 30vh;
-        }
-        h1 {
-          font-size: 36px;
-        }
-      }
-
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-      @keyframes Gradient {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-
-      .svgLoader {
-        animation: spin 1s ease-out infinite;
+      .release {
+        letter-spacing: 1px;
+        font-size: 14px;
+        color: rgba(255,255, 255,0.55);
       }
     </style>
   </head>
@@ -197,74 +110,31 @@
     <noscript>Hello Im JW.</noscript>
     <div id="root">
       <div class="header">
-        <div class="inner-header flex">
-          <div class="big-margin">
-            <h1 class="title">
-              <svg
-                class="svgLoader"
-                viewBox="0 0 1024 1024"
-                width="1em"
-                height="1em"
-                aria-hidden="true"
+        <div class="box-container flex">
+            <div style="position: absolute; top: calc(50vh - 112.5px); left: calc(50vw - 150px)">
+              <lottie-player
+                src="https://assets1.lottiefiles.com/packages/lf20_g0zfud2s.json"
+                background="transparent"
+                style="width: 300px; height: 225px"
+                speed="1"
+                loop
+                autoplay
               >
-                <path
-                  fill="lightblue"
-                  d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"
-                />
-              </svg>
-              Loading
-            </h1>
-            <div class="alignLeft">
-              <p class="loading-text-paragraph">개발자 김진원의</p>
-              <p class="loading-text-paragraph">포트폴리오 사이트입니다</p>
+              </lottie-player>
+              <div>
+                <p class="loading-text-paragraph">
+                  <svg class="svgLoader" viewBox="0 0 1024 1024" width="1em" height="1em" aria-hidden="true">
+                    <path
+                      fill="lightblue"
+                      d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"
+                    />
+                  </svg> 개발자 김진원의
+                </p>
+                <p class="loading-text-paragraph">포트폴리오 사이트입니다</p>
+                <p class="release">JW | 2020</p>
+              </div>
             </div>
-          </div>
         </div>
-
-        <!--Waves Container-->
-        <div>
-          <svg
-            class="waves"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            viewBox="0 24 150 28"
-            preserveAspectRatio="none"
-            shape-rendering="auto"
-          >
-            <defs>
-              <path
-                id="gentle-wave"
-                d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
-              />
-            </defs>
-            <g class="parallax">
-              <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
-              <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
-              <use xlink:href="#gentle-wave" x="41" y="5" fill="rgba(255,255,255,0.3)" />
-              <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
-            </g>
-          </svg>
-        </div>
-        <!--Waves end-->
-      </div>
-      <!--Header ends-->
-
-      <!--Content starts-->
-      <div class="content flex">
-        <p>JW | 2020</p>
-      </div>
-      <!-- <div class="gradient-background"></div>
-      <div class="divLoader">
-        <svg class="svgLoader" viewBox="0 0 1024 1024" width="4em" height="4em" aria-hidden="true">
-          <path
-            fill="lightblue"
-            d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"
-          />
-        </svg>
-        <h1 class="text loading-text-h1">Loading...</h1>
-        <p class="loading-text-paragraph">개발자 김진원입니다.</p>
-        <p class="loading-text-paragraph">잘부탁드립니다.</p>
-      </div> -->
     </div>
   </body>
 </html>

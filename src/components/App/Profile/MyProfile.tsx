@@ -3,10 +3,10 @@ import ReactRotatingText from "react-rotating-text";
 import { GithubOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { pageVariants, pageTransition } from "interfaces/Motion";
+import { pageVariants, pageTransition } from "@interfaces/Motion";
 import MePhoto from "../../../assets/images/me.png";
-import COLOR from "core/colors";
-import { useAppSelector } from "store/useAppStore";
+import COLOR from "@core/colors";
+import { useAppSelector } from "@store/useAppStore";
 
 interface MainIntroTextProps {
   useDark: boolean;

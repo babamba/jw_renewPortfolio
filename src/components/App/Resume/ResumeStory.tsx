@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { ItemStyle } from "interfaces/Motion";
+import { ItemStyle } from "@interfaces/Motion";
 import { Badge, Typography, Divider, Grid } from "antd";
 import { ToolOutlined } from "@ant-design/icons";
-import { Story } from "interfaces/resume";
+import { Story } from "@interfaces/resume";
 import { Fragment } from "react";
 
 const { Text, Link } = Typography;

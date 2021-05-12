@@ -1,8 +1,8 @@
 import { useRouteMatch, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Card, Grid, Typography } from "antd";
-import COLOR from "core/colors";
-import { useAppSelector } from "store/useAppStore";
+import COLOR from "@core/colors";
+import { useAppSelector } from "@store/useAppStore";
 
 interface Props {
   info: {

@@ -3,23 +3,23 @@ import { Layout, Row, Col, Affix, Grid, BackTop } from "antd";
 import { ArrowUpOutlined } from "@ant-design/icons";
 import { useWindowHeight } from "@react-hook/window-size";
 import ReactGA from "react-ga";
-import FolioRoutes from "routes/FolioRoutes";
+import FolioRoutes from "@routes/FolioRoutes";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 
-import { useRouter } from "hooks/useRouter";
-import HeroBackground from "components/Common/InkBackground";
-import COLOR from "core/colors";
-import LazySkeletonLoader from "components/Loader/LazySkeletonLoader";
-import LazyIconLoader from "components/Loader/LazyIconLoader";
-import { useAppSelector, useAppDispatch } from "store/useAppStore";
-import { checkDarkMode } from "store/appStore";
+import { useRouter } from "@hooks/useRouter";
+import HeroBackground from "@components/Common/InkBackground";
+import COLOR from "@core/colors";
+import LazySkeletonLoader from "@components/Loader/LazySkeletonLoader";
+import LazyIconLoader from "@components/Loader/LazyIconLoader";
+import { useAppSelector, useAppDispatch } from "@store/useAppStore";
+import { checkDarkMode } from "@store/appStore";
 interface RouteRefObject {
   onInitPreload: () => Promise<void>;
 }
-const MyProfile = lazy(() => import("components/App/Profile/MyProfile"));
-const IconMenu = lazy(() => import("components/App/Menu/IconMenu"));
-const ContactCard = lazy(() => import("components/Card/ContactCard"));
-const Footer = lazy(() => import("components/Common/Footer"));
+const MyProfile = lazy(() => import("@components/App/Profile/MyProfile"));
+const IconMenu = lazy(() => import("@components/App/Menu/IconMenu"));
+const ContactCard = lazy(() => import("@components/Card/ContactCard"));
+const Footer = lazy(() => import("@components/Common/Footer"));
 const App = () => {
   const dispatch = useAppDispatch();
   const RouteRef = useRef<RouteRefObject>(null);

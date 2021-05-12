@@ -2,16 +2,16 @@ import { FC, useEffect, useRef } from "react";
 import { Row, Col, Divider, Card, Typography, Badge, Grid, Empty } from "antd";
 import styled from "styled-components";
 import ReactGA from "react-ga";
-import COLOR from "core/colors";
+import COLOR from "@core/colors";
 
 import { motion } from "framer-motion";
-import { pageTransition, pageVariants } from "interfaces/Motion";
+import { pageTransition, pageVariants } from "@interfaces/Motion";
 
-import HeadMeta from "components/Helmet/HeadMeta";
-import StackCard from "components/Card/StackCard";
+import HeadMeta from "@components/Helmet/HeadMeta";
+import StackCard from "@components/Card/StackCard";
 
-import { useRouter } from "hooks/useRouter";
-import { useAppSelector } from "store/useAppStore";
+import { useRouter } from "@hooks/useRouter";
+import { useAppSelector } from "@store/useAppStore";
 
 const IntroText = styled(Typography.Title)`
   font-weight: 500 !important;

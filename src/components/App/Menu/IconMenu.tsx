@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Grid, Row, Col } from "antd";
 import { useHistory, useLocation } from "react-router-dom";
-import { ContainerStyle, ItemStyle } from "interfaces/Motion";
+import { ContainerStyle, ItemStyle } from "@interfaces/Motion";
 import { motion } from "framer-motion";
 import ThemeModeSelector from "../ThemeMode/ThemeModeSelector";
 import MenuItem from "./MenuItem";
 import styled from "styled-components";
-import { useAppSelector } from "store/useAppStore";
+import { useAppSelector } from "@store/useAppStore";
 
 interface CustomColProps {
   selected?: string;

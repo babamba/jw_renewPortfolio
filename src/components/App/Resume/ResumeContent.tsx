@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Empty } from "antd";
 import { motion } from "framer-motion";
-import { ContainerStyle, ItemStyle } from "interfaces/Motion";
-import { Resume } from "interfaces/resume";
-import Loader from "components/Loader/LazyLoader";
+import { ContainerStyle, ItemStyle } from "@interfaces/Motion";
+import { Resume } from "@interfaces/resume";
+import Loader from "@components/Loader/LazyLoader";
 import ResumeCard from "./ResumeCard";
-import { useResumes } from "api/query/common.query";
+import { useResumes } from "@api/query/common.query";
 
 const ResumeContent = () => {
   const [list, setList] = useState<Resume[]>([]);

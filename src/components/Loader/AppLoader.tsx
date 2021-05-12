@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import LoadingLottie from "images/lottie/deep-loading.json";
+import LoadingLottie from "@images/lottie/deep-loading.json";
 import { Grid, Typography } from "antd";
 import Lottie from "react-lottie-wrapper";
-import { useAppSelector } from "store/useAppStore";
+import { useAppSelector } from "@store/useAppStore";
 
 interface LoadingTextProps {
   darkmode: string;

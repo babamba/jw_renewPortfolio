@@ -2,7 +2,7 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 import "react-app-polyfill/ie11";
 import "react-app-polyfill/stable";
-import App from "components/App/App";
+import App from "@components/App/App";
 import { render } from "react-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter } from "react-router-dom";

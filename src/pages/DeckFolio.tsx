@@ -5,16 +5,16 @@ import { ForwardOutlined, RetweetOutlined } from "@ant-design/icons";
 import { Grid, Progress, Row, Col, Space, Typography } from "antd";
 import { motion, useAnimation } from "framer-motion";
 
-import { pageVariants, pageTransition } from "interfaces/Motion";
-import PortfolioData from "core/folioData";
-import { useRouter } from "hooks/useRouter";
-import useMount from "hooks/useMount";
+import { pageVariants, pageTransition } from "@interfaces/Motion";
+import PortfolioData from "@core/folioData";
+import { useRouter } from "@hooks/useRouter";
+import useMount from "@hooks/useMount";
 
-import DeckList from "components/Deck/DeckList";
-import HeadMeta from "components/Helmet/HeadMeta";
-import DetailInfo from "components/Deck/FolioInfo";
-import COLOR from "core/colors";
-import { useAppSelector } from "store/useAppStore";
+import DeckList from "@components/Deck/DeckList";
+import HeadMeta from "@components/Helmet/HeadMeta";
+import DetailInfo from "@components/Deck/FolioInfo";
+import COLOR from "@core/colors";
+import { useAppSelector } from "@store/useAppStore";
 
 interface DeckRefObject {
   getNext: () => void;

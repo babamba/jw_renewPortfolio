@@ -15,18 +15,18 @@ import {
 
 import { motion } from "framer-motion";
 
-import { useRouter } from "hooks/useRouter";
+import { useRouter } from "@hooks/useRouter";
 
-import { ContentfulService } from "core/contentful";
-import COLOR from "core/colors";
+import { ContentfulService } from "@core/contentful";
+import COLOR from "@core/colors";
 
-import { pageTransition, pageVariants, ItemStyle, ContainerStyle } from "interfaces/Motion";
+import { pageTransition, pageVariants, ItemStyle, ContainerStyle } from "@interfaces/Motion";
 
-import BlogCard from "components/Card/BlogCard";
-import HeadMeta from "components/Helmet/HeadMeta";
-import LottieLoader from "components/Loader/LottieLoader";
-import { useAppSelector, useAppDispatch } from "store/useAppStore";
-import { setCurrentPage } from "store/appStore";
+import BlogCard from "@components/Card/BlogCard";
+import HeadMeta from "@components/Helmet/HeadMeta";
+import LottieLoader from "@components/Loader/LottieLoader";
+import { useAppSelector, useAppDispatch } from "@store/useAppStore";
+import { setCurrentPage } from "@store/appStore";
 
 const Post = () => {
   const router = useRouter();

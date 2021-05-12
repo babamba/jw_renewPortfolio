@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { ExperimentOutlined, LinkedinOutlined } from "@ant-design/icons";
-import { useRouter } from "hooks/useRouter";
-import { useAppSelector, useAppDispatch } from "store/useAppStore";
-import { setLabPage } from "store/appStore";
+import { useRouter } from "@hooks/useRouter";
+import { useAppSelector, useAppDispatch } from "@store/useAppStore";
+import { setLabPage } from "@store/appStore";
 const Container = styled.div`
   position: relative;
   z-index: 999;

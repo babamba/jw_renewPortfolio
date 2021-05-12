@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useQuery } from "react-query";
 import FetchError from "../FetchError";
-import { Stack, STACK } from "interfaces/stack";
-import { HTTP_STATUS } from "interfaces/output";
-import { Resume } from "interfaces/resume";
-import { Folio } from "interfaces/folio";
+import { Stack, STACK } from "@interfaces/stack";
+import { HTTP_STATUS } from "@interfaces/output";
+import { Resume } from "@interfaces/resume";
+import { Folio } from "@interfaces/folio";
 const useStacks = (type: STACK) => {
   return useQuery<Stack[], FetchError>({
     queryKey: ["stack", type],

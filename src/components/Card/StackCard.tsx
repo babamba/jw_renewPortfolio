@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Col, Empty, Row } from "antd";
-import Loader from "components/Loader/LazyLoader";
+import Loader from "@components/Loader/LazyLoader";
 import StackAvatar from "./StackAvatar";
 import { motion } from "framer-motion";
-import { ContainerStyle, ItemStyle } from "interfaces/Motion";
-import { Stack } from "interfaces/stack";
-import { useStacks } from "api/query/common.query";
+import { ContainerStyle, ItemStyle } from "@interfaces/Motion";
+import { Stack } from "@interfaces/stack";
+import { useStacks } from "@api/query/common.query";
 
 interface Props {
   type: "remote" | "front" | "backend" | "ci" | "infra" | "interest";

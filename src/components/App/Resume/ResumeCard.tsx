@@ -1,10 +1,10 @@
 import { Grid, Timeline, Typography, Avatar, Card, Divider, Badge } from "antd";
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { ContainerStyle, ItemStyle } from "interfaces/Motion";
-import COLOR from "core/colors";
+import { ContainerStyle, ItemStyle } from "@interfaces/Motion";
+import COLOR from "@core/colors";
 import ResumeStory from "./ResumeStory";
-import { Resume } from "interfaces/resume";
+import { Resume } from "@interfaces/resume";
 import { Fragment } from "react";
 
 const { Text } = Typography;

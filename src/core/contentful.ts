@@ -1,5 +1,5 @@
 import { createClient } from "contentful";
-import { BlogPost } from "interfaces/post";
+import { BlogPost } from "@interfaces/post";
 
 export const CONTENT_TYPE_BLOGPOST = "blogPost";
 export const CONTENT_TYPE_PERSON = "author";
@@ -11,7 +11,7 @@ let Token = `${process.env.REACT_APP_CONTENTFUL_TOKEN}`;
 export class ContentfulService {
   private client = createClient({
     space: Space,
-    accessToken: Token,
+    accessToken: Token
   });
 
   /**
@@ -26,23 +26,21 @@ export class ContentfulService {
       heroImage: fields.heroImage.fields.file.url,
       slug: fields.slug,
       tags: fields.tags,
-      publishedAt: fields.publishDate
-        ? new Date(fields.publishDate)
-        : new Date(sys.createdAt),
+      publishedAt: fields.publishDate ? new Date(fields.publishDate) : new Date(sys.createdAt)
     }));
   }
 
   async fetchPostBySlug(slug: string) {
     return await this.client.getEntries({
       content_type: CONTENT_TYPE_BLOGPOST,
-      "fields.slug": slug,
+      "fields.slug": slug
     });
   }
 
   async fetchPostById(id: string) {
     return await this.client.getEntries({
       content_type: CONTENT_TYPE_BLOGPOST,
-      "sys.id": id,
+      "sys.id": id
     });
   }
 
@@ -51,15 +49,13 @@ export class ContentfulService {
    */
   async getAllTags() {
     const content = await this.client.getEntries({
-      content_type: CONTENT_TYPE_TAGS,
+      content_type: CONTENT_TYPE_TAGS
     });
 
-    const tags = content.items.map(
-      ({ sys, fields }: { sys: any; fields: any }) => ({
-        id: sys.id,
-        name: fields.name,
-      })
-    );
+    const tags = content.items.map(({ sys, fields }: { sys: any; fields: any }) => ({
+      id: sys.id,
+      name: fields.name
+    }));
 
     return { tags };
   }
@@ -68,7 +64,7 @@ export class ContentfulService {
     { limit, skip, tag }: { limit?: number; skip?: number; tag?: string } = {
       limit: 5,
       skip: 0,
-      tag: "",
+      tag: ""
     }
   ) {
     try {
@@ -78,7 +74,7 @@ export class ContentfulService {
         skip,
         order: "-fields.publishDate",
         "fields.tags.sys.id": tag,
-        content_type: CONTENT_TYPE_BLOGPOST,
+        content_type: CONTENT_TYPE_BLOGPOST
       });
 
       const entries = this.mapData(contents.items);
@@ -94,14 +90,14 @@ export class ContentfulService {
 
   async getAllEntriesCount(
     { tag }: { tag?: string } = {
-      tag: "",
+      tag: ""
     }
   ) {
     try {
       const contents = await this.client.getEntries({
         order: "fields.publishDate",
         "fields.tags.sys.id": tag,
-        content_type: CONTENT_TYPE_BLOGPOST,
+        content_type: CONTENT_TYPE_BLOGPOST
       });
 
       const totalCount = contents.total;
@@ -126,7 +122,7 @@ export class ContentfulService {
         name: entry.fields.author.fields.name,
         title: entry.fields.author.fields.title,
         company: entry.fields.author.fields.company,
-        shortBio: entry.fields.author.fields.shortBio,
+        shortBio: entry.fields.author.fields.shortBio
       };
 
       return {
@@ -140,7 +136,7 @@ export class ContentfulService {
         author: { ...author, id: entry.fields.author.sys.id },
         publishedAt: entry.fields.publishDate
           ? new Date(entry.fields.publishDate)
-          : new Date(entry.sys.createdAt),
+          : new Date(entry.sys.createdAt)
       };
     } catch (error) {
       console.error(error);
@@ -160,7 +156,7 @@ export class ContentfulService {
         name: entry.fields.author.fields.name,
         title: entry.fields.author.fields.title,
         company: entry.fields.author.fields.company,
-        shortBio: entry.fields.author.fields.shortBio,
+        shortBio: entry.fields.author.fields.shortBio
       };
 
       return {
@@ -174,7 +170,7 @@ export class ContentfulService {
         author: { ...author, id: entry.fields.author.sys.id },
         publishedAt: entry.fields.publishDate
           ? new Date(entry.fields.publishDate)
-          : new Date(entry.sys.createdAt),
+          : new Date(entry.sys.createdAt)
       };
     } catch (error) {
       console.error(error);
@@ -190,7 +186,7 @@ export class ContentfulService {
       limit,
       // find at least one matching tag, else undefined properties are not copied
       "fields.tags.sys.id[in]": tags.length ? tags.join(",") : undefined,
-      "fields.slug[ne]": currentArticleSlug, // exclude current article
+      "fields.slug[ne]": currentArticleSlug // exclude current article
     };
 
     try {
@@ -202,7 +198,7 @@ export class ContentfulService {
         // exclude already picked slugs
         const slugsToExclude = [
           ...suggestionsByTags.items,
-          { fields: { slug: currentArticleSlug } },
+          { fields: { slug: currentArticleSlug } }
         ]
           .map((item: { fields: any }) => item.fields.slug)
           .join(",");
@@ -211,7 +207,7 @@ export class ContentfulService {
         const randomSuggestions = await this.client.getEntries({
           content_type: CONTENT_TYPE_BLOGPOST,
           limit: limit - suggestionsByTags.total,
-          "fields.slug[nin]": slugsToExclude, // exclude slugs already fetched
+          "fields.slug[nin]": slugsToExclude // exclude slugs already fetched
         });
 
         entries = [...entries, ...randomSuggestions.items];

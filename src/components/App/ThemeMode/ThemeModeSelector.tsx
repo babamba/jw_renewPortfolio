@@ -1,11 +1,9 @@
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import CustomIcon from "components/Common/CustomIcon";
-import COLOR from "core/colors";
-import { setColorTheme } from "utils/common.util";
-import { useAppDispatch, useAppSelector } from "store/useAppStore";
-import { setUseDark } from "store/appStore";
+import CustomIcon from "@components/Common/CustomIcon";
+import COLOR from "@core/colors";
+import { useAppDispatch, useAppSelector } from "@store/useAppStore";
+import { setUseDark } from "@store/appStore";
 
 const MotionBox = styled(motion.div)`
   display: flex;

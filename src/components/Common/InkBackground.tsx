@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
-import COLOR from "core/colors";
-import { useAppSelector } from "store/useAppStore";
+import COLOR from "@core/colors";
+import { useAppSelector } from "@store/useAppStore";
 import { useRef, useEffect } from "react";
 
 const HeroSvg = styled(animated.svg)`

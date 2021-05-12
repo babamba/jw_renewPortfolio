@@ -2,13 +2,13 @@ import { useEffect } from "react";
 import { Timeline, Row, Col, Card, Grid } from "antd";
 import { motion } from "framer-motion";
 import ReactGA from "react-ga";
-import { useRouter } from "hooks/useRouter";
-import { pageTransition, pageVariants } from "interfaces/Motion";
+import { useRouter } from "@hooks/useRouter";
+import { pageTransition, pageVariants } from "@interfaces/Motion";
 
-import HeadMeta from "components/Helmet/HeadMeta";
-import ResumeContent from "components/App/Resume/ResumeContent";
-import { useAppSelector } from "store/useAppStore";
-import COLOR from "core/colors";
+import HeadMeta from "@components/Helmet/HeadMeta";
+import ResumeContent from "@components/App/Resume/ResumeContent";
+import { useAppSelector } from "@store/useAppStore";
+import COLOR from "@core/colors";
 const History = () => {
   const router = useRouter();
   const screens = Grid.useBreakpoint();

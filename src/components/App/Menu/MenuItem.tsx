@@ -7,9 +7,9 @@ import {
   CoffeeOutlined,
   SmileOutlined
 } from "@ant-design/icons";
-import COLOR from "core/colors";
+import COLOR from "@core/colors";
 import styled from "styled-components";
-import { useAppSelector } from "store/useAppStore";
+import { useAppSelector } from "@store/useAppStore";
 
 interface Props {
   url: string;

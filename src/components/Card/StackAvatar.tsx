@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Typography, Avatar, Badge, Grid } from "antd";
-import { Stack } from "interfaces/stack";
+import { Stack } from "@interfaces/stack";
 
 const TitleBox = styled.div`
   display: block;

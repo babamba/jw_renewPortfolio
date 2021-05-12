@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import { Card, Grid, Badge, Typography } from "antd";
 import { MailOutlined } from "@ant-design/icons";
 import styled from "styled-components";
-import { pageTransition, pageVariants, ContainerStyle, ItemLeftStyle } from "interfaces/Motion";
+import { pageTransition, pageVariants, ContainerStyle, ItemLeftStyle } from "@interfaces/Motion";
 import { motion } from "framer-motion";
-import HeadMeta from "components/Helmet/HeadMeta";
-import { useRouter } from "hooks/useRouter";
+import HeadMeta from "@components/Helmet/HeadMeta";
+import { useRouter } from "@hooks/useRouter";
 import ReactGA from "react-ga";
 
 const StatusBadge = styled(Badge)`

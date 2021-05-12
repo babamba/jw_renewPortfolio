@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { setColorTheme } from "utils/common.util";
+import { setColorTheme } from "@utils/common.util";
 import { RootState } from "./root";
 
 export interface AppState {

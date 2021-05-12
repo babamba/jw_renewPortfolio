@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import favicon from "images/jw.png";
+import favicon from "@images/jw.png";
 
 interface MetaProps {
   text: string;

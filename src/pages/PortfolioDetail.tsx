@@ -2,14 +2,14 @@ import { FC, useEffect, useState } from "react";
 import { Card, Typography, Grid, Divider, PageHeader, Space, Col, Row } from "antd";
 import { ForwardOutlined, BackwardOutlined } from "@ant-design/icons";
 import styled from "styled-components";
-import { pageTransition, pageVariants, ContainerStyle, ItemLeftStyle } from "interfaces/Motion";
+import { pageTransition, pageVariants, ContainerStyle, ItemLeftStyle } from "@interfaces/Motion";
 import { motion } from "framer-motion";
-import HeadMeta from "components/Helmet/HeadMeta";
+import HeadMeta from "@components/Helmet/HeadMeta";
 import ReactGA from "react-ga";
-import PortfolioData from "core/folioData";
+import PortfolioData from "@core/folioData";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import { useAppSelector } from "store/useAppStore";
-import COLOR from "core/colors";
+import { useAppSelector } from "@store/useAppStore";
+import COLOR from "@core/colors";
 
 const ContentBox = styled.div``;
 const FolioContainer = styled.div`

@@ -5,13 +5,13 @@ import styled from "styled-components";
 import ReactGA from "react-ga";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { Typography, PageHeader, Skeleton, Grid, Card } from "antd";
-import { pageVariants, pageTransition } from "interfaces/Motion";
-import { BlogPost } from "interfaces/post";
-import { ContentfulService } from "core/contentful";
-import COLOR from "core/colors";
-import HeadMeta from "components/Helmet/HeadMeta";
-import { useRouter } from "hooks/useRouter";
-import { useAppSelector } from "store/useAppStore";
+import { pageVariants, pageTransition } from "@interfaces/Motion";
+import { BlogPost } from "@interfaces/post";
+import { ContentfulService } from "@core/contentful";
+import COLOR from "@core/colors";
+import HeadMeta from "@components/Helmet/HeadMeta";
+import { useRouter } from "@hooks/useRouter";
+import { useAppSelector } from "@store/useAppStore";
 
 const PostContainer = styled.div`
   padding: 20px;

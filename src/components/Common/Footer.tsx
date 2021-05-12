@@ -1,7 +1,7 @@
 import { Typography, Affix, Grid } from "antd";
 import styled from "styled-components";
 
-import { pageTransition, pageVariants, ContainerStyle, ItemLeftStyle } from "interfaces/Motion";
+import { pageTransition, pageVariants, ContainerStyle, ItemLeftStyle } from "@interfaces/Motion";
 import { motion } from "framer-motion";
 
 const ContentBox = styled.div`

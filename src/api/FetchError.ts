@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { ErrorStatus } from "interfaces/output";
+import { ErrorStatus } from "@interfaces/output";
 
 class FetchError extends Error {
   statusOut: ErrorStatus;

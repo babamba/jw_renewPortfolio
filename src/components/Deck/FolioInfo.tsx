@@ -1,9 +1,9 @@
 import { Skeleton, Typography } from "antd";
 import { motion } from "framer-motion";
-import { ItemStyle, ContainerStyle } from "interfaces/Motion";
+import { ItemStyle, ContainerStyle } from "@interfaces/Motion";
 import styled from "styled-components";
 import { Link, useRouteMatch } from "react-router-dom";
-import { useAppSelector } from "store/useAppStore";
+import { useAppSelector } from "@store/useAppStore";
 
 const InfoContainer = styled(motion.div)`
   &:hover {

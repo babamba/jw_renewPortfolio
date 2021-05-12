@@ -7,20 +7,20 @@ import {
 } from "react";
 import { Route, Switch, Redirect, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import LazyLoader from "components/Loader/LazyLoader";
+import LazyLoader from "@components/Loader/LazyLoader";
 import lazy from "react-lazy-with-preload";
-import AppLoader from "components/Loader/AppLoader";
+import AppLoader from "@components/Loader/AppLoader";
 
 // 전역에서 사용되는 브라우저 라우터
 
-const AboutComponent = lazy(() => import("pages/About"));
-const BlogComponent = lazy(() => import("pages/Blog"));
-const BlogDetailComponent = lazy(() => import("pages/BlogDetail"));
-const PortfolioComponent = lazy(() => import("pages/DeckFolio"));
-const ResumeComponent = lazy(() => import("pages/Resume"));
-const FolioDetailComponent = lazy(() => import("pages/PortfolioDetail"));
-const ContactComponent = lazy(() => import("pages/Contact"));
-const NoMatchComponent = lazy(() => import("pages/404"));
+const AboutComponent = lazy(() => import("@pages/About"));
+const BlogComponent = lazy(() => import("@pages/Blog"));
+const BlogDetailComponent = lazy(() => import("@pages/BlogDetail"));
+const PortfolioComponent = lazy(() => import("@pages/DeckFolio"));
+const ResumeComponent = lazy(() => import("@pages/Resume"));
+const FolioDetailComponent = lazy(() => import("@pages/PortfolioDetail"));
+const ContactComponent = lazy(() => import("@pages/Contact"));
+const NoMatchComponent = lazy(() => import("@pages/404"));
 
 interface Handler {
   onInitPreload(): Promise<void>;

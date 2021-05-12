@@ -1,6 +1,6 @@
 import { Result, Button } from "antd";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import HeadMeta from "components/Helmet/HeadMeta";
+import HeadMeta from "@components/Helmet/HeadMeta";
 
 const Page_404 = (props: RouteComponentProps) => {
   const { history } = props;

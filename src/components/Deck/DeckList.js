@@ -2,7 +2,7 @@ import { useState, useImperativeHandle, forwardRef } from "react";
 import { useSprings } from "react-spring";
 import { useDrag } from "react-use-gesture";
 import DeckCard from "./DeckCard";
-import PortfolioData from "core/folioData";
+import PortfolioData from "@core/folioData";
 
 // These two are just helpers, they curate spring data, values that are later being interpolated into css
 const to = i => ({

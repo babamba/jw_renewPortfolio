@@ -5,7 +5,6 @@ import { Stack, STACK } from "interfaces/stack";
 import { HTTP_STATUS } from "interfaces/output";
 import { Resume } from "interfaces/resume";
 import { Folio } from "interfaces/folio";
-// const role = useStore('role');
 const useStacks = (type: STACK) => {
   return useQuery<Stack[], FetchError>({
     queryKey: ["stack", type],

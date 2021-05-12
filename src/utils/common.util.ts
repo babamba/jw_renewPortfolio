@@ -19,10 +19,10 @@ const createStylesheetLink = (): HTMLLinkElement => {
 const getStylesheetLink = (): HTMLLinkElement =>
   document.head.querySelector("#antd-stylesheet") || createStylesheetLink();
 
-const updateBodyClassName = (isDark: boolean) => {
+const updateBodyClassName = (useDark: boolean) => {
   const body = document.body.classList;
   console.log("body: ", body);
-  if (isDark) {
+  if (useDark) {
     body.add("dark");
     body.remove("light");
   } else {

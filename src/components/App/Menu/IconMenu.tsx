@@ -6,8 +6,7 @@ import { motion } from "framer-motion";
 import ThemeModeSelector from "../ThemeMode/ThemeModeSelector";
 import MenuItem from "./MenuItem";
 import styled from "styled-components";
-import { useStore } from "hooks/useStore";
-import { observer } from "mobx-react-lite";
+import { useAppSelector } from "store/useAppStore";
 
 interface CustomColProps {
   selected?: string;
@@ -79,7 +78,7 @@ const MenuButtonBox = styled.div<CustomColProps>`
 `;
 
 const IconMenu = () => {
-  const { useDark } = useStore("app");
+  const { useDark } = useAppSelector(state => state.appStore);
   const history = useHistory();
   const location = useLocation();
   const screens = Grid.useBreakpoint();
@@ -218,4 +217,4 @@ const IconMenu = () => {
   );
 };
 
-export default observer(IconMenu);
+export default IconMenu;

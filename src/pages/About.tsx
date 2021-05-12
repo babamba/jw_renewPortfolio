@@ -10,19 +10,20 @@ import { pageTransition, pageVariants } from "interfaces/Motion";
 import HeadMeta from "components/Helmet/HeadMeta";
 import StackCard from "components/Card/StackCard";
 
-import { useStore } from "hooks/useStore";
 import { useRouter } from "hooks/useRouter";
+import { useAppSelector } from "store/useAppStore";
 
 const IntroText = styled(Typography.Title)`
-  font-family: "NEXON Lv2 Gothic Light";
-  font-weight: 300;
+  font-weight: 500 !important;
+  font-size: 22px !important;
+  line-height: 1.5 !important;
   padding: 0px 24px;
+  font-family: "NEXON Lv2 Gothic Light" !important;
+  /* font-weight: 300;
+ */
   @media only screen and (min-width: 200px) and (max-width: 767px) {
     font-size: 18px !important;
     font-weight: 350 !important;
-  }
-  @media only screen and (min-width: 768px) and (max-width: 4000px) {
-    font-size: 24px;
   }
 `;
 
@@ -38,7 +39,7 @@ const HashTag = styled(Typography.Paragraph)`
 
 const About: FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const { useDark } = useStore("app");
+  const { useDark } = useAppSelector(state => state.appStore);
   const screens = Grid.useBreakpoint();
   const router = useRouter();
   useEffect(() => {
@@ -72,6 +73,7 @@ const About: FC = () => {
       />
 
       <Card
+        className="glass"
         style={{
           borderRadius: 12,
           margin: screens.xs ? 0 : 20,

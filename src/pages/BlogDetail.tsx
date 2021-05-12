@@ -4,16 +4,14 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import ReactGA from "react-ga";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import { observer } from "mobx-react-lite";
 import { Typography, PageHeader, Skeleton, Grid, Card } from "antd";
-
 import { pageVariants, pageTransition } from "interfaces/Motion";
 import { BlogPost } from "interfaces/post";
 import { ContentfulService } from "core/contentful";
 import COLOR from "core/colors";
 import HeadMeta from "components/Helmet/HeadMeta";
 import { useRouter } from "hooks/useRouter";
-import { useStore } from "hooks/useStore";
+import { useAppSelector } from "store/useAppStore";
 
 const PostContainer = styled.div`
   padding: 20px;
@@ -59,7 +57,7 @@ interface MatchParams {
 }
 
 const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, location }) => {
-  const { useDark } = useStore("app");
+  const { useDark } = useAppSelector(state => state.appStore);
   const router = useRouter();
   const screens = Grid.useBreakpoint();
   const contentfulService = new ContentfulService();
@@ -167,4 +165,4 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
   );
 };
 
-export default withRouter(observer(PostPage));
+export default withRouter(PostPage);

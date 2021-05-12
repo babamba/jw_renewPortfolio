@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import ReactGA from "react-ga";
-import { observer } from "mobx-react-lite";
 import {
   Row,
   Col,
@@ -17,7 +16,6 @@ import {
 import { motion } from "framer-motion";
 
 import { useRouter } from "hooks/useRouter";
-import { useStore } from "hooks/useStore";
 
 import { ContentfulService } from "core/contentful";
 import COLOR from "core/colors";
@@ -27,12 +25,14 @@ import { pageTransition, pageVariants, ItemStyle, ContainerStyle } from "interfa
 import BlogCard from "components/Card/BlogCard";
 import HeadMeta from "components/Helmet/HeadMeta";
 import LottieLoader from "components/Loader/LottieLoader";
+import { useAppSelector, useAppDispatch } from "store/useAppStore";
+import { setCurrentPage } from "store/appStore";
 
 const Post = () => {
-  // const period = 12;
   const router = useRouter();
-  // const [period, setPeriod] = useState(12);
-  const { currentPage, setCurrentPage, useDark } = useStore("app");
+  const dispatch = useAppDispatch();
+  const { useDark, currentPage } = useAppSelector(state => state.appStore);
+
   const screens = Grid.useBreakpoint();
   const [selectTag, updateTag] = useState("");
   const [loading, setLoading] = useState(false);
@@ -61,7 +61,7 @@ const Post = () => {
       ReactGA.pageview(router.location.pathname + router.location.search);
     }
     return () => {
-      setCurrentPage(1);
+      dispatch(setCurrentPage(1));
     };
   }, []);
 
@@ -210,7 +210,7 @@ const Post = () => {
                     return (
                       <motion.div variants={ItemStyle} style={{ paddingBottom: 18 }}>
                         <List.Item>
-                          <BlogCard info={item} isDark={useDark} />
+                          <BlogCard info={item} />
                         </List.Item>
                       </motion.div>
                     );
@@ -246,4 +246,4 @@ const Post = () => {
   );
 };
 
-export default observer(Post);
+export default Post;

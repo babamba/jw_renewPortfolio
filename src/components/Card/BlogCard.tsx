@@ -2,8 +2,7 @@ import { useRouteMatch, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Card, Grid, Typography } from "antd";
 import COLOR from "core/colors";
-import { useStore } from "hooks/useStore";
-import { observer } from "mobx-react-lite";
+import { useAppSelector } from "store/useAppStore";
 
 interface Props {
   info: {
@@ -14,13 +13,13 @@ interface Props {
     publishedAt: Date;
     slug: string;
   };
-  isDark: boolean;
 }
 
 const BlogCard = (props: Props) => {
   const { info } = props;
   const match = useRouteMatch();
-  const { useDark } = useStore("app");
+  const { useDark } = useAppSelector(state => state.appStore);
+
   const screens = Grid.useBreakpoint();
   const cardBGStyles = {
     backgroundSize: "cover",
@@ -85,4 +84,4 @@ const BlogCard = (props: Props) => {
   );
 };
 
-export default observer(BlogCard);
+export default BlogCard;

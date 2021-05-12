@@ -8,16 +8,14 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const FilterWarningsPlugin = require("webpack-filter-warnings-plugin");
 
 module.exports = {
-  babel: {
-    plugins: [
-      ["@babel/plugin-proposal-decorators", { legacy: true }],
-      [
-        "@babel/plugin-proposal-class-properties",
-        {
-          loose: true
-        }
-      ]
-    ]
+  jest: {
+    configure(config) {
+      config.verbose = true;
+      config.transformIgnorePatterns = [
+        "/node_modules/(?!antd|rc-pagination|rc-calendar|rc-tooltip)/.+\\.js$"
+      ];
+      return config;
+    }
   },
   webpack: {
     plugins: [

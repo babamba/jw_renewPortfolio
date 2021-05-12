@@ -8,13 +8,13 @@ import { motion, useAnimation } from "framer-motion";
 import { pageVariants, pageTransition } from "interfaces/Motion";
 import PortfolioData from "core/folioData";
 import { useRouter } from "hooks/useRouter";
-import { useStore } from "hooks/useStore";
 import useMount from "hooks/useMount";
 
 import DeckList from "components/Deck/DeckList";
 import HeadMeta from "components/Helmet/HeadMeta";
 import DetailInfo from "components/Deck/FolioInfo";
 import COLOR from "core/colors";
+import { useAppSelector } from "store/useAppStore";
 
 interface DeckRefObject {
   getNext: () => void;
@@ -33,7 +33,7 @@ interface InfoData {
 }
 
 const DeckFolio = () => {
-  const { useDark } = useStore("app");
+  const { useDark } = useAppSelector(state => state.appStore);
   const screens = Grid.useBreakpoint();
   const isMount = useMount();
   const router = useRouter();

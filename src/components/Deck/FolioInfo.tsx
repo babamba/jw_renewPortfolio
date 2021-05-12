@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ItemStyle, ContainerStyle } from "interfaces/Motion";
 import styled from "styled-components";
 import { Link, useRouteMatch } from "react-router-dom";
-import { useStore } from "hooks/useStore";
+import { useAppSelector } from "store/useAppStore";
 
 const InfoContainer = styled(motion.div)`
   &:hover {
@@ -29,7 +29,7 @@ interface Props {
 }
 
 const Card = (props: Props) => {
-  const { useDark } = useStore("app");
+  const { useDark } = useAppSelector(state => state.appStore);
   const match = useRouteMatch();
   const { animating } = props;
   const { data } = props;

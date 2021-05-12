@@ -60,6 +60,7 @@ const Contact = () => {
         url="contact"
       />
       <Card
+        className="glass"
         style={{
           borderRadius: 12,
           marginBottom: screens.lg ? 0 : 30,

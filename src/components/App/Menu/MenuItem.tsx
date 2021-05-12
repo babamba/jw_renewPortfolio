@@ -8,9 +8,8 @@ import {
   SmileOutlined
 } from "@ant-design/icons";
 import COLOR from "core/colors";
-import { observer } from "mobx-react-lite";
 import styled from "styled-components";
-import { useStore } from "hooks/useStore";
+import { useAppSelector } from "store/useAppStore";
 
 interface Props {
   url: string;
@@ -48,7 +47,7 @@ const Box = styled.div`
 `;
 
 const MenuItem = (props: Props) => {
-  const { useDark } = useStore("app");
+  const { useDark } = useAppSelector(state => state.appStore);
   const screens = Grid.useBreakpoint();
   const { selected, url, title, icon, subTitle } = props;
 
@@ -104,4 +103,4 @@ const MenuItem = (props: Props) => {
   );
 };
 
-export default observer(MenuItem);
+export default MenuItem;

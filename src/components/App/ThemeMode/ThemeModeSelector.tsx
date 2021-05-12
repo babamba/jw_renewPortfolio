@@ -1,11 +1,11 @@
 import { useEffect } from "react";
-import { observer } from "mobx-react-lite";
-import { useStore } from "hooks/useStore";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import CustomIcon from "components/Common/CustomIcon";
 import COLOR from "core/colors";
 import { setColorTheme } from "utils/common.util";
+import { useAppDispatch, useAppSelector } from "store/useAppStore";
+import { setUseDark } from "store/appStore";
 
 const MotionBox = styled(motion.div)`
   display: flex;
@@ -19,21 +19,10 @@ interface Props {
 }
 const ThemeModeSelector = (props: Props) => {
   const { size } = props;
-  const { useDark, setUseDark } = useStore("app");
+  const dispatch = useAppDispatch();
+  const { useDark } = useAppSelector(state => state.appStore);
 
-  useEffect(() => {
-    console.log("useDark : ", useDark);
-    setUseDark(useDark);
-    setColorTheme(useDark);
-  }, [useDark]);
-
-  const toggleTheme = () => {
-    console.log("onChange : ");
-    console.log("toggleTheme !");
-
-    setUseDark(!useDark);
-    setColorTheme(!useDark);
-  };
+  const toggleTheme = () => dispatch(setUseDark(!useDark));
 
   const spring = {
     type: "spring",
@@ -62,4 +51,4 @@ const ThemeModeSelector = (props: Props) => {
   );
 };
 
-export default observer(ThemeModeSelector);
+export default ThemeModeSelector;

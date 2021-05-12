@@ -1,20 +1,22 @@
 import styled from "styled-components";
-import { observer } from "mobx-react-lite";
-import { useStore } from "hooks/useStore";
 import { motion } from "framer-motion";
 import { ExperimentOutlined, LinkedinOutlined } from "@ant-design/icons";
 import { useRouter } from "hooks/useRouter";
+import { useAppSelector, useAppDispatch } from "store/useAppStore";
+import { setLabPage } from "store/appStore";
 const Container = styled.div`
   position: relative;
   z-index: 999;
 `;
 
-const LabModeSelector = observer(() => {
-  const { setUseLabpage, useLabPage, useDark } = useStore("app");
+const LabModeSelector = () => {
+  const dispatch = useAppDispatch();
+  const { useLabPage, useDark } = useAppSelector(state => state.appStore);
+
   const router = useRouter();
 
   const handleChange = async () => {
-    setUseLabpage(!useLabPage);
+    dispatch(setLabPage(!useLabPage));
 
     if (!useLabPage) {
       router.history.push("/about");
@@ -53,6 +55,6 @@ const LabModeSelector = observer(() => {
       </motion.div>
     </Container>
   );
-});
+};
 
 export default LabModeSelector;

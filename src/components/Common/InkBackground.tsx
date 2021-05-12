@@ -1,20 +1,42 @@
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
-import { useStore } from "hooks/useStore";
-import { observer } from "mobx-react-lite";
 import COLOR from "core/colors";
+import { useAppSelector } from "store/useAppStore";
+import { useRef, useEffect } from "react";
 
 const HeroSvg = styled(animated.svg)`
   position: fixed;
   height: 100%;
   width: 100%;
   transform-origin: 0px 0px;
+  transition: background 2s ease-in-out;
 `;
 
-const HeroBackground = () => {
-  const { useDark } = useStore("app");
+const BackGround = styled.div`
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  /* transition: background 2s ease-in-out; */
+`;
+
+interface Props {
+  backStyle: string;
+}
+
+const HeroBackground = (props: Props) => {
+  const backgroundRef = useRef<HTMLDivElement>(null);
+  const { backStyle } = props;
   const location = useLocation();
+  const { useDark } = useAppSelector(state => state.appStore);
+
+  useEffect(() => {
+    console.log("backStyle : ", backStyle);
+    if (backgroundRef && backgroundRef.current) {
+      backgroundRef.current.style.background = backStyle;
+    }
+  }, [backStyle]);
 
   const getPath = () => {
     switch (location.pathname.split("/")[1]) {
@@ -59,12 +81,12 @@ const HeroBackground = () => {
   });
 
   return (
-    <div>
+    <BackGround ref={backgroundRef}>
       <HeroSvg xmlns="http://www.w3.org/2000/svg">
         <animated.path {...routePathProps} />
       </HeroSvg>
-    </div>
+    </BackGround>
   );
 };
 
-export default observer(HeroBackground);
+export default HeroBackground;

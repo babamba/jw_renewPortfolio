@@ -7,13 +7,12 @@ import { pageTransition, pageVariants } from "interfaces/Motion";
 
 import HeadMeta from "components/Helmet/HeadMeta";
 import ResumeContent from "components/App/Resume/ResumeContent";
-import { useStore } from "hooks/useStore";
-import { observer } from "mobx-react-lite";
+import { useAppSelector } from "store/useAppStore";
 import COLOR from "core/colors";
 const History = () => {
   const router = useRouter();
   const screens = Grid.useBreakpoint();
-  const { useDark } = useStore("app");
+  const { useDark } = useAppSelector(state => state.appStore);
 
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
@@ -43,6 +42,7 @@ const History = () => {
         url="resume"
       />
       <Card
+        className="glass"
         style={{
           padding: "6px 0px",
           borderRadius: 12,
@@ -64,4 +64,4 @@ const History = () => {
   );
 };
 
-export default observer(History);
+export default History;

@@ -63,7 +63,7 @@ const ResumeCard = (props: Props) => {
         color={resumeData.statusType === "process" ? "processing" : "magenta"}
       >
         <Card
-          style={{ borderRadius: 12 }}
+          style={{ borderRadius: 12, background: "transparent" }}
           bodyStyle={{
             padding: screens.md ? "14px 18px" : 18
           }}

@@ -4,12 +4,11 @@ import { ForwardOutlined, BackwardOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 import { pageTransition, pageVariants, ContainerStyle, ItemLeftStyle } from "interfaces/Motion";
 import { motion } from "framer-motion";
-import { observer } from "mobx-react-lite";
-import { useStore } from "hooks/useStore";
 import HeadMeta from "components/Helmet/HeadMeta";
 import ReactGA from "react-ga";
 import PortfolioData from "core/folioData";
 import { withRouter, RouteComponentProps } from "react-router-dom";
+import { useAppSelector } from "store/useAppStore";
 import COLOR from "core/colors";
 
 const ContentBox = styled.div``;
@@ -94,8 +93,9 @@ type State = {
 };
 
 const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match }) => {
+  const { useDark } = useAppSelector(state => state.appStore);
   const [folio, setFolio] = useState<State | undefined>(undefined);
-  const { useDark } = useStore("app");
+
   const screens = Grid.useBreakpoint();
   const cardBGStyles = {
     height: "40vh",
@@ -243,6 +243,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
         </Row>
 
         <Card
+          className="glass"
           style={{
             textAlign: "center",
             borderRadius: 12,
@@ -307,4 +308,4 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
   );
 };
 
-export default withRouter(observer(PortfolioDetail));
+export default withRouter(PortfolioDetail);

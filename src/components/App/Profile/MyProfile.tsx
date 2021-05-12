@@ -3,11 +3,10 @@ import ReactRotatingText from "react-rotating-text";
 import { GithubOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { useStore } from "hooks/useStore";
 import { pageVariants, pageTransition } from "interfaces/Motion";
-import { observer } from "mobx-react-lite";
 import MePhoto from "../../../assets/images/me.png";
 import COLOR from "core/colors";
+import { useAppSelector } from "store/useAppStore";
 
 interface MainIntroTextProps {
   useDark: boolean;
@@ -78,7 +77,7 @@ const SubIntroText = styled.h2<MainIntroTextProps>`
 `;
 
 const MyProfile = () => {
-  const { useDark } = useStore("app");
+  const { useDark } = useAppSelector(state => state.appStore);
   const screens = Grid.useBreakpoint();
   const textVariants = {
     out: { x: 10, opacity: 0 },
@@ -225,4 +224,4 @@ const MyProfile = () => {
   );
 };
 
-export default observer(MyProfile);
+export default MyProfile;

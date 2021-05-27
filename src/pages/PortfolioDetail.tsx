@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { Card, Typography, Grid, Divider, PageHeader, Space, Col, Row } from "antd";
+import { Card, Typography, Grid, Divider, PageHeader, Space, Col, Row, Modal } from "antd";
 import { ForwardOutlined, BackwardOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 import { pageTransition, pageVariants, ContainerStyle, ItemLeftStyle } from "@interfaces/Motion";
@@ -10,6 +10,8 @@ import PortfolioData from "@core/folioData";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { useAppSelector } from "@store/useAppStore";
 import COLOR from "@core/colors";
+import FolioDetailPics from "@components/Card/FolioDetailPics";
+import { FolioItem } from "@interfaces/folio";
 
 const ContentBox = styled.div``;
 const FolioContainer = styled.div`
@@ -79,22 +81,11 @@ const ProductLink = styled.a`
 interface MatchParams {
   id: string;
 }
-type State = {
-  id: string;
-  name: string;
-  age: string;
-  distance: string;
-  position: string;
-  titleDetail: string;
-  subDescriptions: any;
-  stack: string;
-  pics: string;
-  link: string;
-};
 
 const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match }) => {
   const { useDark } = useAppSelector(state => state.appStore);
-  const [folio, setFolio] = useState<State | undefined>(undefined);
+  const [folio, setFolio] = useState<FolioItem | undefined>(undefined);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const screens = Grid.useBreakpoint();
   const cardBGStyles = {
@@ -154,6 +145,10 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
       <br />
     </div>
   );
+
+  const showModal = () => setIsModalVisible(true);
+  const handleOk = () => setIsModalVisible(false);
+  const handleCancel = () => setIsModalVisible(false);
 
   const transition = { duration: 0.2 };
   const hoverframeVariants = {
@@ -283,6 +278,30 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
                   <StackText level={4}>{folio && folio.stack}</StackText>
                 </motion.div>
 
+                <br />
+                <motion.div variants={ItemLeftStyle}>
+                  {folio !== undefined && folio.detail && (
+                    <>
+                      <Typography.Link underline onClick={showModal}>
+                        프로젝트 상세보기
+                      </Typography.Link>
+                      <Typography.Text underline onClick={showModal}></Typography.Text>
+                      <Modal
+                        // title="Basic Modal"
+                        visible={isModalVisible}
+                        onOk={handleOk}
+                        onCancel={handleCancel}
+                        footer={null}
+                        width="70%"
+                        bodyStyle={{
+                          padding: "50px 20px 30px"
+                        }}
+                      >
+                        <FolioDetailPics folio={folio} />
+                      </Modal>
+                    </>
+                  )}
+                </motion.div>
                 <br />
                 <motion.div variants={ItemLeftStyle}>
                   {folio !== undefined && folio.link !== "" && (

@@ -30,6 +30,10 @@ interface InfoData {
   titleDetail: string;
   subDescriptions: any;
   pics: string;
+  detail?: {
+    pic: string;
+    comment: string;
+  }[];
 }
 
 const DeckFolio = () => {

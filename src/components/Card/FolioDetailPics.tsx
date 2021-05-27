@@ -9,11 +9,6 @@ const FolioDetailPics = (props: Props) => {
   const { folio } = props;
 
   const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 1
-    },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 1
@@ -24,19 +19,26 @@ const FolioDetailPics = (props: Props) => {
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
-      items: 1
+      items: 1,
+      slidesToSlide: 1 // optional, default to 1.
     }
   };
 
   return (
-    <Carousel responsive={responsive} showDots={true} swipeable={true}>
+    <Carousel
+      responsive={responsive}
+      showDots={true}
+      swipeable={true}
+      containerClass="carousel-container"
+    >
       {folio.detail &&
         folio.detail.map((item, idx: number) => (
-          <img
-            key={idx}
-            style={{ width: "100%" }}
-            src={`${process.env.REACT_APP_STRAPI_URL}/uploads/${item.pic}`}
-          />
+          <div key={idx}>
+            <img
+              style={{ width: "100%", maxHeight: 700, minHeight: 450, objectFit: "contain" }}
+              src={`${process.env.REACT_APP_STRAPI_URL}/uploads/${item.pic}`}
+            />
+          </div>
         ))}
     </Carousel>
   );

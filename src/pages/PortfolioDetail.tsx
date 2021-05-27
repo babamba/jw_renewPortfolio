@@ -292,9 +292,12 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
                         onOk={handleOk}
                         onCancel={handleCancel}
                         footer={null}
-                        width="70%"
+                        width="65%"
+                        destroyOnClose={true}
                         bodyStyle={{
-                          padding: "50px 20px 30px"
+                          padding: "50px 20px 30px",
+                          minHeight: 500,
+                          maxHeight: 800
                         }}
                       >
                         <FolioDetailPics folio={folio} />

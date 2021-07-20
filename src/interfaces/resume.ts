@@ -15,6 +15,7 @@ export interface Resume {
   rank: string;
   position: string;
   resume_stories: Story[];
+  flow: number;
 }
 
 export interface Story {

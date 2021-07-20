@@ -12,7 +12,12 @@ const ResumeContent = () => {
   const { isLoading, error: fetchError, data: resumeData } = useResumes();
 
   useEffect(() => {
-    if (resumeData) setList(resumeData);
+    if (resumeData){
+      const sorting = resumeData.sort(function(a, b) {
+        return b.flow - a.flow;
+      });
+      setList(sorting);
+    } 
   }, [resumeData]);
 
   return (

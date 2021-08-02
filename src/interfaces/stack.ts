@@ -1,12 +1,12 @@
 export interface Stack {
-  created_at: string;
+  created_at?: string;
   id: number;
-  imgUrl: Image;
+  imgUrl: string;
   isUsed: boolean;
-  published_at: string;
+  published_at?: string;
   stackTitle: string;
   tooltipTitle: string | null;
-  updated_at: string;
+  updated_at?: string;
 }
 
 export interface Image {

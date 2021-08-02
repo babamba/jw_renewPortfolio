@@ -9,16 +9,20 @@ import { useStacks } from "@api/query/common.query";
 
 interface Props {
   type: "remote" | "front" | "backend" | "ci" | "infra" | "interest";
+  data: Stack[];
 }
 
 const StackCard = (props: Props) => {
-  const { type } = props;
+  const { type, data } = props;
   const [list, setList] = useState<Stack[]>([]);
-  const { isLoading, error: fetchError, data: stackData } = useStacks(type);
+  // const { isLoading, error: fetchError, data: stackData } = useStacks(type);
 
   useEffect(() => {
-    if (stackData) setList(stackData);
-  }, [stackData]);
+    setList(data);
+  }, [])
+  // useEffect(() => {
+  //   if (stackData) setList(stackData);
+  // }, [stackData]);
 
   return (
     <motion.div
@@ -28,7 +32,16 @@ const StackCard = (props: Props) => {
       animate="visible"
       exit="hidden"
     >
-      {isLoading ? (
+      <Row>
+          {list.map((item, idx) => (
+            <Col xs={8} sm={8} md={6} lg={6} xl={4} xxl={3} key={idx}>
+              <motion.div variants={ItemStyle} key={idx}>
+                <StackAvatar stack={item} />
+              </motion.div>
+            </Col>
+          ))}
+        </Row>
+      {/* {isLoading ? (
         <Loader />
       ) : fetchError ? (
         <Empty />
@@ -42,7 +55,7 @@ const StackCard = (props: Props) => {
             </Col>
           ))}
         </Row>
-      )}
+      )} */}
     </motion.div>
   );
 };

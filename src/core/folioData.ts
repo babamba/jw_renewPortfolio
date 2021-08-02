@@ -2,7 +2,7 @@ export default [
   {
     // 경기도시공사 프로젝트
     id: "gicoapart",
-    pics: "mock_gico_1c2003725d.png",
+    pics: "mock_gico.png",
     name: "GICO Housing Center",
     age: `2017.12 ~ 2018.04`,
     distance: "Complete",
@@ -22,7 +22,7 @@ export default [
   {
     // 오산백년대학 프로젝트
     id: "osan",
-    pics: "mock_osan_d5741888de.png",
+    pics: "mock_osan.png",
     name: "Osan Citizen Univ Web",
     age: "2017.04 ~ 2018.04",
     distance: "Complete",
@@ -50,7 +50,7 @@ export default [
   {
     // 키즈랜드
     id: "kidsland",
-    pics: "mock_kids_4a13a574dc.png",
+    pics: "mock_kids.png",
     name: "KT IPTV MiddleWare KidsLand Service v2",
     age: "2018.05 ~ 2019.09",
     distance: "Complete",
@@ -68,7 +68,7 @@ export default [
   },
   {
     id: "beeapp",
-    pics: "mock_bee_app_5951c9adb3.png",
+    pics: "mock_bee_app.png",
     name: "National Institute of Agricultural Sciences App",
     age: "2020.03 ~ 2020.06",
     distance: "Complete",
@@ -84,7 +84,7 @@ export default [
   },
   {
     id: "beeweb",
-    pics: "mock_bee_web_2fe40176e1.png",
+    pics: "mock_bee_web.png",
     name: "National Institute of Agricultural Sciences Web",
     age: "2020.01 ~ 2020.06",
     distance: "Complete",
@@ -102,66 +102,66 @@ export default [
 
   {
     id: "telematices",
-    pics: "mock_tele_126177175f.png",
+    pics: "mock_tele.png",
     detail: [
       {
-        pic: "login_page_67270e451d.png",
+        pic: "login_page.png",
         comment: "로그인페이지"
       },
       {
-        pic: "dashboard_page_light_65405eb675.png",
+        pic: "dashboard_page_light.png",
         comment: "대시보드 구성 및 light mode"
       },
       {
-        pic: "dashboard_page_dark_d6b3c5cacc.png",
+        pic: "dashboard_page_dark.png",
         comment: "대시보드 구성 및 dark mode"
       },
       {
-        pic: "equipment_page_e9bd000f9b.png",
+        pic: "equipment_page.png",
         comment: "차량관리 페이지"
       },
       {
-        pic: "equipment_test_page_8c996ed4c0.png",
+        pic: "equipment_test_page.png",
         comment: "appsync를 통한 실시간 차량 원격시동 관리 및 상태 조회"
       },
       {
-        pic: "trouble_select_page_d60d0b9130.png",
+        pic: "trouble_select_page.png",
         comment: "차량고장 관리"
       },
       {
-        pic: "trouble_detail_page_ca7e8b2602.png",
+        pic: "trouble_detail_page.png",
         comment: "차량고장 이력관리"
       },
       {
-        pic: "raw_data_page_353fe7d54a.png",
+        pic: "raw_data_page.png",
         comment: "차량 raw-data 이력조회 및 차트 구성"
       },
       {
-        pic: "sos_page_db99eb74e6.png",
+        pic: "sos_page.png",
         comment: "차량 SOS 관리"
       },
       {
-        pic: "product_page_4009098571.png",
+        pic: "product_page.png",
         comment: "생산 단말기 관리"
       },
       {
-        pic: "consumable_page_fc0336a368.png",
+        pic: "consumable_page.png",
         comment: "차량 소모품 상태 조회 및 관리"
       },
       {
-        pic: "customer_page_6c1b840e5d.png",
+        pic: "customer_page.png",
         comment: "고객관리"
       },
       {
-        pic: "sales_page_75c50c7cb0.png",
+        pic: "sales_page.png",
         comment: "차량 판매관리"
       },
       {
-        pic: "model_page_7471b5a35b.png",
+        pic: "model_page.png",
         comment: "모델관리"
       },
       {
-        pic: "console_user_page_0219f4a381.png",
+        pic: "console_user_page.png",
         comment: "콘솔 조직트리 및 사용자관리"
       }
     ],

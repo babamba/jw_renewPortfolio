@@ -63,7 +63,7 @@ const ResumeCard = (props: Props) => {
         color={resumeData.statusType === "process" ? "processing" : "magenta"}
       >
         <Card
-          style={{ borderRadius: 12, background: "transparent" }}
+          style={{ borderRadius: 12, background: "transparent", marginBottom: 12 }}
           bodyStyle={{
             padding: screens.md ? "14px 18px" : 18
           }}
@@ -83,7 +83,7 @@ const ResumeCard = (props: Props) => {
                     alt={`company-img-${resumeData.companyName}`}
                     shape="circle"
                     size={44}
-                    src={process.env.REACT_APP_STRAPI_URL + resumeData.companyImg.url}
+                    src={'/company/'+resumeData.companyImg}
                   />
                 </motion.div>
 

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Typography, Avatar, Badge, Grid } from "antd";
 import { Stack } from "@interfaces/stack";
+// import test from '../../assets/images/stack'
 
 const TitleBox = styled.div`
   display: block;
@@ -31,7 +32,8 @@ const StackAvatar = (props: Props) => {
         alt={`stack-img-${stack.stackTitle}`}
         shape="square"
         size={screens.xs ? 70 : 80}
-        src={process.env.REACT_APP_STRAPI_URL + stack.imgUrl.url}
+        src={'/stack/'+stack.imgUrl}
+        // src={'/assets/images/stack/' + stack.imgUrl}
       />
 
       <TitleBox>

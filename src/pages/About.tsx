@@ -13,6 +13,8 @@ import StackCard from "@components/Card/StackCard";
 import { useRouter } from "@hooks/useRouter";
 import { useAppSelector } from "@store/useAppStore";
 
+import { backEndStack, ciStack, frontEndStack, infraStack, interestStack, remoteStack} from '@core/stacks';
+
 const IntroText = styled(Typography.Title)`
   font-weight: 500 !important;
   font-size: 22px !important;
@@ -100,7 +102,6 @@ const About: FC = () => {
               <br />
               하루하루 발전해 나가고 있습니다. 잘 부탁드립니다.
               <br />
-              {/* 항상 도전하고 배우겠습니다. */}
             </IntroText>
           </Col>
           {/* TAGS */}
@@ -123,7 +124,7 @@ const About: FC = () => {
         <Row gutter={16}>
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
             <Row gutter={[0, 16]}>
-              <StackCard type="front" />
+              <StackCard type="front" data={frontEndStack} />
             </Row>
           </Col>
         </Row>
@@ -133,7 +134,7 @@ const About: FC = () => {
         </Divider>
         <Row gutter={16}>
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-            <StackCard type="backend" />
+            <StackCard type="backend" data={backEndStack}/>
           </Col>
         </Row>
         {/* 인프라 */}
@@ -143,7 +144,7 @@ const About: FC = () => {
 
         <Row gutter={16}>
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-            <StackCard type="infra" />
+            <StackCard type="infra" data={infraStack}/>
           </Col>
         </Row>
 
@@ -152,7 +153,7 @@ const About: FC = () => {
         </Divider>
         <Row gutter={16}>
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-            <StackCard type="ci" />
+            <StackCard type="ci" data={ciStack}/>
           </Col>
         </Row>
 
@@ -162,7 +163,7 @@ const About: FC = () => {
         </Divider>
         <Row gutter={16}>
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-            <StackCard type="remote" />
+            <StackCard type="remote" data={remoteStack} />
           </Col>
         </Row>
 
@@ -172,7 +173,7 @@ const About: FC = () => {
         </Divider>
         <Row gutter={16}>
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-            <StackCard type="interest" />
+            <StackCard type="interest" data={interestStack} />
           </Col>
         </Row>
       </Card>

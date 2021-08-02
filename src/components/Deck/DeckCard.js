@@ -42,7 +42,7 @@ const Card = props => {
           backgroundImage: `linear-gradient(45deg, ${COLOR.DECKCARD_GRADIENT_START}, ${
             COLOR.DECKCARD_GRADIENT_END
             // }), url(${require(`../../assets/images/folio/` + pics)})`
-          }), url(${process.env.REACT_APP_STRAPI_URL}/uploads/${pics})`
+          }), url(${process.env.PUBLIC_URL}/folio/${pics})`
         }}
       >
         <Title onClick={() => history.push(`${match.url}/${id}`)}>{CardData[i].name}</Title>

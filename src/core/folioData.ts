@@ -105,63 +105,63 @@ export default [
     pics: "mock_tele.png",
     detail: [
       {
-        pic: "login_page.png",
+        pic: "login-page.png",
         comment: "로그인페이지"
       },
       {
-        pic: "dashboard_page_light.png",
+        pic: "dashboard-page-light.png",
         comment: "대시보드 구성 및 light mode"
       },
       {
-        pic: "dashboard_page_dark.png",
+        pic: "dashboard-page-dark.png",
         comment: "대시보드 구성 및 dark mode"
       },
       {
-        pic: "equipment_page.png",
+        pic: "equipment-page.png",
         comment: "차량관리 페이지"
       },
       {
-        pic: "equipment_test_page.png",
+        pic: "equipment-test-page.png",
         comment: "appsync를 통한 실시간 차량 원격시동 관리 및 상태 조회"
       },
       {
-        pic: "trouble_select_page.png",
+        pic: "trouble-select-page.png",
         comment: "차량고장 관리"
       },
       {
-        pic: "trouble_detail_page.png",
+        pic: "trouble-detail-page.png",
         comment: "차량고장 이력관리"
       },
       {
-        pic: "raw_data_page.png",
+        pic: "raw-data-page.png",
         comment: "차량 raw-data 이력조회 및 차트 구성"
       },
       {
-        pic: "sos_page.png",
+        pic: "sos-page.png",
         comment: "차량 SOS 관리"
       },
       {
-        pic: "product_page.png",
+        pic: "product-page.png",
         comment: "생산 단말기 관리"
       },
       {
-        pic: "consumable_page.png",
+        pic: "consumable-page.png",
         comment: "차량 소모품 상태 조회 및 관리"
       },
       {
-        pic: "customer_page.png",
+        pic: "customer-page.png",
         comment: "고객관리"
       },
       {
-        pic: "sales_page.png",
+        pic: "sales-page.png",
         comment: "차량 판매관리"
       },
       {
-        pic: "model_page.png",
+        pic: "model-page.png",
         comment: "모델관리"
       },
       {
-        pic: "console_user_page.png",
+        pic: "console-user-page.png",
         comment: "콘솔 조직트리 및 사용자관리"
       }
     ],

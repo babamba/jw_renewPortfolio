@@ -78,7 +78,7 @@ const Contact = () => {
             <motion.div variants={ItemLeftStyle}>
               <GuideText>
                 <StatusBadge status="success" /> 현재 사이트는 <br />
-                React / AntDesign / ContentFul / Oracle Cloud / Strapi 등을 사용하여 제작되었습니다.
+                React / AntDesign / ContentFul 등을 사용하여 제작되었습니다.
               </GuideText>
             </motion.div>
           </ContentBox>

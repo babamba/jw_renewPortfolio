@@ -36,7 +36,7 @@ const FolioDetailPics = (props: Props) => {
           <div key={idx}>
             <img
               style={{ width: "100%", maxHeight: 700, minHeight: 450, objectFit: "contain" }}
-              src={`${process.env.REACT_APP_STRAPI_URL}/uploads/${item.pic}`}
+              src={'/folio/'+item.pic}
             />
           </div>
         ))}

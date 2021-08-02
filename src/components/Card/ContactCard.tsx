@@ -45,7 +45,7 @@ const Contact = () => {
                   <GuideText>
                     현재 사이트는
                     <br />
-                    React / AntDesign / ContentFul / Oracle Cloud / Strapi
+                    React / AntDesign / ContentFul
                     <br /> 등을 사용하여 제작되었습니다.
                   </GuideText>
                 </motion.div>

@@ -57,7 +57,7 @@ const ResumeStory = (props: Props) => {
               {story.link && (
                 <>
                   <Link href={story.link} target="_blank">
-                    - 실제 서비스
+                    - 실제 서비스 or Demo
                   </Link>
                   <br />
                 </>

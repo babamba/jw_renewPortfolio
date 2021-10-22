@@ -342,7 +342,7 @@ export const resumes: Resume[] = [
           "resume": 5,
           "desc": [
             "공통부분 세일즈포스 - knox 메일 시스템 연동 시스템 개발",
-            "3개 사업부에서 공통으로 사용하는 SFDC <-> KnoxMail System & File Manage 시스템 구축"
+            "3개 사업부에서 공통으로 사용하는 SFDC <-> KnoxMail System & File Manage 시스템 구축",
             "개발언어 : Salesforce LWC(shadow dom 기반 Frontend 개발언어) / APEX(JAVA 기반 자체 Backend 개발언어)",
             "Lightning Web component(es6 web component)를 통한 Frontend 개발",
             "APEX(JAVA)와 SOQL(DB)를 통한 BackEnd 개발.",

@@ -40,7 +40,7 @@ export const resumes: Resume[] = [
             "디자이너의 와이어프레임을 참고하여 StoryBook 으로 UX / UI 문서화 진행",
             "서비스 기획 회의 및 요구사항도출 문서화"
           ],
-          "link": "https://daedong-connect.gintlab.com/",
+          "link": "https://eager-elion-d61454.netlify.app",
           "created_at": "2020-11-26T06:19:19.024Z",
           "updated_at": "2021-07-20T10:13:19.274Z"
         },
@@ -323,7 +323,7 @@ export const resumes: Resume[] = [
       "companyName": "I2MAX",
       "usedPosition": true,
       "usedRank": true,
-      "position": "세일즈포스 공통개발자(Front & Back)",
+      "position": "세일즈포스 공통개발자(CommonDev Front & Back)",
       "rank": "CSS팀 공통 개발파트 책임 개발자",
       "statusType": "process",
       "statusText": "프로젝트 진행중",
@@ -342,6 +342,12 @@ export const resumes: Resume[] = [
           "resume": 5,
           "desc": [
             "공통부분 세일즈포스 - knox 메일 시스템 연동 시스템 개발"
+            "- 개발언어 : Salesforce LWC(shadow dom 기반 Frontend 개발언어) / APEX(JAVA 기반 자체 Backend 개발언어)",
+            "- 공통부분 세일즈포스 - knox 메일 시스템 연동 시스템 개발",
+            "- Lightning web component(es6 web component)를 통한 Frontend 개발",
+            "- APEX(JAVA) 를 통한 서버 개발.",
+            "- SOQL(DB)를 통한 쿼리 튜닝. ",
+            "- 3개 사업부에서 공통으로 사용하는 SFDC -> KnoxMail System & File Manage 시스템 구축"
           ],
           "link": null,
           "created_at": "2020-11-26T07:41:25.827Z",

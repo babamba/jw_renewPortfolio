@@ -309,7 +309,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
                 <motion.div variants={ItemLeftStyle}>
                   {folio !== undefined && folio.link !== "" && (
                     <ProductLink href={folio.link} target="_blank">
-                      실제서비스 URL{" "}
+                      실제서비스 Or Demo URL{" "}
                     </ProductLink>
                   )}
                 </motion.div>

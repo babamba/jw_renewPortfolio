@@ -171,7 +171,7 @@ export default [
     position: "FrontEnd React",
     titleDetail: "Gint Connect Telematics 플랫폼 개발",
     stack: "주 사용 기술 : React(TypeScript) / Redux / AntDesign / Appsync(Apollo)",
-    link: "https://daedong-connect.gintlab.com/",
+    link: "https://eager-elion-d61454.netlify.app",
     subDescriptions: [
       "고객사 서비스 중",
       "Gint-Connect 단말기로 쌓여진 트랙터 데이터를 이용한 Web Admin 어플리케이션 개발",

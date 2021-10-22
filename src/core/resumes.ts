@@ -341,7 +341,7 @@ export const resumes: Resume[] = [
           "programLanguage": "Salesforce LWC / APEX",
           "resume": 5,
           "desc": [
-            "공통부분 세일즈포스 - knox 메일 시스템 연동 시스템 개발"
+            "공통부분 세일즈포스 - knox 메일 시스템 연동 시스템 개발",
             "- 개발언어 : Salesforce LWC(shadow dom 기반 Frontend 개발언어) / APEX(JAVA 기반 자체 Backend 개발언어)",
             "- 공통부분 세일즈포스 - knox 메일 시스템 연동 시스템 개발",
             "- Lightning web component(es6 web component)를 통한 Frontend 개발",

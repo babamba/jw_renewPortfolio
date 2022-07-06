@@ -13,7 +13,15 @@ import StackCard from "@components/Card/StackCard";
 import { useRouter } from "@hooks/useRouter";
 import { useAppSelector } from "@store/useAppStore";
 
-import { backEndStack, ciStack, frontEndStack, infraStack, interestStack, remoteStack} from '@core/stacks';
+import {
+  backEndStack,
+  ciStack,
+  frontEndStack,
+  infraStack,
+  interestStack,
+  remoteStack,
+  SFStack
+} from "@core/stacks";
 
 const IntroText = styled(Typography.Title)`
   font-weight: 500 !important;
@@ -96,7 +104,9 @@ const About: FC = () => {
               저는 현재 <Typography.Text underline>FrontEnd</Typography.Text> 직군에서 프로젝트를
               진행하고있습니다. <br />
               Javascript 언어를 가장 좋아합니다. <br />
-              FrontEnd 및 BackEnd 직군으로 프로젝트를 진행한 경력이 있습니다.
+              FrontEnd 및 BackEnd 직군으로 프로젝트를 진행한 경력이 있습니다. <br />
+              <br />
+              현재는 Salesforce 솔루션을 이용한 CRM 개발 프로젝트를 진행 중입니다.
               <br />
               기술 트렌드와 실제 프로덕션의 중간에서 효율점을 찾아가며
               <br />
@@ -134,9 +144,19 @@ const About: FC = () => {
         </Divider>
         <Row gutter={16}>
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-            <StackCard type="backend" data={backEndStack}/>
+            <StackCard type="backend" data={backEndStack} />
           </Col>
         </Row>
+
+        <Divider orientation="left" style={{ marginBottom: 28 }}>
+          Salesforce Stack
+        </Divider>
+        <Row gutter={16}>
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+            <StackCard type="salesforce" data={SFStack} />
+          </Col>
+        </Row>
+
         {/* 인프라 */}
         <Divider orientation="left" style={{ marginBottom: 28 }}>
           Infra Stack
@@ -144,7 +164,7 @@ const About: FC = () => {
 
         <Row gutter={16}>
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-            <StackCard type="infra" data={infraStack}/>
+            <StackCard type="infra" data={infraStack} />
           </Col>
         </Row>
 
@@ -153,7 +173,7 @@ const About: FC = () => {
         </Divider>
         <Row gutter={16}>
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-            <StackCard type="ci" data={ciStack}/>
+            <StackCard type="ci" data={ciStack} />
           </Col>
         </Row>
 

@@ -180,7 +180,7 @@ const MyProfile = () => {
                 <SubIntroText useDark={useDark}>
                   {screens.xl && (
                     <ReactRotatingText
-                      items={["Front", "React", "UI ", "BackEnd", "진지한", "배고픈"]}
+                      items={["Front", "React", "UI ", "BackEnd", "Salesforce", "진지한", "배고픈"]}
                     />
                   )}
                   개발자 김진원입니다.
@@ -210,7 +210,7 @@ const MyProfile = () => {
                 <SubIntroSmallText useDark={useDark}>
                   {screens.sm && (
                     <ReactRotatingText
-                      items={["Front", "React", "UI ", "BackEnd", "진지한", "배고픈"]}
+                      items={["Front", "React", "UI ", "BackEnd", "Salesforce", "진지한", "배고픈"]}
                     />
                   )}
                   개발자 김진원입니다.

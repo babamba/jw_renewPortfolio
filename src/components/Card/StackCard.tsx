@@ -8,7 +8,7 @@ import { Stack } from "@interfaces/stack";
 import { useStacks } from "@api/query/common.query";
 
 interface Props {
-  type: "remote" | "front" | "backend" | "ci" | "infra" | "interest";
+  type: "remote" | "front" | "backend" | "ci" | "infra" | "interest" | "salesforce";
   data: Stack[];
 }
 
@@ -19,7 +19,7 @@ const StackCard = (props: Props) => {
 
   useEffect(() => {
     setList(data);
-  }, [])
+  }, []);
   // useEffect(() => {
   //   if (stackData) setList(stackData);
   // }, [stackData]);
@@ -33,14 +33,14 @@ const StackCard = (props: Props) => {
       exit="hidden"
     >
       <Row>
-          {list.map((item, idx) => (
-            <Col xs={8} sm={8} md={6} lg={6} xl={4} xxl={3} key={idx}>
-              <motion.div variants={ItemStyle} key={idx}>
-                <StackAvatar stack={item} />
-              </motion.div>
-            </Col>
-          ))}
-        </Row>
+        {list.map((item, idx) => (
+          <Col xs={8} sm={8} md={6} lg={6} xl={4} xxl={3} key={idx}>
+            <motion.div variants={ItemStyle} key={idx}>
+              <StackAvatar stack={item} />
+            </motion.div>
+          </Col>
+        ))}
+      </Row>
       {/* {isLoading ? (
         <Loader />
       ) : fetchError ? (

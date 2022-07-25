@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { Timeline, Row, Col, Card, Grid } from "antd";
 import { motion } from "framer-motion";
-import ReactGA from "react-ga4";
+import ReactGA from "react-ga";
+import { useRouter } from "@hooks/useRouter";
 import { pageTransition, pageVariants } from "@interfaces/Motion";
 
 import HeadMeta from "@components/Helmet/HeadMeta";
@@ -9,13 +10,13 @@ import ResumeContent from "@components/App/Resume/ResumeContent";
 import { useAppSelector } from "@store/useAppStore";
 import COLOR from "@core/colors";
 const History = () => {
+  const router = useRouter();
   const screens = Grid.useBreakpoint();
   const { useDark } = useAppSelector(state => state.appStore);
 
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
-      ReactGA.send('pageview')
-      //ReactGA.pageview(router.location.pathname + router.location.search);
+      ReactGA.pageview(router.location.pathname + router.location.search);
     }
   }, []);
 

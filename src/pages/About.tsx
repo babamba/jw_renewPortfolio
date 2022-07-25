@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef } from "react";
 import { Row, Col, Divider, Card, Typography, Badge, Grid, Empty } from "antd";
 import styled from "styled-components";
-import ReactGA from "react-ga4";
+import ReactGA from "react-ga";
 import COLOR from "@core/colors";
 
 import { motion } from "framer-motion";
@@ -10,6 +10,7 @@ import { pageTransition, pageVariants } from "@interfaces/Motion";
 import HeadMeta from "@components/Helmet/HeadMeta";
 import StackCard from "@components/Card/StackCard";
 
+import { useRouter } from "@hooks/useRouter";
 import { useAppSelector } from "@store/useAppStore";
 
 import {
@@ -50,10 +51,10 @@ const About: FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const { useDark } = useAppSelector(state => state.appStore);
   const screens = Grid.useBreakpoint();
+  const router = useRouter();
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
-      ReactGA.send('pageview')
-      //ReactGA.pageview(router.location.pathname + router.location.search);
+      ReactGA.pageview(router.location.pathname + router.location.search);
     }
   }, []);
 

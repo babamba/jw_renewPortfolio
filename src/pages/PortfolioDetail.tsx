@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { pageTransition, pageVariants, ContainerStyle, ItemLeftStyle } from "@interfaces/Motion";
 import { motion } from "framer-motion";
 import HeadMeta from "@components/Helmet/HeadMeta";
-import ReactGA from "react-ga4";
+import ReactGA from "react-ga";
 import PortfolioData from "@core/folioData";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { useAppSelector } from "@store/useAppStore";
@@ -100,8 +100,7 @@ const PortfolioDetail: FC<RouteComponentProps<MatchParams>> = ({ history, match 
 
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
-      ReactGA.send('pageview')
-      //ReactGA.pageview(location.pathname + location.search);
+      ReactGA.pageview(location.pathname + location.search);
     }
     findPortFolio();
   }, []);

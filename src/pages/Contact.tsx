@@ -4,9 +4,8 @@ import { MailOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 import { pageTransition, pageVariants, ContainerStyle, ItemLeftStyle } from "@interfaces/Motion";
 import { motion } from "framer-motion";
-import HeadMeta from "@components/Helmet/HeadMeta";
-import { useRouter } from "@hooks/useRouter";
-import ReactGA from "react-ga";
+import HeadMeta from "@components/Helmet/HeadMeta"
+import ReactGA from "react-ga4";
 
 const StatusBadge = styled(Badge)`
   position: relative;
@@ -29,12 +28,12 @@ const GuideText = styled(Typography.Text)`
 `;
 
 const Contact = () => {
-  const router = useRouter();
   const screens = Grid.useBreakpoint();
 
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
-      ReactGA.pageview(router.location.pathname + router.location.search);
+      ReactGA.send('pageview')
+      //ReactGA.pageview(router.location.pathname + router.location.search);
     }
   }, []);
   return (

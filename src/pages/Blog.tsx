@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import {
   Row,
   Col,
@@ -15,8 +15,6 @@ import {
 
 import { motion } from "framer-motion";
 
-import { useRouter } from "@hooks/useRouter";
-
 import { ContentfulService } from "@core/contentful";
 import COLOR from "@core/colors";
 
@@ -29,7 +27,6 @@ import { useAppSelector, useAppDispatch } from "@store/useAppStore";
 import { setCurrentPage } from "@store/appStore";
 
 const Post = () => {
-  const router = useRouter();
   const dispatch = useAppDispatch();
   const { useDark, currentPage } = useAppSelector(state => state.appStore);
 
@@ -58,7 +55,8 @@ const Post = () => {
 
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
-      ReactGA.pageview(router.location.pathname + router.location.search);
+      //ReactGA.pageview(router.location.pathname + router.location.search);
+      ReactGA.send('pageview')
     }
     return () => {
       dispatch(setCurrentPage(1));

@@ -2,7 +2,7 @@ import { useLayoutEffect, useState, useEffect, useRef, Suspense, lazy } from "re
 import { Layout, Row, Col, Affix, Grid, BackTop } from "antd";
 import { ArrowUpOutlined } from "@ant-design/icons";
 import { useWindowHeight } from "@react-hook/window-size";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import FolioRoutes from "@routes/FolioRoutes";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 
@@ -36,7 +36,8 @@ const App = () => {
   useLayoutEffect(() => {
     onTheme();
     if (process.env.NODE_ENV === "production") {
-      ReactGA.pageview(router.location.pathname + router.location.search);
+      ReactGA.send('pageview')
+      //ReactGA.pageview(router.location.pathname + router.location.search);
     }
   }, []);
 

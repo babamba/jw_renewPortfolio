@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { Typography, PageHeader, Skeleton, Grid, Card } from "antd";
 import { pageVariants, pageTransition } from "@interfaces/Motion";
@@ -10,7 +10,6 @@ import { BlogPost } from "@interfaces/post";
 import { ContentfulService } from "@core/contentful";
 import COLOR from "@core/colors";
 import HeadMeta from "@components/Helmet/HeadMeta";
-import { useRouter } from "@hooks/useRouter";
 import { useAppSelector } from "@store/useAppStore";
 
 const PostContainer = styled.div`
@@ -58,7 +57,6 @@ interface MatchParams {
 
 const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, location }) => {
   const { useDark } = useAppSelector(state => state.appStore);
-  const router = useRouter();
   const screens = Grid.useBreakpoint();
   const contentfulService = new ContentfulService();
   const [article, setArticle] = useState<BlogPost | undefined>();
@@ -66,7 +64,8 @@ const PostPage: FC<RouteComponentProps<MatchParams>> = ({ history, match, locati
   useEffect(() => {
     getPost(match.params.id);
     if (process.env.NODE_ENV === "production") {
-      ReactGA.pageview(router.location.pathname + router.location.search);
+      ReactGA.send('pageview')
+      //ReactGA.pageview(router.location.pathname + router.location.search);
     }
   }, []);
 

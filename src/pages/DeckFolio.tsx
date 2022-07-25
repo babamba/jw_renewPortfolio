@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 import { ForwardOutlined, RetweetOutlined } from "@ant-design/icons";
 import { Grid, Progress, Row, Col, Space, Typography } from "antd";
@@ -79,7 +79,8 @@ const DeckFolio = () => {
 
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
-      ReactGA.pageview(router.location.pathname + router.location.search);
+      ReactGA.send('pageview')
+      //ReactGA.pageview(router.location.pathname + router.location.search);
     }
     openAction();
   }, []);

@@ -9,7 +9,7 @@ import { BrowserRouter } from "react-router-dom";
 import font from "figlet/importable-fonts/Standard.js";
 import figlet from "figlet";
 import "./assets/css/custom.less";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import initReactFastclick from "react-fastclick";
 
 import { ReactQueryDevtools } from "react-query/devtools";
@@ -32,7 +32,7 @@ figlet.text(
 if (process.env.NODE_ENV === "production") {
   console.log("Production Mode");
   console.log = function no_console() {};
-  ReactGA.initialize(`${process.env.REACT_APP_GA_TRACKING_ID}`);
+  ReactGA.initialize(`${process.env.REACT_APP_GA4_TRACKING_ID}`);
 } else if (process.env.NODE_ENV === "development") {
   console.log("Development Mode");
 }

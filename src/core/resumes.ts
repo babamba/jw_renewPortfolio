@@ -340,6 +340,7 @@ export const resumes: Resume[] = [
         resume: 5,
         desc: [
           "Foundry 사업부 부분 반도체 수주관리 레거시 시스템 세일즈포스 이관 및 시스템 개발",
+          "Knox 결재 시스템 세일즈포스 어플리케이션으로 개발"
           "개발언어 : Salesforce LWC(shadow dom 기반 Frontend 개발언어) / APEX(JAVA 기반 자체 Backend 개발언어)",
           "Lightning Web component(es6 web component)를 통한 Frontend 개발",
           "LWC Redux 적용 및 Apex(서버통신) 공통처리 개발",

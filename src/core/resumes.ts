@@ -330,11 +330,29 @@ export const resumes: Resume[] = [
     created_at: "2021-07-20T10:05:09.593Z",
     updated_at: "2021-07-20T10:13:24.194Z",
     companyImg: "i2max.png",
-    resume_stories: [
+    resume_stories: 
+      {
+        id: 16,
+        type: "process",
+        title: "삼성전자 Foundry 부문 B2B 시스템 2.0 (23.09 ~ 현재)",
+        isDeveloperPosition: true,
+        programLanguage: "Salesforce LWC / APEX",
+        resume: 5,
+        desc: [
+          "Foundry 사업부 부분 반도체 B2B 시스템 고도화",
+          "개발언어 : Salesforce LWC(shadow dom 기반 Frontend 개발언어) / APEX(JAVA 기반 자체 Backend 개발언어)",
+          "Lightning Web component(es6 web component)를 통한 Frontend 개발",
+          "LWC Redux 적용 및 Apex(서버통신) 공통처리 개발",
+          "APEX(JAVA)와 SOQL(DB)를 통한 BackEnd 개발."
+        ],
+        link: null,
+        created_at: "2022-06-26T07:41:25.827Z",
+        updated_at: "2022-06-28T10:12:44.683Z"
+      },
       {
         id: 15,
-        type: "process",
-        title: "삼성전자 Foundry 부문 비즈니스 시스템 구축 Phase 2 (22.06 ~ 현재)",
+        type: "complete",
+        title: "삼성전자 Foundry 부문 비즈니스 시스템 구축 Phase 2 (22.06 ~ 23.08)",
         isDeveloperPosition: true,
         programLanguage: "Salesforce LWC / APEX",
         resume: 5,
